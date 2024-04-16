@@ -51,7 +51,7 @@ const Categories = () => {
           <div className="Hoodi">
             {/* <img src={Static} alt="" /> */}
             <iframe
-              className="MobileAddiction-yt-video"
+              className="cate-video"
               src="https://www.youtube.com/embed/rcxd7w9PryE?si=ZJUIHyOtmVaxFrHK"
               title="YouTube video player"
               frameBorder="0"
