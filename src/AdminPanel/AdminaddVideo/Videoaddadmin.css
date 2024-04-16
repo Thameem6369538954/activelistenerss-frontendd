@@ -21,8 +21,34 @@
   justify-content: center;
   position: fixed;
   margin-left: 10%;
+  margin-top: -4%;
 }
-
+.video-submit-btns{
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 2rem;
+}
+.edit-form-cancel {
+    display: flex;
+  align-items: center;
+  justify-content: end;
+  margin-left: 50%;
+}
+.video-submit-btns button:nth-child(1){
+  background-color: #BDBDBD;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+}
+.video-submit-btns button:nth-child(2){
+  background-color: #FFDD7E;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+}
 .video-popup-content {
   height: 600px;
   width: 980px;
@@ -46,7 +72,7 @@
 }
 .container {
   margin: 2%;
-  border: 2px dashed #333;
+  border: 2px dashed #BDBDBD;
   border-radius: 4%;
   padding: 2%;
 }
@@ -257,9 +283,114 @@ table tbody tr:nth-child(odd) {
   padding: 0px 16px;
 }
 
-table tbody tr td::last-child {
-  background-color: red;
-}
+
 .table-body {
   background-color: white;
+}
+.table-container {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #fff;
+  color: #333;
+  text-align: center;
+  height: 100px;
+}
+.table-container table tbody tr button {
+  /* border: 1px solid #ddd; */
+  padding: 10px 20px 10px 20px;
+  background-color: white;
+}
+.table-container table tbody tr{
+  margin: auto;
+}
+.box-wrap{
+  background-color: white;
+  height: 900px;
+  width: 90%;
+  margin: auto;
+  border-radius: 20px;
+}
+.action-buttons{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+.action-buttons button{
+  padding: 10px ;
+  width: 100px;
+  border-radius: 20px;
+}
+.action-buttons button:nth-child(2){
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background-color: #CD4631;
+  color: white;
+  border: none;
+}
+.edit-form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  background-color: royalblue;
+  border-radius: 20px;
+}
+.edit-form input{
+  padding: 10px 30px;
+  margin: 10px;
+  border-radius: 20px;
+}
+.edit-form label{
+  font-size: 20px;
+  color: white;
+}
+.action-buttons button:nth-child(1){
+  display: grid;
+  place-items: center;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  background-color: white;
+  color: black;
+  border: 1px solid #CD4631;
+}
+.action-buttons-save button{
+  display: grid;
+  place-items: center;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  background-color: white;
+  color: black;
+  border: 1px solid lawngreen;
+  border-radius: 20px;
+    margin-left: 35%;
+}
+.video-edit{
+  font-size: 20px;
+  
+}
+.video-delete-new{
+  font-size: 20px;
+  color: #CD4631;
+}
+.video-save{
+  font-size: 20px;
+  color: lawngreen;
+
 }

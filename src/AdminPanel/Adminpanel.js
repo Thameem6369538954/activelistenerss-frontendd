@@ -21,44 +21,14 @@ import PinkHand from "../SmallElements/PinkHand.png";
 import Brine from "../SmallElements/Brine.png";
 import { Chart as Chartjs } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
-import { CgCloseO } from "react-icons/cg";
 import Videoup from "../Images/Videoup.png";
 import Thumb from "../Images/Thumb.png";
 import mahesh from "../Images/mahesh.jpeg";
 import PodcastAdmin from "../AdminPanel/Podcast/PodcastAdmin"
+import Videoaddadmin  from "../AdminPanel/AdminaddVideo/Videoaddadmin"
 // import HiringAdmin from "../AdminPanel/Hiring/HiringAdmin"
 const Adminpanel = () => {
-  const [showPopup, setShowPopup] = useState(false);
-  const [videoData, setVideoData] = useState({
-    videoFile: null,
-  });
-
-  const togglePopup = () => {
-    setShowPopup(!showPopup);
-  };
-
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setVideoData({
-      ...videoData,
-      [name]: value,
-    });
-  };
-
-  const handleFileChange = (event) => {
-    setVideoData({
-      ...videoData,
-      videoFile: event.target.files[0],
-    });
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Here you can handle the form submission, for now, let's just log the data
-    console.log(videoData);
-    // You can then add logic to save this data to your database or display it in the table
-  };
-
+ 
       const [psychologist, setPsychologist] = useState([
         {
           id: 1,
@@ -294,95 +264,7 @@ const Adminpanel = () => {
             <Route
               path="/Videoaddadmin"
               element={
-                <div>
-                  <div className="video-add-main-container">
-                    <div className="video-add-top-btn">
-                      <h1>Upload Video</h1>
-                      <button onClick={togglePopup}>Upload a New Video</button>
-                    </div>
-                    {showPopup && (
-                      <div className="video-popup">
-                        <div className="video-popup-content">
-                          <span className="close" onClick={togglePopup}>
-                            <CgCloseO />
-                          </span>
-                          <h2>Upload Video</h2>
-                          <form onSubmit={handleSubmit}>
-                            <div className="video-top-inputs">
-                              <div>
-                                <label>Title of the Video</label>
-                                <input
-                                  type="text"
-                                  placeholder="Enter the title"
-                                />
-                              </div>
-                              <div className="select-page-videos">
-                                <label>Select Page : </label>
-                                <select name="cars" id="cars">
-                                  <option value="volvo">Select the Page</option>
-                                  <option value="saab">Saab</option>
-                                  <option value="opel">Opel</option>
-                                  <option value="audi">Audi</option>
-                                </select>
-                              </div>
-                            </div>
-                            <div className="video-thumbnil-inputs">
-                              <label>Thumbnail</label>
-                              <input type="file" />
-                            </div>
-                            <label>Upload Video</label>
-                            <div className="video-admin-inputs">
-                              <img src={Videoup} alt="" />
-                              <h2>Drag and Drop Files here</h2>
-                              <input
-                                type="file"
-                                id="videoFile"
-                                name="videoFile"
-                                // onChange={handleFileChange}
-                                style={{ display: "none" }} // Add this style inline
-                              />
-                              <label
-                                htmlFor="videoFile"
-                                className="custom-file-input"
-                                data-file-name=""
-                              >
-                                Upload a file
-                              </label>
-                            </div>
-                          </form>
-                        </div>
-                      </div>
-                    )}
-                    <div class="box-wrap">
-                      <div class="table-wrap">
-                        <table>
-                          <thead>
-                            <tr>
-                              <th>sr no.</th>
-                              <th>Thumbnail</th>
-                              <th>Video Title</th>
-                              <th>Page</th>
-                              <th>Actions</th>
-                              {/* <button>Actions</button> */}
-                            </tr>
-                          </thead>
-                          <tbody className="table-body">
-                            <tr>
-                              <td>01</td>
-                              <td>Active Listeners</td>
-                              <td>Mobile Addiction</td>
-                              <td>Mobile Addiction</td>
-                              <div className="func-btns">
-                                <button>Edit</button>
-                                <button>Delete</button>
-                              </div>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <Videoaddadmin />
               }
             />
             <Route path="/Package" element={<h1>Package</h1>} />
