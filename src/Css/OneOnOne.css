@@ -1,0 +1,17 @@
+.oneonone-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  margin: 20px auto;
+}
+
+.container-speek-a {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+.container-speek-a img {
+  width: 70%;
+}

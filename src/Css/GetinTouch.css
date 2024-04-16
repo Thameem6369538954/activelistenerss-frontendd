@@ -1,0 +1,136 @@
+.getintouch-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 10%;
+}
+.get-form {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: space-around;
+  background-color: #bae8ac;
+  width: 60%;
+  height: 400px;
+  margin-left: 3%;
+  padding: 10px;
+  /* z-index: ; */
+  border-radius: 20px;
+  margin-bottom: -10%;
+}
+.form-inputs {
+  display: grid;
+  place-items: center;
+  grid-template-columns: repeat(2, 1fr);
+  width: 100%;
+}
+.form-inputs input {
+  padding: 10px;
+  width: 100%;
+  border-radius: 10px;
+  margin: 10px auto;
+}
+.form-inputs input:nth-child(2) {
+  margin-left: 20px;
+}
+.form-inputs input:nth-child(3) {
+}
+.getintouch-msg input {
+  border-radius: 10px;
+  padding: 20px;
+  margin-left: 5%;
+  width: 153%;
+}
+.agree-get {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+}
+.agree-get button {
+  background-color: black;
+  color: white;
+  padding: 10px 50px;
+  border-radius: 20px;
+}
+.get-form img {
+  position: absolute;
+  width: 50%;
+  margin-left: -85%;
+  margin-top: -4%;
+}
+.error-getin-touch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+@media screen and (max-width: 600px) {
+  .get-form img {
+    position: absolute;
+    width: 35%;
+    margin-left: -88%;
+    margin-top: -80%;
+  }
+  .get-form {
+    /* background-color: red; */
+    width: 90%;
+    margin-bottom: 20px;
+  }
+  .form-inputs input {
+    padding: 10px;
+    width: 91%;
+    border-radius: 10px;
+    margin: 10px auto;
+  }
+}
+@media (min-width: 600px) and (max-width: 1024px) {
+  .form-inputs input {
+    padding: 10px;
+    width: 96%;
+    border-radius: 10px;
+    margin: 10px auto;
+  }
+  .get-form img {
+  position: absolute;
+    width: 48%;
+    margin-left: -88%;
+    margin-top: 17%;
+  }
+  .get-form {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: space-around;
+    background-color: #bae8ac;
+    width: 60%;
+    height: 400px;
+    margin-left: 3%;
+    padding: 10px;
+    /* z-index: ; */
+    border-radius: 20px;
+    margin-bottom: -3%;
+  }
+}
+@media screen and (max-width: 1224px) {
+  .get-form {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: space-around;
+    background-color: #bae8ac;
+    width: 85%;
+    height: 400px;
+    margin-left: 3%;
+    padding: 10px;
+    /* z-index: ; */
+    border-radius: 20px;
+    margin-bottom: -3%;
+  }
+}

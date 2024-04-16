@@ -1,0 +1,389 @@
+.element-for-career-counselling {
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+}
+.element-for-career-counselling p {
+  font-size: 30px;
+  font-family: "Questrial", sans-serif;
+  text-decoration: none;
+}
+.psycologiest-box-inside-for p {
+  font-size: 16px;
+  font-family: "Questrial", sans-serif;
+  text-decoration: none;
+}
+.yellowbaner-for-career-counselling {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 90px;
+  position: relative;
+}
+.success-yellow-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+.success-yellow-box img {
+  width: 40%;
+}
+.yellowbaner-for-career-counselling img {
+  border-radius: 20px;
+  width: 60%;
+}
+.yellowbaner-for-career-counselling img:nth-child(1) {
+  /* background-color: red; */
+  position: absolute;
+  width: 300px;
+  margin-left: -55%;
+  margin-top: -23%;
+  z-index: -1;
+  animation: moveUpDown 2s infinite;
+}
+.yellowbaner-for-career-counselling img:nth-child(3) {
+  /* background-color: green; */
+  position: absolute;
+  width: 200px;
+  margin-left: 56%;
+  margin-top: 300px;
+  z-index: -1;
+  animation: moveUpDown 2s infinite;
+}
+.elips {
+  position: absolute;
+  margin-top: -75%;
+  margin-left: 34%;
+  z-index: -1;
+  overflow-x: hidden;
+}
+.comic-baner-container {
+  background-image: url("../Images/FreeComicBg.png");
+  height: 400px;
+  background-position: cover;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin: 40px;
+}
+.comic-baner-container p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+}
+.element-for-career-counselling {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.follow-box-for-psycologiest {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.element-for-career-counselling h1 {
+  font-family: myFont;
+  letter-spacing: 0.1rem;
+  font-size: 80px;
+  margin-top: 35px;
+  color: #a32e1c;
+  text-shadow: -1px 2px 0 #ffdd7e, 1px 2px 0 #ffdd7e, 1px -2px 0 #ffdd7e,
+    -1px -2px 0 #ffdd7e;
+}
+
+.meetour-manter {
+  background-image: url("../Images/Smallpickbg.png");
+  width: 100%;
+  height: 110vh;
+  background-repeat: no-repeat;
+  position: relative;
+  background-position: center;
+  /* margin-top: -5%; */
+}
+.psycologiest-box-for-counsling {
+  margin: 40px;
+  border: 1px solid black;
+  background-color: white;
+  width: 370px;
+  height: 300px;
+  border-radius: 20px;
+}
+.psycologiest-box-for-image img {
+  width: 220px;
+  height: 300px;
+  margin-left: -2%;
+}
+.psycologiest-box-inside-for h3 {
+  padding: 5px;
+  font-size: 30px;
+}
+.success-yellow-box {
+  width: 75%;
+  height: 450px;
+  background-color: #ffdd7e;
+  border-radius: 40px;
+  padding: 20px;
+}
+.success-yellow-box-main {
+  display: grid;
+  place-items: center;
+  margin: 30px;
+}
+.host-for-career {
+  display: flex;
+  align-items: center;
+}
+.main-host-for-career {
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+}
+.host-career {
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  gap: 10rem;
+}
+
+.success-yellow-box-inside p {
+  padding: 10px;
+}
+.play-btn-for-career {
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  gap: 3rem;
+  margin-top: 20px;
+}
+.play-btn-for-career button {
+  padding: 10px 25px;
+  border: none;
+  background-color: black;
+  color: white;
+  border-radius: 20px;
+}
+.play-btn-for-career button:nth-child(2) {
+  background-color: transparent;
+  color: black;
+  border: 2px solid black;
+}
+.black-box-for-career {
+  width: 40%;
+  height: 550px;
+  border-radius: 20px;
+  background-color: black;
+}
+.black-box-for-career {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.black-box-for-career h1,
+h2,
+h3 {
+  padding: 10px;
+  /* color: #fff; */
+}
+.black-box-for-career h2 {
+  color: #fff;
+  background-color: #a32e1c;
+  width: 40%;
+  text-align: center;
+  border-radius: 20px;
+  font-size: 40px;
+}
+.black-box-main-container {
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.grean-career-box {
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+  justify-content: center;
+  background-color: #bae8ac;
+  width: 28%;
+  height: 200px;
+  border-radius: 20px;
+  z-index: 1;
+  position: absolute;
+  margin-left: -60%;
+  margin-top: -10%;
+}
+.grean-career-box-a {
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+  justify-content: center;
+  background-color: #bae8ac;
+  width: 28%;
+  height: 200px;
+  border-radius: 20px;
+  z-index: 1;
+  position: absolute;
+  margin-left: 55%;
+  margin-top: 15%;
+}
+.grean-career-box-a img,
+.grean-career-box img {
+  width: 150px;
+}
+.grean-career-box h1,
+.grean-career-box-a h1 {
+  margin: 30px;
+}
+.couns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.couns img {
+  margin-top: 90px;
+  width: 50%;
+}
+.career-box-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffdd7e;
+  height: 300px;
+  width: 320px;
+  border-radius: 20px;
+  border: 1px solid black;
+  margin: 10px 12%;
+  text-align: center;
+}
+.career-box-container img {
+  width: 20%;
+}
+@media (min-width: 600px) and (max-width: 1024px) {
+  .yellowbaner-for-career-counselling img:nth-child(1) {
+    width: 150px;
+    margin-left: -85%;
+    margin-top: -33%;
+  }
+  .yellowbaner-for-career-counselling img:nth-child(3) {
+    width: 100px;
+    margin-left: 82%;
+    margin-top: 200px;
+  }
+  .yellowbaner-for-career-counselling img {
+    border-radius: 20px;
+    width: 90%;
+  }
+  .element-for-career-counselling h1 {
+    margin-top: -3%;
+  }
+  .Subscribe-heading {
+    margin-top: 0%;
+  }
+  .meetour-manter {
+    height: 75vh;
+    margin-top: -30%;
+  }
+  .success-yellow-box {
+    width: 104%;
+  }
+  .black-box-for-career {
+    width: 77%;
+  }
+  .grean-career-box-a {
+    width: 53%;
+    margin-left: 22%;
+    margin-top: 65%;
+  }
+  .grean-career-box {
+    width: 52%;
+    margin-left: -34%;
+    margin-top: -67%;
+  }
+  .black-box-main-container {
+    margin-top: 20%;
+  }
+  .black-box-for-career h2 {
+    width: 60%;
+  }
+}
+@media screen and (max-width: 600px) {
+  .element-for-career-counselling p {
+    font-size: 15px;
+  }
+  .element-for-career-counselling h1 {
+    font-family: myFont;
+    letter-spacing: 0.1rem;
+    font-size: 26px;
+    margin-top: 1%;
+  }
+  .comic-baner-container p {
+    font-size: 21px;
+    margin-top: 1%;
+  }
+  .meetour-manter {
+    height: 115vh;
+    margin-top: -90%;
+  }
+  .yellowbaner-for-career-counselling img:nth-child(1) {
+    width: 150px;
+    margin-left: -140%;
+    margin-top: -43%;
+  }
+  .yellowbaner-for-career-counselling img:nth-child(3) {
+    width: 100px;
+    margin-left: 140%;
+    margin-top: 130px;
+  }
+
+  .yellowbaner-for-career-counselling img {
+    border-radius: 20px;
+    width: 166%;
+  }
+  .success-yellow-box {
+    width: 99%;
+    height: 676px;
+  }
+  .success-yellow-box {
+    flex-direction: column;
+  }
+  .black-box-for-career {
+    width: 79%;
+  }
+  .grean-career-box-a {
+    width: 94%;
+    height: 154px;
+
+    margin-left: 2%;
+    margin-top: 150%;
+  }
+  .black-box-for-career {
+    margin-top: 20%;
+  }
+  .grean-career-box {
+    width: 90%;
+    height: 154px;
+    margin-left: 4%;
+    margin-top: -122%;
+  }
+  .success-yellow-box img {
+    width: 76%;
+  }
+  .play-btn-for-career {
+    gap: 1rem;
+  }
+  .host-career {
+    gap: 0rem;
+  }
+  .couns img {
+    margin-top: 90px;
+    width: 87%;
+  }
+  .success-yellow-box-main {
+    margin: 34px;
+  }
+}

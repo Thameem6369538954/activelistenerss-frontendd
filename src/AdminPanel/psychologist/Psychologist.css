@@ -1,0 +1,75 @@
+.headeing-admin-psygologiy{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 20px;
+}
+.headeing-admin-psygologiy button{
+    background-color: #ffdd7e;
+    padding: 10px 30px;
+    border: none;
+    font-size: 16px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+.psycologist-box-admint{
+    display: flex;  
+    align-items: center;
+    justify-content: center;
+  /* position: relative; */
+  margin: auto;
+
+  border-radius: 20px;
+}
+.psycologist-box-admint-heading:hover{
+    background-color: #ffdd7e;
+}
+.psycologist-box-admint-main{
+    display: grid;
+    place-items: center;
+    grid-template-columns: repeat(3,0fr);
+    gap: 1rem;
+     margin: 30px;
+}
+.psycologist-box-admint-heading{
+display: flex;  
+flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url("../../Images/Pattern.png");
+      border:2px solid #ffdd7e;
+  background-color: white;
+  width: 250px;
+  height: 328px;
+  background-repeat: no-repeat;
+  position: relative;
+  background-position: center;
+  border-radius: 20px;
+}
+.psycologist-box-admint-heading{
+display: flex;  
+    align-items: center;
+    justify-content: center;
+ 
+}
+.active-pspyco-btn {
+    display: flex;  
+    align-items: center;
+    /* margin-left: 100%; */
+    justify-content: center;
+}
+.active-pspyco-btn button{
+ display: flex;  
+    align-items: center;
+    justify-content: end;
+    padding: 5px 10px;
+    width: 90px;
+    color: green;
+    border: none;
+    border-radius: 30px;
+    background-color: #BAE8AC;
+}
+.psycologist-box-admint-heading img{
+    width: 100px;
+    border-radius: 50%;
+}

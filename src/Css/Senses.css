@@ -1,0 +1,100 @@
+.senses-category-cards {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  margin: auto;
+}
+
+.close-calendly {
+  margin-left: 20px;
+}
+.senses-card {
+  display: flex;
+  /* flex-wrap: wrap; */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffdd7e;
+  height: 358px;
+  width: 320px;
+  margin: 30px;
+  border-radius: 20px;
+}
+.get-support {
+  background-color: #ffdd7e;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  margin: 20px 45%;
+  cursor: pointer;
+}
+.sense-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  margin: 20px auto;
+}
+.senses-card img {
+  width: 70%;
+}
+.senses-card h1 {
+  text-align: center;
+  margin: 20px;
+}
+.senestop-icon {
+  /* color: red; */
+  font-size: 30px;
+  margin-left: 250px;
+  margin-top: -30%;
+  /* position: absolute; */
+}
+.senesbottom-icon {
+  /* color: red; */
+  font-size: 30px;
+  margin-left: 70%;
+  margin-top: 0px;
+  /* position: absolute; */
+}
+.close-calendly {
+  position: relative;
+}
+@media (min-width: 600px) and (max-width: 1024px) {
+  .senses-category-cards {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: auto;
+  }
+  .get-support {
+    background-color: #ffdd7e;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 77px;
+    font-size: 16px;
+    margin: 10px 33%;
+    cursor: pointer;
+  }
+}
+@media screen and (max-width: 600px) {
+  .get-support {
+    background-color: #ffdd7e;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 12px 148px;
+    cursor: pointer;
+  }
+  .close-calendly {
+    margin-left: 10px;
+  }
+}

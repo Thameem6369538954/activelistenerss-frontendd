@@ -1,0 +1,319 @@
+.card-inneR {
+  position: relative;
+  height: 9cm;
+  margin-top: -33px;
+  border-radius: 20px;
+}
+.Eealyage-headrer-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5rem;
+  margin: 5% auto;
+}
+.card-inneR play-button {
+  height: 2cm;
+}
+.MobileAddiction-yt-video {
+  margin-top: 1%;
+  border-radius: 30px;
+  width: 500px;
+  height: 300px;
+  margin-left: 1%;
+  /* background-color: rebeccapurple; */
+}
+.card-inneR p,
+.card-inneR h1 {
+  position: relative;
+  z-index: 3; /* Ensure the text is above the image */
+}
+
+.card-inneR p {
+  font-family: myFont;
+  color: #256c55;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 32px;
+  margin-top: -3%;
+}
+.card-inneR h1 {
+  font-family: Relo;
+  font-weight: 900;
+  font-size: 30px;
+}
+.buttonss button {
+  background-color: #ffdd7e;
+  padding: 15px;
+  margin: 2% auto;
+  border-radius: 50px;
+  border: none;
+  font-size: 16px;
+  font-family: "Questrial", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  margin-top: 2cm;
+}
+.getyoukow-container {
+  background-color: #ffdd7e;
+  width: 45%;
+  height: 300px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.getyoukow-main-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin: 30px;
+}
+/* Remaining styles for background image */
+.card-inneR {
+  /* position: absolute; */
+  background-color: #bae8ac;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+.card-inneR img {
+  width: 60%;
+  margin-left: 5%;
+  margin-top: -17%;
+  z-index: 3;
+  /* Ensure the image is above the background image */
+}
+
+/* goaal vision .............................................. */
+.card-inneR-text {
+  margin: 30px;
+}
+.green-bourd-Earlyage {
+  margin: 50px;
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+.getyouknow-image img {
+  width: 250px;
+  height: 177px;
+  margin: 24px;
+  aspect-ratio: 3 / 2;
+  border-radius: 59px;
+  object-fit: contain;
+}
+.getyoukow-image-red {
+  margin-top: -33%;
+  margin-left: -11%;
+  /* position: absolute; */
+  width: 16%;
+}
+.getyouknow-txt {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 5rem;
+  /* position: relative; */
+}
+.getyouknow-txt button {
+  background-color: black;
+  padding: 10px 20px;
+  color: white;
+  border: none;
+  border-radius: 20px;
+}
+.getyouknow-txt h1 {
+  text-align: center;
+  font-size: 20px;
+  width: 80%;
+}
+@media (min-width: 600px) and (max-width: 1024px) {
+  .MobileAddiction-yt-video {
+  /* margin-top: 10%; */
+  border-radius: 10px;
+  width: 60%;
+  height: 250px;
+  margin-left: -10%;
+}
+  .card-inneR {
+    /* position: absolute; */
+    background-color: #bae8ac;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+ .getyoukow-image-red {
+    margin-top: -24%;
+    margin-left: 78%;
+    position: absolute;
+    width: 11%;
+    /* mix-blend-mode: multiply; */
+}
+  .card-inneR img {
+    width: 56%;
+    margin-left: -4%;
+    margin-top: 3%;
+  }
+  .getyouknow-image img {
+    width: 300px;
+  }
+  .getyouknow-txt {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 3rem;
+    /* position: relative; */
+  }
+  .getyoukow-main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 20%;
+  }
+  .goalvision-headrer-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 8%;
+  }
+  .card-inneR {
+    background-color: #bae8ac;
+  }
+  .Eealyage-headrer-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 30%;
+    padding: 30px;
+  }
+  .getyoukow-container {
+    background-color: #ffdd7e;
+    width: 90%;
+    height: 300px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+}
+@media screen and (max-width: 600px) {
+    .MobileAddiction-yt-video {
+  /* margin-top: 10%; */
+  border-radius: 30px;
+  width: 200px;
+  height: 150px;
+  margin-left: -10%;
+  background-color: red;
+}
+  .getyoukow-image-red {
+    margin-top: -110%;
+    margin-left: 59%;
+    position: absolute;
+    width: 41%;
+  }
+  .getyoukow-main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    /* margin: 5px; */
+  }
+  .getyouknow-image img {
+    width: 250px;
+  }
+  .getyouknow-txt {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 1rem;
+    /* position: relative; */
+  }
+  .getyoukow-container {
+    background-color: #ffdd7e;
+    width: 67%;
+    height: 362px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* position: relative; */
+  }
+ .card-inneR {
+    /* position: absolute; */
+    background-color: #bae8ac;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0rem;
+    width: 360px;
+    height: 208px;
+    margin-left: -9%;
+}
+  .card-inneR h1 {
+    font-family: Relo;
+    font-weight: 900;
+    font-size: 21px;
+    margin-left: 1%;
+  }
+  .card-inneR p {
+    font-family: myFont;
+    color: #256c55;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 19px;
+    margin-top: -21%;
+    margin-left: 2px;
+  }
+  .card-inneR img {
+    width: 57%;
+    margin-left: -10%;
+    margin-top: 7%;
+    border-radius: 0px 0px 16px 0px;
+  }
+}
+
+
+
+.adaptationToMobile-yt-video{
+  margin-top: 1%;
+  border-radius: 30px;
+  width: 500px;
+  height: 300px;
+  margin-left: 1%;
+}
+
+@media (min-width: 600px) and (max-width: 1024px) {
+  .adaptationToMobile-yt-video {
+  /* margin-top: 10%; */
+  border-radius: 10px;
+  width: 60%;
+  height: 250px;
+  margin-left: -10%;
+}
+}
+
+@media screen and (max-width: 600px) {
+  .adaptationToMobile-yt-video {
+/* margin-top: 10%; */
+border-radius: 30px;
+width: 200px;
+height: 150px;
+margin-left: -10%;
+background-color: red;
+}
+}
+
+

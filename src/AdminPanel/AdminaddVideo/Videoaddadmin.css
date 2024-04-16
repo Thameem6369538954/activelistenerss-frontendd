@@ -1,0 +1,265 @@
+.video-add-top-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 20px;
+}
+.video-add-top-btn button {
+  background-color: #ffdd7e;
+  padding: 10px 30px;
+  border: none;
+  font-size: 16px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.video-popup {
+  /* background-color: #ffdd7e;
+  height: 700px;
+  width: 800px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  margin-left: 10%;
+}
+
+.video-popup-content {
+  height: 600px;
+  width: 980px;
+  background-color: white;
+  /* display: flex;
+  flex-direction: column;
+  align-items: center; */
+  /* justify-content: center; */
+  border: 2px solid black;
+  border-radius: 20px;
+  padding: 50px;
+  -webkit-box-shadow: 12px 8px 54px -11px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 12px 8px 54px -11px rgba(0, 0, 0, 0.75);
+  box-shadow: 12px 8px 54px -11px rgba(0, 0, 0, 0.75);
+}
+.admins-video-add tr {
+  /* display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: #ffdd7e; */
+}
+.container {
+  margin: 2%;
+  border: 2px dashed #333;
+  border-radius: 4%;
+  padding: 2%;
+}
+.header-admin {
+  background-color: #aaa;
+  padding: 1%;
+  border-radius: 3px;
+}
+.header-admin h2 {
+  text-align: center;
+  text-shadow: 1px 3px 8px #0b1544;
+}
+table {
+  width: 100%;
+}
+table tr td {
+  text-align: center;
+}
+.video-top-inputs {
+  display: grid;
+  place-items: center;
+  align-items: center;
+  grid-template-columns: repeat(2, 1fr);
+}
+.video-top-inputs input {
+  width: 304px;
+  /* margin: 10px; */
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid green;
+  margin-left: 10px;
+}
+.select-page-videos select {
+  width: 300px;
+  /* background-color: #0b1544; */
+  padding: 10px;
+  border-radius: 5px;
+}
+.video-thumbnil-inputs input {
+  width: 730px;
+  border: 1px solid black;
+  padding: 10px;
+  border-radius: 5px;
+  margin-left: 30px;
+}
+.video-thumbnil-inputs {
+  margin: 20px;
+}
+.func-btns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+.func-btns button {
+  margin-top: 5px;
+  padding: 10px 10px;
+}
+.video-admin-inputs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+  border: 2px dashed black;
+  height: 200px;
+  width: 800px;
+  background-image: url("../../Images/GreenMountain.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  padding: 10px;
+}
+/* Hide the actual file input */
+.video-admin-inputs input[type="file"] {
+  display: none;
+}
+
+/* Style a label to resemble a button */
+.video-admin-inputs label {
+  color: white;
+  background-color: #cd4631;
+  user-select: none;
+  padding: 10px 45px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline-block; /* Ensure label takes up space */
+}
+
+/* Hide the file input but keep it accessible via label */
+.video-admin-inputs input[type="file"] + label:before {
+  content: "Browse";
+}
+
+/* Adjust label text when a file is chosen */
+.video-admin-inputs input[type="file"]:not(:focus) + label:after {
+  content: attr(data-file-name);
+  margin-left: 10px;
+}
+.video-admin-inputs img {
+  width: 100px;
+}
+/* General table styling */
+.table-for-admint-videos {
+  width: 100%;
+  overflow-x: auto;
+}
+
+/* Styling for table heading */
+.rwd-table th {
+  background-color: #f2f2f2; /* Background color for table heading */
+  padding: 10px; /* Padding for table heading */
+  margin: 20px; /* Margin for table heading */
+}
+
+/* General table styling */
+.rwd-table {
+  width: 100%;
+  margin-bottom: 1em;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.rwd-table th,
+.rwd-table td {
+  padding: 0.5em;
+  border: 1px solid #ddd;
+}
+
+/* Responsive layout */
+@media (max-width: 600px) {
+  .rwd-table tr {
+    border: 1px solid #ddd;
+    margin-bottom: 1em;
+    display: block;
+  }
+
+  .rwd-table td {
+    display: block;
+    text-align: right;
+  }
+
+  .rwd-table td:before {
+    content: attr(data-th) ": ";
+    font-weight: bold;
+    display: inline-block;
+    width: 6.5em;
+  }
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.table-wrap {
+  max-width: 1106px;
+  margin: 80px auto;
+  overflow-x: auto;
+}
+
+table,
+td,
+th {
+  /*   border: 1px solid #ddd; */
+  text-align: left;
+  font-size: 18px;
+  text-transform: capitalize;
+}
+
+table thead tr {
+  background-color: white;
+  height: 100px;
+  margin-bottom: 300px;
+  border-radius: 30px;
+  padding: 20px;
+  color: black;
+  font-size: 20px;
+  -webkit-box-shadow: 10px 10px 18px -4px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 10px 18px -4px rgba(0, 0, 0, 0.75);
+  box-shadow: 10px 10px 18px -4px rgba(0, 0, 0, 0.75);
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  border-radius: 16px 16px 0px 0px;
+  overflow: hidden;
+}
+
+table tbody tr td {
+  border: 1px solid #ddd;
+}
+
+th,
+td {
+  padding: 15px;
+  white-space: nowrap;
+}
+
+table tbody tr:nth-child(odd) {
+  background: #b4b4b442;
+  color: #000;
+  font-weight: 500;
+}
+
+.box-wrap {
+  padding: 0px 16px;
+}
+
+table tbody tr td::last-child {
+  background-color: red;
+}
+.table-body {
+  background-color: white;
+}

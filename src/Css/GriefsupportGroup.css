@@ -1,0 +1,637 @@
+.gs-header-text p {
+  font-family: myFont;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 60px;
+  text-decoration: underline;
+}
+.gs-header-text img {
+  position: absolute;
+  margin-top: 30px;
+}
+.gs-header-text h2 {
+  font-family: myFont;
+  color: #256c55;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 45px;
+  margin-bottom: -40px;
+  margin-left: 20px;
+}
+.gs-header-text h1 {
+  font-family: Relo;
+  font-weight: 900;
+  font-size: 50px;
+  /* color: red; */
+  margin-top: -1%;
+  margin-left: 11px;
+}
+.gs-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.gs-header img:nth-child(2) {
+  width: 40%;
+  margin-top: -10%;
+}
+.button {
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  margin: 20px;
+}
+.button button {
+  padding: 12px 55px;
+  border: none;
+  background-color: #ffdd7e;
+  border-radius: 20px;
+}
+.button img {
+  margin-left: 152px;
+  margin-top: -1px;
+  background-color: #ffdd7e;
+  border-radius: 50%;
+  width: 3%;
+  border: 1px solid white;
+}
+.gs-header-inner-text h5 {
+  margin: 10px;
+  font-size: 16px;
+}
+.gs-header-inner-text img:nth-child(3) {
+  margin-left: 40%;
+  margin-top: -3%;
+}
+.gsg-box {
+  width: 70%;
+  height: 100px;
+  /* margin-top: 5%; */
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: #bae8ac;
+  margin: 5% auto;
+  gap: 3rem;
+}
+.color-main-boxese {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.black-round {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: aliceblue;
+  border: 8px solid white;
+  background-color: black;
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+}
+.black-round h3 {
+  text-align: center;
+}
+.Time-box-container {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+.colorbox-inside {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-left: -2%;
+}
+.time-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #cd4631;
+  width: 150px;
+  height: 150px;
+  border-radius: 20px;
+  -webkit-box-shadow: 7px 7px 43px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 7px 7px 43px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 7px 7px 43px 0px rgba(0, 0, 0, 0.75);
+}
+.benefit-inside-box img {
+  width: 100px;
+}
+.time-box h1 {
+  font-size: 60px;
+  color: white;
+}
+.Time-box-container span {
+  font-size: 40px;
+}
+.color-box-main {
+  background-image: url("../Images/ALHeaderbg.png");
+  width: 100%;
+  height: 125vh;
+  background-repeat: no-repeat;
+  position: relative;
+  background-position: center;
+}
+.Psychologists-main {
+  background-image: url("../Images/Smallpickbg.png");
+  width: 100%;
+  height: 120vh;
+  background-repeat: no-repeat;
+  position: relative;
+  background-position: center;
+  /* margin-top: -2/0%; */
+}
+.Psychologists-container {
+  /* position: absolute; */
+  margin-top: 140px;
+}
+.caro-heading-tag-a {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.caro-heading-tag-a span {
+  font-family: myFont;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 30px;
+  text-decoration: underline;
+}
+.caro-heading-tag-a p {
+  font-family: Relo;
+  font-weight: 900;
+  font-size: 50px;
+}
+.caro-heading-tag-a h1 {
+  font-family: myFont;
+  color: #256c55;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 45px;
+  margin-bottom: -40px;
+  margin-left: 20px;
+}
+.buttom-txt-gs {
+  margin-top: 60px;
+  margin-left: 130px;
+}
+
+.palette {
+  display: flex;
+  height: 300px;
+  width: 50%;
+  border-radius: 15px;
+  /* overflow: hidden; */
+  margin: 10px;
+  /* recomiendo quitar esto/quit this */
+}
+
+.color {
+  height: 100%;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 200;
+  letter-spacing: 1px;
+  transition: all 0.3s ease-out;
+  cursor: pointer;
+}
+
+.color span {
+  opacity: 0;
+  transition: opacity 0.1s linear;
+}
+
+.color:nth-child(1) {
+  background: #bae8ac;
+  border: 5px solid white;
+  border-radius: 15px 0px 0px 15px;
+  margin-left: -20px;
+}
+
+.color:nth-child(2) {
+  background: #ffe291;
+  border: 5px solid white;
+  border-radius: 15px 0px 0px 15px;
+  margin-left: -29%;
+}
+
+.color:nth-child(3) {
+  background: #ffd1e8;
+  border: 5px solid white;
+  border-radius: 15px 0px 0px 15px;
+  margin-left: -15%;
+}
+
+.color:nth-child(4) {
+  background: #cbd9ff;
+  border: 5px solid white;
+  border-radius: 15px 0px 0px 15px;
+  margin-left: -15%;
+}
+
+.color:hover {
+  flex: 3;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.color:hover span {
+  opacity: 2;
+}
+.color h1 {
+  color: black;
+  font-size: 22px;
+  margin-left: -2%;
+  width: 190px;
+}
+.color p {
+  color: black;
+  font-size: 16px;
+  margin-left: -2%;
+  width: 200px;
+}
+.indiecate-box {
+  height: 30px;
+  width: 70px;
+  background-color: #2f5ee0;
+}
+.indiecate-box-b {
+  height: 30px;
+  width: 70px;
+  background-color: #d9d9d9;
+}
+.dis {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.seat-indecater {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin: 4% auto;
+}
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+article {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  resize: horizontal;
+  justify-items: center;
+  /* flex-wrap: wrap; */
+  gap: 2rem;
+  padding: 20px;
+  /* padding-right: 2px; */
+  /* margin-bottom: 20px; */
+  width: 100%;
+  overflow: auto;
+  height: auto;
+}
+
+.box {
+  width: 50px;
+  height: 50px;
+  background: #2f5ee0;
+  margin-right: 20px;
+  border-radius: 10px;
+}
+.box:nth-child(odd) {
+  background: #d9d9d9;
+}
+
+.orange {
+  /* background: #ff6347; */
+}
+.time-box p {
+  color: white;
+}
+.grif-grop-icon {
+  margin-top: -282px;
+  position: absolute;
+  /* color: #256c55; */
+  font-size: 30px;
+}
+
+@media screen and (max-width: 600px) {
+  .center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 1%;
+  }
+  .benefit-inside-box img {
+    width: 60px;
+  }
+  .gs-header img:nth-child(2) {
+    width: 40%;
+    /* background-color: red; */
+    display: none;
+  }
+  .button {
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    margin: 0px;
+  }
+  .button button {
+    padding: 1px 30px;
+    border: none;
+    background-color: #ffdd7e;
+    border-radius: 20px;
+  }
+  .color:nth-child(1) {
+    background: #bae8ac;
+    border: 5px solid white;
+    border-radius: 15px;
+    /* margin-left: -60px; */
+    width: 250px;
+    margin-bottom: 20px;
+  }
+
+  .color:nth-child(2) {
+    background: #ffe291;
+    border: 5px solid white;
+    border-radius: 15px;
+    margin-left: -23px;
+    width: 250px;
+    margin-bottom: 20px;
+  }
+
+  .color:nth-child(3) {
+    background: #ffd1e8;
+    border: 5px solid white;
+    border-radius: 15px;
+    /* margin-left: -60px; */
+    width: 250px;
+    margin-bottom: 20px;
+  }
+
+  .color:nth-child(4) {
+    background: #cbd9ff;
+    border: 5px solid white;
+    border-radius: 15px;
+    width: 250px;
+    /* margin-left: -60px; */
+    margin-bottom: 20px;
+  }
+
+  .gs-header-inner-text img:nth-child(3) {
+    /* margin-left: 52%; */
+  }
+  .gs-header-inner-text h5 {
+    margin: 23px;
+    font-size: 17px;
+    font-family: "Questrial", sans-serif;
+  }
+  article {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(40px, 3fr));
+    resize: horizontal;
+    justify-items: center;
+    /* flex-wrap: wrap; */
+    gap: 2rem;
+    padding: 20px;
+    margin: auto;
+    /* padding-right: 2px; */
+    /* margin-bottom: 20px; */
+    width: 100%;
+    overflow: auto;
+    height: auto;
+  }
+  .gs-header img:nth-child(2) {
+    width: 40%;
+    /* background-color: red; */
+  }
+  .gs-header-text p {
+    font-family: myFont;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 24px;
+    text-decoration: underline;
+  }
+  .gs-header-text h1 {
+    font-family: Relo;
+    font-weight: 900;
+    font-size: 26px;
+    /* color: red; */
+    margin-top: -1%;
+    margin-left: 11px;
+  }
+  .gs-header-text h2 {
+    font-family: myFont;
+    color: #256c55;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 29px;
+    margin-bottom: -46px;
+    margin-left: 20px;
+  }
+  .caro-heading-tag-a img {
+    width: 40%;
+  }
+  .caro-heading-tag-a p {
+    font-family: Relo;
+    font-weight: 900;
+    font-size: 39px;
+  }
+  .seat-indecater {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin: 5% auto;
+  }
+  .Time-box-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 68px;
+    gap: 0rem;
+  }
+  .black-round {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: aliceblue;
+    border: 8px solid white;
+    background-color: black;
+    height: 102px;
+    width: 108px;
+    border-radius: 50%;
+  }
+  .gsg-box {
+    width: 95%;
+    height: 100px;
+    /* margin-top: 5%; */
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #bae8ac;
+    margin: 7% auto;
+    gap: 1rem;
+  }
+  .color-box-main {
+    background-image: none;
+    width: 100%;
+    height: 221vh;
+    background-repeat: no-repeat;
+    position: relative;
+    background-position: center;
+  }
+  .Psychologists-main {
+    background-image: url("../Images/Smallpickbg.png");
+
+    width: 100%;
+    height: 90vh;
+    background-repeat: no-repeat;
+    position: relative;
+    background-position: center;
+  }
+  .gsg-box h1 {
+    font-size: 18px;
+  }
+  .gsg-box h3 {
+    font-size: 16px;
+  }
+  .palette {
+    display: inline;
+    flex-direction: row;
+    height: 300px;
+    width: 50%;
+    border-radius: 15px;
+    /* overflow: hidden; */
+    margin: 10px;
+    /* recomiendo quitar esto/quit this */
+  }
+}
+@media (min-width: 600px) and (max-width: 1024px) {
+  .center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 40%;
+  }
+  .palette {
+    display: grid;
+    grid-template-columns: repeat(2, 2fr);
+    gap: 14px;
+    /* height: 00px; */
+    width: 80%;
+    border-radius: 15px;
+    /* overflow: hidden; */
+    margin: 10px;
+    /* recomiendo quitar esto/quit this */
+  }
+  .seat-box-container {
+    width: 78%;
+  }
+  .gs-header img:nth-child(2) {
+    width: 40%;
+    margin-top: -23%;
+    /* background-color: red; */
+  }
+  .gs-header img:nth-child(3) {
+    width: 15%;
+    margin-top: -10%;
+    margin-left: 73%;
+    /* background-color: red; */
+  }
+  .time-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #cd4631;
+    width: 121px;
+    height: 127px;
+    border-radius: 20px;
+    box-shadow: 7px 7px 43px 0px rgba(0, 0, 0, 0.75);
+  }
+  .gsg-box {
+    width: 94%;
+    height: 100px;
+    /* margin-top: 5%; */
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #bae8ac;
+    margin: 5% auto;
+    gap: 1rem;
+  }
+  .Psychologists-main {
+    background-image: url("../Images/Smallpickbg.png");
+    width: 100%;
+    height: 77vh;
+    background-repeat: no-repeat;
+    position: relative;
+    background-position: center;
+  }
+  .color-main-boxese {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3%;
+  }
+  .color:nth-child(1) {
+    background: #bae8ac;
+    border: 5px solid white;
+    border-radius: 15px;
+    margin-left: -60px;
+    width: 350px;
+    margin-bottom: 20px;
+  }
+
+  .color:nth-child(2) {
+    background: #ffe291;
+    border: 5px solid white;
+    border-radius: 15px;
+    margin-left: -40px;
+    width: 350px;
+    margin-bottom: 20px;
+  }
+
+  .color:nth-child(3) {
+    background: #ffd1e8;
+    border: 5px solid white;
+    border-radius: 15px;
+    margin-right: 15px;
+    width: 350px;
+    margin-bottom: 20px;
+  }
+
+  .color:nth-child(4) {
+    background: #cbd9ff;
+    border: 5px solid white;
+    border-radius: 15px;
+    width: 350px;
+    margin-left: -40px;
+    margin-bottom: 20px;
+  }
+  article {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    resize: horizontal;
+    justify-items: center;
+    /* flex-wrap: wrap; */
+    gap: 2rem;
+    padding: 20px;
+    /* padding-right: 2px; */
+    /* margin-bottom: 20px; */
+    width: 155%;
+    overflow: auto;
+    height: auto;
+  }
+}

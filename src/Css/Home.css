@@ -1,0 +1,12 @@
+
+
+@media screen and (max-width: 600px) {
+  .home-main {
+    overflow: hidden;
+  }
+}
+@media (min-width: 600px) and (max-width: 1024px) {
+  .home-main {
+    overflow: hidden;
+  }
+}

@@ -1,0 +1,63 @@
+.podcast-text h1 {
+  margin: 20px;
+}
+.podcast-text span {
+  color: red;
+  margin: 10px;
+}
+.podcast-text p {
+  margin: 0px;
+  color: black;
+  font-family: "Questrial", sans-serif;
+  font-size: 16px;
+}
+.user-name {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.user-name p {
+  margin: 0px;
+  color: black;
+  font-family: "Questrial", sans-serif;
+  font-size: 16px;
+}
+.user-name-audio {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.user-name-audio p {
+  border: 2px solid black;
+  border-radius: 20px;
+  font-size: 13px;
+  padding: 10px;
+}
+.user-name-audio button {
+  background-color: black;
+  padding: 15px 20px;
+  border: none;
+  border-radius: 20px;
+  color: white;
+  font-family: "Questrial", sans-serif;
+  letter-spacing: 0.3mm;
+}
+@media screen and (max-width: 600px) {
+  .user-name img{
+    width: 50px;
+  }
+  .podcast-text p {
+    margin: 0px;
+    color: black;
+    font-family: "Questrial", sans-serif;
+    font-size: 10px;
+  }
+  .user-name-audio {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    /* margin-left: -92%; */
+  }
+}

@@ -1,0 +1,480 @@
+.Subscribe-box {
+  position: relative;
+  background-color: #bae8ac;
+  border-radius: 20px;
+  height: 527px;
+  width: 40%;
+  -webkit-box-shadow: 5px 7px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 5px 7px 5px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 5px 7px 5px 0px rgba(0, 0, 0, 0.75);
+}
+.mentoonsbaner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.home-caro-align {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.caro-for-hdr {
+  border: 2px solid black;
+  width: 90%;
+  height: 300px;
+  margin: auto;
+  border-radius: 10px;
+  background-color: white;
+}
+.epi-list li {
+  list-style: none;
+  text-align: left;
+}
+.mentoonsbaner img {
+  width: 60%;
+  margin-top: 40px;
+}
+.Subscribe-box-main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  margin: auto;
+  padding: 10px;
+}
+.host-imgage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cate-home-caro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5rem;
+  margin-top: 30px;
+}
+.cate-home-caro-btns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.cate-home-caro button {
+  padding: 6px;
+  border: 1px solid black;
+  background-color: white;
+  margin-left: 10px;
+  border-radius: 20px;
+}
+.host-home-caro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cate-home-caro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.host-imgage img {
+  margin-left: -35%;
+}
+.Subscribe-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.Subscribe-heading h2 {
+  font-family: myFont;
+  color: #256c55;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 60px;
+  margin-top: -2%;
+}
+.Subscribe-heading h1 {
+  font-family: Relo;
+  font-weight: 900;
+  font-size: 50px;
+}
+.Subscribe-heading p {
+  font-family: "Satisfy", cursive;
+  margin-bottom: -1%;
+  font-size: 30px;
+  text-decoration: underline;
+}
+.Subscribe-box-1 {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.Support-group {
+  margin: 5%;
+}
+.Support-group li {
+  padding: 5px;
+}
+.hdrsubs-butns {
+  /* position: relative; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -17%;
+  gap: 6rem;
+}
+.hdrsubs-butns img {
+  width: 57%;
+  margin-top: -13%;
+}
+.hdrsubs-butns button:nth-child(4) {
+  border: none;
+  border-radius: 10px;
+  background-color: #ffdd7e;
+  padding: 10px 20px;
+  font-family: "Questrial", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 20px;
+  color: black;
+}
+
+.hdrsubs-butns-a {
+  /* position: relative; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 8%;
+  /* gap: 6rem; */
+}
+.hdrsubs-butns-a img {
+  width: 68%;
+  margin-top: -30%;
+}
+.hdrsubs-butns-a button {
+  border: none;
+  border-radius: 10px;
+  background-color: #ffdd7e;
+  padding: 10px 20px;
+  font-family: "Questrial", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 20px;
+  color: black;
+}
+.Subscribe-box-2 h1 {
+  margin: 30px;
+  font-size: 40px;
+}
+.caro-heading-tag {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: relative;
+}
+.caro-heading-tag p {
+  font-family: Relo;
+  font-weight: 900;
+  font-size: 60px;
+}
+.hdr-caro {
+  background-image: url("../Images/ALHeaderbg.png");
+  width: 100%;
+  height: 125vh;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.bg {
+  margin-top: 130px;
+}
+.caro-heading-tag span {
+  font-family: "Satisfy", cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 40px;
+  text-decoration: underline;
+}
+.caro-heading-tag h1 {
+  font-family: myFont;
+  color: #256c55;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 60px;
+  margin-top: -8%;
+}
+.caro-for-hdr img {
+  aspect-ratio: 3/2;
+  object-fit: contain;
+  width: 50%;
+}
+.caro-for-hdr h3 {
+  text-align: center;
+  margin-left: -15%;
+  padding: 10px;
+  font-size: 20px;
+}
+.subscribe-caro-container {
+  width: 89%;
+  margin: 30px auto;
+}
+.slider-container {
+  margin: auto;
+}
+.slider-container button {
+  margin: auto;
+}
+.carosel-home-button button {
+  background-color: #ffdd7e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: -100px auto;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+}
+.mentoonsbaner {
+  margin-top: 140px;
+}
+.btn-primary {
+  padding: 10px 20px;
+  border-radius: 10px;
+  background-color: #ffdd7e;
+  border: none;
+  font-family: "Questrial, sans-serif";
+  font-weight: 400;
+  font-size: 19px;
+}
+@media screen and (max-width: 600px) {
+  .btn-primary {
+    padding: 10px 30px;
+    border-radius: 10px;
+    background-color: #ffdd7e;
+    border: none;
+    font-family: "Questrial, sans-serif";
+    font-weight: 400;
+    font-size: 19px;
+    margin-top: 20%;
+    margin-left: 40px;
+  }
+  .hdrsubs-butns {
+    /* position: relative; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -17%;
+    gap: 2rem;
+  }
+  .hdrsubs-butns-a {
+    /* position: relative; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 8%;
+    gap: 0rem;
+  }
+  .carosel-home-button button {
+    background-color: #ffdd7e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* margin: -100px auto; */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    margin-top: 15px;
+  }
+  .caro-for-hdr {
+    border: 2px solid black;
+    width: 90%;
+    height: 600px;
+    margin: auto;
+    border-radius: 10px;
+    background-color: white;
+  }
+  .Subscribe-heading h1 {
+    font-family: Relo;
+    font-weight: 900;
+    font-size: 42px;
+  }
+  .Subscribe-heading h2 {
+    font-family: myFont;
+    color: #256c55;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 55px;
+    margin-top: -2%;
+  }
+  .hdr-caro {
+    background-image: url("../Images/ALHeaderbg.png");
+    width: 100%;
+    height: 111vh;
+    background-repeat: no-repeat;
+    position: relative;
+    /* z-index: -1; */
+  }
+  .news-letter input {
+    width: 194px;
+    height: 61px;
+    margin-left: -1%;
+    /* padding: 28px; */
+    border-radius: 20px;
+  }
+  .news-letter-main button {
+    background-color: #bae8ac;
+    padding: 16px 142px;
+    border-radius: 20px;
+    margin: 4%;
+    font-size: 16px;
+  }
+  .news-letter-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .slider-container {
+    margin: auto;
+  }
+  .slider-container button:nth-child(2) {
+    background-color: #ffdd7e;
+    padding: 10px 20px;
+    margin: auto 40%;
+    border: none;
+    border-radius: 20px;
+  }
+  .subscribe-caro-container {
+    width: 78%;
+  }
+  .mentoonsbaner img {
+    width: 85%;
+    margin-top: 10px;
+  }
+  .Subscribe-box {
+    position: relative;
+    background-color: #bae8ac;
+    border-radius: 20px;
+    height: 550px;
+    width: 80%;
+    margin: auto;
+  }
+  .Subscribe-box-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    margin: auto;
+    padding: 10px;
+  }
+  .caro-heading-tag span {
+    font-family: "Satisfy", cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 27px;
+    text-decoration: underline;
+  }
+  .caro-heading-tag {
+    display: flex;
+    align-items: center;
+    /* justify-content: space-around; */
+    /* position: relative; */
+  }
+  .caro-heading-tag img {
+    position: absolute;
+    width: 130px;
+    margin-left: 65%;
+  }
+  .home-caro-align {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .caro-for-hdr {
+    border: 2px solid black;
+    width: 90%;
+    height: 440px;
+    margin: auto;
+    border-radius: 10px;
+    background-color: white;
+    /* margin-top: -1px; */
+  }
+  .cate-home-caro {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0rem;
+    margin-top: 30px;
+  }
+  .cate-home-caro-btns {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0rem;
+    display: none;
+  }
+}
+@media (min-width: 600px) and (max-width: 1024px) {
+  .cate-home-caro {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5rem;
+    margin-top: 8px;
+  }
+  .caro-for-hdr {
+    border: 2px solid black;
+    width: 90%;
+    height: 310px;
+    margin: auto;
+    border-radius: 10px;
+    background-color: white;
+  }
+  .hdr-caro {
+    background-image: url("../Images/ALHeaderbg.png");
+    width: 100%;
+    height: 85vh;
+    background-repeat: no-repeat;
+    position: relative;
+  }
+  .Subscribe-box-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    margin: auto;
+    padding: 10px;
+  }
+  .Subscribe-box {
+    position: relative;
+    background-color: #bae8ac;
+    border-radius: 20px;
+    height: 550px;
+    width: 79%;
+  }
+  .green-bourd-grief {
+    margin: 20px 28%;
+    align-items: center;
+    justify-content: center;
+  }
+  .hdrsubs-butns-a {
+    /* position: relative; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 8%;
+    gap: 0rem;
+  }
+  .hdrsubs-butns {
+    /* position: relative; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -18%;
+    gap: 2rem;
+  }
+}

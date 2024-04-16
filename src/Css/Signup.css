@@ -1,0 +1,235 @@
+.signup-top {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 22rem;
+}
+.signup-top img {
+  width: 15%;
+}
+.error-input {
+  animation: shake 0.3s forwards;
+  animation-iteration-count: 4;
+  border: 2px solid red;
+  /* background-color: #256c55; */
+}
+
+@keyframes shake {
+  25% {
+    transform: translateX(5px);
+  }
+  50% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+  100% {
+    transform: translateX-(5px);
+  }
+}
+.signup-top:nth-child() {
+  width: 55%;
+  background-color: #256c55;
+}
+.signup-form {
+  margin-top: 80px;
+}
+.signup-form span {
+  color: red;
+  /* margin-left: 5px; */
+}
+.inside-sigup-from {
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+  gap: 0rem;
+  margin: auto auto;
+}
+.form-input-a,
+.form-input-b {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  /* border: 1px solid black; */
+  width: 50%;
+  margin-left: 15%;
+}
+.form-input-a,
+.form-input-b label {
+  padding: 2px;
+  font-size: 20px;
+}
+.form-input-a input,
+.form-input-b input {
+  padding: 10px;
+  border-radius: 5px;
+  width: 70%;
+  /* border: 1px solid black; */
+}
+.sigin-heading {
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+  justify-content: center;
+  margin: -4% auto;
+}
+.sigin-heading h2 {
+  font-family: myFont;
+  color: #256c55;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 60px;
+  margin-top: -2%;
+}
+.sigin-heading h1 {
+  font-family: Relo;
+  font-weight: 900;
+  font-size: 50px;
+}
+.sigin-heading p {
+  font-family: "Satisfy", cursive;
+  margin-bottom: -1%;
+  font-size: 30px;
+  text-decoration: underline;
+}
+.signup-aggry-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  justify-content: center;
+}
+
+.signup-aggry-form input {
+  position: absolute;
+  margin-top: 21px;
+  /* width: 120px; */
+}
+.signup-aggry-form button {
+  background-color: #ffdd7e;
+  color: black;
+  padding: 10px 30px;
+  border-radius: 30px;
+  border: none;
+  font-size: 20px;
+}
+.ggl-fc-athentication {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+}
+.other-signup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.other-signup img {
+  position: absolute;
+  margin-left: 70%;
+  width: 430px;
+}
+.fb,
+.ggl {
+  font-size: 25px;
+  border: 1px solid black;
+  padding: 10px;
+  border-radius: 100%;
+}
+.fb {
+  color: blue;
+}
+.GreenRound {
+  margin-left: 210%;
+}
+.ElementB {
+  width: 70%;
+  margin-left: -28%;
+  margin-right: 12%;
+}
+@media screen and (max-width: 600px) {
+  .signup-form img {
+    margin-top: -48%;
+    margin-left: -66%;
+    width: 39%;
+  }
+  .signup-aggry-form {
+    margin-left: 25px;
+  }
+  .GreenRound {
+    margin-left: 10%;
+  }
+  .signup-top {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 2rem;
+  }
+  .inside-sigup-from {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin: 24px 0px;
+  }
+  .form-input-a input,
+  .form-input-b input {
+    padding: 10px;
+    border-radius: 5px;
+    width: 110%;
+    border: 1px solid black;
+  }
+  .signup-top img {
+    width: 34%;
+  }
+  .ggl-fc-athentication {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    margin: 10px;
+  }
+  .other-signup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .signup-form {
+    margin-top: 10px;
+  }
+}
+@media (min-width: 600px) and (max-width: 1024px) {
+  .signup-top {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 5rem;
+  }
+  .signup-top img {
+    width: 25%;
+  }
+  .other-signup img {
+    width: 340px;
+    margin-top: -26%;
+    margin-left: 40%;
+  }
+  .inside-sigup-from {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0rem;
+    margin: auto auto;
+  }
+  .form-input-a input,
+  .form-input-b input {
+    padding: 10px;
+    border-radius: 5px;
+    width: 80%;
+    /* border: 1px solid black; */
+  }
+}
