@@ -1,0 +1,31 @@
+.complimentary-admin{
+    
+        padding: 51px;
+        display: flex;
+        align-items: center;
+        justify-content:space-between;    
+    
+}
+
+.filtering-complimentary{
+    background-color: white ;
+    width: 93%;
+    margin: auto;
+    border-radius: 1em;
+    height: 88px;
+}
+
+.filter-contents-comp{
+    display: flex;
+}
+
+.comp-table{
+   
+    vertical-align: middle;
+    background-color: white;
+    width: 92%;
+    border-radius: 1em;
+    margin: auto;
+    padding: 34px;
+     
+}

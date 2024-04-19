@@ -19,7 +19,7 @@ const PodcastProductlist = () => {
         "Pornography de-addiction supports individuals in overcoming harmful consumption habits, fostering healthier views on sexuality, and addressing concerns regarding addiction. It aims to promote balanced attitudes towards relationships and intimacy.",
       cateA: "Social Media",
       cateB: "Mental health",
-      link: "https://www.youtube.com/embed/2U8K8BUFFIY?autoplay=1",
+      link: "https://www.youtube.com/embed/N4hXFjfoXzQ?si=dAP5bxhlAlIaJA44",
       // cateC: "",
       // cateD: "",
     },

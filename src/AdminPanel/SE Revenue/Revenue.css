@@ -1,0 +1,43 @@
+.revenvue-top-btn{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px;
+}
+.revenvue-top-btn button{
+    background-color: #ffdd7e;
+    padding: 10px 30px;
+    border: none;
+    font-size: 16px;
+    border-radius: 20px;
+
+}
+.revenvue-top-btn button:hover{
+    box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1); 
+}
+.revenvue-container {
+  overflow-x: auto; /* Enable horizontal scrolling on small screens */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white
+}
+
+th, td {
+
+  padding: 8px;
+  border-bottom: 1px solid #dddddd;
+  text-align: center;
+}
+.revenvue-table{
+  margin: 30px;
+}
+
+/* Responsive styles */
+@media (max-width: 600px) {
+  th, td {
+    padding: 6px;
+  }
+}

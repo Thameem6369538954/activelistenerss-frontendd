@@ -74,6 +74,8 @@
 .cate-video{
   width: 100%;
   border-radius: 20px;
+  height: 300px;
+  margin-left: 10%;
 }
 @media screen and (max-width: 600px) {
   .cate-left-box {

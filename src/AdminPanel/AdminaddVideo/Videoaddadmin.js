@@ -227,24 +227,7 @@ const handleCancelEdit = () => {
                       onChange={handleImageChange}
                     />
                   </div>
-                  {/* <div>
-                    <label>No :</label>
-                    <input
-                      type="text"
-                      name="column1"
-                      value={editedData.column1}
-                      onChange={handleInputChanged}
-                    />
-                  </div> */}
-                  {/* <div>
-                <label>Page</label>
-                <input
-                  type="text"
-                  name="column2"
-                  value={editedData.column2}
-                  onChange={handleInputChanged}
-                />
-                </div> */}
+                 
                   <div>
                     <label>Title :</label>
                     <input

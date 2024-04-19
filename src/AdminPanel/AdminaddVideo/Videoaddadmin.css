@@ -77,7 +77,7 @@
   padding: 2%;
 }
 .header-admin {
-  background-color: #aaa;
+  /* background-color: #aaa; */
   padding: 1%;
   border-radius: 3px;
 }
@@ -168,7 +168,7 @@ table tr td {
   content: "Browse";
 }
 
-/* Adjust label text when a file is chosen */
+
 .video-admin-inputs input[type="file"]:not(:focus) + label:after {
   content: attr(data-file-name);
   margin-left: 10px;
@@ -176,20 +176,18 @@ table tr td {
 .video-admin-inputs img {
   width: 100px;
 }
-/* General table styling */
+
 .table-for-admint-videos {
   width: 100%;
   overflow-x: auto;
 }
 
-/* Styling for table heading */
 .rwd-table th {
-  background-color: #f2f2f2; /* Background color for table heading */
-  padding: 10px; /* Padding for table heading */
-  margin: 20px; /* Margin for table heading */
+  background-color: #f2f2f2; 
+  padding: 10px; 
+  margin: 20px; 
 }
 
-/* General table styling */
 .rwd-table {
   width: 100%;
   margin-bottom: 1em;
@@ -203,7 +201,7 @@ table tr td {
   border: 1px solid #ddd;
 }
 
-/* Responsive layout */
+
 @media (max-width: 600px) {
   .rwd-table tr {
     border: 1px solid #ddd;
@@ -237,7 +235,7 @@ table tr td {
 table,
 td,
 th {
-  /*   border: 1px solid #ddd; */
+ 
   text-align: left;
   font-size: 18px;
   text-transform: capitalize;
@@ -264,7 +262,7 @@ table {
 }
 
 table tbody tr td {
-  border: 1px solid #ddd;
+  /* border: 1px solid #ddd; */
 }
 
 th,
@@ -274,7 +272,7 @@ td {
 }
 
 table tbody tr:nth-child(odd) {
-  background: #b4b4b442;
+  background: white;
   color: #000;
   font-weight: 500;
 }
@@ -309,7 +307,7 @@ th {
   height: 100px;
 }
 .table-container table tbody tr button {
-  /* border: 1px solid #ddd; */
+
   padding: 10px 20px 10px 20px;
   background-color: white;
 }

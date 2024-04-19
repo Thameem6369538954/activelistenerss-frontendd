@@ -75,12 +75,15 @@
 }
 .admin-ul-list {
   list-style: none;
+  max-height: 620px;
+  overflow-y: auto;
 }
 .admin-ul-list li {
   padding: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
+
   gap: 1rem;
 }
 .admin-ul-list li:hover {

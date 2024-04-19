@@ -26,7 +26,14 @@ import Thumb from "../Images/Thumb.png";
 import mahesh from "../Images/mahesh.jpeg";
 import PodcastAdmin from "../AdminPanel/Podcast/PodcastAdmin"
 import Videoaddadmin  from "../AdminPanel/AdminaddVideo/Videoaddadmin"
+import Revenue from "../AdminPanel/SE Revenue/Revenue.js"
+import Getintouchdata from "./Getintouch/Getintouchdata.js"
+import Complimetarycall from "./ComplimetaryCall/Complimetarycall.js";
 // import HiringAdmin from "../AdminPanel/Hiring/HiringAdmin"
+import { AiOutlineDatabase } from "react-icons/ai";
+import { CgNotes } from "react-icons/cg";
+import Ngo from "./NGO/Ngo.js";
+import Collegegraduate from "./CollegeGraduate/Collegegraduate.js";
 const Adminpanel = () => {
  
       const [psychologist, setPsychologist] = useState([
@@ -107,11 +114,14 @@ const Adminpanel = () => {
             </Link>
             <img src={AlCloud} alt="" />
           </div>
-          <ul className="admin-ul-list">
+          <ul
+            className="admin-ul-list"
+            // style={{ maxHeight: "400px", overflowY: "auto" }}
+          >
             <Link className="Links-for-admin" to="/Adminpanel/Daseboard">
               <li>
                 <FiPieChart />
-                DaseBorad
+                Dashboard
               </li>
             </Link>
             <Link className="Links-for-admin" to="/Adminpanel/Videoaddadmin">
@@ -163,6 +173,30 @@ const Adminpanel = () => {
               <li>
                 <HiOutlineUserGroup />
                 Community
+              </li>
+            </Link>
+            {/* <Link className="Links-for-admin" to="/Adminpanel/Community">
+              <li>
+                <HiOutlineUserGroup />
+                Community
+              </li>
+            </Link> */}
+            <Link className="Links-for-admin" to="/Adminpanel/Getintouchdata">
+              <li>
+                <AiOutlineDatabase />
+                Getin touch
+              </li>
+            </Link>
+            <Link className="Links-for-admin" to="/Adminpanel/Ngo">
+              <li>
+                <CgNotes />
+                NGO
+              </li>
+            </Link>
+            <Link className="Links-for-admin" to="/Adminpanel/Collegegraduate">
+              <li>
+                <CgNotes />
+                College Graduate
               </li>
             </Link>
             <hr></hr>
@@ -261,15 +295,14 @@ const Adminpanel = () => {
 
             {/* video add */}
 
-            <Route
-              path="/Videoaddadmin"
-              element={
-                <Videoaddadmin />
-              }
-            />
+            <Route path="/Videoaddadmin" element={<Videoaddadmin />} />
             <Route path="/Package" element={<h1>Package</h1>} />
-            <Route path="/Revenue" element={<h1>Revenue</h1>} />
-            <Route path="/Complimetarycall" element={<h1>Complimetary</h1>} />
+            <Route path="/Revenue" element={<Revenue />} />
+            <Route path="/Ngo" element={<Ngo />} />
+            <Route path="/PodcastAdmin" element={<PodcastAdmin />} />
+            <Route path="/Collegegraduate" element={<Collegegraduate />} />
+            <Route path="/Getintouchdata" element={<Getintouchdata />} />
+            <Route path="/Complimetarycall" element={<Complimetarycall />} />
             <Route
               path="/Psychologist"
               element={
