@@ -124,7 +124,16 @@ const Footer = () => {
       });
       if (response) {
         console.log(response);
-        toast.success("Thank you for subscribing");
+        if(response.status === 200){
+             if (response.data.message === "already subscribed!!") {
+               toast.error("Already subscribed!!");
+             } else {
+               toast.success("Thank you for subscribing");
+             }
+        }else{
+          toast.error("Please try again Later!!")
+        }
+         
       } else {
         throw new Error("Failed to subscribe");
       }
