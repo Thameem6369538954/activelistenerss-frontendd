@@ -309,8 +309,7 @@ const HiringForm = (props) => {
 
   return (
     <div>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+      
       <Navbar />
       <div className="hiring-form-main">
         <div className="therapy-heading">
