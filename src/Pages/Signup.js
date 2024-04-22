@@ -92,10 +92,15 @@ const Signup = () => {
       // const response = await axios.post("/user_registration", formData);
       const response = await axios.post("/user_registration", formData);
       console.log("this is the response of registration............");
-      toast.success("User Registered successfully");
+      // toast.success("User Registered successfully");
       if (response) {
         console.log(response.data.message,"hhehheeeee");
-        navigate("/Login");
+        if (response.data.message == "user Exist!please login!!") {
+          toast.error("User Already Exist,Please Login!!");
+        }else{
+          toast.success("User Registered successfully");
+          navigate("/Login");
+        }
       }
     }
   };

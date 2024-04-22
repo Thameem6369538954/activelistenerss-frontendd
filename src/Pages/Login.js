@@ -49,22 +49,28 @@ const Login = () => {
       //   setErrors(newErrors);
       // } else {
       // Form submission logic here
-      console.log(formData, "Sign up Form submitted successfully!");
-      const response = await axios.post("/user_registration", formData);
-
-      toast.success("Login Successful");
+      // console.log(formData, "Login Form submitted successfully!");
+      // toast.success("Login Successful");
       // backend connectint area
-      // const response = await axios.post("/user_signin", formData);
+
+      const response = await axios.post("/user_signin", formData);
       console.log(response, "this is the response of registration............");
+
       if (response) {
         console.log(response.data.message, "hhehheeeee");
         if (response.data.message == "invalid password or id"){
           toast.error("Invalid username or password");
         }else{
+          toast.success("Login Successful");
+                console.log(response, "this is the response of registration............");
+
         navigate("/");
+        console.log(response.data.Token,"-------------->jwt token generated" ,response.data.user,"------------>userdata");
         }
       }
-      // }
+
+
+      
     }
   };
 
