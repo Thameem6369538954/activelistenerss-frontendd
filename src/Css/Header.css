@@ -216,6 +216,10 @@
   width: 34%;
 }
 @media screen and (max-width: 600px) {
+   .hdr-btm-text img{
+    width: 250px;
+    /* background-color: #256c55; */
+  }
   .header-top-video{
   height: 200px;
   width: 90%;
@@ -360,6 +364,7 @@
 }
 }
 @media (min-width: 600px) and (max-width: 1024px) {
+ 
   .header-top-video{
   width: 30%;
   border-radius: 20px;

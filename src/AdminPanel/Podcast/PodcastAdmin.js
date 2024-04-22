@@ -272,7 +272,7 @@ const PodcastAdmin = () => {
                         })
                       }
                       required // HTML5 validation
-                      style={{ display: "none" }}
+                      // style={{ display: "none" }}
                     />
                     <label
                       htmlFor="videoFile"

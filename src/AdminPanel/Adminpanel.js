@@ -23,86 +23,19 @@ import { Chart as Chartjs } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 import Videoup from "../Images/Videoup.png";
 import Thumb from "../Images/Thumb.png";
-import mahesh from "../Images/mahesh.jpeg";
+import Psychologist from "../AdminPanel/psychologist/Psychologist.js"
 import PodcastAdmin from "../AdminPanel/Podcast/PodcastAdmin"
 import Videoaddadmin  from "../AdminPanel/AdminaddVideo/Videoaddadmin"
 import Revenue from "../AdminPanel/SE Revenue/Revenue.js"
 import Getintouchdata from "./Getintouch/Getintouchdata.js"
 import Complimetarycall from "./ComplimetaryCall/Complimetarycall.js";
-// import HiringAdmin from "../AdminPanel/Hiring/HiringAdmin"
+import Package from "../AdminPanel/Packageforadmin/Package.js"  
 import { AiOutlineDatabase } from "react-icons/ai";
 import { CgNotes } from "react-icons/cg";
 import Ngo from "./NGO/Ngo.js";
 import Collegegraduate from "./CollegeGraduate/Collegegraduate.js";
 const Adminpanel = () => {
  
-      const [psychologist, setPsychologist] = useState([
-        {
-          id: 1,
-          name: "Mahesh",
-          email: "active@gmail.com",
-          cate: "Behavioural Psychologist",
-          status: "active",
-          image: mahesh,
-        },
-        {
-          id: 2,
-          name: "John Doe",
-          email: "john@gmail.com",
-          cate: "Behavioural Psychologist",
-          status: "active",
-          image: mahesh,
-        },
-        {
-          id: 3,
-          name: "Jukkoe Sisao",
-          email: "john@gmail.com",
-          cate: "Behavioural Psychologist",
-          status: "active",
-          image: mahesh,
-        },
-        {
-          id: 4,
-          name: "Jukkoe Sisao",
-          email: "john@gmail.com",
-          cate: "Behavioural Psychologist",
-          status: "active",
-          image: mahesh,
-        },
-        {
-          id: 5,
-          name: "Jukkoe Sisao",
-          email: "john@gmail.com",
-          cate: "Behavioural Psychologist",
-          status: "active",
-          image: mahesh,
-        },
-        {
-          id: 6,
-          name: "Jukkoe Sisao",
-          email: "john@gmail.com",
-          cate: "Behavioural Psychologist",
-          status: "active",
-          image: mahesh,
-        },
-        {
-          id: 7,
-          name: "Jukkoe Sisao",
-          email: "john@gmail.com",
-          cate: "Behavioural Psychologist",
-          status: "active",
-          image: mahesh,
-        },
-        {
-          id: 8,
-          name: "Jukkoe Sisao",
-          email: "john@gmail.com",
-          cate: "Behavioural Psychologist",
-          status: "active",
-          image: mahesh,
-        },
-      ]);
-
 
   return (
     <div className="adminpanel-main-container">
@@ -296,7 +229,7 @@ const Adminpanel = () => {
             {/* video add */}
 
             <Route path="/Videoaddadmin" element={<Videoaddadmin />} />
-            <Route path="/Package" element={<h1>Package</h1>} />
+            <Route path="/Package" element={<Package />} />
             <Route path="/Revenue" element={<Revenue />} />
             <Route path="/Ngo" element={<Ngo />} />
             <Route path="/PodcastAdmin" element={<PodcastAdmin />} />
@@ -306,33 +239,7 @@ const Adminpanel = () => {
             <Route
               path="/Psychologist"
               element={
-                <div>
-                  <div className="headeing-admin-psygologiy">
-                    <h1>Psychologist</h1>
-                    <button>Add Psychologist</button>
-                  </div>
-                  <div className="psycologist-box-conatiner-admint">
-                    <div className="psycologist-box-admint-main">
-                      {psychologist.map((psycos) => {
-                        return (
-                          <div className="psycologist-box-admint">
-                            <div className="psycologist-box-admint-main">
-                              <div className="psycologist-box-admint-heading">
-                                <img src={mahesh} alt="" />
-                                <h1>{psycos.name}</h1>
-                                <h3>{psycos.email}</h3>
-                                <p>{psycos.cate}</p>
-                                <div className="active-pspyco-btn">
-                                  <button>View Profile</button>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </div>
-                </div>
+                <Psychologist />
               }
             />
             {/* <Route path="/HiringAdmin" element={<HiringAdmin/>} /> */}

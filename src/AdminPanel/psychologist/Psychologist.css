@@ -2,6 +2,7 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
+
     margin: 20px;
 }
 .headeing-admin-psygologiy button{
@@ -12,6 +13,7 @@
     border-radius: 20px;
     cursor: pointer;
 }
+
 .psycologist-box-admint{
     display: flex;  
     align-items: center;
@@ -45,6 +47,7 @@ flex-direction: column;
   position: relative;
   background-position: center;
   border-radius: 20px;
+   
 }
 .psycologist-box-admint-heading{
 display: flex;  
@@ -72,4 +75,7 @@ display: flex;
 .psycologist-box-admint-heading img{
     width: 100px;
     border-radius: 50%;
+}
+.z-for{
+    z-index: 9999;
 }

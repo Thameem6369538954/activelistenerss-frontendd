@@ -86,6 +86,7 @@
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  
 }
 
 .observed-result-box-align h2 {
@@ -226,6 +227,9 @@ h4 {
   .mobile-addiction-box-green img:nth-child(3) {
     background-color: red;
     display: none;
+  }
+  .inside-mobile-addiction-txt{
+    width: 100%;
   }
 }
 
