@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import "./Psychologist.css"
 import mahesh from "../../Images/mahesh.jpeg";
+
 const Psychologist = () => {
   
       const [psychologist, setPsychologist] = useState([

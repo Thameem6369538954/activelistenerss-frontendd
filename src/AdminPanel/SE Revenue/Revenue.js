@@ -40,16 +40,36 @@ const Revenue = () => {
             <table>
               <thead>
                 <tr>
-                  <th>Select</th>
-                  <th>ID</th>
-                  <th>Name</th>
-                  <th>Package</th>
-                  <th>Amount</th>
-                  <th>Method</th>
-                  <th>Date of Purchase</th>
-                  <th>Date of Expiry</th>
-                  <th>Status</th>
-                  <th>Actions</th>
+                  <th>
+                    <p style={{ fontWeight: "bold" }}>Select</p>
+                  </th>
+                  <th>
+                    <p>ID</p>
+                  </th>
+                  <th>
+                    <p>Name</p>
+                  </th>
+                  <th>
+                    <p>Package</p>
+                  </th>
+                  <th>
+                    <p>Amount</p>
+                  </th>
+                  <th>
+                    <p>Method</p>
+                  </th>
+                  <th>
+                    <p>Date of Purchase</p>
+                  </th>
+                  <th>
+                    <p>Date of Expiry</p>
+                  </th>
+                  <th>
+                    <p>Status</p>
+                  </th>
+                  <th>
+                    <p>Actions</p>
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -59,14 +79,30 @@ const Revenue = () => {
                       <td>
                         <input type="checkbox" />
                       </td>
-                      <td>{item.id}</td>
-                      <td>{item.name}</td>
-                      <td>{item.package}</td>
-                      <td>{item.amount}</td>
-                      <td>{item.method}</td>
-                      <td>{item.datePurchase}</td>
-                      <td>{item.dateExpiry}</td>
-                      <td>{item.status}</td>
+                      <td>
+                        <p>{item.id}</p>
+                      </td>
+                      <td>
+                        <p> {item.name}</p>
+                      </td>
+                      <td>
+                        <p>{item.package}</p>
+                      </td>
+                      <td>
+                        <p>{item.amount}</p>
+                      </td>
+                      <td>
+                        <p> {item.method}</p>
+                      </td>
+                      <td>
+                        <p>{item.datePurchase}</p>
+                      </td>
+                      <td>
+                        <p>{item.dateExpiry}</p>
+                      </td>
+                      <td>
+                        <p> {item.status}</p>
+                      </td>
                       <td>
                         <button>View</button>
                       </td>

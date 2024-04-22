@@ -90,13 +90,13 @@ const Signup = () => {
       // Form submission logic here
       console.log(formData, "Sign up Form submitted successfully!");
       // const response = await axios.post("/user_registration", formData);
-      // const response = await axios.post("/user_registration", formData);
+      const response = await axios.post("/user_registration", formData);
       console.log("this is the response of registration............");
       toast.success("User Registered successfully");
-      // if (response) {
-      //   console.log(response.data.message,"hhehheeeee");
-      //   navigate("/Login");
-      // }
+      if (response) {
+        console.log(response.data.message,"hhehheeeee");
+        navigate("/Login");
+      }
     }
   };
 

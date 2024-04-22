@@ -34,6 +34,8 @@ import { AiOutlineDatabase } from "react-icons/ai";
 import { CgNotes } from "react-icons/cg";
 import Ngo from "./NGO/Ngo.js";
 import Collegegraduate from "./CollegeGraduate/Collegegraduate.js";
+import Hiringdata from "./HiringAdmin/Hiringdata.js";
+import Ourteam from "./TeamName/Ourteam.js";
 const Adminpanel = () => {
  
 
@@ -90,7 +92,7 @@ const Adminpanel = () => {
               </li>
             </Link>
             <hr></hr>
-            <Link className="Links-for-admin" to="/Adminpanel/HiringAdmin">
+            <Link className="Links-for-admin" to="/Adminpanel/Hiringdata">
               <li>
                 <LiaToolboxSolid />
                 Hiring
@@ -102,10 +104,10 @@ const Adminpanel = () => {
                 Podcast
               </li>
             </Link>
-            <Link className="Links-for-admin" to="/Adminpanel/Community">
+            <Link className="Links-for-admin" to="/Adminpanel/Ourteam">
               <li>
                 <HiOutlineUserGroup />
-                Community
+                Ourteam
               </li>
             </Link>
             {/* <Link className="Links-for-admin" to="/Adminpanel/Community">
@@ -232,19 +234,15 @@ const Adminpanel = () => {
             <Route path="/Package" element={<Package />} />
             <Route path="/Revenue" element={<Revenue />} />
             <Route path="/Ngo" element={<Ngo />} />
+            <Route path="/Hiringdata" element={<Hiringdata />} />
             <Route path="/PodcastAdmin" element={<PodcastAdmin />} />
             <Route path="/Collegegraduate" element={<Collegegraduate />} />
             <Route path="/Getintouchdata" element={<Getintouchdata />} />
             <Route path="/Complimetarycall" element={<Complimetarycall />} />
-            <Route
-              path="/Psychologist"
-              element={
-                <Psychologist />
-              }
-            />
+            <Route path="/Psychologist" element={<Psychologist />} />
             {/* <Route path="/HiringAdmin" element={<HiringAdmin/>} /> */}
             <Route path="/PodcastAdmin" element={<PodcastAdmin />} />
-            <Route path="/Community" element={<h1>Community</h1>} />
+            <Route path="/Ourteam" element={<Ourteam />} />
           </Routes>
         </div>
       </div>

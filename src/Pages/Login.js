@@ -50,20 +50,20 @@ const Login = () => {
       // } else {
       // Form submission logic here
       console.log(formData, "Sign up Form submitted successfully!");
-      // const response = await axios.post("/user_registration", formData);
+      const response = await axios.post("/user_registration", formData);
 
       toast.success("Login Successful");
       // backend connectint area
       // const response = await axios.post("/user_signin", formData);
-      // console.log(response, "this is the response of registration............");
-      // if (response) {
-      //   console.log(response.data.message, "hhehheeeee");
-      //   if (response.data.message == "invalid password or id"){
-      //     toast.error("Invalid username or password");
-      //   }else{
-      //   navigate("/");
-      //   }
-      // }
+      console.log(response, "this is the response of registration............");
+      if (response) {
+        console.log(response.data.message, "hhehheeeee");
+        if (response.data.message == "invalid password or id"){
+          toast.error("Invalid username or password");
+        }else{
+        navigate("/");
+        }
+      }
       // }
     }
   };
