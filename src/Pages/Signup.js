@@ -107,7 +107,6 @@ const Signup = () => {
 
   return (
     <div>
-      
       <div className="signup-main">
         <div className="signup-top">
           <img src={EmojiA} alt="" />
