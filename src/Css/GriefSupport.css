@@ -437,7 +437,7 @@ form .buttons button,
   }
   .card-inner {
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
     align-items: center;
     margin: auto;
     justify-content: center;
@@ -481,9 +481,9 @@ form .buttons button,
   }
   .card-inner {
     width: 87%;
-    height: 450px;
+    height: auto;
     margin-left: 7%;
-    margin-top: -14%;
+    /* margin-top: -14%; */
   }
   .card-inner h1 {
     font-family: Relo;

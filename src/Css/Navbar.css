@@ -157,14 +157,14 @@ nav {
   }
   .nav-links {
     display: grid;
-    gap: 1rem;
+    /* gap: 1rem; */
     place-items: center;
     grid-template-columns: repeat(2, 2fr);
     align-items: center;
     position: absolute;
     top: 110px;
     height: 80vh;
-    padding: 20px;
+    padding: 10px;
     left: -100%;
     width: 100%;
     background-color: #ffdd7e;

@@ -15,7 +15,7 @@ const Header = () => {
   const navigate = useNavigate();
   return (
     <div className="header-main">
-      <div className="yellow-box" data-aos="fade-down" data-aos-duration="1500">
+      <div className="yellow-box">
         <ul className="yellow-box-ul" style={{ display: "flex" }}>
           <marquee>
             <div className="main-y-div">
@@ -45,18 +45,17 @@ const Header = () => {
         <div className="header-container">
           <img
             src={Hdrleft}
-            data-aos="fade-right"
-            data-aos-duration="1000"
+            
             alt=""
           />
           <div className="hdr-text">
-            <h1 data-aos="fade-up" data-aos-duration="1000">
+            <h1>
               Helping you{" "}
             </h1>
-            <h2 data-aos="fade-up" data-aos-duration="2000">
+            <h2>
               Find
             </h2>
-            <h3 data-aos="fade-up" data-aos-duration="3000">
+            <h3>
               Balance & Focus
             </h3>
           </div>
@@ -76,7 +75,7 @@ const Header = () => {
             ></iframe>
         </div>
         <div className="hdr-tx">
-          <p data-aos="zoom-in" data-aos-duration="1000">
+          <p>
             At Active Listeners,We believe that early age gadgets exposure,
             Adaptation to mobile among children has now led to time where there
             is decrease in focus and learning
@@ -85,8 +84,7 @@ const Header = () => {
         <div className="categoreis-haeder">
           <div
             className="categoreis-grid-boxs"
-            data-aos="fade-up"
-            data-aos-duration="2000"
+            
           >
             <div>
               <NavLink to="/EarlyagegadgetExposure" className="Links">

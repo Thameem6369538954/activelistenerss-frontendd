@@ -131,11 +131,6 @@
   position: relative;
 }
 .profile-image {
-  /* display: flex;
-  align-items: center;
-  justify-content: center;
-
-  gap: 2rem; */
   position: relative;
   background-image: url("../Images/Yellowbg.png");
   width: 126%;
@@ -348,9 +343,13 @@
 }
 @media screen and (max-width: 600px) {
   .profile-image {
-    width: 126%;
-    height: 700px;
-  }
+    text-align: justify;
+}
+  .profile-image {
+    width: 180%;
+    height: 727px;
+    margin-left: -75px;
+}
   .hdr-userprof h1 {
     border-bottom: 1px solid black;
     width: 242px;
@@ -362,25 +361,28 @@
   .useprof-main-con img:nth-child(1) {
     /* background-color: blue; */
     position: absolute;
-    margin-left: -58%;
+    margin-left: -132%;
     margin-top: 230px;
     z-index: -1;
   }
   .prosubs-pro {
-    width: 136%;
-  }
+    width: 174%;
+    height: 442px;
+    margin-left: -75px;
+}
   .plan-display,
   .expire-date,
   .Auto-Renewal {
     gap: 0rem;
   }
-  .useprof-main-con {
-    display: flex;
+.useprof-main-con {
     align-items: center;
-    justify-content: center;
+    display: flex;
+    flex-direction: column-reverse;
     gap: 2rem;
+    justify-content: center;
     position: relative;
-  }
+}
   .editable-details {
     width: 96%;
     height: 308px;

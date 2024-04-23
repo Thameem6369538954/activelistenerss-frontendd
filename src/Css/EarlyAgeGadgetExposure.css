@@ -92,7 +92,7 @@
   margin: 30px;
 }
 .green-bourd-Earlyage {
-  margin: 50px;
+  /* margin: 50px; */
   position: relative;
   display: grid;
   place-items: center;
@@ -146,11 +146,11 @@
     align-items: center;
     justify-content: center;
   }
- .getyoukow-image-red {
-    margin-top: -24%;
-    margin-left: 78%;
+.getyoukow-image-red {
+    margin-top: -30%;
+    margin-left: 79%;
     position: absolute;
-    width: 11%;
+    width: 13%;
     /* mix-blend-mode: multiply; */
 }
   .card-inneR img {
@@ -175,7 +175,7 @@
     align-items: center;
     justify-content: center;
     gap: 2rem;
-    margin-top: 20%;
+    margin-top: 30%;
   }
   .goalvision-headrer-box {
     display: flex;
@@ -216,11 +216,12 @@
   background-color: red;
 }
   .getyoukow-image-red {
-    margin-top: -110%;
-    margin-left: 59%;
+    margin-top: -87%;
+    margin-left: 75%;
     position: absolute;
     width: 41%;
-  }
+    border-radius: 10px 9pc 10pc 10pc;
+}
   .getyoukow-main-container {
     display: flex;
     flex-direction: column;
@@ -242,7 +243,7 @@
   }
   .getyoukow-container {
     background-color: #ffdd7e;
-    width: 67%;
+    width: 85%;
     height: 362px;
     border-radius: 20px;
     display: flex;
@@ -251,7 +252,7 @@
     justify-content: center;
     /* position: relative; */
   }
- .card-inneR {
+.card-inneR {
     /* position: absolute; */
     background-color: #bae8ac;
     display: flex;
@@ -259,8 +260,8 @@
     justify-content: center;
     gap: 0rem;
     width: 360px;
-    height: 208px;
-    margin-left: -9%;
+    height: auto;
+    margin: auto;
 }
   .card-inneR h1 {
     font-family: Relo;
