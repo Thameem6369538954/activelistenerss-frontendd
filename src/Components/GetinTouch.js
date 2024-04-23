@@ -4,6 +4,8 @@ import "react-toastify/dist/ReactToastify.css";
 import "../Css/GetinTouch.css";
 import CC from "../Images/CC.png";
 import FlowerR from "../Images/FlowerR.png";
+import axios from "../Utils/Baseurl.js";
+
 const GetinTouch = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -53,7 +55,7 @@ const GetinTouch = () => {
     const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{0,}$/;
     return emailRegex.test(email);
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // Validate all fields on submit
 
@@ -65,9 +67,16 @@ const GetinTouch = () => {
     // If there are no errors, submit the form
     if (!errors.name && !errors.email && !errors.message) {
       console.log("Form submitted:", formData);
+      const response = await axios.post("/get_in_touch", formData);
       // You can make an API call or further processing here
+      if(response){
+
+        toast.success("Successfully submitted!!");
+      }else{
+
+        toast.error("Failed to submit!!");
+      }
     }
-    toast.success("Successfully submitted!!");
   };
 
   return (
