@@ -172,7 +172,7 @@ nav {
     z-index: 9999;
   }
   .nav-links.active {
-    left: -0;
+    left: -2;
   }
 }
 @media (min-width: 600px) and (max-width: 1024px) {

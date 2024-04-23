@@ -79,7 +79,7 @@ const Psychologist = () => {
          description: "",
          category: "",
          thumbnail: null,
-         videoFile: null,
+         
        });
 
        const handleChange = (e) => {
@@ -106,43 +106,76 @@ const [showPopup, setShowPopup] = useState(false);
           <button onClick={togglePopup}>Add Psychologist</button>
         </div>
         {showPopup && (
-   
           <div className="video-popup">
             <div className="video-popup-content">
               {/* <span className="close" onClick={togglePopup}>
                 <CgCloseO />
               </span> */}
-              <h2>Upload Video</h2>
+              <h2>Add Psychologist</h2>
               <form onSubmit={handleSubmit}>
                 <div className="video-top-inputs">
                   <div>
-                    <label>Title of the Video</label>
-                    <input type="text" placeholder="Enter the title" />
+                    <label>Name</label>
+                    <input
+                      type="text"
+                      placeholder="Enter the title"
+                      onChange={handleChange}
+                    />
+                  </div>
+                  <div>
+                    <label>Email</label>
+                    <input
+                      type="text"
+                      placeholder="Enter the title"
+                      onChange={handleChange}
+                    />
+                  </div>
+                  <div>
+                    <label>Phone Number</label>
+                    <input
+                      type="text"
+                      placeholder="Enter the title"
+                      onChange={handleChange}
+                    />
+                  </div>
+                  <div>
+                    <label>City</label>
+                    <input
+                      type="text"
+                      placeholder="Enter the title"
+                      onChange={handleChange}
+                    />
+                  </div>
+                  <div>
+                    <label>State</label>
+                    <input
+                      type="text"
+                      placeholder="Enter the title"
+                      onChange={handleChange}
+                    />
                   </div>
                   <div className="select-page-videos">
-                    <label>Select Page : </label>
-                    <select name="cars" id="cars">
-                      <option value="volvo">Select the Page</option>
-                      <option value="saab">Saab</option>
-                      <option value="opel">Opel</option>
-                      <option value="audi">Audi</option>
+                    <label>Gender : </label>
+                    <select name="cars" id="cars" onChange={handleChange}>
+                      <option value="volvo">Select the Gender</option>
+                      <option value="saab">Male</option>
+                      <option value="opel">Female</option>
                     </select>
                   </div>
                 </div>
                 <div className="video-thumbnil-inputs">
                   <label>Thumbnail</label>
-                  <input type="file" />
+                  <input type="file" onChange={handleChange} />
                 </div>
-                <label>Upload Video</label>
-                <div className="video-admin-inputs">
-                  {/* <img src={Videoup} alt="" /> */}
+                <label>Resume :</label>
+                <input type="file" />
+                {/* <div className="video-admin-inputs">
                   <h2>Drag and Drop Files here</h2>
                   <input
                     type="file"
                     id="videoFile"
                     name="videoFile"
-                    // onChange={handleFileChange}
-                    style={{ display: "none" }} // Add this style inline
+                    style={{ display: "none" }} 
                   />
                   <label
                     htmlFor="videoFile"
@@ -151,7 +184,7 @@ const [showPopup, setShowPopup] = useState(false);
                   >
                     Upload a file
                   </label>
-                </div>
+                </div> */}
                 <div className="video-submit-btns">
                   <button type="submit">Submit</button>
                   <button type="submit" onClick={togglePopup}>
@@ -160,7 +193,7 @@ const [showPopup, setShowPopup] = useState(false);
                 </div>
               </form>
             </div>
-          </div>  
+          </div>
         )}
         <div className="psycologist-box-conatiner-admint">
           <div className="psycologist-box-admint-main">

@@ -97,6 +97,7 @@ table tr td {
   place-items: center;
   align-items: center;
   grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
 }
 .video-top-inputs input {
   width: 304px;
