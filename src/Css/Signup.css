@@ -157,7 +157,7 @@
     width: 39%;
   }
   .signup-aggry-form {
-    margin-left: 25px;
+   margin: 45px;
   }
   .GreenRound {
     margin-left: 10%;
@@ -174,7 +174,8 @@
     align-items: center;
     justify-content: center;
     gap: 1rem;
-    margin: 24px 0px;
+    /* margin: 24px 0px; */
+    margin-left: -25%;
   }
   .form-input-a input,
   .form-input-b input {
