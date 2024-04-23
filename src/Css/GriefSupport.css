@@ -613,8 +613,8 @@ form .buttons button,
   .grief-suppot-form {
     background-color: #bae8ac;
     padding: 10px;
-    margin: 2% 19%;
-    width: 60%;
+    margin:auto;
+    width: 80%;
     height: 741px;
     /* margin-bottom: -6%; */
     border-radius: 20px;

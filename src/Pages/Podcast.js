@@ -10,10 +10,14 @@ import emoji from "../Images/emoji.png";
 import { FaPlay } from "react-icons/fa";
 import PodcastProductlist from "../Components/PodcastProductlist";
 
+import Breadcrumps from "../Components/Breadcrumps";
+
 const Podcast = () => {
   return (
     <div>
       <Navbar />
+
+      <Breadcrumps />
       <div className="podcast-main">
         <div className="therapy-heading">
           <p>Our Goals</p>

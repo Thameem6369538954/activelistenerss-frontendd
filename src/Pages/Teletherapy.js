@@ -12,10 +12,13 @@ import FlowerR from "../Images/FlowerR.png";
 import Doc from "../Images/Doc.png";
 import Telegroup from "../Images/Telegroup.png";
 import Arrow from "../Images/Arrow.png";
+import Breadcrumps from "../Components/Breadcrumps";
+import { Link, useLocation, useHistory } from "react-router-dom";
 const Teletherapy = () => {
   return (
     <div>
       <Navbar />
+      <Breadcrumps />
       <div className="teletheropy">
         <Speekeasy />
       </div>

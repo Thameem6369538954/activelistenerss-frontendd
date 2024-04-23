@@ -31,6 +31,8 @@ import Thameem from "../Images/Thameem.jpg";
 import CountUp from "react-countup";
 import ScrollTrigger from "react-scroll-trigger";
 import GetinTouch from "../Components/GetinTouch";
+import Breadcrumps from "../Components/Breadcrumps";
+
 const GoalVision = () => {
   const [counter, setCounter] = useState(false);
   var settings = {
@@ -134,6 +136,7 @@ const GoalVision = () => {
     <div>
       <div className="goalvision">
         <Navbar />
+        <Breadcrumps />
         <div className="therapy-heading">
           <p>Our Goals</p>
           <h1>Engage, understand, improve with</h1>

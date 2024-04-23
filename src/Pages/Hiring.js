@@ -10,6 +10,8 @@ import Doc from "../Images/Doc.png";
 import GetinTouch from "../Components/GetinTouch";
 import Footer from "../Components/Footer";
 import { NavLink } from "react-router-dom";
+import Breadcrumps from "../Components/Breadcrumps";
+
 
 const Hiring = () => {
   const scrollToTop = () => {
@@ -18,6 +20,7 @@ const Hiring = () => {
   return (
     <div>
       <Navbar />
+      <Breadcrumps />
       <div className="Hiring-main">
         <div className="therapy-heading">
           <p>Our Goals</p>

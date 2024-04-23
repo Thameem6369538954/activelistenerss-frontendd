@@ -16,6 +16,7 @@ import Menbulb from "../Images/Menbulb.png";
 import GetinTouch from "../Components/GetinTouch";
 import { InlineWidget } from "react-calendly";
 import { AiOutlineCloseCircle } from "react-icons/ai";
+import Breadcrumps from "../Components/Breadcrumps";
 import { toast } from "react-toastify";
 
 const Senses = () => {
@@ -34,6 +35,7 @@ const Senses = () => {
     <div>
       <Navbar />
       <div className="secnses-main">
+        <Breadcrumps />
         <div className="therapy-heading">
           <p>Therapy for you!</p>
           <h1>Senses</h1>

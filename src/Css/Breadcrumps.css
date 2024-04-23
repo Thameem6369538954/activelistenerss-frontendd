@@ -1,0 +1,30 @@
+.breadcrumb-item{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    position: relative;
+    
+}
+.beader-main{
+     display: flex;
+    align-items: center;
+    justify-content: start;
+    /* margin-left: -65%; */
+    position: absolute;
+
+}
+.breadcrumps{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    /* width: 10%; */
+
+}
+.back-arrow{
+    font-size: 50px;
+    margin-right: 5px;
+}
+.breadcrumb li{
+    list-style: none;
+    font-size: 20px;
+}

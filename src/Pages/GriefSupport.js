@@ -13,6 +13,7 @@ import Clap from "../Images/Clap.png";
 import { TiArrowRightThick } from "react-icons/ti";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { InlineWidget } from "react-calendly";
+import Breadcrumps from "../Components/Breadcrumps";
 
 const GriefSupport = () => {
   const [wantComplimentaryCall, setWantComplimentaryCall] = useState(false);
@@ -28,6 +29,7 @@ const GriefSupport = () => {
   return (
     <div>
       <Navbar />
+      <Breadcrumps /> 
       <div className="grief-main">
         <div className="grief-main-heading">
           <span>Contact us to get help</span>

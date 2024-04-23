@@ -18,10 +18,13 @@ import TP from "../Images/TP.png";
 import FormB from "../Images/FormB.png";
 import MM from "../SmallElements/MM.png";
 import MG from "../SmallElements/MG.png";
+import Breadcrumps from "../Components/Breadcrumps";
+
 const AffiliateProgram = () => {
   return (
     <div>
       <Navbar />
+      <Breadcrumps />
       <div className="affiliate-program-main">
         {/* affilate-heading */}
         <div className="affiliate-program-heading">

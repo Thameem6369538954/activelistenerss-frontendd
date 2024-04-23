@@ -26,6 +26,8 @@ import { FaInstagram } from "react-icons/fa";
 import { PiFacebookLogoBold } from "react-icons/pi";
 import { FaXTwitter } from "react-icons/fa6";
 import Footer from "../Components/Footer";
+import Breadcrumps from "../Components/Breadcrumps";
+
 
 const TeamPage = () => {
   var settings = {
@@ -172,6 +174,7 @@ const TeamPage = () => {
   return (
     <div>
       <Navbar />
+      <Breadcrumps />
       {/* taempage-header */}
       <div className="teampage-main-container">
         <div className="therapy-heading">

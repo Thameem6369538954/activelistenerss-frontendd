@@ -11,6 +11,7 @@ import emoji from "../Images/emoji.png";
 import GetinTouch from "../Components/GetinTouch";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { InlineWidget } from "react-calendly";
+import Breadcrumps from "../Components/Breadcrumps";
 
 const OneOnOne = () => {
   const [wantComplimentaryCall, setWantComplimentaryCall] = useState(false);
@@ -26,6 +27,7 @@ const OneOnOne = () => {
   return (
     <div>
       <Navbar />
+      <Breadcrumps />
       <div className="oneonone-main">
         <div className="therapy-heading">
           <p>Therapy for you!</p>

@@ -18,10 +18,13 @@ import House from "../SmallElements/House.png";
 import THands from "../Images/THands.png";
 import PreppersRed from "../Images/PreppersRed.png";
 import PodacstwithDif from "../Images/PodacstwithDif.png";
+import Breadcrumps from "../Components/Breadcrumps";
+
 const Preppers = () => {
   return (
     <div>
       <Navbar />
+      <Breadcrumps />
       <div className="preppers-main">
         <div className="preppers-header-image">
           <img src={PreppersImage} alt="" />
