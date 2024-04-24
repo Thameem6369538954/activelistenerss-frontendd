@@ -4,6 +4,29 @@
   justify-content: center;
   gap: 3rem;
 }
+.team-psychologist-box img{
+width: 140px;
+   height: 200px;
+ aspect-ratio: 3/2;
+ object-fit: cover;
+}
+.team-psychologist-box{
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffdd7e;
+    border: 2px solid yellow;
+    width: 260px;
+    height: 400px;
+    padding: 10px;
+    border-radius: 20px;
+}
+.team-psychologist-box-conatiner{
+  margin: 20px;
+  display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
 .Team-card-inner {
   display: flex;
   align-items: center;

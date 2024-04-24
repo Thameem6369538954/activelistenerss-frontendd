@@ -1,56 +1,31 @@
-import React,{useState} from 'react'
+import React, { useEffect, useState } from "react";
 import "./Getintouchdata.css";
+import axios from "../../Utils/Baseurl";
 
 const Getintouchdata = () => {
-   const [data, setData] = useState([
-     {
-       id: 1,
-       name: "sankar",
-       email: "sankar@gmail.com",
-       amount: "978883232",
-     },
-     {
-       id: 2,
-       name: "Dhanasekar",
-       email: "dhanasekar@gmail.com",
-       amount: "8234233567",
-     },
-     {
-       id: 3,
-       name: "Ajay",
-       email: "ajay@gmail.com",
-       amount: "8234233567",
-     },
-     {
-       id: 4,
-       name: "Dhinesh",
-       email: "dhinesh@gmail.com",
-       amount: "8234233567",
-     },
-     {
-       id: 5,
-       name: "Aleeshya",
-       email: "aleeshya@gmail.com",
-       amount: "8234233567",
-     },
-     {
-       id: 6,
-       name: "Ansari",
-       email: "Thameem@gmail.com",
-       amount: "6369538976",
-     },
-   ]);
-   const [searchInput, setSearchInput] = useState("");
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    const fetchMessage = async () => {
+      const response = await axios.get("admin/view_getInTouch");
+      console.log(response.data.getintouch.allGet, "kkkkk");
+      setData(response.data.getintouch.allGet);
+    };
+    fetchMessage();
+  }, []);
 
-   // Filtered data based on search input
-   const filteredData = data.filter((item) => {
-     return (
-       item.name.toLowerCase().includes(searchInput.toLowerCase()) ||
-       item.email.toLowerCase().includes(searchInput.toLowerCase()) ||
-       item.amount.includes(searchInput)
-     );
-   });
-   const currentDate = new Date().toISOString().slice(0, 10);
+  const [searchInput, setSearchInput] = useState("");
+
+  // Filtered data based on search input
+  // Filtered data based on search input
+  // const filteredData = data.length > 0 ? data.filter((item) => {
+  //   return (
+  //     item.name.toLowerCase().includes(searchInput.toLowerCase()) ||
+  //     item.email.toLowerCase().includes(searchInput.toLowerCase())
+  //     // item.mobile.includes(searchInput)
+  //   );
+  // }) : [];
+
+  const currentDate = new Date().toISOString().slice(0, 10);
   return (
     <div>
       <div className="getintouch-main-container">
@@ -82,9 +57,9 @@ const Getintouchdata = () => {
         </div>
         <div className="getintouch-form">
           <div className="revenue-container">
-            {filteredData.length === 0 ? (
+            {data.length === 0 ? (
               <div className="no-data">
-                <p>{searchInput} data found</p>
+                <p>{searchInput} data not found</p>
               </div>
             ) : (
               <table>
@@ -94,25 +69,19 @@ const Getintouchdata = () => {
                     <th>No</th>
                     <th>Name</th>
                     <th>Email</th>
-                    <th>Phone Number</th>
+                    {/* <th>Phone Number</th> */}
+                    <th>Message</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {filteredData.map((item) => (
+                  {data.map((item, index) => (
                     <tr key={item.id}>
-                      {/* <td>
-                        <input type="checkbox" />
-                      </td> */}
-                      <td>{item.id}</td>
+                      <td>{index + 1}</td>
                       <td>{item.name}</td>
                       <td style={{ textTransform: "lowercase" }}>
                         <p>{item.email}</p>
                       </td>
-                      <td>{item.amount}</td>
-                      {/* <td>
-                        
-                        {item.date === currentDate ? "Today's Data" : ""}
-                      </td> */}
+                      <td>{item.message}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -123,6 +92,6 @@ const Getintouchdata = () => {
       </div>
     </div>
   );
-}
+};
 
-export default Getintouchdata
+export default Getintouchdata;

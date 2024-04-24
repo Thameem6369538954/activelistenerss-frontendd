@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import "../Css/TeamPage.css";
 import Navbar from "../Components/Navbar";
 import GetinTouch from "../Components/GetinTouch";
@@ -27,7 +27,7 @@ import { PiFacebookLogoBold } from "react-icons/pi";
 import { FaXTwitter } from "react-icons/fa6";
 import Footer from "../Components/Footer";
 import Breadcrumps from "../Components/Breadcrumps";
-
+import axios from "../Utils/Baseurl";
 
 const TeamPage = () => {
   var settings = {
@@ -64,113 +64,82 @@ const TeamPage = () => {
       },
     ],
   };
-  const [employees, setemployees] = useState([
-    {
-      id: 1,
-      name: "Mahesh",
-      position: "Founder of Active Listeners",
-      image: mahesh,
-    },
-    {
-      id: 2,
-      name: "Anam Fatima",
-      position: "Senior Content Writer",
-      image: anam,
-    },
-    {
-      id: 3,
-      name: "Joice Lincy",
-      position: "Digital Marketing specialist",
-      image: joice,
-    },
+  const [employees, setemployees] = useState([ ]);
+  // const psychologist = [
+  //   {
+  //     id: 1,
+  //     name: "Jennifer kale",
+  //     position: "Psychologist",
+  //     image: Psyco,
+  //     dis: "Lorem ipsum dolor sit amet consectet piscing elit, sed do eiusmod tempor rarylet podofcast.",
+  //   },
+  //   {
+  //     id: 2,
+  //     name: "Jennifer kale",
+  //     position: "Psychologist",
+  //     image: Psyco,
+  //     dis: "Lorem ipsum dolor sit amet consectet piscing elit, sed do eiusmod tempor rarylet podofcast.",
+  //   },
+  //   {
+  //     id: 3,
+  //     name: "Jennifer kale",
+  //     position: "Psychologist",
+  //     image: Psyco,
+  //     dis: "Lorem ipsum dolor sit amet consectet piscing elit, sed do eiusmod tempor rarylet podofcast.",
+  //   },
+  //   {
+  //     id: 4,
+  //     name: "Jennifer kale",
+  //     position: "Psychologist",
+  //     image: Psyco,
+  //     dis: "Lorem ipsum dolor sit amet consectet piscing elit, sed do eiusmod tempor rarylet podofcast.",
+  //   },
+  //   {
+  //     id: 5,
+  //     name: "Jennifer kale",
+  //     position: "Psychologist",
+  //     image: Psyco,
+  //     dis: "Lorem ipsum dolor sit amet consectet piscing elit, sed do eiusmod tempor rarylet podofcast.",
+  //   },
+  //   {
+  //     id: 6,
+  //     name: "Jennifer kale",
+  //     position: "Psychologist",
+  //     image: Psyco,
+  //     dis: "Lorem ipsum dolor sit amet consectet piscing elit, sed do eiusmod tempor rarylet podofcast.",
+  //   },
+  // ];
 
-    {
-      id: 7,
-      name: "Dhinesh",
-      position: "Graphic Designer",
-      image: dhinesh,
-    },
-    {
-      id: 6,
-      name: "Dhanasekar",
-      position: "Sketch Artist",
-      image: dhanashekar,
-    },
-    {
-      id: 4,
-      name: "Ajay",
-      position: "Video Editor",
-      image: ajay,
-    },
-    {
-      id: 5,
-      name: "Aleeshya krishna",
-      position: "Backend Developer",
-      image: aleeshya,
-    },
-    {
-      id: 8,
-      name: "Harris",
-      position: "UI/UX Designer",
-      image: harris,
-    },
-    {
-      id: 9,
-      name: "Sankar",
-      position: "Illustrator",
-      image: shankar,
-    },
-    {
-      id: 10,
-      name: "Thameem Ansari",
-      position: "Frontend Developer",
-      image: Thameem,
-    },
-  ]);
-  const psycologiest = [
-    {
-      id: 1,
-      name: "Jennifer kale",
-      position: "Psychologist",
-      image: Psyco,
-      dis: "Lorem ipsum dolor sit amet consectet piscing elit, sed do eiusmod tempor rarylet podofcast.",
-    },
-    {
-      id: 2,
-      name: "Jennifer kale",
-      position: "Psychologist",
-      image: Psyco,
-      dis: "Lorem ipsum dolor sit amet consectet piscing elit, sed do eiusmod tempor rarylet podofcast.",
-    },
-    {
-      id: 3,
-      name: "Jennifer kale",
-      position: "Psychologist",
-      image: Psyco,
-      dis: "Lorem ipsum dolor sit amet consectet piscing elit, sed do eiusmod tempor rarylet podofcast.",
-    },
-    {
-      id: 4,
-      name: "Jennifer kale",
-      position: "Psychologist",
-      image: Psyco,
-      dis: "Lorem ipsum dolor sit amet consectet piscing elit, sed do eiusmod tempor rarylet podofcast.",
-    },
-    {
-      id: 5,
-      name: "Jennifer kale",
-      position: "Psychologist",
-      image: Psyco,
-      dis: "Lorem ipsum dolor sit amet consectet piscing elit, sed do eiusmod tempor rarylet podofcast.",
-    },
-    {
-      id: 6,
-      name: "Jennifer kale",
-      position: "Psychologist",
-      image: Psyco,
-      dis: "Lorem ipsum dolor sit amet consectet piscing elit, sed do eiusmod tempor rarylet podofcast.",
-    },
-  ];
+  
+  const [psychologist, setPsychologist] = useState([]);
+  
+  useEffect(() => {
+    const getPsychologist = async () => {
+      try {
+        const response = await axios.get("admin/view_psychologyst");
+        console.log(response.data.psychos, "allpsychoooooooos here");
+        setPsychologist(response.data.psychos);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getPsychologist();
+
+
+
+    const getEmployees = async () => {
+      try {
+        const response = await axios.get("admin/get_all_members");
+        setemployees(response.data.members.allMembers);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    getEmployees();
+  }, []);
+
+
+
   return (
     <div>
       <Navbar />
@@ -255,15 +224,16 @@ const TeamPage = () => {
           </div>
         </div>
 
-        <div className="team-psycologiest-box-conatiner">
-          {psycologiest.map((items) => (
+        <div className="team-psychologist-box-conatiner">
+          {psychologist.map((items) => (
             <div>
-              <div className="team-psycologiest-box" key={items.id}>
-                <img src={Psyco} alt="" />
-                <div className="psycologiest-box-inside">
-                  <span style={{ color: "#256C55" }}>{items.position}</span>
+              <div className="team-psychologist-box" key={items.id}>
+                <img src={items.image} alt="" />
+                <div className="psychologist-box-inside">
+                  <span style={{ color: "#256C55" }}>Psychologist</span>
                   <h1>{items.name}</h1>
-                  <p>{items.dis}</p>
+                  <p>{items.email}</p>
+                  <p>{items.mobile}</p>
                   <hr></hr>
                   <div className="follow-box">
                     <p>Follow me :</p>
@@ -300,11 +270,17 @@ const TeamPage = () => {
           <Slider {...settings}>
             {employees.map((employee) => (
               <div>
-                <div className="Team-box-container" key={employee.id}>
+                <div className="Team-box-container" key={employee._id}>
                   <img src={employee.image} alt="" />
+                  {/* <video width="640" height="360" controls>
+                    <source src={employee.audio} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video> */}
+
                   <div className="positon-name-team">
                     <h1>{employee.name}</h1>
-                    <p>{employee.position}</p>
+                    <p>{employee.designation}</p>
+                    <p>{employee.socialmediaLink}</p>
                   </div>
                   <div className="caro-follw">
                     <div className="line-caro"></div>

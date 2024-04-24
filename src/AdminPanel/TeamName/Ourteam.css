@@ -142,5 +142,8 @@ input:checked + .slider:after {
 
 
 
-
+.team-admin-form{
+    margin-top: -20%;
+    background-color: #0d0c22;
+}
 

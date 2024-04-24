@@ -1,88 +1,19 @@
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import './Hiringdata.css'
 import { AiOutlineFilePdf } from "react-icons/ai";
-
+import axios from '../../Utils/Baseurl';
 const Hiringdata = () => {
-     const [data, setData] = useState([
-       {
-         id: 1,
-         pdf: "https://drive.google.com/file/d/1vhvO61Evjo-Rr6TZEMyqbHW4tjm-az7x/view?usp=drive_link",
-         name: "sankar",
-         email: "sankar@gmail.com",
-         amount: "978883232",
-         organizationname: "Sankar Foundation",
-         year: "23/01/2024",
-         ofcnumber: "1234567890",
-         link: "https://www.sankarfoundation.org/",
-         jd: "Psycologist",
-         personalnumber: "1234567890",
-       },
-       {
-         id: 2,
-         pdf: "https://drive.google.com/file/d/1vhvO61Evjo-Rr6TZEMyqbHW4tjm-az7x/view?usp=drive_link",
-         name: "Dhanasekar",
-         email: "dhanasekar@gmail.com",
-         amount: "8234233567",
-         organizationname: "Dhanasekar Foundation",
-         year: "23/01/2024",
-         ofcnumber: "1234567890",
-         link: "https://www.dhanasekarfoundation.org/",
-         jd: "Psycologist",
-         personalnumber: "1234567890",
-       },
-       {
-         id: 3,
-         pdf: "https://drive.google.com/file/d/1vhvO61Evjo-Rr6TZEMyqbHW4tjm-az7x/view?usp=drive_link",
-         name: "Ajay",
-         email: "ajay@gmail.com",
-         amount: "8234233567",
-         organizationname: "Ajay Foundation",
-         year: "23/01/2024",
-         ofcnumber: "1234567890",
-         link: "https://www.ajayfoundation.org/",
-         jd: "Psycologist",
-         personalnumber: "1234567890",
-       },
-       {
-         id: 4,
-         pdf: "https://drive.google.com/file/d/1vhvO61Evjo-Rr6TZEMyqbHW4tjm-az7x/view?usp=drive_link",
-         name: "Dhinesh",
-         email: "dhinesh@gmail.com",
-         amount: "8234233567",
-         organizationname: "Dhinesh Foundation",
-         year: "23/01/2024",
-         ofcnumber: "1234567890",
-         link: "https://www.dhineshfoundation.org/",
-         jd: "Psycologist",
-         personalnumber: "1234567890",
-       },
-       {
-         id: 5,
-         pdf: "https://drive.google.com/file/d/1vhvO61Evjo-Rr6TZEMyqbHW4tjm-az7x/view?usp=drive_link",
-         name: "Aleeshya",
-         email: "aleeshya@gmail.com",
-         amount: "8234233567",
-         organizationname: "Aleeshya Foundation",
-         year: "23/01/2024",
-         ofcnumber: "1234567890",
-         link: "https://www.aleeshyafoundation.org/",
-         jd: "Psycologist",
-         personalnumber: "1234567890",
-       },
-       {
-         id: 6,
-         pdf: "https://drive.google.com/file/d/1vhvO61Evjo-Rr6TZEMyqbHW4tjm-az7x/view?usp=drive_link",
-         name: "Ansari",
-         email: "Thameem@gmail.com",
-         amount: "6369538976",
-         organizationname: "Ansari Foundation",
-         year: "23/01/2024",
-         ofcnumber: "1234567890",
-         link: "https://www.ansarifoundation. Application org/",
-         jd: "Psycologist",
-         personalnumber: "1234567890",
-       },
-     ]);
+     const [data, setData] = useState([]);
+
+     useEffect(() => {
+       const fetchData = async () => {
+         const response = await axios.get("admin/viewHiring");
+        //  const data = await response.json();
+        console.log(response.data.response,"jiji");
+         setData(response.data.response);
+       };
+       fetchData();
+     })
      const [searchInput, setSearchInput] = useState("");
 
      // Filtered data based on search input
@@ -146,13 +77,13 @@ const Hiringdata = () => {
               </thead>
               <tbody>
                 {Array.isArray(data) &&
-                  data.map((item) => (
-                    <tr key={item.id}>
+                  data.map((item, index) => (
+                    <tr key={item._id}>
                       <td>
                         <input type="checkbox" />
                       </td>
                       <td>
-                        <p>{item.id}</p>
+                        <p>{index + 1}</p>
                       </td>
                       <td>
                         <p> {item.name}</p>
@@ -161,17 +92,17 @@ const Hiringdata = () => {
                         <p>{item.email}</p>
                       </td>
                       <td>
-                        <p>{item.amount}</p>
+                        <p>{item.number}</p>
                       </td>
                       <td>
-                        <p> {item.jd}</p>
+                        <p> {item.position}</p>
                       </td>
                       <td>
-                        <p>{item.year}</p>
+                        <p>{item.addedAt}</p>
                       </td>
                       <td>
                         <div
-                          onClick={() => openPdfInNewTab(item.url)}
+                          onClick={() => openPdfInNewTab(item.resume)}
                           style={{ cursor: "pointer" }}
                         >
                           <a href="">
@@ -181,10 +112,13 @@ const Hiringdata = () => {
                         </div>
                       </td>
                       <td>
-                        <p> {item.status}</p>
+                        <p> {item.coverletter}</p>
                       </td>
                       <td>
-                        <button>View</button>
+                        <button>{item.status}</button>
+                      </td>
+                      <td>
+                        <button>Change status</button>
                       </td>
                     </tr>
                   ))}

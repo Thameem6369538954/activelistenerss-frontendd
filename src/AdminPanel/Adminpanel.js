@@ -36,6 +36,8 @@ import Ngo from "./NGO/Ngo.js";
 import Collegegraduate from "./CollegeGraduate/Collegegraduate.js";
 import Hiringdata from "./HiringAdmin/Hiringdata.js";
 import Ourteam from "./TeamName/Ourteam.js";
+// import { MyChart } from "../Components/MyChart.js";
+// import { DoughnutChart } from "../Components/DoughnutChart.js";
 const Adminpanel = () => {
  
 
@@ -220,8 +222,12 @@ const Adminpanel = () => {
                     {/* chart */}
 
                     <div className="dase-borad-chart-container">
-                      <div className="dase-borad-chart-a"></div>
-                      <div className="dase-borad-chart-b"></div>
+                      <div className="dase-borad-chart-a">
+                        {/* <MyChart /> */}
+                      </div>
+                      <div className="dase-borad-chart-b">
+                        {/* <DoughnutChart /> */}
+                      </div>
                     </div>
                   </div>
                 </div>

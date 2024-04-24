@@ -79,3 +79,36 @@ display: flex;
 .z-for{
     z-index: 9999;
 }
+.team-psychologist-admin-box{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 70%;
+    margin: auto;
+    gap: 2rem;
+}
+.psychologist-box-inside img{
+    width: 10%;
+}
+.team-psychologist-admin-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffdd7e;
+    border: 2px solid yellow;
+    width: 260px;
+    height: 400px;
+    padding: 10px;
+    border-radius: 20px;
+}
+.team-psychologist-admin-box img{
+   width: 140px;
+   height: 200px;
+   aspect-ratio: 3/2;
+   object-fit: cover;
+   /* border-radius: 50%; */
+}
+.team-psychologist-box-conatiner-a{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}

@@ -247,7 +247,6 @@ const HiringForm = (props) => {
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
   const { position } = useParams();
-  console.log(position);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -269,10 +268,8 @@ const HiringForm = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newErrors = validateFormData(formDatas);
-    console.log(newErrors);
     if (Object.keys(newErrors).length === 0) {
       // Form is valid, proceed with submission
-
       const formData = new FormData();
       formData.append("resume", file);
       formData.append("name", formDatas.name);
@@ -280,21 +277,18 @@ const HiringForm = (props) => {
       formData.append("mobile", formDatas.mobile);
       formData.append("position", formDatas.position);
       formData.append("coverletter", formDatas.coverletter);
+      console.log(formData);
 
-      console.log("kkkkk");
-      console.log("Form submitted:", formData);
       try {
         const response = await axios.post("/application", formData);
-        console.log(response, "..");
         if (response.status === 200) {
-          // console.log(response.status === 200);
-          toast.success("successfully submitted the application form!");
+          toast.success("Successfully submitted the application form!");
         } else {
-          toast.error("Please try again Later");
+          toast.error("Please try again later.");
         }
-        // toast.success("form submitted successfully!");
       } catch (error) {
         console.error("Error submitting form:", error);
+        toast.error("Error submitting form. Please try again later.");
       }
     } else {
       setErrors(newErrors);
@@ -306,6 +300,7 @@ const HiringForm = (props) => {
     // Add validation logic here
     return errors;
   };
+
 
   return (
     <div>

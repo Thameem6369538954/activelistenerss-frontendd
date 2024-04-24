@@ -189,8 +189,8 @@ const PodcastAdmin = () => {
       // You can perform form submission logic here
       // For example, you can send the formData to your server
       console.log(formData);
-      const response = await axios.post("/podcast",formData);
-        console.log(response, "++++++++++");
+      // const response = await axios.post("/podcast",formData);
+      //   console.log(response, "++++++++++");
     };
 
 

@@ -1,9 +1,28 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Ourteam.css'
 import { CgCloseO } from "react-icons/cg";
 import { AiOutlineEdit } from "react-icons/ai";
 import { LiaSaveSolid } from "react-icons/lia";
+import axios from '../../Utils/Baseurl';
+import { toast } from "react-toastify";
 const Ourteam = () => {
+
+const [members, setMembers] = useState([]);
+
+  useEffect(() => {
+    console.log(members,"jjejjje");
+      const fetchMembers = async () => {
+        try {
+          const response = await axios.get("admin/get_all_members");
+          console.log(response,"llllllalallalalalalallalllaallallalal");
+          setMembers(response.data.members.allMembers);
+        } catch (error) {
+          console.log(error);
+        }
+      
+    }
+    fetchMembers();
+  },[])
     
     const [showPopup, setShowPopup] = useState(false);
     const [videoData, setVideoData] = useState({
@@ -14,64 +33,110 @@ const Ourteam = () => {
       setShowPopup(!showPopup);
     };
 
-    const handleInputChange = (event) => {
-      const { name, value } = event.target;
-      setVideoData({
-        ...videoData,
-        [name]: value,
-      });
-    };
+    const [image,setImage] = useState(null);
+    const [audio,setAudio] = useState(null);
 
-    const handleFileChange = (event) => {
-      setVideoData({
-        ...videoData,
-        videoFile: event.target.files[0],
-      });
-    };
+ const handleImageChange = (e) => {
+   const selectedImage = e.target.files[0];
+   if (selectedImage) {
+     setImage(selectedImage);
+   } else {
+     toast.error("Please select an image");
+     e.target.value = null;
+   }
+ };
 
-    const handleSubmit = (event) => {
-      event.preventDefault();
-      // Here you can handle the form submission, for now, let's just log the data
-      console.log(videoData);
-      // You can then add logic to save this data to your database or display it in the table
-    };
+ const handleResumeChange = (e) => {
+   const selectedResume = e.target.files[0];
+   if (selectedResume) {
+     setAudio(selectedResume);
+   } else {
+     toast.error("Please select a file");
+     e.target.value = null;
+   }
+ };
 
-    const [rows, setRows] = useState([
-      {
-        id: 1,
-        column1: "01",
-        name: "Thameem",
-        position: "front-end developer",
-        image: "https://via.placeholder.com/150",
-      },
-      {
-        id: 2,
-        column1: "02",
-        name: "Ansari",
-        position: "back-end developer",
-        image: "https://via.placeholder.com/150",
-      },
-      // Add more rows as needed
-    ]);
+
+ const [formDatas, setformDatas] = useState({
+   name: "",
+   designation: "",
+   socialmediaLink: "",
+ });
+
+ const handleChange = (e) => {
+   const { name, value, type, files } = e.target;
+   setformDatas((prevData) => ({
+     ...prevData,
+     [name]: type === "file" ? files[0] : value,
+   }));
+ };
+
+ const handleSubmit = async(e) => {
+  console.log("im here");
+   e.preventDefault();
+   // Perform validation here
+   try {
+     const formData = new FormData();
+
+     formData.append("name", formDatas.name);
+     formData.append("designation", formDatas.designation);
+     formData.append("socialmediaLink", formDatas.socialmediaLink);
+     formData.append("image", image);
+     formData.append("audio", audio);
+
+     const response = await axios.post("admin/add_member", formData);
+     console.log(response, "oooooooooooooooooooooo");
+   } catch (error) {
+     console.log(error);
+   }
+
+   // Access form values from formDatas object
+   console.log("Form Data:000000000000000000000000", formDatas);
+
+   // Reset form after submission if needed
+   setformDatas({
+     name: "",
+     designation: "",
+     socialmediaLink: "",
+     image: null,
+   });
+ };
+    // const [rows, setMembers] = useState([
+    //   {
+    //     id: 1,
+    //     column1: "01",
+    //     name: "Thameem",
+    //     position: "front-end developer",
+    //     image: "https://via.placeholder.com/150",
+    //   },
+    //   {
+    //     id: 2,
+    //     column1: "02",
+    //     name: "Ansari",
+    //     position: "back-end developer",
+    //     image: "https://via.placeholder.com/150",
+    //   },
+    //   // Add more rows as needed
+    // ]);
     const [editingRowId, setEditingRowId] = useState(null);
     const [editedData, setEditedData] = useState({});
 
-    const handleDeleteClick = (id) => {
-      setRows(rows.filter((row) => row.id !== id));
-    };
+    // const handleDeleteClick = (id) => {
+    //   setMembers(members.filter((row) => row._id !== id));
+    // };
 
-    const handleEditClick = (row) => {
-      setEditingRowId(row.id);
-      setEditedData(row);
+    const handleEditClick = (members) => {
+      setEditingRowId(members._id);
+      setEditedData(members);
     };
  const handleSaveEdit = () => {
-        const updatedRows = rows.map((row) => {
-            if (row.id === editedData.id) {
-                return editedData;
-            }
-            return row;
+        const updatedRows = members.map((row) => {
+          if (row.id === editedData.id) {
+            return editedData;
+          }
+          return row;
         });
-        setRows(updatedRows);
+        setMembers(updatedRows);
         setEditingRowId(null);
     };
 
@@ -83,34 +148,34 @@ const Ourteam = () => {
         }));
     };
 
-    const handleImageChange = (e) => {
-        const file = e.target.files[0];
-        const reader = new FileReader();
-        reader.onload = (event) => {
-            setEditedData((prevData) => ({
-                ...prevData,
-                image: event.target.result,
-            }));
-        };
-        reader.readAsDataURL(file);
-    };
+    // const handleImageChange = (e) => {
+    //     const file = e.target.files[0];
+    //     const reader = new FileReader();
+    //     reader.onload = (event) => {
+    //         setEditedData((prevData) => ({
+    //             ...prevData,
+    //             image: event.target.result,
+    //         }));
+    //     };
+    //     reader.readAsDataURL(file);
+    // };
 
     const handleCancelEdit = () => {
         setEditingRowId(null); // Reset editingRowId to null to close the form
     };
 
     const currentDate = new Date().toISOString().slice(0, 10);
- const [filteredRows, setFilteredRows] = useState(rows);
+ const [filteredRows, setFilteredRows] = useState(members);
  const [searchTerm, setSearchTerm] = useState("");
 
- const handleSearchInputChange = (event) => {
-   const searchTerm = event.target.value.toLowerCase();
-   setSearchTerm(searchTerm);
-   const filteredRows = rows.filter((row) =>
-     row.name.toLowerCase().includes(searchTerm)
-   );
-   setFilteredRows(filteredRows);
- };
+//  const handleSearchInputChange = (event) => {
+//    const searchTerm = event.target.value.toLowerCase();
+//    setSearchTerm(searchTerm);
+//    const filteredRows = members.filter((row) =>
+//      row.name.toLowerCase().includes(searchTerm)
+//    );
+//    setFilteredRows(filteredRows);
+//  };
 
  const handleDateFilterChange = (event) => {
    // Implement date filter logic here
@@ -134,64 +199,76 @@ const Ourteam = () => {
               placeholder="Search"
               type="search"
               class="input"
-              onChange={handleSearchInputChange}
+              // onChange={handleSearchInputChange}
             />
           </div>
         </div>
-
         {showPopup && (
-          <div className="video-popup">
-            <div className="video-popup-content">
-              {/* <span className="close" onClick={togglePopup}>
+          <div className="team-admin-form">
+            <div className="video-popup">
+              <div className="video-popup-content">
+                {/* <span className="close" onClick={togglePopup}>
                 <CgCloseO />
               </span> */}
-              <h2>Upload Video</h2>
-              <form onSubmit={handleSubmit}>
-                <div className="video-top-inputs">
-                  <div>
-                    <label>Title of the Video</label>
-                    <input type="text" placeholder="Enter the title" />
+                <h2>Upload Video</h2>
+                <form onSubmit={handleSubmit} encType="multipart/form-data">
+                  <div className="video-top-inputs">
+                    <div>
+                      <label>Employee Name :</label>
+                      <input
+                        type="text"
+                        placeholder="Enter the title"
+                        name="name"
+                        value={formDatas.name}
+                        onChange={handleChange}
+                      />
+                    </div>
+                    <div>
+                      <label>Designation:</label>
+                      <input
+                        type="text"
+                        placeholder="Enter the title"
+                        name="designation"
+                        value={formDatas.designation}
+                        onChange={handleChange}
+                      />
+                    </div>
+                    <div>
+                      <label>Social Media Link:</label>
+                      <input
+                        type="text"
+                        placeholder="Enter the title"
+                        name="socialmediaLink"
+                        value={formDatas.socialmediaLink}
+                        onChange={handleChange}
+                      />
+                    </div>
                   </div>
-                  <div className="select-page-videos">
-                    <label>Select Page : </label>
-                    <select name="cars" id="cars">
-                      <option value="volvo">Select the Page</option>
-                      <option value="saab">Saab</option>
-                      <option value="opel">Opel</option>
-                      <option value="audi">Audi</option>
-                    </select>
+                  <div className="video-thumbnil-inputs">
+                    <label>Audio</label>
+                    <input
+                      type="file"
+                      name="audio"
+                      onChange={handleResumeChange}
+                    />
                   </div>
-                </div>
-                <div className="video-thumbnil-inputs">
-                  <label>Thumbnail</label>
-                  <input type="file" />
-                </div>
-                <label>Upload Video</label>
-                <div className="video-admin-inputs">
-                  {/* <img src={Videoup} alt="" /> */}
-                  <h2>Drag and Drop Files here</h2>
-                  <input
-                    type="file"
-                    id="videoFile"
-                    name="videoFile"
-                    // onChange={handleFileChange}
-                    style={{ display: "none" }} // Add this style inline
-                  />
-                  <label
-                    htmlFor="videoFile"
-                    className="custom-file-input"
-                    data-file-name=""
-                  >
-                    Upload a file
-                  </label>
-                </div>
-                <div className="video-submit-btns">
-                  <button type="submit">Submit</button>
-                  <button type="submit" onClick={togglePopup}>
-                    Cancel
-                  </button>
-                </div>
-              </form>
+                  <div className="video-thumbnil-inputs">
+                    <label>image</label>
+                    <input
+                      type="file"
+                      name="image"
+                      onChange={handleImageChange}
+                    />
+                  </div>
+                  <div className="video-submit-btns">
+                    <button type="submit">Submit</button>
+                    {/* Assuming togglePopup is a function to toggle a popup */}
+                    <button type="button" onClick={togglePopup}>
+                      Cancel
+                    </button>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
         )}
@@ -199,7 +276,7 @@ const Ourteam = () => {
           {" "}
           <div className="table-container">
             <table>
-              {filteredRows.length === 0 ? (
+              {members.length === 0 ? (
                 <p>{searchTerm} data found</p>
               ) : (
                 <tbody>
@@ -208,18 +285,19 @@ const Ourteam = () => {
                     <th>Image</th>
                     <th>Name|</th>
                     <th>Position |</th>
+                    <th>social media |</th>
                     <th>Actions |</th>
                     <th>Admin |</th>
                   </tr>
-                  {rows.map((row) => (
-                    <tr key={row.id}>
+                  {members.map((row, index) => (
+                    <tr key={row._id}>
                       <td>
-                        <p>{row.column1}</p>
+                        <p>{index + 1}</p>
                       </td>
                       <td>
                         <img
                           src={row.image}
-                          alt="Thumbnail"
+                          alt="image"
                           style={{ width: "50px", height: "50px" }}
                         />
                       </td>
@@ -227,7 +305,10 @@ const Ourteam = () => {
                         <p>{row.name}</p>
                       </td>
                       <td>
-                        <p>{row.position}</p>
+                        <p>{row.designation}</p>
+                      </td>
+                      <td>
+                        <p>{row.socialmediaLink}</p>
                       </td>
                       <td>
                         {editingRowId === row.id ? (
@@ -238,7 +319,7 @@ const Ourteam = () => {
                           </div>
                         ) : (
                           <div className="action-buttons">
-                            <button onClick={() => handleDeleteClick(row.id)}>
+                            <button>
                               Delete <CgCloseO className="video-delete-new" />
                             </button>
                             <button onClick={() => handleEditClick(row)}>
@@ -267,7 +348,7 @@ const Ourteam = () => {
                     </button>
                   </div>
                   <div>
-                    <label>Thumbnail</label>
+                    <label>image</label>
                     <input
                       type="file"
                       accept="image/*"
