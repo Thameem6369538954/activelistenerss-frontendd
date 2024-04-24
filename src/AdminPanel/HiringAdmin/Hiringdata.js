@@ -32,7 +32,7 @@ const Hiringdata = () => {
     <div>
       <div className="Hiringdata-main-container">
         <div className="hiring-top-btns">
-          <h1>Hiring Data</h1>
+          <h1>Add Team Members </h1>
           <button>Export</button>
         </div>
         <div className="hiringdata-table">

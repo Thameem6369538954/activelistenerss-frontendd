@@ -26,6 +26,7 @@ width: 140px;
   margin: 20px;
   display: grid;
     grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
 }
 .Team-card-inner {
   display: flex;
