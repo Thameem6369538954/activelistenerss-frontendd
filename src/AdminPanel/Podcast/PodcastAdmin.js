@@ -3,8 +3,8 @@ import "./PodcastAdmin.css"
 import { CgCloseO } from "react-icons/cg";
 import { AiOutlineEdit } from "react-icons/ai";
 import { LiaSaveSolid } from "react-icons/lia";
-import axios from 'axios';
-import Baseurl from "../../Utils/Baseurl.js";
+import axios from "../../Utils/Baseurl.js";
+import { toast } from "react-toastify";
 
 
 
@@ -12,9 +12,9 @@ const PodcastAdmin = () => {
   
     const fetchProduct = async () => {
       try {
-        console.log(formData,"jj");
+      
         
-        // setFormData(response.data);
+        // setformDatas(response.data);
 
       } catch (err) {
         return { status: false, message: "not found product" };
@@ -168,29 +168,67 @@ const PodcastAdmin = () => {
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
 
-    const [formData, setFormData] = useState({
+    const [formDatas, setformDatas] = useState({
       title: "",
-      description: "",
+      discription: "",
       category: "",
-      thumbnail: null,
-      videoFile: null,
     });
+
+    const handleThumbnailChange = (e)=>{
+      e.preventDefault()
+      const setThumb = e.target.files[0]
+      if(setThumb){
+        setThumbnail(setThumb)
+      }else{
+        toast.error("Please select a thumbnail!!")
+        e.target.value = null
+      }
+    }
+
+    const handleSourceChange =(e)=>{
+      e.preventDefault()
+      const sourcefile = e.target.files[0]
+      if(sourcefile){
+        setSource(sourcefile)
+      }else{
+        toast.error("Please select a source file!!")
+        e.target.value = null
+      }
+    }
+
+
+    const [thumbnail,setThumbnail] = useState(null)
+    const [source,setSource] = useState(null)
 
     const handleChange = (e) => {
       const { name, value } = e.target;
-      setFormData({
-        ...formData,
+      setformDatas({
+        ...formDatas,
         [name]: value,
       });
     };
 
     const handleSubmit = async(e) => {
       e.preventDefault();
-      // You can perform form submission logic here
-      // For example, you can send the formData to your server
-      console.log(formData);
-      // const response = await axios.post("/podcast",formData);
-      //   console.log(response, "++++++++++");
+      try {
+        const formData = new FormData();
+        formData.append("title", formDatas.title);
+        formData.append("discription", formDatas.discription);
+        formData.append("category", formDatas.category);
+        formData.append("thumbnail", thumbnail);
+        formData.append("source", source);
+        console.log(
+          formData,
+          "daatattata''''''''''''''''''''''''''''''''''''''''"
+        );
+        // const response = await axios.post("/podcast",formDatas);
+
+        const response = await axios.post("admin/add_podcast", formData);
+        console.log(response, "reeeeeeeeeeeeeeeesss");
+      } catch (error) {
+        console.log(error);
+      }
+     
     };
 
 
@@ -209,7 +247,7 @@ const PodcastAdmin = () => {
                 <CgCloseO />
               </span> */}
                 <h2>Upload Video</h2>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} encType="multipart/form-data">
                   <div className="video-top-inputs">
                     <div>
                       <label>Title of the Video</label>
@@ -217,7 +255,7 @@ const PodcastAdmin = () => {
                         type="text"
                         placeholder="Enter the title"
                         name="title"
-                        value={formData.title}
+                        value={formDatas.title}
                         onChange={handleChange}
                         required // HTML5 validation: makes this field required
                       />
@@ -227,8 +265,8 @@ const PodcastAdmin = () => {
                       <input
                         type="text"
                         placeholder="Enter the description"
-                        name="description"
-                        value={formData.description}
+                        name="discription"
+                        value={formDatas.discription}
                         onChange={handleChange}
                         required // HTML5 validation
                       />
@@ -239,7 +277,7 @@ const PodcastAdmin = () => {
                         type="text"
                         placeholder="Enter the category"
                         name="category"
-                        value={formData.category}
+                        value={formDatas.category}
                         onChange={handleChange}
                         required // HTML5 validation
                       />
@@ -249,12 +287,7 @@ const PodcastAdmin = () => {
                     <label>Thumbnail</label>
                     <input
                       type="file"
-                      onChange={(e) =>
-                        setFormData({
-                          ...formData,
-                          thumbnail: e.target.files[0],
-                        })
-                      }
+                      onChange={handleThumbnailChange}
                       required // HTML5 validation: makes this field required
                     />
                   </div>
@@ -265,12 +298,7 @@ const PodcastAdmin = () => {
                       type="file"
                       id="videoFile"
                       name="videoFile"
-                      onChange={(e) =>
-                        setFormData({
-                          ...formData,
-                          videoFile: e.target.files[0],
-                        })
-                      }
+                      onChange={handleSourceChange}
                       required // HTML5 validation
                       // style={{ display: "none" }}
                     />
@@ -384,7 +412,6 @@ const PodcastAdmin = () => {
                 </form>
               )}
             </div>
-       
           </div>
         </div>
         <div className="PodcastAdmin-table"></div>
