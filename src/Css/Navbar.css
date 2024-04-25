@@ -89,8 +89,8 @@ nav {
     margin-top: -6%;
     margin-left: -3%;
     position: absolute;
-    width: 400px;
-    height: 41px;
+    width: 100%;
+    height: auto;
     /* background-color: red; */
   }
   .Login-btns button:hover {

@@ -13,7 +13,7 @@ const Hiringdata = () => {
          setData(response.data.response);
        };
        fetchData();
-     })
+     },[])
      const [searchInput, setSearchInput] = useState("");
 
      // Filtered data based on search input

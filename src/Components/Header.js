@@ -1,18 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import "../Css/Header.css";
 import Hdrleft from "../Images/Hdrleft.png";
 import Hdrright from "../Images/Hdrright.png";
 import Maskgroup from "../Images/Maskgroup.png";
-import Elements from "../Images/Elements.png";
+import Play from "../Images/Play.png";
 import Arrow from "../Images/Arrow.png";
 import { NavLink, useNavigate } from "react-router-dom";
 import FrameA from "../Images/FrameA.png";
 import FrameB from "../Images/FrameB.png";
+import { IoIosCloseCircleOutline } from "react-icons/io";
+import WHYAL from "../Videos/WHYAL.mp4"
 const Header = () => {
   const scrollToTop = () => {
     window.scrollTo(0, 0);
   };
   const navigate = useNavigate();
+  
+
+  const [showPopup, setShowPopup] = useState(false);
+
+  const togglePopup = () => {
+    setShowPopup(!showPopup);
+  };
+  
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const togglePlay = () => {
+    setIsPlaying(!isPlaying);
+  };
+
+  
   return (
     <div className="header-main">
       <div className="yellow-box">
@@ -43,21 +60,11 @@ const Header = () => {
       </div>
       <div className="header">
         <div className="header-container">
-          <img
-            src={Hdrleft}
-            
-            alt=""
-          />
+          <img src={Hdrleft} alt="" />
           <div className="hdr-text">
-            <h1>
-              Helping you{" "}
-            </h1>
-            <h2>
-              Find
-            </h2>
-            <h3>
-              Balance & Focus
-            </h3>
+            <h1>Helping you </h1>
+            <h2>Find</h2>
+            <h3>Balance & Focus</h3>
           </div>
           {/* <img
             src={Hdrright}
@@ -65,14 +72,14 @@ const Header = () => {
             data-aos-duration="1000"
             alt=""
           /> */}
-           <iframe
-              className="header-top-video"
-              src="https://www.youtube.com/embed/xMAQJtqDrK0?si=LzDZLLuGqNJmTpHX"
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
+          <iframe
+            className="header-top-video"
+            src="https://www.youtube.com/embed/xMAQJtqDrK0?si=LzDZLLuGqNJmTpHX"
+            title="YouTube video player"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          ></iframe>
         </div>
         <div className="hdr-tx">
           <p>
@@ -82,10 +89,7 @@ const Header = () => {
           </p>
         </div>
         <div className="categoreis-haeder">
-          <div
-            className="categoreis-grid-boxs"
-            
-          >
+          <div className="categoreis-grid-boxs">
             <div>
               <NavLink to="/EarlyagegadgetExposure" className="Links">
                 {" "}
@@ -134,7 +138,56 @@ const Header = () => {
         </div>
         <div className="hdr-btm-text">
           <img src={FrameA} alt="" />
-          <button>Why Active Listeners?</button>
+
+          {!showPopup && (
+            <button onClick={togglePopup}>Why Active Listeners?</button>
+          )}
+          {showPopup && (
+            <div className="popup">
+              <div className="popup-inner">
+                <IoIosCloseCircleOutline
+                  onClick={togglePopup}
+                  style={{ cursor: "pointer" }}
+                />
+                <div>
+                  {" "}
+                  <div>
+                    <div style={{ position: "relative", width: "100%" }}>
+                      <video
+                        controls
+                        style={{ width: "100%" }}
+                        onClick={togglePlay}
+                        onPlay={() => setIsPlaying(true)}
+                        onPause={() => setIsPlaying(false)}
+                      >
+                        <source src={WHYAL} type="video/mp4" />
+                        Your browser does not support the video tag.
+                      </video>
+                      {!isPlaying && (
+                        <div
+                          style={{
+                            position: "absolute",
+                            top: "50%",
+                            left: "50%",
+                            transform: "translate(-50%, -50%)",
+                            cursor: "pointer",
+                          }}
+                          onClick={togglePlay}
+                        >
+                          <img
+                          
+                            src={Play}
+                            alt="Start Icon"
+                            style={{ width: "50px", height: "50px" }}
+                          />
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
           <img src={FrameB} alt="" />
         </div>
       </div>

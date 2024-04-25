@@ -9,17 +9,20 @@ import { toast } from "react-toastify";
 
 
 const PodcastAdmin = () => {
-  
+  const [rows, setRows] = useState([]);
+  useEffect(()=>{
+
     const fetchProduct = async () => {
       try {
-      
-        
-        // setformDatas(response.data);
-
+        const data = await axios.get("admin/view_all_podcast");
+        console.log(data.data.reslt, "podcasts");
+        setRows(data.data.reslt);
       } catch (err) {
         return { status: false, message: "not found product" };
       }
     };
+    fetchProduct()
+  },[])
     
  
   const [showPopup, setShowPopup] = useState(false);
@@ -47,69 +50,7 @@ const PodcastAdmin = () => {
   };
 
 
-  const [rows, setRows] = useState([
-    {
-      id: 1,
-      column1: "01",
-      column2: "Why Active Listeners?",
-      column3: "Why Active Listeners?",
-      column4: "Home Page",
-      image: "https://via.placeholder.com/150",
-      discription: "Lorem ipsum dolor sit amet,",
-      cate: "6-12",
-    },
-    {
-      id: 2,
-      column1: "02",
-      column2: "hello",
-      column3: "Early Age Gadget Exposure",
-      column4: "Early Age Gadget Exposure",
-      image: "https://via.placeholder.com/150",
-      discription: "Lorem ipsum dolor sit amet,",
-      cate: "6-12",
-    },
-    {
-      id: 3,
-      column1: "01",
-      column2: "Why Active Listeners?",
-      column3: "Why Active Listeners?",
-      column4: "Home Page",
-      image: "https://via.placeholder.com/150",
-      discription: "Lorem ipsum dolor sit amet,",
-      cate: "6-12",
-    },
-    {
-      id: 4,
-      column1: "02",
-      column2: "hello",
-      column3: "Early Age Gadget Exposure",
-      column4: "Early Age Gadget Exposure",
-      image: "https://via.placeholder.com/150",
-      discription: "Lorem ipsum dolor sit amet,",
-      cate: "6-12",
-    },
-    {
-      id: 5,
-      column1: "01",
-      column2: "Why Active Listeners?",
-      column3: "Why Active Listeners?",
-      column4: "Home Page",
-      image: "https://via.placeholder.com/150",
-      discription: "Lorem ipsum dolor sit amet,",
-      cate: "6-12",
-    },
-    {
-      id: 6,
-      column1: "02",
-      column2: "hello",
-      column3: "Early Age Gadget Exposure",
-      column4: "Early Age Gadget Exposure",
-      image: "https://via.placeholder.com/150",
-      discription: "Lorem ipsum dolor sit amet,",
-      cate: "6-12",
-    },
-    // Add more rows as needed
-  ]);
+
   const [editingRowId, setEditingRowId] = useState(null);
   const [editedData, setEditedData] = useState({});
 
@@ -335,7 +276,7 @@ const PodcastAdmin = () => {
                     <th>Category |</th>
                     <th>Actions |</th>
                   </tr>
-                  {rows.map((row) => (
+                  {rows.map((row,index) => (
                     <tr key={row.id}>
                       <td>{row.column1}</td>
                       <td>
