@@ -248,13 +248,20 @@
   font-size: 19px;
 }
 @media screen and (max-width: 600px) {
-  .hdrsubs-butns img {
-    width: 48%;
-    margin-top: 3%;
+  .Subscribe-box-1 img{
+    width: 100px;
+    margin-top: -75px;
+  }
+  .Subscribe-box-1 {
+    margin: 20px;
 }
+  .hdrsubs-butns img {
+        width: 79%;
+        margin-top: -20%;
+    }
 .hdrsubs-butns-a img {
-    width: 51%;
-    margin-top: -30%;
+    width: 91%;
+        margin-top: -30%;
 }
   .btn-primary {
     padding: 10px 30px;
@@ -270,14 +277,16 @@
   .hdrsubs-butns {
     /* position: relative; */
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: -17%;
+    /* margin-top: -17%; */
     gap: 2rem;
   }
   .hdrsubs-butns-a {
     /* position: relative; */
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     margin-top: 17%;
@@ -364,7 +373,7 @@
     position: relative;
     background-color: #bae8ac;
     border-radius: 20px;
-    height: 550px;
+    height: auto;
     width: 90%;
     margin: auto;
   }
@@ -426,6 +435,14 @@
   }
 }
 @media (min-width: 600px) and (max-width: 1024px) {
+  .hdrsubs-butns img {
+    width: 47%;
+    margin-top: -1%;
+}
+  .Subscribe-box-1 img{
+    width: 100px;
+    margin-top: -10px;
+  }
   .cate-home-caro {
     display: flex;
     align-items: center;

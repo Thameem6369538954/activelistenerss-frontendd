@@ -151,14 +151,14 @@ const Subscribe = () => {
           >
             <div className="Subscribe-box">
               <div className="Subscribe-box-1">
-                <div>
+                <div style={{width:"70%"}}>
                   <h1>Grief Support Group</h1>
                   <p>Offline & Online weekly meetup</p>
                 </div>
                 <img
                   src={FreeMember}
-                  style={{ width: 100, marginTop: "-10px" }}
                   alt=""
+                  clas
                 />
               </div>
 
