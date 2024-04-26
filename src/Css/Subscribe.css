@@ -238,6 +238,10 @@
   border: none;
   border-radius: 20px;
 }
+.carosel-home-button {
+  margin-top: 15%;
+}
+
 .mentoonsbaner {
   margin-top: 140px;
 }

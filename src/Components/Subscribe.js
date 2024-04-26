@@ -151,15 +151,11 @@ const Subscribe = () => {
           >
             <div className="Subscribe-box">
               <div className="Subscribe-box-1">
-                <div style={{width:"70%"}}>
+                <div style={{ width: "70%" }}>
                   <h1>Grief Support Group</h1>
                   <p>Offline & Online weekly meetup</p>
                 </div>
-                <img
-                  src={FreeMember}
-                  alt=""
-                  clas
-                />
+                <img src={FreeMember} alt="" clas />
               </div>
 
               <ul className="Support-group">
@@ -296,12 +292,13 @@ const Subscribe = () => {
             </div>
           </div>
         </div>
+        <div className="carosel-home-button">
+          <NavLink className="Links" onClick={scrollToTop} to="/Podcast">
+            <button>Discover</button>
+          </NavLink>
+        </div>
       </div>
-      <div className="carosel-home-button">
-        <NavLink className="Links" onClick={scrollToTop} to="/Podcast">
-          <button>Discover</button>
-        </NavLink>
-      </div>
+
       <div className="mentoonsbaner">
         <img src={MentoonBenar} alt="" />
       </div>

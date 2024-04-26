@@ -36,6 +36,7 @@ import Ngo from "./NGO/Ngo.js";
 import Collegegraduate from "./CollegeGraduate/Collegegraduate.js";
 import Hiringdata from "./HiringAdmin/Hiringdata.js";
 import Ourteam from "./TeamName/Ourteam.js";
+import Userdatas from "../AdminPanel/Userlist/Userdatas.js"
 // import { MyChart } from "../Components/MyChart.js";
 // import { DoughnutChart } from "../Components/DoughnutChart.js";
 const Adminpanel = () => {
@@ -59,6 +60,12 @@ const Adminpanel = () => {
               <li>
                 <FiPieChart />
                 Dashboard
+              </li>
+            </Link>
+            <Link className="Links-for-admin" to="/Adminpanel/Userdatas">
+              <li>
+                <FiPieChart />
+                User Data
               </li>
             </Link>
             <Link className="Links-for-admin" to="/Adminpanel/Videoaddadmin">
@@ -240,6 +247,7 @@ const Adminpanel = () => {
             <Route path="/Package" element={<Package />} />
             <Route path="/Revenue" element={<Revenue />} />
             <Route path="/Ngo" element={<Ngo />} />
+            <Route path="/Userdatas" element={<Userdatas />} />
             <Route path="/Hiringdata" element={<Hiringdata />} />
             <Route path="/PodcastAdmin" element={<PodcastAdmin />} />
             <Route path="/Collegegraduate" element={<Collegegraduate />} />

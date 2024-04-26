@@ -1,11 +1,12 @@
-.form-position {
+.green-information {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: #bae8ac;
   padding: 15px;
   color: black;
-  font-weight: 700;
+  /* font-weight: 700; */
   border-radius: 10px;
-  margin-left: 30%;
-  margin-top: -30%;
 }
 .hiring-form-holeconatiner {
   display: flex;
@@ -13,7 +14,7 @@
   justify-content: center;
 }
 .container-form form {
-  padding: 50px;
+  /* padding: 50px; */
 }
 .form-first {
   margin-top: 50px;
@@ -63,8 +64,7 @@
         font-weight: 700;
         border-radius: 10px;
         /* width: 200%; */
-        position: absolute;
-        margin-top: -8%;
-        margin-left: 5%;
+        /* position: absolute; */
+        
     }
 }

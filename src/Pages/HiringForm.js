@@ -311,21 +311,23 @@ const HiringForm = (props) => {
           <h1>Join our Amazing</h1>
           <h2>Team</h2>
           <img src={Yellowline} className="Yellowline" alt="" />
-          <div className="down-arrow-conatiner">
+          {/* <div className="down-arrow-conatiner">
               <img src={Downarrow} className="down-arrow" alt="" />{" "}
             <p>
               Transformative support for those seeking clarity and understanding
               through active listening.
             </p>
-          </div>
+          </div> */}
         </div>
         <div className="hiring-form-holeconatiner">
           <div className="container-form">
             <form onSubmit={handleSubmit} encType="multipart/form-data">
+              <div className="green-information">
               <input type="hidden" name="position" value={position} />
               <span className="form-position">
                 Position Applied For :{position}
               </span>
+              </div>
               <div className="form-first">
                 <div className="details personal">
                   <div className="fields">

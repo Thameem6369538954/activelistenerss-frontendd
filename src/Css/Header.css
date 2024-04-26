@@ -6,6 +6,13 @@
   font-family: Relo;
   src: url(../Relo.ttf);
 }
+.hdr-text-landing {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 10px;
+    }
 .categoreis-haeder {
   margin-top: 50px;
 }
@@ -259,6 +266,13 @@
  background-color: #cd4631;
 } */
 @media screen and (max-width: 600px) {
+  .hdr-text-landing{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+  }
   .hdr-btm-text button {
         background-color: #ffdd7e;
         padding: 11px 31px;
@@ -390,7 +404,7 @@
     font-weight: 400;
     font-style: normal;
     font-size: 31px;
-    width: 124%;
+    width: 106%;
     margin-top: -15%;
 }
   .hdr-text h2 {
@@ -402,6 +416,7 @@
     font-family: Relo;
     font-weight: 900;
     font-size: 30px;
+    margin-left: -9px;
   }
   .puzzle-boy {
     flex-direction: column;
