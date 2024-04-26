@@ -152,7 +152,7 @@ const Teletherapy = () => {
           </div>
         </div>
       </div>
-
+        <div className="imsai-two">
       <div className="bottom-tele-image">
         {/* <img src={FlowerL} alt="" /> */}
         <div className="tele-bottom-box-main">
@@ -186,6 +186,8 @@ const Teletherapy = () => {
         </div>
         {/* <img src={FlowerR} alt="" /> */}
       </div>
+
+        </div>
       <Footer />
     </div>
   );

@@ -81,7 +81,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 7rem;
+  gap: 3rem;
   margin-top: -3%;
 }
 .card-text {
@@ -128,28 +128,37 @@ li {
 }
 .bottom-tele-image {
   display: flex;
-  align-items: center;
-  /* position: relative; */
-  justify-content: space-between;
-  margin-top: 20%;
+    align-items: center;
+    /* position: relative; */
+    justify-content: space-between;
+    margin: 5%;
 }
 .bottom-tele-image img {
   width: 25%;
 }
 
 .tele-bottom-box {
-  background-color: #bae8ac;
-  width: 515px;
-  height: 390px;
-  margin-top: -5%;
-  border-radius: 30px;
+    background-color: #bae8ac;
+    width: 515px;
+    height: 390px;
+    /* margin-top: -5%; */
+    border-radius: 30px;
+    /* flex: 0 0 130px; */
 }
 .tele-bottom-box-main {
-  display: flex;
+    display: flex;
+    flex-wrap: wrap;
+    /* flex: 0 0 76px; */
+    align-items: center;
+    gap: 2rem;
+    justify-content: center;
+    /* margin-left: 5%; */
+}
+.imsai-two{
+   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 12rem;
-  justify-content: space-between;
-  margin-left: 10%;
+  justify-content: center;
 }
 .tele-bottom-box {
   display: flex;
@@ -237,9 +246,10 @@ li {
     align-items: center;
     flex-direction: column;
     justify-content: space-between;
-    margin-left: 10%;
+    /* margin-left: 10%; */
     gap: 2rem;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
+    margin: 30px
   }
 
   .tele-buttons p {
@@ -263,6 +273,7 @@ li {
     justify-content: space-between;
     /* margin-top: 20%; */
     width: 32%;
+    margin-left: -67%;
   }
   .card-container {
     display: flex;

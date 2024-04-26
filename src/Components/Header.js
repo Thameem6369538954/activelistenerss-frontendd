@@ -85,7 +85,7 @@ const Header = () => {
       <div className="header">
         <div className="header-container">
           <img src={Hdrleft} alt="" />
-          <div className="hdr-text">
+          <div className="hdr-text-landing">
             <h1>Helping you </h1>
             <h2>Find</h2>
             <h3>Balance & Focus</h3>
@@ -96,7 +96,7 @@ const Header = () => {
             data-aos-duration="1000"
             alt=""
           /> */}
-          {console.log(rows,"loooooooooooooooooooooo")}
+          {console.log(rows, "loooooooooooooooooooooo")}
           <video
             controls // Ensure controls are enabled for user interaction
             className="Header-video-top"
@@ -183,7 +183,6 @@ const Header = () => {
                     <div style={{ position: "relative", width: "100%" }}>
                       <video
                         controls
-                      
                         className="header-video"
                         onClick={togglePlay}
                         onPlay={() => setIsPlaying(true)}

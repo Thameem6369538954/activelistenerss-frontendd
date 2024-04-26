@@ -259,9 +259,12 @@
     align-items: center;
     justify-content: center;
     gap: 0rem;
-    width: 360px;
-    height: auto;
+    width: 98%;
+    height: 185px;
     margin: auto;
+}
+.card-inneR-text{
+
 }
   .card-inneR h1 {
     font-family: Relo;
@@ -269,15 +272,15 @@
     font-size: 21px;
     margin-left: 1%;
   }
-  .card-inneR p {
-    font-family: myFont;
-    color: #256c55;
-    font-weight: 400;
-    font-style: normal;
-    font-size: 19px;
-    margin-top: -21%;
-    margin-left: 2px;
-  }
+     .card-inneR p {
+        font-family: myFont;
+        color: #256c55;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 29px;
+        /* margin-top: -4%; */
+        /* margin-left: 2px; */
+    }
   .card-inneR img {
     width: 57%;
     margin-left: -10%;

@@ -15,6 +15,7 @@ import cover from "../Images/cover.png";
 import PodcastRed from "../Images/PodcastRed.png";
 import axios from "../Utils/Baseurl.js";
 import { toast } from "react-toastify";
+import WHYAL from "../Videos/WHYAL.mp4";
 const EarlyAgeGadgetExposure = () => {
   const [rows, setRows] = useState([]);
   useEffect(() => {
@@ -91,11 +92,11 @@ const EarlyAgeGadgetExposure = () => {
 
           <div className="card-inneR">
             <div className="card-inneR-text">
-              <h1>Impact of</h1>
-              <h1>Gadgets on</h1>
+              <h1>Impact of Gadgets on</h1>
+              
               <p>children</p>
             </div>
-            {console.log(rows,"mahzaaaaaaaaaaaaaaaaaaaaa")}
+            {console.log(rows, "mahzaaaaaaaaaaaaaaaaaaaaa")}
             <video
               controls // Ensure controls are enabled for user interaction
               className="posdcast-video"
@@ -103,7 +104,7 @@ const EarlyAgeGadgetExposure = () => {
               // onPlay={() => setIsPlaying(true)}
               // onPause={() => setIsPlaying(false)}
             >
-              <source src={rows[1].source} type="video/mp4" />{" "}
+              <source src={WHYAL} type="video/mp4" />{" "}
               {/* Make sure src and type are correctly set */}
               Your browser does not support the video tag.
             </video>

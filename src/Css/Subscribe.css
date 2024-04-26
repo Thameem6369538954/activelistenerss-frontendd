@@ -339,13 +339,7 @@
     position: relative;
     /* z-index: -1; */
   }
-  .news-letter input {
-    width: 194px;
-    height: 61px;
-    margin-left: -1%;
-    /* padding: 28px; */
-    border-radius: 20px;
-  }
+ 
   .news-letter-main button {
     background-color: #bae8ac;
     padding: 16px 142px;
@@ -442,6 +436,14 @@
     gap: 0rem;
     display: none;
   }
+  .Subscribe-heading p {
+    font-family: "Satisfy", cursive;
+    margin-bottom: -1%;
+    font-size: 30px;
+    text-decoration: underline;
+    width: 67%;
+    text-align: center;
+}
 }
 @media (min-width: 600px) and (max-width: 1024px) {
   .hdrsubs-butns img {

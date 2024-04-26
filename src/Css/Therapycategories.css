@@ -70,6 +70,14 @@
   text-decoration: underline;
 }
 @media screen and (max-width: 600px) {
+  .therapy-heading p {
+    font-family: "Satisfy", cursive;
+    margin-bottom: -1%;
+    font-size: 30px;
+    text-decoration: underline;
+    width: 68%;
+    text-align: center;
+}
   .therapy-heading span {
     /* background-color: red; */
     margin: auto;

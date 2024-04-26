@@ -111,6 +111,13 @@
   font-size: 80px;
   /* color: lightpink; */
 }
+.hdr-text-landing h1 {
+  font-family: myFont;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 80px;
+  /* color: lightpink; */
+}
 .hdr-text h3 {
   font-family: myFont;
   color: #256c55;
@@ -119,7 +126,21 @@
   font-size: 80px;
   margin-top: -10%;
 }
+.hdr-text-landing h3 {
+  font-family: myFont;
+  color: #256c55;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 80px;
+  margin-top: -10%;
+}
 .hdr-text h2 {
+  font-family: Relo;
+  font-weight: 900;
+  font-size: 62px;
+  margin-top: -6%;
+}
+.hdr-text-landing h2 {
   font-family: Relo;
   font-weight: 900;
   font-size: 62px;
@@ -249,12 +270,12 @@
         font-weight: 400;
         font-style: normal;
     }
-  .header-video {
-    width: 115%;
-    border-radius: 20px;
-    margin-left: -13%;
-    margin-top: 1%;
-}
+    .header-video {
+        width: 226px;
+        border-radius: 20px;
+        margin-left: -1%;
+        margin-top: 1%;
+    }
   .Header-video-top {
     width: 50%;
     border-radius: 20px;
@@ -275,8 +296,7 @@
 }
 .header-container img{
   width: 35%;
-  /* margin-top: -20px; */
-  background-color: #cd4631;
+
 }
 .header-container img:nth-child(1){
   background-color: #cd4631;
@@ -349,16 +369,36 @@
     font-style: normal;
     font-size: 30px;
   }
+  .hdr-text-landing h1 {
+    font-family: myFont;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 30px;
+  }
  .hdr-text h3 {
     font-family: myFont;
     color: #256c55;
     font-weight: 400;
     font-style: normal;
     font-size: 31px;
-    width: 100%;
+    /* width: 124%; */
+    margin-top: -15%;
+}
+ .hdr-text-landing h3 {
+    font-family: myFont;
+    color: #256c55;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 31px;
+    width: 124%;
     margin-top: -15%;
 }
   .hdr-text h2 {
+    font-family: Relo;
+    font-weight: 900;
+    font-size: 30px;
+  }
+  .hdr-text-landing h2 {
     font-family: Relo;
     font-weight: 900;
     font-size: 30px;
@@ -422,6 +462,10 @@
     margin: 10px;
 }
   .hdr-text h3 {
+    font-size: 40px;;
+    width: 136%;
+}
+  .hdr-text-landing h3 {
     font-size: 40px;;
     width: 136%;
 }
