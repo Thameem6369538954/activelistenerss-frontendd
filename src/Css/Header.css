@@ -479,7 +479,7 @@
 }
   .hdr-text h3 {
     font-size: 40px;;
-    width: 136%;
+    /* width: 136%; */
 }
 .hdr-text-landing h1 {
     font-family: myFont;
@@ -529,7 +529,7 @@
     font-weight: 400;
     font-style: normal;
     font-size: 59px;
-    width: 124%;
+    /* width: 124%; */
   }
   .header-container {
     display: flex;

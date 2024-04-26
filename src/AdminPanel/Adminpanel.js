@@ -39,6 +39,7 @@ import Ourteam from "./TeamName/Ourteam.js";
 import Userdatas from "../AdminPanel/Userlist/Userdatas.js"
 // import { MyChart } from "../Components/MyChart.js";
 // import { DoughnutChart } from "../Components/DoughnutChart.js";
+import { BsClipboard2Data } from "react-icons/bs";
 const Adminpanel = () => {
  
 
@@ -64,7 +65,7 @@ const Adminpanel = () => {
             </Link>
             <Link className="Links-for-admin" to="/Adminpanel/Userdatas">
               <li>
-                <FiPieChart />
+                <BsClipboard2Data />
                 User Data
               </li>
             </Link>
