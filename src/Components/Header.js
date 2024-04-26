@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import "../Css/Header.css";
 import Hdrleft from "../Images/Hdrleft.png";
 import Hdrright from "../Images/Hdrright.png";
@@ -10,7 +10,31 @@ import FrameA from "../Images/FrameA.png";
 import FrameB from "../Images/FrameB.png";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import WHYAL from "../Videos/WHYAL.mp4"
+import { MdPlayCircleFilled } from "react-icons/md";
+import axios from "../Utils/Baseurl.js";
+import { toast } from "react-toastify";
+
 const Header = () => {
+
+  const [rows, setRows] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("admin/get_allVideos");
+        console.log(response.data.reslt); // Log the second object in the response
+        if (response) {
+          const videoData = response.data.reslt; // Retrieve the video data
+          // Now you can use videoData to set the state or display the video
+          setRows(videoData);
+        } else {
+          toast.error("something went wrong!!");
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, []);
   const scrollToTop = () => {
     window.scrollTo(0, 0);
   };
@@ -33,7 +57,7 @@ const Header = () => {
   return (
     <div className="header-main">
       <div className="yellow-box">
-        <ul className="yellow-box-ul" style={{ display: "flex" }}>
+        <ul className="yellow-box-ul">
           <marquee>
             <div className="main-y-div">
               <div>
@@ -72,14 +96,18 @@ const Header = () => {
             data-aos-duration="1000"
             alt=""
           /> */}
-          <iframe
-            className="header-top-video"
-            src="https://www.youtube.com/embed/xMAQJtqDrK0?si=LzDZLLuGqNJmTpHX"
-            title="YouTube video player"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          ></iframe>
+          {console.log(rows,"loooooooooooooooooooooo")}
+          <video
+            controls // Ensure controls are enabled for user interaction
+            className="Header-video-top"
+            onClick={togglePlay}
+            onPlay={() => setIsPlaying(true)}
+            onPause={() => setIsPlaying(false)}
+          >
+            <source src={WHYAL} type="video/mp4" />
+            {/* Make sure src and type are correctly set */}
+            Your browser does not support the video tag.
+          </video>
         </div>
         <div className="hdr-tx">
           <p>
@@ -147,7 +175,7 @@ const Header = () => {
               <div className="popup-inner">
                 <IoIosCloseCircleOutline
                   onClick={togglePopup}
-                  style={{ cursor: "pointer" }}
+                  className="Header-video-close"
                 />
                 <div>
                   {" "}
@@ -155,7 +183,8 @@ const Header = () => {
                     <div style={{ position: "relative", width: "100%" }}>
                       <video
                         controls
-                        style={{ width: "100%" }}
+                      
+                        className="header-video"
                         onClick={togglePlay}
                         onPlay={() => setIsPlaying(true)}
                         onPause={() => setIsPlaying(false)}
@@ -163,25 +192,26 @@ const Header = () => {
                         <source src={WHYAL} type="video/mp4" />
                         Your browser does not support the video tag.
                       </video>
-                      {!isPlaying && (
-                        <div
-                          style={{
-                            position: "absolute",
-                            top: "50%",
-                            left: "50%",
-                            transform: "translate(-50%, -50%)",
-                            cursor: "pointer",
-                          }}
-                          onClick={togglePlay}
-                        >
-                          <img
-                          
-                            src={Play}
-                            alt="Start Icon"
-                            style={{ width: "50px", height: "50px" }}
-                          />
-                        </div>
-                      )}
+                      <div>
+                        {!isPlaying && (
+                          <div
+                            style={{
+                              position: "absolute",
+                              top: "50%",
+                              left: "50%",
+                              transform: "translate(-50%, -50%)",
+                              cursor: "pointer",
+                              // width:"20px"
+                            }}
+                            className="play-center-btn"
+                            onClick={togglePlay}
+                          >
+                            <div>
+                              <MdPlayCircleFilled onClick={togglePlay} />
+                            </div>
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </div>
                 </div>

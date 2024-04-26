@@ -35,7 +35,7 @@ const Podcast = () => {
               <img src={Rounda} alt="" />
             </div>
             <div className="card-hole">
-              <div className="card-inner">
+              <div className="podcast-card-inner">
                 <img
                   src={cover}
                   style={{ width: "30%", margin: 40, borderRadius: 20 }}

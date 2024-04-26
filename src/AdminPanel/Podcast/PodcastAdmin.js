@@ -178,8 +178,8 @@ const PodcastAdmin = () => {
       <div className="PodcastAdmin-main-coantiner">
         <div className="video-add-main-container">
           <div className="video-add-top-btn">
-            <h1>Upload Video</h1>
-            <button onClick={togglePopup}>Upload a New Video</button>
+            <h1>Upload Podcast</h1>
+            <button onClick={togglePopup}>Upload a New Podcast</button>
           </div>
           {showPopup && (
             <div className="video-popup">
@@ -232,7 +232,7 @@ const PodcastAdmin = () => {
                       required // HTML5 validation: makes this field required
                     />
                   </div>
-                  <label>Upload Video</label>
+                  <label>Upload Podcast</label>
                   <div className="video-admin-inputs">
                     <h2>Drag and Drop Files here</h2>
                     <input
@@ -271,25 +271,25 @@ const PodcastAdmin = () => {
                     <th>Sr. no |</th>
                     <th>Created Date</th>
                     <th>Video Title |</th>
-                    <th>Page |</th>
+                   
                     <th>Description |</th>
                     <th>Category |</th>
                     <th>Actions |</th>
                   </tr>
-                  {rows.map((row,index) => (
+                  {rows.map((row, index) => (
                     <tr key={row.id}>
-                      <td>{row.column1}</td>
+                      <td>{index+1}</td>
                       <td>
                         <img
-                          src={row.image}
+                          src={row.thumbnail}
                           alt="Thumbnail"
                           style={{ width: "50px", height: "50px" }}
                         />
                       </td>
-                      <td>{row.column3}</td>
+                      <td>{row.title}</td>
+                      
                       <td>{row.discription}</td>
-                      <td>{row.column4}</td>
-                      <td>{row.cate}</td>
+                      <td>{row.category}</td>
                       <td>
                         {editingRowId === row.id ? (
                           <div className="action-buttons-save">

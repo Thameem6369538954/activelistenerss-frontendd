@@ -29,7 +29,7 @@ const Breadcrumps = () => {
               onClick={handleGoBack}
               style={{ cursor: "pointer", listStyleType: "none" }}
             >
-              <VscArrowSmallLeft className='back-arrow' /> Go Back
+              <VscArrowSmallLeft className='back-arrow' />
             </li>
             {breadcrumbs.map(({ label, path }, index) => (
               <li key={index} className="breadcrumb-item">

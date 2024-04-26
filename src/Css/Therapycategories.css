@@ -86,7 +86,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-left: 7%;
+    /* margin-left: 7%; */
   }
   .theropy-box-main {
     display: flex;

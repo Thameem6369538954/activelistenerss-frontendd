@@ -1,106 +1,177 @@
-import React,{useState} from 'react'
-import "./Videoaddadmin.css"
-import GamingAddiction from "../../Images/GamingAddiction.png";
+import React, { useEffect, useState } from 'react';
+import "./Videoaddadmin.css";
 import { CgCloseO } from "react-icons/cg";
 import { AiOutlineEdit } from "react-icons/ai";
 import { LiaSaveSolid } from "react-icons/lia";
+import axios from "../../Utils/Baseurl";
+import { toast } from "react-toastify";
 
 const Videoaddadmin = () => {
-   const [showPopup, setShowPopup] = useState(false);
-   const [videoData, setVideoData] = useState({
-     videoFile: null,
-   });
-
-   const togglePopup = () => {
-     setShowPopup(!showPopup);
-   };
-
-   const handleInputChange = (event) => {
-     const { name, value } = event.target;
-     setVideoData({
-       ...videoData,
-       [name]: value,
-     });
-   };
-
-   const handleFileChange = (event) => {
-     setVideoData({
-       ...videoData,
-       videoFile: event.target.files[0],
-     });
-   };
-
-   const handleSubmit = (event) => {
-     event.preventDefault();
-     // Here you can handle the form submission, for now, let's just log the data
-     console.log(videoData);
-     // You can then add logic to save this data to your database or display it in the table
-   };
-const [rows, setRows] = useState([
-  {
-    id: 1,
-    column1: "01",
-    column2: "Why Active Listeners?",
-    column3: "Why Active Listeners?",
-    column4: "Home Page",
-    image: "https://via.placeholder.com/150",
-  },
-  {
-    id: 2,
-    column1: "02",
-    column2: "hello",
-    column3: "Early Age Gadget Exposure",
-    column4: "Early Age Gadget Exposure",
-    image: "https://via.placeholder.com/150",
-  },
-  // Add more rows as needed
-]);
-const [editingRowId, setEditingRowId] = useState(null);
-const [editedData, setEditedData] = useState({});
-
-const handleDeleteClick = (id) => {
-  setRows(rows.filter((row) => row.id !== id));
-};
-
-const handleEditClick = (row) => {
-  setEditingRowId(row.id);
-  setEditedData(row);
-};
-
-const handleSaveEdit = () => {
-  const updatedRows = rows.map((row) => {
-    if (row.id === editedData.id) {
-      return editedData;
+  const [rows, setRows] = useState([]);
+  useEffect(()=>{
+    const fetchData = async()=>{
+      try {
+        const response = await axios.get('admin/get_allVideos')
+        console.log(response);
+        if(response){
+          setRows(response.data.reslt)
+        }else{
+          toast.error("something went wrong!!")
+        }
+      } catch (error) {
+        console.log(error);
+      }
     }
-    return row;
+    fetchData()
+  },[])
+
+  const [showPopup, setShowPopup] = useState(false);
+  const [showPopupEdit,setShowPopupEdit] = useState(false);
+  const [newPopupEdit,setNewPopupEdit] = useState(false);
+  const [fieldData, setFieldData] = useState({
+    title: "",
+    page: ""
   });
-  setRows(updatedRows);
-  setEditingRowId(null);
-};
 
-const handleInputChanged = (e) => {
-  const { name, value } = e.target;
-  setEditedData((prevData) => ({
-    ...prevData,
-    [name]: value,
-  }));
-};
+  const [thumbnail, setThumbnail] = useState(null);
+  const [source, setSource] = useState(null);
+  const [editedData, setEditedData] = useState({});
 
-const handleImageChange = (e) => {
-  const file = e.target.files[0];
-  const reader = new FileReader();
-  reader.onload = (event) => {
+
+
+  const handleSelectThumb = (e) => {
+    const thumb = e.target.files[0];
+    if (thumb) {
+      setThumbnail(thumb);
+    } else {
+      e.target.value = null;
+    }
+  };
+
+  const handleSelectSource = (e) => {
+    const source = e.target.files[0];
+    if (source) {
+      setSource(source);
+    } else {
+      e.target.value = null;
+    }
+  };
+
+  var togglePopup = () => {
+    setShowPopup(!showPopup);
+  };
+  var togglePopupNew = () => {
+    setNewPopupEdit(!newPopupEdit);
+  };
+
+ const togglePopupedit =()=>{
+    setShowPopupEdit(!showPopupEdit)
+  }
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    console.log(thumbnail,"pppppppppppppppppp");
+    const formData = new FormData();
+
+    formData.append("title", fieldData.title);
+    formData.append("page", fieldData.page);
+    formData.append("thumbnail", thumbnail);
+    formData.append("source", source);
+    console.log(formData);
+try {
+  const response = await axios.post("admin/add_videos", formData);
+    console.log(response, "kktt");
+    if(response){
+      console.log(response.data.message);
+      if(response.data.message === "successfully added Video!!"){
+
+        toast.success("successfully added Video!!")
+        setFieldData({title:"",page:""})
+        setThumbnail(null)
+        setSource(null)
+      }else{
+        toast.error(response.data.message)
+      }
+    }else{
+      toast.success("Something went wrong!!")
+    }
+} catch (error) {
+  console.log(error);
+}
+    
+  };
+
+  const handleDeleteClick = async(id) => {
+
+    try {
+      const response = await axios.delete(`admin/delete_one_video/${id}`)
+      console.log(response);
+      if(response){
+        if(response.data.message==="successfully deleted!!"){
+          toast.success("deleted!!")
+          setRows(rows.filter(row => row._id !== id));
+
+        }
+      }
+    } catch (error) {
+      toast.error("Please try again later!!")
+    }
+  };
+
+  
+
+  const handleEditClick = async(id) => {
+
+    togglePopupNew()
+    // const response = await axios.post(admin/view_and_editVideo/${id})
+    //   console.log(response);
+    //   if(response){
+    //     if(response.data.message==="successfully updated!!"){
+    //       toast.success("deleted!!")
+    //       setRows(rows.filter(row => row._id !== id));
+
+    //     }
+    //   }
+    // } catch (error) {
+    //   toast.error("Please try again later!!")
+    // }
+  };
+
+  const handleSaveEdit = () => {
+    const updatedRows = rows.map((row) => {
+      if (row.id === editedData.id) {
+        return editedData;
+      }
+      return row;
+    });
+    setRows(updatedRows);
+    setEditedData({});
+  };
+
+  const handleInputChanged = (e) => {
+    const { name, value } = e.target;
     setEditedData((prevData) => ({
       ...prevData,
-      image: event.target.result,
+      [name]: value,
     }));
   };
-  reader.readAsDataURL(file);
-};
 
-const handleCancelEdit = () => {
-  setEditingRowId(null); // Reset editingRowId to null to close the form
-};
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      setEditedData((prevData) => ({
+        ...prevData,
+        image: event.target.result,
+      }));
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const handleCancelEdit = () => {
+    setEditedData({});
+  };
+
   return (
     <div>
       <div className="video-add-main-container">
@@ -111,62 +182,43 @@ const handleCancelEdit = () => {
         {showPopup && (
           <div className="video-popup">
             <div className="video-popup-content">
-              {/* <span className="close" onClick={togglePopup}>
-                <CgCloseO />
-              </span> */}
               <h2>Upload Video</h2>
-              <form onSubmit={handleSubmit}>
+              <form onSubmit={handleSubmit} encType='multipart/form-data'>
                 <div className="video-top-inputs">
                   <div>
                     <label>Title of the Video</label>
-                    <input type="text" placeholder="Enter the title" />
+                    <input type="text" value={fieldData.title} onChange={(e) => setFieldData({ ...fieldData, title: e.target.value })} placeholder="Enter the title" />
                   </div>
                   <div className="select-page-videos">
                     <label>Select Page : </label>
-                    <select name="cars" id="cars">
-                      <option value="volvo">Select the Page</option>
-                      <option value="saab">Saab</option>
-                      <option value="opel">Opel</option>
-                      <option value="audi">Audi</option>
+                    <select name="page" id="page" value={fieldData.page} onChange={(e) => setFieldData({ ...fieldData, page: e.target.value })}>
+                      <option value="">Select the Page</option>
+                      <option value="home">Home Page</option>
+                      <option value="senses">Senses Resurrection</option>
+                      <option value="oneone">One-On-One Session</option>
                     </select>
                   </div>
                 </div>
                 <div className="video-thumbnil-inputs">
                   <label>Thumbnail</label>
-                  <input type="file" />
+                  <input type="file" name="thumbnail" id="thumbnail" onChange={handleSelectThumb} />
                 </div>
                 <label>Upload Video</label>
                 <div className="video-admin-inputs">
-                  {/* <img src={Videoup} alt="" /> */}
                   <h2>Drag and Drop Files here</h2>
-                  <input
-                    type="file"
-                    id="videoFile"
-                    name="videoFile"
-                    // onChange={handleFileChange}
-                    style={{ display: "none" }} // Add this style inline
-                  />
-                  <label
-                    htmlFor="videoFile"
-                    className="custom-file-input"
-                    data-file-name=""
-                  >
-                    Upload a file
-                  </label>
+                  <input type="file" id="videoFile" name="videoFile" onChange={handleSelectSource} style={{ display: "none" }} />
+                  <label htmlFor="videoFile" className="custom-file-input" data-file-name="">Upload a file</label>
                 </div>
                 <div className="video-submit-btns">
                   <button type="submit">Submit</button>
-                  <button type="submit" onClick={togglePopup}>
-                    Cancel
-                  </button>
+                  <button type="button" onClick={togglePopup}>Cancel</button>
                 </div>
               </form>
             </div>
           </div>
         )}
 
-        <div class="box-wrap">
-          {" "}
+        <div className="box-wrap">
           <div className="table-container">
             <table>
               <tbody>
@@ -177,80 +229,65 @@ const handleCancelEdit = () => {
                   <th>Page |</th>
                   <th>Actions |</th>
                 </tr>
-                {rows.map((row) => (
-                  <tr key={row.id}>
-                    <td>{row.column1}</td>
+                {rows.map((row,index) => (
+                  <tr key={row._id}>
+                    <td>{index+1}</td>
                     <td>
-                      <img
-                        src={row.image}
-                        alt="Thumbnail"
-                        style={{ width: "50px", height: "50px" }}
-                      />
+                      <img src={row.thumbnail} alt="Thumbnail" style={{ width: "50px", height: "50px" }} />
                     </td>
-                    <td>{row.column3}</td>
-                    <td>{row.column4}</td>
+                    <td>{row.title}</td>
+                    <td>{row.page}</td>
                     <td>
-                      {editingRowId === row.id ? (
-                        <div className="action-buttons-save">
-                          <button onClick={handleSaveEdit}>
-                            Save <LiaSaveSolid className="video-save" />
-                          </button>
-                        </div>
-                      ) : (
+  
                         <div className="action-buttons">
-                          <button onClick={() => handleDeleteClick(row.id)}>
-                            Delete <CgCloseO className="video-delete-new" />
-                          </button>
-                          <button onClick={() => handleEditClick(row)}>
-                            Edit <AiOutlineEdit className="video-edit" />
-                          </button>
+                          <button onClick={() => handleDeleteClick(row._id)}>Delete <CgCloseO className="video-delete-new" /></button>
+                          <button onClick={() => handleEditClick(row._id)}>Edit <AiOutlineEdit className="video-edit" /></button>
                         </div>
-                      )}
+                     
                     </td>
+                    {newPopupEdit && (
+          <div className="video-popup">
+            <div className="video-popup-content">
+              <h2>Update Video</h2>
+              <form onSubmit={handleSubmit} encType='multipart/form-data'>
+                <div className="video-top-inputs">
+                  <div>
+                    <label>Title of the Video</label>
+                    <input type="text" value={fieldData.title} onChange={(e) => setFieldData({ ...fieldData, title: e.target.value })} placeholder="Enter the title" />
+                  </div>
+                  <div className="select-page-videos">
+                    <label>Select Page : </label>
+                    <select name="page" id="page" value={fieldData.page} onChange={(e) => setFieldData({ ...fieldData, page: e.target.value })}>
+                      <option value="">Select the Page</option>
+                      <option value="home">Home Page</option>
+                      <option value="senses">Senses Resurrection</option>
+                      <option value="oneone">One-On-One Session</option>
+                    </select>
+                  </div>
+                </div>
+                <div className="video-thumbnil-inputs">
+                  <label>Thumbnail</label>
+                  <input type="file" name="thumbnail" id="thumbnail" onChange={handleSelectThumb} />
+                </div>
+                <label>Upload Video</label>
+                <div className="video-admin-inputs">
+                  <h2>Drag and Drop Files here</h2>
+                  <input type="file" id="videoFile" name="videoFile" onChange={handleSelectSource} style={{ display: "none" }} />
+                  <label htmlFor="videoFile" className="custom-file-input" data-file-name="">Upload a file</label>
+                </div>
+                <div className="video-submit-btns">
+                  <button type="submit">Submit</button>
+                  <button type="button" onClick={togglePopup}>Cancel</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        )}
+
                   </tr>
                 ))}
               </tbody>
             </table>
-            {editingRowId && (
-              <form>
-                <div className="edit-form">
-                  <div className="edit-form-cancel">
-                    <button type="button" onClick={handleCancelEdit}>
-                      Cancel
-                    </button>
-                  </div>
-                  <div>
-                    <label>Thumbnail</label>
-                    <input
-                      type="file"
-                      accept="image/*"
-                      onChange={handleImageChange}
-                    />
-                  </div>
-                 
-                  <div>
-                    <label>Title :</label>
-                    <input
-                      type="text"
-                      name="column3"
-                      value={editedData.column3}
-                      onChange={handleInputChanged}
-                    />
-                  </div>
-                  <div>
-                    <label>Page Name :</label>
-                    <input
-                      type="text"
-                      name="column4"
-                      value={editedData.column4}
-                      onChange={handleInputChanged}
-                    />
-                  </div>
-                </div>
-
-                <div></div>
-              </form>
-            )}
           </div>
         </div>
       </div>
@@ -258,4 +295,4 @@ const handleCancelEdit = () => {
   );
 }
 
-export default Videoaddadmin
+export default Videoaddadmin;

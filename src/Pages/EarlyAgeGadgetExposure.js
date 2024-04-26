@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import Navbar from "../Components/Navbar";
 import GetinTouch from "../Components/GetinTouch";
 import Footer from "../Components/Footer";
@@ -13,7 +13,28 @@ import Group119 from "../Images/Group 119.png";
 import Maskgroup from "../Images/Mask group.png";
 import cover from "../Images/cover.png";
 import PodcastRed from "../Images/PodcastRed.png";
+import axios from "../Utils/Baseurl.js";
+import { toast } from "react-toastify";
 const EarlyAgeGadgetExposure = () => {
+  const [rows, setRows] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("admin/get_allVideos");
+        console.log(response.data.reslt,"ppppppppppppppppppppppppppppppp"); // Log the second object in the response
+        if (response) {
+          const videoData = response.data.reslt; // Retrieve the video data
+          // Now you can use videoData to set the state or display the video
+          setRows(videoData);
+        } else {
+          toast.error("something went wrong!!");
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, []);
   return (
     <div className="home-main">
       <Navbar />
@@ -74,14 +95,18 @@ const EarlyAgeGadgetExposure = () => {
               <h1>Gadgets on</h1>
               <p>children</p>
             </div>
-            <iframe
-              className="MobileAddiction-yt-video"
-              src="https://www.youtube.com/embed/EhtGMxfwz10?si=Hg8cJGmLY574GBDX"
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
+            {console.log(rows,"mahzaaaaaaaaaaaaaaaaaaaaa")}
+            <video
+              controls // Ensure controls are enabled for user interaction
+              className="posdcast-video"
+              // onClick={togglePlay}
+              // onPlay={() => setIsPlaying(true)}
+              // onPause={() => setIsPlaying(false)}
+            >
+              <source src={rows[1].source} type="video/mp4" />{" "}
+              {/* Make sure src and type are correctly set */}
+              Your browser does not support the video tag.
+            </video>
           </div>
         </div>
       </div>

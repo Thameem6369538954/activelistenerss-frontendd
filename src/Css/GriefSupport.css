@@ -158,8 +158,9 @@
 }
 
 .circle-b img {
-  bottom: -45px;
-  right: -115px;
+  width: 700px;
+  bottom: 55px;
+  right: -79px;
   animation-name: move-down1;
 }
 
@@ -349,9 +350,11 @@ form .fields .input-field {
   border-radius: 5px;
   border: 1px solid #aaa;
   padding: 0 15px;
-  height: 42px;
+  /* height: 42px; */
+  flex: 1 0 40px;
   margin: 8px 0;
 }
+
 .input-field input:is(:focus, :valid) {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.13);
 }

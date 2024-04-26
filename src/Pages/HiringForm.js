@@ -304,7 +304,6 @@ const HiringForm = (props) => {
 
   return (
     <div>
-      
       <Navbar />
       <div className="hiring-form-main">
         <div className="therapy-heading">
@@ -312,11 +311,13 @@ const HiringForm = (props) => {
           <h1>Join our Amazing</h1>
           <h2>Team</h2>
           <img src={Yellowline} className="Yellowline" alt="" />
-          <h4>
-            <img src={Downarrow} className="down-arrow" alt="" /> Transformative
-            support for those seeking clarity and understanding through active
-            listening.
-          </h4>
+          <div className="down-arrow-conatiner">
+              <img src={Downarrow} className="down-arrow" alt="" />{" "}
+            <p>
+              Transformative support for those seeking clarity and understanding
+              through active listening.
+            </p>
+          </div>
         </div>
         <div className="hiring-form-holeconatiner">
           <div className="container-form">
@@ -404,7 +405,7 @@ const HiringForm = (props) => {
                         placeholder="Enter your cover letter"
                         value={formDatas.coverletter}
                         onChange={handleChange}
-                        style={{ width: 800, height: 90 }}
+                        className="input-coverletter"
                       />
                       {errors.coverletter && (
                         <span className="error">{errors.coverletter}</span>

@@ -173,6 +173,7 @@ h4 {
   margin-right: 30px;
 }
 @media screen and (max-width: 600px) {
+ 
   .addiction-videos{
   /* background-color: red; */
   width: 60%;
@@ -218,11 +219,11 @@ h4 {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 199px;
+    height: auto;
     /* margin: 2% auto; */
     border-radius: 10px;
-    margin-left: 14px;
-    margin-top: 20px;
+    /* margin-left: 14px;
+    margin-top: 20px; */
   }
   .mobile-addiction-box-green img:nth-child(3) {
     background-color: red;

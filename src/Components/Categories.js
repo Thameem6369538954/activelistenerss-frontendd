@@ -14,10 +14,13 @@ const Categories = () => {
   return (
     <div className="categories-main-holecontainer">
       <div className="puzzle-boy">
+        <div className="imsha">
         <div className="bg" data-aos="zoom-in" data-aos-duration="1000">
           <span>Services we Offer</span>
           <p>Our Core</p>
           <h1>Discoveries</h1>
+        </div>
+
         </div>
         <div className="element">
           <img

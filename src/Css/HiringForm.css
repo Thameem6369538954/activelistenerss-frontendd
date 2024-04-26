@@ -18,6 +18,34 @@
 .form-first {
   margin-top: 50px;
 }
+.input-coverletter{
+  padding: 10px;
+}
+.down-arrow-conatiner {
+    margin: 0px 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.down-arrow-conatiner p{
+   font-family: "Questrial", sans-serif;
+  font-size: 18px;
+  margin: 10px;
+  text-decoration: none;
+}
+@media screen and (max-width: 599px){
+ .container-form form {
+    position: relative;
+    margin-top: 16px;
+    height: auto;
+    /* background-color: red; */
+    overflow: hidden;
+}
+.hiring-form-main {
+    height: auto;
+  }
+
+}
 @media screen and (max-width: 600px) {
   .hiring-form-holeconatiner {
     display: flex;
@@ -26,17 +54,17 @@
     margin-bottom: 130px;
   }
   .hiring-form-main {
-    height: 125vh;
+    height: 135vh;
   }
-  .form-position {
-    background-color: #bae8ac;
-    padding: 15px;
-    color: black;
-    font-weight: 700;
-    border-radius: 10px;
-    /* width: 200%; */
-    position: absolute;
-    margin-top: -17%;
-    margin-left: -10%;
-  }
+     .form-position {
+        background-color: #bae8ac;
+        padding: 15px;
+        color: black;
+        font-weight: 700;
+        border-radius: 10px;
+        /* width: 200%; */
+        position: absolute;
+        margin-top: -8%;
+        margin-left: 5%;
+    }
 }
