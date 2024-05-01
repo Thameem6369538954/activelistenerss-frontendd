@@ -99,7 +99,7 @@ const EarlyAgeGadgetExposure = () => {
             {console.log(rows, "mahzaaaaaaaaaaaaaaaaaaaaa")}
             <video
               controls // Ensure controls are enabled for user interaction
-              className="posdcast-video"
+              className="early-age-video"
               // onClick={togglePlay}
               // onPlay={() => setIsPlaying(true)}
               // onPause={() => setIsPlaying(false)}

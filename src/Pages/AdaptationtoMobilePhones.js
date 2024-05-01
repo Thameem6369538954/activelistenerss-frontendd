@@ -14,6 +14,8 @@ import Group119 from "../Images/Group 119.png";
 import Maskgroup from "../Images/Mask group.png";
 import cover from "../Images/cover.png";
 import PodcastRed from "../Images/PodcastRed.png";
+import WHYAL from "../Videos/WHYAL.mp4";
+
 const AdaptationtoMobilePhones = () => {
   return (
     <div>
@@ -39,20 +41,23 @@ const AdaptationtoMobilePhones = () => {
                 Phones
               </h3>
             </div>
-            <img
+            {/* <img
               src={earlyAgeright2}
               data-aos="fade-right"
               data-aos-duration="1000"
               alt=""
-            />
-            {/* <iframe
-              className="adpatation-to-mobile-yt-video"
-              src="https://www.youtube.com/embed/MSzppjFe1iM?si=-Bm6Z01t75zFvvZz"
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe> */}
+            /> */}
+            <video
+              controls // Ensure controls are enabled for user interaction
+              className="adaptation-video"
+              // onClick={togglePlay}
+              // onPlay={() => setIsPlaying(true)}
+              // onPause={() => setIsPlaying(false)}
+            >
+              <source src={WHYAL} type="video/mp4" />{" "}
+              {/* Make sure src and type are correctly set */}
+              Your browser does not support the video tag.
+            </video>
           </div>
           <div className="hdr-btm-text">
             {/* <p data-aos="zoom-in" data-aos-duration="1000">
@@ -86,14 +91,17 @@ const AdaptationtoMobilePhones = () => {
                 <p>Mobile Phones</p>
               </div>
               {/* <img src={earlyAgeBoxImg} alt="" /> */}
-              <iframe
-                className="MobileAddiction-yt-video"
-                src="https://www.youtube.com/embed/MSzppjFe1iM?si=-Bm6Z01t75zFvvZz"
-                title="YouTube video player"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
+              <video
+                controls // Ensure controls are enabled for user interaction
+                className="early-age-video"
+                // onClick={togglePlay}
+                // onPlay={() => setIsPlaying(true)}
+                // onPause={() => setIsPlaying(false)}
+              >
+                <source src={WHYAL} type="video/mp4" />{" "}
+                {/* Make sure src and type are correctly set */}
+                Your browser does not support the video tag.
+              </video>
             </div>
           </div>
         </div>

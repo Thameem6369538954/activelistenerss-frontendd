@@ -112,3 +112,26 @@ display: flex;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
 }
+.search-for-psycologiest{
+    background-color:#fff;
+    width: 90%;
+    margin: auto;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.psycologist-search input{
+    border:1px solid black;
+    padding: 10px;
+    border-radius: 20px;    
+}
+.psycologist-search button{
+    background-color: #ffdd7e;
+    padding: 10px 30px;
+    border: none;
+    font-size: 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    
+}

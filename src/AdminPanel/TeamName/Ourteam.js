@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 const Ourteam = () => {
 
 const [members, setMembers] = useState([]);
-
+  const [searchTerm, setSearchTerm] = useState("");
   useEffect(() => {
     console.log(members,"jjejjje");
       const fetchMembers = async () => {
@@ -86,6 +86,7 @@ const [members, setMembers] = useState([]);
 
      const response = await axios.post("admin/add_member", formData);
      console.log(response, "oooooooooooooooooooooo");
+     togglePopup();
    } catch (error) {
      console.log(error);
    }
@@ -166,7 +167,7 @@ const [members, setMembers] = useState([]);
 
     const currentDate = new Date().toISOString().slice(0, 10);
  const [filteredRows, setFilteredRows] = useState(members);
- const [searchTerm, setSearchTerm] = useState("");
+ 
 
 //  const handleSearchInputChange = (event) => {
 //    const searchTerm = event.target.value.toLowerCase();
@@ -180,6 +181,28 @@ const [members, setMembers] = useState([]);
  const handleDateFilterChange = (event) => {
    // Implement date filter logic here
  };
+   const handleSearchInputChange = (event) => {
+     const searchTerm = event.target.value.toLowerCase();
+     setSearchTerm(searchTerm);
+   };
+
+  const filteredMembers = members.filter((member) =>
+    member.name.toLowerCase().includes(searchTerm)
+  );
+
+  
+  const handleDeleteClick = async (id) => {
+    try {
+      // Delete member from the backend
+      await axios.delete(`admin/delete_member/${id}`);
+      // Remove member from the state
+      setMembers(members.filter((member) => member._id !== id));
+      toast.success("Member deleted successfully");
+    } catch (error) {
+      console.log(error);
+      toast.error("Failed to delete member");
+    }
+  };
   return (
     <div>
       <div className="Ourteam-main-conainer">
@@ -199,7 +222,8 @@ const [members, setMembers] = useState([]);
               placeholder="Search"
               type="search"
               class="input"
-              // onChange={handleSearchInputChange}
+              value={searchTerm}
+              onChange={handleSearchInputChange}
             />
           </div>
         </div>
@@ -276,7 +300,7 @@ const [members, setMembers] = useState([]);
           {" "}
           <div className="table-container">
             <table>
-              {members.length === 0 ? (
+              {filteredMembers.length === 0 ? (
                 <p>{searchTerm} data found</p>
               ) : (
                 <tbody>
@@ -319,7 +343,7 @@ const [members, setMembers] = useState([]);
                           </div>
                         ) : (
                           <div className="action-buttons">
-                            <button>
+                            <button onClick={() => handleDeleteClick(row._id)}>
                               Delete <CgCloseO className="video-delete-new" />
                             </button>
                             <button onClick={() => handleEditClick(row)}>

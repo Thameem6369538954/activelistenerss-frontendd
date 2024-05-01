@@ -8,9 +8,28 @@
   font-family: Relo;
   padding-top: 20px;
 }
+.eclip{
+  position: relative;
+  width: 100%;
+}
+.eclip img:nth-child(1){
+  position: absolute;
+  /* background-color: #256c55; */
+  margin-top: -5%;
+  z-index: -1;
+}
+.eclip img:nth-child(3){
+  position: absolute;
+  /* background-color: #256c55; */
+  margin-top: -50%;
+  margin-left: 39%;
+  z-index: -1;
+}
 .bulb img:nth-child(1) {
   width: 250px;
   animation: moveUpDown 2s infinite;
+  animation-timing-function: ease-in-out;
+  position: sticky;
 }
 @keyframes moveUpDown {
   0% {
@@ -23,6 +42,7 @@
     transform: translateY(0);
   }
 }
+
 .bulb {
   display: flex;
   align-items: center;
@@ -49,6 +69,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 .therapy-heading h2 {
   font-family: myFont;

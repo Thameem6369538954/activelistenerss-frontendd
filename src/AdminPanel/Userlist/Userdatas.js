@@ -1,93 +1,32 @@
-import React,{useState} from 'react'
-import "../Userlist/Userdatas.css"
-
+import React, { useEffect, useState } from "react";
+import "../Userlist/Userdatas.css";
+import axios from "../../Utils/Baseurl";
+import { toast } from "react-toastify";
 const Userdatas = () => {
-    
-    const [data, setData] = useState([
-      {
-        id: 1,
-        name: "sankar",
-        email: "sankar@gmail.com",
-        amount: "978883232",
-        organizationname: "Sankar Foundation",
-        year: "Subscribed",
-        ofcnumber: "13/01/2024",
-        link: "https://www.sankarfoundation.org/",
-        jd: "Ceo",
-        personalnumber: "1234567890",
-      },
-      {
-        id: 2,
-        name: "Dhanasekar",
-        email: "dhanasekar@gmail.com",
-        amount: "8234233567",
-        organizationname: "Dhanasekar Foundation",
-        year: "Not Subscribed",
-        ofcnumber: "31/01/2024",
-        link: "https://www.dhanasekarfoundation.org/",
-        jd: "Ceo",
-        personalnumber: "1234567890",
-      },
-      {
-        id: 3,
-        name: "Ajay",
-        email: "ajay@gmail.com",
-        amount: "8234233567",
-        organizationname: "Ajay Foundation",
-        year: "Subscribed",
-        ofcnumber: "17/01/2024",
-        link: "https://www.ajayfoundation.org/",
-        jd: "Ceo",
-        personalnumber: "1234567890",
-      },
-      {
-        id: 4,
-        name: "Dhinesh",
-        email: "dhinesh@gmail.com",
-        amount: "8234233567",
-        organizationname: "Dhinesh Foundation",
-        year: "Subscribed",
-        ofcnumber: "03/01/2024",
-        link: "https://www.dhineshfoundation.org/",
-        jd: "Ceo",
-        personalnumber: "1234567890",
-      },
-      {
-        id: 5,
-        name: "Aleeshya",
-        email: "aleeshya@gmail.com",
-        amount: "8234233567",
-        organizationname: "Aleeshya Foundation",
-        year: " Not Subscribed",
-        ofcnumber: "22/02/2024",
-        link: "https://www.aleeshyafoundation.org/",
-        jd: "Ceo",
-        personalnumber: "1234567890",
-      },
-      {
-        id: 6,
-        name: "Ansari",
-        email: "Thameem@gmail.com",
-        amount: "6369538976",
-        organizationname: "Ansari Foundation",
-        year: "Subscribed",
-        ofcnumber: "03/02/2024",
-        link: "https://www.ansarifoundation.org/",
-        jd: "Ceo",
-        personalnumber: "1234567890",
-      },
-    ]);
-    const [searchInput, setSearchInput] = useState("");
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    const fetchUser = async () => {
+      const users = await axios.get("admin/view_all_users");
+      console.log(users, "all users");
+      if (users) {
+        setData(users.data.response);
+      } else {
+        toast.error("Something went wrong!");
+      }
+    };
+    fetchUser();
+  });
+  const [searchInput, setSearchInput] = useState("");
 
-    // Filtered data based on search input
-    const filteredData = data.filter((item) => {
-      return (
-        item.name.toLowerCase().includes(searchInput.toLowerCase()) ||
-        item.email.toLowerCase().includes(searchInput.toLowerCase()) ||
-        item.amount.includes(searchInput)
-      );
-    });
-    const currentDate = new Date().toISOString().slice(0, 10);
+  // Filtered data based on search input
+  const filteredData = data.filter((item) => {
+    return (
+      item.name.toLowerCase().includes(searchInput.toLowerCase()) ||
+      item.email.toLowerCase().includes(searchInput.toLowerCase()) ||
+      item.amount.includes(searchInput)
+    );
+  });
+  const currentDate = new Date().toISOString().slice(0, 10);
   return (
     <div>
       <div className="Ngoandpsycologist-main-conatainer">
@@ -140,19 +79,19 @@ const Userdatas = () => {
                         </tr>
                       </thead>
                       <tbody>
-                        {filteredData.map((item) => (
-                          <tr key={item.id}>
+                        {filteredData.map((item, index) => (
+                          <tr key={item._id}>
                             {/* <td>
                         <input type="checkbox" />
                       </td> */}
-                            <td>{item.id}</td>
-                            <td>{item.ofcnumber}</td>
+                            <td>{index + 1}</td>
+                            <td>{item.createdAt}</td>
                             <td>{item.name}</td>
                             <td style={{ textTransform: "lowercase" }}>
                               <p>{item.email}</p>
                             </td>
-                            <td>{item.amount}</td>
-                            <td>{item.year}</td>
+                            <td>{item.mobile}</td>
+                            <td>subscribed</td>
                           </tr>
                         ))}
                       </tbody>
@@ -166,6 +105,6 @@ const Userdatas = () => {
       </div>
     </div>
   );
-}
+};
 
-export default Userdatas
+export default Userdatas;

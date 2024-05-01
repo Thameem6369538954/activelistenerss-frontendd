@@ -60,12 +60,22 @@ const Login = () => {
         console.log(response.data.message, "hhehheeeee");
         if (response.data.message == "invalid password or id"){
           toast.error("Invalid username or password");
-        }else{
+        }else if (response.data.message === "User not found!!") {
+          toast.error(response.data.message);
+        } else {
           toast.success("Login Successful");
-                console.log(response, "this is the response of registration............");
+          console.log(
+            response,
+            "this is the response of registration............"
+          );
 
-        navigate("/");
-        console.log(response.data.Token,"-------------->jwt token generated" ,response.data.user,"------------>userdata");
+          navigate("/");
+          console.log(
+            response.data.Token,
+            "-------------->jwt token generated",
+            response.data.user,
+            "------------>userdata"
+          );
         }
       }
 

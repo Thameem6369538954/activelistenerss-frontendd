@@ -287,6 +287,7 @@ import { FaInstagram } from "react-icons/fa";
 import { PiFacebookLogoBold } from "react-icons/pi";
 import { FaXTwitter } from "react-icons/fa6";
 import Psyco from "../../Images/Psyco.png";
+import Item from "antd/es/list/Item.js";
 
 const Psychologist = () => {
 
@@ -336,7 +337,7 @@ const Psychologist = () => {
   // ];
 
   const [psychologist,setPsychologist] = useState([]);
-
+const [searchInput, setSearchInput] = useState("");
   useEffect(() => {
     const getPsychologist = async () => {
       try {
@@ -437,11 +438,44 @@ const Psychologist = () => {
     }
   };
 
+
+  const handleSearchInputChange = (e) => {
+    setSearchInput(e.target.value);
+  };
+
+  const filteredPsychologists = psychologist.filter((psych) =>
+    psych.name.toLowerCase().includes(searchInput.toLowerCase())
+  );
+
+    const handleDelete = async (id) => {
+      try {
+        await axios.delete(`admin/delete_psychologyst/${id}`);
+        setPsychologist((prevPsychologist) =>
+          prevPsychologist.filter((psych) => psych._id !== id)
+        );
+        toast.success("Psychologist deleted successfully");
+      } catch (error) {
+        console.log(error);
+        toast.error("Failed to delete psychologist");
+      }
+    };
+
   return (
     <div>
       <div className="headeing-admin-psygologiy">
         <h1>Psychologist</h1>
         <button onClick={togglePopup}>Add Psychologist</button>
+      </div>
+      <div className="search-for-psycologiest">
+        <div className="psycologist-search">
+          <input
+            type="text"
+            placeholder="Search for Psychologist"
+            value={searchInput}
+            onChange={handleSearchInputChange}
+          />
+          <button>Search</button>
+        </div>
       </div>
       {showPopup && (
         <div className="video-popup">
@@ -535,35 +569,49 @@ const Psychologist = () => {
         </div>
       )}
       <div className="adimin-psyco-box">
-      <div className="psycologist-box-conatiner-admint">
-        <div className="team-psychologist-box-conatiner-a">
-          {psychologist.map((items) => (
-            <div>
-              <div className="psycologist-box-admint-main">
-              <div className="team-psychologist-admin-box" key={items._id}>
-                <img src={items.image} alt="" />
-                <div className="psychologist-box-inside-a">
-                  <span style={{ color: "#256C55" }}>{items.position}</span>
-                  <h1>{items.name}</h1>
-                  <p>{items.email}</p>
-                  <hr></hr>
-                  <div className="follow-box">
-                    <p>Follow me :</p>
-                    <div className="follw-icons">
-                      <FaWhatsapp />
-                      <FaInstagram />
-                      <PiFacebookLogoBold />
-                      <FaXTwitter />
+        <div className="psycologist-box-conatiner-admint">
+          <div className="team-psychologist-box-conatiner-a">
+            {filteredPsychologists.length > 0 ? (
+              filteredPsychologists.map((items) => (
+                <div>
+                  <div className="psycologist-box-admint-main">
+                    <div
+                      className="team-psychologist-admin-box"
+                      key={items._id}
+                    >
+                      <img src={items.image} alt="" />
+                      <div className="psychologist-box-inside-a">
+                        <span style={{ color: "#256C55" }}>
+                          {items.position}
+                        </span>
+                        <h1>{items.name}</h1>
+                        <p>{items.email}</p>
+                        <hr></hr>
+                        <div className="follow-box">
+                          <p>Follow me :</p>
+                          <div className="follw-icons">
+                            <FaWhatsapp />
+                            <FaInstagram />
+                            <PiFacebookLogoBold />
+                            <FaXTwitter />
+                          </div>
+                          <div className="edit-box-in-pyso">
+                            <button>Edit</button>
+                            <button onClick={() => handleDelete(items._id)}>
+                              Delete
+                            </button>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              </div>
-            </div>
-          ))}
+              ))
+            ) : (
+              <p>No psychologists found</p>
+            )}
+          </div>
         </div>
-      </div>
-
       </div>
     </div>
   );

@@ -13,3 +13,8 @@
     cursor: pointer;
     
 }
+.revenvue-container{
+    width: 90%;
+    margin: auto;
+    border-radius: 10px;
+}

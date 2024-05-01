@@ -7,22 +7,27 @@ import Yellowline from "../Images/Yellowline.png";
 import Gitar from "../Anime/Gitar.json";
 import { NavLink } from "react-router-dom";
 import Bulb from "../Images/Bulb.png";
+import EllipseRed from "../Images/EllipseRed.png";
+import EllipseGreen from "../Images/EllipseGreen.png";
 const Therapycategories = () => {
   const scrollToTop = () => {
     window.scrollTo(0, 0);
   };
   return (
     <div>
+      <div className="eclip">
+        <img src={EllipseRed} alt="" />
       <div className="therapy-cate">
         <div className="bulb">
           <img src={Bulb} alt="" />
 
-        <div className="therapy-heading">
-          <p>One Platform, Multiple touchpoints</p>
-          <h1>We are here to</h1>
-          <h2>Help</h2>
-          <img src={Yellowline} className="Yellowline" alt="" />
-        </div>
+          <div className="therapy-heading">
+            <p>One Platform, Multiple touchpoints</p>
+            <h1>We are here to</h1>
+            <h2>Help</h2>
+            <img src={Yellowline} className="Yellowline" alt="" />
+            {/* <img src={EllipseRed} alt="" /> */}
+          </div>
         </div>
 
         <div className="theropy-box-main">
@@ -61,6 +66,8 @@ const Therapycategories = () => {
             </div>
           </NavLink>
         </div>
+      </div>
+      <img src={EllipseGreen} alt="" />
       </div>
     </div>
   );

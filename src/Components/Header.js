@@ -13,6 +13,7 @@ import WHYAL from "../Videos/WHYAL.mp4"
 import { MdPlayCircleFilled } from "react-icons/md";
 import axios from "../Utils/Baseurl.js";
 import { toast } from "react-toastify";
+import EllipseGreen from "../Images/EllipseGreen.png";
 
 const Header = () => {
 
@@ -85,7 +86,11 @@ const Header = () => {
       <div className="header">
         <div className="header-container">
           <img src={Hdrleft} alt="" />
-          <div className="hdr-text-landing">
+          <div
+            className="hdr-text-landing"
+            data-aos="zoom-in"
+            data-aos-duration="1000"
+          >
             <h1>Helping you </h1>
             <h2>Find</h2>
             <h3>Balance & Focus</h3>
@@ -166,7 +171,6 @@ const Header = () => {
         </div>
         <div className="hdr-btm-text">
           <img src={FrameA} alt="" />
-
           {!showPopup && (
             <button onClick={togglePopup}>Why Active Listeners?</button>
           )}
@@ -218,6 +222,7 @@ const Header = () => {
             </div>
           )}
           <img src={FrameB} alt="" />
+          <img src={EllipseGreen} alt="" />
         </div>
       </div>
     </div>

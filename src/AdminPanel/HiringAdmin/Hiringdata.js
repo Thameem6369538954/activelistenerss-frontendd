@@ -1,33 +1,50 @@
-import React,{useEffect, useState} from 'react'
-import './Hiringdata.css'
+import React, { useEffect, useState } from "react";
+import "./Hiringdata.css";
 import { AiOutlineFilePdf } from "react-icons/ai";
-import axios from '../../Utils/Baseurl';
+import axios from "../../Utils/Baseurl";
+import filter from "../../Images/filter.png";
 const Hiringdata = () => {
-     const [data, setData] = useState([]);
+  const [data, setData] = useState([]);
 
-     useEffect(() => {
-       const fetchData = async () => {
-         const response = await axios.get("admin/viewHiring");
-        //  const data = await response.json();
-        console.log(response.data.response,"jiji");
-         setData(response.data.response);
-       };
-       fetchData();
-     },[])
-     const [searchInput, setSearchInput] = useState("");
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await axios.get("admin/viewHiring");
+      //  const data = await response.json();
+      console.log(response.data.response, "jiji");
+      setData(response.data.response);
+    };
+    fetchData();
+  }, []);
 
-     // Filtered data based on search input
-     const filteredData = data.filter((item) => {
-       return (
-         item.name.toLowerCase().includes(searchInput.toLowerCase()) ||
-         item.email.toLowerCase().includes(searchInput.toLowerCase()) ||
-         item.amount.includes(searchInput)
-       );
-     });
-     const currentDate = new Date().toISOString().slice(0, 10);
-     const openPdfInNewTab = (url) => {
-       window.open(url, "_blank");
-     };
+  const [searchInput, setSearchInput] = useState("");
+  const [dateInput, setDateInput] = useState("");
+
+  // Filtered data based on search input and date
+  const filteredData = data.filter((item) => {
+    const nameMatches = item.name
+      .toLowerCase()
+      .includes(searchInput.toLowerCase());
+    const emailMatches = item.email
+      .toLowerCase()
+      .includes(searchInput.toLowerCase());
+    const numberMatches = item.number.includes(searchInput);
+    const positionMatches = item.position
+      .toLowerCase()
+      .includes(searchInput.toLowerCase());
+    const dateMatches = item.addedAt.includes(dateInput);
+
+    return (
+      (nameMatches || emailMatches || numberMatches || positionMatches) &&
+      (!dateInput || dateMatches)
+    );
+  });
+
+  const currentDate = new Date().toISOString().slice(0, 10);
+
+  const openPdfInNewTab = (url) => {
+    window.open(url, "_blank");
+  };
+
   return (
     <div>
       <div className="Hiringdata-main-container">
@@ -35,8 +52,34 @@ const Hiringdata = () => {
           <h1>Add Team Members </h1>
           <button>Export</button>
         </div>
+        <div className="fiter-box">
+          <img src={filter} alt="" />
+          <div className="fiter-box-text">
+            <p>Filter By</p>
+          </div>
+          <div>
+            <input
+              type="text"
+              placeholder="Search"
+              value={searchInput}
+              onChange={(e) => setSearchInput(e.target.value)}
+            />
+              <button>Search</button>
+          </div>
+            <div>
+
+            <input
+              type="date"
+              value={dateInput}
+              onChange={(e) => setDateInput(e.target.value)}
+            />
+            </div>
+        </div>
         <div className="hiringdata-table">
           <div className="revenvue-container">
+            {filteredData.length === 0 ? (
+                            <p>Sorry, the data is not found</p>
+                        ) : (
             <table>
               <thead>
                 <tr>
@@ -77,7 +120,7 @@ const Hiringdata = () => {
               </thead>
               <tbody>
                 {Array.isArray(data) &&
-                  data.map((item, index) => (
+                  filteredData.map((item, index) => (
                     <tr key={item._id}>
                       <td>
                         <input type="checkbox" />
@@ -123,12 +166,12 @@ const Hiringdata = () => {
                     </tr>
                   ))}
               </tbody>
-            </table>
+            </table>)}
           </div>
         </div>
       </div>
     </div>
   );
-}
+};
 
-export default Hiringdata
+export default Hiringdata;

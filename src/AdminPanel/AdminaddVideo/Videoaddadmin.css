@@ -12,6 +12,38 @@
   border-radius: 20px;
   cursor: pointer;
 }
+.no-data{
+  background-color: red;
+  z-index: 3;
+}
+.fiter-box{
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 70px;
+  width: 90%;
+  margin: 30px auto;
+  border-radius: 20px;
+}
+.fiter-box img{
+  border-right: 1px solid black;
+}
+.fiter-box-text p{
+  border-right: 1px solid black;
+}
+.fiter-box input{
+  border: 1px solid black;
+  padding: 10px;
+  border-radius: 5px;
+}
+.fiter-box button{
+  border: 1px solid black;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #ffdd7e;
+  margin-left: 20px;
+}
 .video-popup {
   /* background-color: #ffdd7e;
   height: 700px;

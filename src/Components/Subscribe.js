@@ -1,4 +1,5 @@
-import React, { Component, useState } from "react";
+import React, { Component, useState, useEffect } from "react";
+import { toast } from "react-toastify";
 import Slider from "react-slick";
 import "../Css/Subscribe.css";
 import { NavLink } from "react-router-dom";
@@ -9,96 +10,97 @@ import Think from "../Images/Think.svg";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import MentoonBenar from "../Images/MentoonBenar.png";
+import axios from "../Utils/Baseurl.js";
 const Subscribe = () => {
   const scrollToTop = () => {
     window.scrollTo(0, 0);
   };
-  const [caro, setCaro] = useState([
-    {
-      id: 1,
-      episode: 1,
-      name: "Social Media de-addiction Tips",
-      EpiImage: require("../Images/Adiction.png"),
-      fravatara: require("../Images/avatar (1).png"),
-      fravatarb: require("../Images/avatar.png"),
-      discribtions:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit,  eiusmod tempor incididunt ut.",
-      cateA: "Social Media",
-      cateB: "Mental health",
-      cateC: "health",
-      // cateD: "",
-    },
-    {
-      id: 2,
-      episode: 2,
-      fravatara: require("../Images/avatar (1).png"),
-      fravatarb: require("../Images/avatar.png"),
-      name: "Loneliness due to Gaming",
-      EpiImage: require("../Images/Lonely .png"),
-      discribtions:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit,  eiusmod tempor incididunt ut.",
-      cateA: "Loneliness",
-      cateB: "health",
-      cateC: "Gaming",
-      // cateD: "",
-    },
-    {
-      id: 3,
-      episode: 3,
-      fravatara: require("../Images/avatar (1).png"),
-      fravatarb: require("../Images/avatar.png"),
-      name: "How to handle your  Teenage Children",
-      EpiImage: require("../Images/GamingAddiction.png"),
-      discribtions:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit,  eiusmod tempor incididunt ut.",
-      cateA: "teenange",
-      cateB: "health",
-      cateC: "parents",
-      // cateD: "",
-    },
-    {
-      id: 4,
-      episode: 4,
-      fravatara: require("../Images/avatar (1).png"),
-      fravatarb: require("../Images/avatar.png"),
-      name: "Are you perplexed mind Person?",
-      EpiImage: require("../Images/Untitled_Artwork 22.png"),
-      discribtions:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit,  eiusmod tempor incididunt ut.",
-      cateA: "Mental Guide",
-      cateB: "health",
-      // cateC: "",
-      // cateD: "",
-    },
-    {
-      id: 5,
-      episode: 5,
-      fravatara: require("../Images/avatar (1).png"),
-      fravatarb: require("../Images/avatar.png"),
-      name: "Why WFH is preffered?",
-      EpiImage: require("../Images/Untitled_Artwork 16.png"),
-      discribtions:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit,  eiusmod tempor incididunt ut.",
-      cateA: "Healthy Life",
-      cateB: "health",
-      // cateC: "",
-      // cateD: "",
-    },
-    {
-      id: 6,
-      episode: 6,
-      fravatara: require("../Images/avatar (1).png"),
-      fravatarb: require("../Images/avatar.png"),
-      name: "Disconnect to Reconnect",
-      EpiImage: require("../Images/Disconnect to reconnect .png"),
-      discribtions:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit,  eiusmod tempor incididunt ut.",
-      cateA: "Relocation",
-      cateB: "health",
-      // cateC: "",
-      // cateD: "",
-    },
-  ]);
+  // const [caro, setCaro] = useState([
+  //   {
+  //     id: 1,
+  //     episode: 1,
+  //     name: "Social Media de-addiction Tips",
+  //     EpiImage: require("../Images/Adiction.png"),
+  //     fravatara: require("../Images/avatar (1).png"),
+  //     fravatarb: require("../Images/avatar.png"),
+  //     discribtions:
+  //       "Lorem ipsum dolor sit amet, consectetur adipiscing elit,  eiusmod tempor incididunt ut.",
+  //     cateA: "Social Media",
+  //     cateB: "Mental health",
+  //     cateC: "health",
+  //     // cateD: "",
+  //   },
+  //   {
+  //     id: 2,
+  //     episode: 2,
+  //     fravatara: require("../Images/avatar (1).png"),
+  //     fravatarb: require("../Images/avatar.png"),
+  //     name: "Loneliness due to Gaming",
+  //     EpiImage: require("../Images/Lonely .png"),
+  //     discribtions:
+  //       "Lorem ipsum dolor sit amet, consectetur adipiscing elit,  eiusmod tempor incididunt ut.",
+  //     cateA: "Loneliness",
+  //     cateB: "health",
+  //     cateC: "Gaming",
+  //     // cateD: "",
+  //   },
+  //   {
+  //     id: 3,
+  //     episode: 3,
+  //     fravatara: require("../Images/avatar (1).png"),
+  //     fravatarb: require("../Images/avatar.png"),
+  //     name: "How to handle your  Teenage Children",
+  //     EpiImage: require("../Images/GamingAddiction.png"),
+  //     discribtions:
+  //       "Lorem ipsum dolor sit amet, consectetur adipiscing elit,  eiusmod tempor incididunt ut.",
+  //     cateA: "teenange",
+  //     cateB: "health",
+  //     cateC: "parents",
+  //     // cateD: "",
+  //   },
+  //   {
+  //     id: 4,
+  //     episode: 4,
+  //     fravatara: require("../Images/avatar (1).png"),
+  //     fravatarb: require("../Images/avatar.png"),
+  //     name: "Are you perplexed mind Person?",
+  //     EpiImage: require("../Images/Untitled_Artwork 22.png"),
+  //     discribtions:
+  //       "Lorem ipsum dolor sit amet, consectetur adipiscing elit,  eiusmod tempor incididunt ut.",
+  //     cateA: "Mental Guide",
+  //     cateB: "health",
+  //     // cateC: "",
+  //     // cateD: "",
+  //   },
+  //   {
+  //     id: 5,
+  //     episode: 5,
+  //     fravatara: require("../Images/avatar (1).png"),
+  //     fravatarb: require("../Images/avatar.png"),
+  //     name: "Why WFH is preffered?",
+  //     EpiImage: require("../Images/Untitled_Artwork 16.png"),
+  //     discribtions:
+  //       "Lorem ipsum dolor sit amet, consectetur adipiscing elit,  eiusmod tempor incididunt ut.",
+  //     cateA: "Healthy Life",
+  //     cateB: "health",
+  //     // cateC: "",
+  //     // cateD: "",
+  //   },
+  //   {
+  //     id: 6,
+  //     episode: 6,
+  //     fravatara: require("../Images/avatar (1).png"),
+  //     fravatarb: require("../Images/avatar.png"),
+  //     name: "Disconnect to Reconnect",
+  //     EpiImage: require("../Images/Disconnect to reconnect .png"),
+  //     discribtions:
+  //       "Lorem ipsum dolor sit amet, consectetur adipiscing elit,  eiusmod tempor incididunt ut.",
+  //     cateA: "Relocation",
+  //     cateB: "health",
+  //     // cateC: "",
+  //     // cateD: "",
+  //   },
+  // ]);
   var settings = {
     dots: false,
     infinite: false,
@@ -132,6 +134,27 @@ const Subscribe = () => {
         },
       },
     ],
+  };
+
+  
+  const [caro, setCaro] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await axios.get("admin/view_all_podcast");
+      console.log(response, "kkk");
+      if (response.data.reslt) {
+        setCaro(response.data.reslt);
+      } else {
+        toast.error("Something went wrong!!");
+      }
+    };
+    fetchData();
+  }, []);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const togglePlay = () => {
+    setIsPlaying(!isPlaying);
   };
   return (
     <div>
@@ -238,7 +261,18 @@ const Subscribe = () => {
                     <div key={item.id}>
                       <div className="caro-for-hdr">
                         <div className="home-caro-align">
-                          <img src={item.EpiImage} alt="" />
+                          <video
+                            controls
+                            style={{ width: "40%" }}
+                            className="posdcast-video"
+                            onClick={togglePlay}
+                            onPlay={() => setIsPlaying(true)}
+                            onPause={() => setIsPlaying(false)}
+                            // poster={list.thumbnail}
+                          >
+                            <source src={item.source} type="video/mp4" />
+                            Your browser does not support the video tag.
+                          </video>
                           <ul className="epi-list">
                             <li>
                               <p style={{ fontWeight: "bold", color: "green" }}>
@@ -249,23 +283,22 @@ const Subscribe = () => {
                               <p
                                 style={{ fontWeight: "bold", fontSize: "20px" }}
                               >
-                                {item.name}
+                                {item.title}
                               </p>
                             </li>
                             <hr></hr>
                             <li>
-                              <p>{item.discribtions}</p>
+                              <p>{item.discription}</p>
                             </li>
                           </ul>
                         </div>
 
                         <div className="cate-home-caro">
                           <div className="cate-home-caro-btns">
-                            <button>{item.cateA}</button>
-                            <button>{item.cateB}</button>
-                            <button>{item.cateC}</button>
+                            <label>Category</label>
+                            <button>{item.category}</button>
                           </div>
-                          <div className="host-home-caro">
+                          {/* <div className="host-home-caro">
                             <p>Hosted by :</p>
                             <div className="host-imgage">
                               <img
@@ -282,7 +315,7 @@ const Subscribe = () => {
                                 alt=""
                               />
                             </div>
-                          </div>
+                          </div> */}
                         </div>
                       </div>
                     </div>

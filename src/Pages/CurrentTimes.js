@@ -14,6 +14,7 @@ import Group119 from "../Images/Group 119.png";
 import Maskgroup from "../Images/Mask group.png";
 import cover from "../Images/cover.png";
 import PodcastRed from "../Images/PodcastRed.png";
+import WHYAL from "../Videos/WHYAL.mp4";
 
 const CurrentTimes = () => {
   return (
@@ -77,7 +78,17 @@ const CurrentTimes = () => {
                 <h1>Covid on </h1>
                 <p>Today’s Life</p>
               </div>
-              <img src={earlyAgeBoxImg} alt="" />
+              <video
+                controls // Ensure controls are enabled for user interaction
+                className="early-age-video"
+                // onClick={togglePlay}
+                // onPlay={() => setIsPlaying(true)}
+                // onPause={() => setIsPlaying(false)}
+              >
+                <source src={WHYAL} type="video/mp4" />{" "}
+                {/* Make sure src and type are correctly set */}
+                Your browser does not support the video tag.
+              </video>
             </div>
           </div>
         </div>

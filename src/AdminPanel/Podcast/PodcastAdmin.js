@@ -5,13 +5,18 @@ import { AiOutlineEdit } from "react-icons/ai";
 import { LiaSaveSolid } from "react-icons/lia";
 import axios from "../../Utils/Baseurl.js";
 import { toast } from "react-toastify";
-
+import filter from "../../Images/filter.png";
 
 
 const PodcastAdmin = () => {
   const [rows, setRows] = useState([]);
-  useEffect(()=>{
+  const [searchInput, setSearchInput] = useState("");
+  const [dateInput, setDateInput] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [editData, setEditData] = useState(null); // State to track the item being edited
+  const [showEditPopup, setShowEditPopup] = useState(false); // State to control edit popup visibility
 
+  useEffect(() => {
     const fetchProduct = async () => {
       try {
         const data = await axios.get("admin/view_all_podcast");
@@ -21,10 +26,9 @@ const PodcastAdmin = () => {
         return { status: false, message: "not found product" };
       }
     };
-    fetchProduct()
-  },[])
-    
- 
+    fetchProduct();
+  }, []);
+
   const [showPopup, setShowPopup] = useState(false);
   const [videoData, setVideoData] = useState({
     videoFile: null,
@@ -49,19 +53,15 @@ const PodcastAdmin = () => {
     });
   };
 
-
-
   const [editingRowId, setEditingRowId] = useState(null);
   const [editedData, setEditedData] = useState({});
 
-  const handleDeleteClick = (id) => {
-    setRows(rows.filter((row) => row.id !== id));
-  };
+  // const handleDeleteClick = (id) => {
+  //   setRows(rows.filter((row) => row.id !== id));
+  // };
 
-  const handleEditClick = (row) => {
-    setEditingRowId(row.id);
-    setEditedData(row);
-  };
+ 
+  
 
   const handleSaveEdit = () => {
     const updatedRows = rows.map((row) => {
@@ -99,94 +99,299 @@ const PodcastAdmin = () => {
   };
 
   // pagenation
-    const [currentPage, setCurrentPage] = useState(1);
-    const [itemsPerPage] = useState(5); 
-    const indexOfLastItem = currentPage * itemsPerPage;
-    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    const currentItems = rows.slice(indexOfFirstItem, indexOfLastItem);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(5);
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = rows.slice(indexOfFirstItem, indexOfLastItem);
 
-    // Change page
-    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  // Change page
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
+  const [formDatas, setformDatas] = useState({
+    title: "",
+    discription: "",
+    category: "",
+  });
 
-    const [formDatas, setformDatas] = useState({
-      title: "",
-      discription: "",
-      category: "",
+  const handleThumbnailChange = (e) => {
+    e.preventDefault();
+    const setThumb = e.target.files[0];
+    if (setThumb) {
+      setThumbnail(setThumb);
+    } else {
+      toast.error("Please select a thumbnail!!");
+      e.target.value = null;
+    }
+  };
+
+  const handleSourceChange = (e) => {
+    e.preventDefault();
+    const sourcefile = e.target.files[0];
+    if (sourcefile) {
+      setSource(sourcefile);
+    } else {
+      toast.error("Please select a source file!!");
+      e.target.value = null;
+    }
+  };
+
+  const [thumbnail, setThumbnail] = useState(null);
+  const [source, setSource] = useState(null);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setformDatas({
+      ...formDatas,
+      [name]: value,
     });
+  };
 
-    const handleThumbnailChange = (e)=>{
-      e.preventDefault()
-      const setThumb = e.target.files[0]
-      if(setThumb){
-        setThumbnail(setThumb)
-      }else{
-        toast.error("Please select a thumbnail!!")
-        e.target.value = null
-      }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const formData = new FormData();
+      formData.append("title", formDatas.title);
+      formData.append("discription", formDatas.discription);
+      formData.append("category", formDatas.category);
+      formData.append("thumbnail", thumbnail);
+      formData.append("source", source);
+      console.log(
+        formData,
+        "daatattata''''''''''''''''''''''''''''''''''''''''"
+      );
+      // const response = await axios.post("/podcast",formDatas);
+
+      const response = await axios.post("admin/add_podcast", formData);
+      console.log(response, "reeeeeeeeeeeeeeeesss");
+    } catch (error) {
+      console.log(error);
     }
+  };
 
-    const handleSourceChange =(e)=>{
-      e.preventDefault()
-      const sourcefile = e.target.files[0]
-      if(sourcefile){
-        setSource(sourcefile)
-      }else{
-        toast.error("Please select a source file!!")
-        e.target.value = null
-      }
+  const categoryOptions = ["6-12", "13-19", "20+"];
+
+  const filteredRows = rows.filter((row) => {
+    return (
+      row.title.toLowerCase().includes(searchInput.toLowerCase()) &&
+      (dateInput ? row.createdDate === dateInput : true) &&
+      (selectedCategory ? row.category === selectedCategory : true)
+    );
+  });
+
+  const handleDeleteClick = async (id) => {
+    try {
+      // Make an API call to delete the podcast data by ID
+      await axios.delete(`admin/delete_one_podcast/${id}`);
+      // Update the state after successful deletion
+      setRows(rows.filter((row) => row.id !== id));
+      toast.success("Podcast deleted successfully");
+    } catch (error) {
+      console.error("Error deleting podcast:", error);
+      toast.error("Failed to delete podcast");
     }
+  };
 
 
-    const [thumbnail,setThumbnail] = useState(null)
-    const [source,setSource] = useState(null)
+  // Edit part
 
-    const handleChange = (e) => {
-      const { name, value } = e.target;
-      setformDatas({
-        ...formDatas,
-        [name]: value,
-      });
-    };
+  
 
-    const handleSubmit = async(e) => {
-      e.preventDefault();
-      try {
+
+  const [formDatass, setFormDatass] = useState({
+    title: "",
+    description: "",
+    category: "",
+  });
+  const [thumbnails, setThumbnails] = useState(null);
+  const [podcastVideo, setPodcastVideo] = useState(null);
+  const [errors, setErrors] = useState({});
+
+  const togglePopupone = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const handleTextChange = (e) => {
+    const { name, value } = e.target;
+    setFormDatass({
+      ...formDatass,
+      [name]: value,
+    });
+  };
+
+  
+  const handleThumbnailChanged = (e) => {
+    const file = e.target.files[0];
+    setThumbnails(file);
+  };
+
+  const handlePodcastVideoChange = (e) => {
+    const file = e.target.files[0];
+    setPodcastVideo(file);
+  };
+
+ const validateForm = () => {
+   let errors = {};
+  if (!formDatass.title) {
+    errors.title = "Title is required";
+  }
+  if (!formDatass.description) {
+    errors.description = "Description is required";
+  }
+  if (!formDatass.category) {
+    errors.category = "Category is required";
+  }
+  if (!thumbnails) {
+    errors.thumbnail = "Thumbnail is required";
+  }
+  if (!podcastVideo) {
+    errors.video = "Video is required";
+  }
+   // Add validation for other text fields as needed
+   setErrors(errors);
+   return Object.keys(errors).length === 0;
+ };
+
+  const handleSubmitt = async (e) => {
+    e.preventDefault();
+    try {
+      const isValid = validateForm();
+      if (isValid) {
         const formData = new FormData();
-        formData.append("title", formDatas.title);
-        formData.append("discription", formDatas.discription);
-        formData.append("category", formDatas.category);
-        formData.append("thumbnail", thumbnail);
-        formData.append("source", source);
-        console.log(
-          formData,
-          "daatattata''''''''''''''''''''''''''''''''''''''''"
-        );
-        // const response = await axios.post("/podcast",formDatas);
+        formData.append("title", formDatass.title);
+        formData.append("description", formDatass.description);
+        formData.append("category", formDatass.category);
+        formData.append("thumbnails", thumbnails);
+        formData.append("podcastVideo", podcastVideo);
 
+        // Make your axios call here
+        console.log(formData, "podcasttttttttttttttttttttttttt");
         const response = await axios.post("admin/add_podcast", formData);
-        console.log(response, "reeeeeeeeeeeeeeeesss");
-      } catch (error) {
-        console.log(error);
+        console.log(response, "Response from server");
       }
-     
-    };
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
+ 
+
+  const [isOpen, setIsOpen] = useState(false);
+
+//  const handleEditClick = (row) => {
+//    if (row && row.id) {
+//      setEditingRowId(row.id);
+//      setEditedData(row);
+//    } else {
+//      console.error("Row is undefined or does not contain id property");
+//    }
+//  };
 
   return (
     <div>
+      {isOpen && (
+        <div className="popup">
+          <div className="popup-inner">
+            <button className="close-btn" onClick={togglePopupone}>
+              &times;
+            </button>
+            <h2>Popup Form</h2>
+            <form onSubmit={handleSubmitt}>
+              <div className="form-group">
+                <label>Title:</label>
+                <input
+                  type="text"
+                  name="title"
+                  value={formDatass.title}
+                  onChange={handleTextChange}
+                />
+                {errors.title && <span className="error">{errors.title}</span>}
+              </div>
+              <div className="form-group">
+                <label>Description:</label>
+                <input
+                  type="text"
+                  name="description"
+                  value={formDatass.description}
+                  onChange={handleTextChange}
+                />
+                {errors.description && (
+                  <span className="error">{errors.description}</span>
+                )}
+              </div>
+              <div className="form-group">
+                <label>Category:</label>
+                <input
+                  type="text"
+                  name="category"
+                  value={formDatass.category}
+                  onChange={handleTextChange}
+                />
+                {errors.category && (
+                  <span className="error">{errors.category}</span>
+                )}
+              </div>
+              <div className="form-group">
+                <label>Thumbnail:</label>
+                <input type="file" onChange={handleThumbnailChanged} />
+                {errors.thumbnail && (
+                  <span className="error">{errors.thumbnail}</span>
+                )}
+              </div>
+              <div className="form-group">
+                <label>Podcast Video:</label>
+                <input type="file" onChange={handlePodcastVideoChange} />
+                {errors.video && <span className="error">{errors.video}</span>}
+              </div>
+              <button type="submit">Submit</button>
+            </form>
+          </div>
+        </div>
+      )}
       <div className="PodcastAdmin-main-coantiner">
         <div className="video-add-main-container">
           <div className="video-add-top-btn">
             <h1>Upload Podcast</h1>
             <button onClick={togglePopup}>Upload a New Podcast</button>
           </div>
+          <div className="fiter-box">
+            <img src={filter} alt="" />
+            <div className="fiter-box-text">
+              <p>Filter By</p>
+            </div>
+            <div>
+              <select
+                value={selectedCategory}
+                onChange={(e) => setSelectedCategory(e.target.value)}
+              >
+                <option value="">Select Category</option>
+                {categoryOptions.map((category) => (
+                  <option key={category} value={category}>
+                    {category}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div>
+              <input
+                type="text"
+                placeholder="Search"
+                value={searchInput}
+                onChange={(e) => setSearchInput(e.target.value)}
+              />
+              <button>Search</button>
+            </div>
+            <div>
+              <input
+                type="date"
+                value={dateInput}
+                onChange={(e) => setDateInput(e.target.value)}
+              />
+            </div>
+          </div>
           {showPopup && (
             <div className="video-popup">
               <div className="video-popup-content">
-                {/* <span className="close" onClick={togglePopup}>
-                <CgCloseO />
-              </span> */}
                 <h2>Upload Video</h2>
                 <form onSubmit={handleSubmit} encType="multipart/form-data">
                   <div className="video-top-inputs">
@@ -271,14 +476,13 @@ const PodcastAdmin = () => {
                     <th>Sr. no |</th>
                     <th>Created Date</th>
                     <th>Video Title |</th>
-                   
                     <th>Description |</th>
                     <th>Category |</th>
                     <th>Actions |</th>
                   </tr>
-                  {rows.map((row, index) => (
+                  {filteredRows.map((row, index) => (
                     <tr key={row.id}>
-                      <td>{index+1}</td>
+                      <td>{index + 1}</td>
                       <td>
                         <img
                           src={row.thumbnail}
@@ -287,7 +491,7 @@ const PodcastAdmin = () => {
                         />
                       </td>
                       <td>{row.title}</td>
-                      
+
                       <td>{row.discription}</td>
                       <td>{row.category}</td>
                       <td>
@@ -299,10 +503,10 @@ const PodcastAdmin = () => {
                           </div>
                         ) : (
                           <div className="action-buttons">
-                            <button onClick={() => handleDeleteClick(row.id)}>
+                            <button onClick={() => handleDeleteClick(row._id)}>
                               Delete <CgCloseO className="video-delete-new" />
                             </button>
-                            <button onClick={() => handleEditClick(row)}>
+                            <button onClick={togglePopupone}>
                               Edit <AiOutlineEdit className="video-edit" />
                             </button>
                           </div>

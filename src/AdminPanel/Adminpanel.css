@@ -14,7 +14,7 @@
   width: 100%;
 }
 .adminpanel-route {
-  height: 100vh;
+  height: auto;
   /* border: 1px solid red; */
   width: 100%;
   background-color: #f3f3f3;

@@ -265,7 +265,7 @@
   width: 100%;
   margin-top: -30%;
   margin-left: 0%;
-  z-index: -9999;
+  /* z-index: -9999; */
   /* background-color: red; */
 }
 .front img:nth-child(4) {

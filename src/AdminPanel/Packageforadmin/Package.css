@@ -24,3 +24,10 @@
     cursor: pointer;
 
 }
+.card-btn-delete{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin: auto;
+}

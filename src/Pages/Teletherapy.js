@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../Css/TeleTherapy.css";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
@@ -14,7 +14,29 @@ import Telegroup from "../Images/Telegroup.png";
 import Arrow from "../Images/Arrow.png";
 import Breadcrumps from "../Components/Breadcrumps";
 import { Link, useLocation, useHistory } from "react-router-dom";
+import axios from "../Utils/Baseurl.js";
+import { toast } from "react-toastify";
+
 const Teletherapy = () => {
+  const [card, setCard] = useState([]);
+
+  useEffect(() => {
+    const fetchCard = async () => {
+      try {
+        const response = await axios.get("admin/get_all_packages");
+        console.log(response, "iiii");
+        if (response) {
+          setCard(response.data.packageList);
+          console.log(response.data.packageList);
+        } else {
+          toast.error("Something went wrong!!");
+        }
+      } catch (error) {
+        toast.error("Something went wrong!!");
+      }
+    };
+    fetchCard();
+  },[]);
   return (
     <div>
       <Navbar />
@@ -23,135 +45,63 @@ const Teletherapy = () => {
         <Speekeasy />
       </div>
 
-      <div className="teletheropy-plans">
-        <div className="top-baner">
-          <p>Packages for you!</p>
-          <h1>Subscribe to our</h1>
-          <h2>Packages</h2>
-        </div>
-        <div className="card-container">
-          <div className="card">
-            <div className="card-text">
-              <div>
-                <img src={Plan} alt="" />
-              </div>
-              <div>
-                <p>7 Days</p>
-                <h1>Basic</h1>
-              </div>
+        
+          <div className="teletheropy-plans">
+            <div className="top-baner">
+              <p>Packages for you!</p>
+              <h1>Subscribe to our</h1>
+              <h2>Packages</h2>
             </div>
+            <div className="dis-fle">
+            {card.map((data) => {
+              return (
+                <div className="card-container">
+                  <div className="card">
+                    <div className="card-text">
+                      <div>
+                        <img src={Plan} alt="" />
+                      </div>
+                      <div>
+                        <p>{data.days_plan} Days</p>
+                        <h1>{data.package_title}</h1>
+                      </div>
+                    </div>
 
-            <p>
-              Are you ready to embark on a journey of discovery with your child?
-              Join us for an immersive experience where learning meets fun!
-            </p>
+                    <p>{data.description}</p>
 
-            <h1>
-              ₹ 999 <span>// 7 days</span>
-            </h1>
-            <p>What’s included</p>
-            <ul className="plan-list">
-              <li>
-                <TiTick className="tick" />4 sessions with kids
-              </li>
-              <li>
-                <TiTick className="tick" />2 sessions with parents
-              </li>
-              <li>
-                <TiTick className="tick" />1 intro session
-              </li>
-              <li>
-                <TiTick className="tick" />1 review session
-              </li>
-            </ul>
-            <button>Buy Now</button>
-          </div>
+                    <h1>
+                      ₹{data.price} <span>// {data.days_plan} days</span>
+                    </h1>
+                    <p>What’s included</p>
+                    <ul className="plan-list">
+                      <li>
+                        <TiTick className="tick" />
+                        {data.benefits}
+                      </li>
+                      <li>
+                        <TiTick className="tick" />2 sessions with parents
+                      </li>
+                      <li>
+                        <TiTick className="tick" />1 intro session
+                      </li>
+                      <li>
+                        <TiTick className="tick" />1 review session
+                      </li>
+                    </ul>
+                    <button>Buy Now</button>
+                  </div>
+                </div>
+              );
+            })}
 
-          <div className="card">
-            <div className="card-text">
-              <div>
-                <img src={Planb} alt="" />
-              </div>
-              <div>
-                <p style={{ color: "white" }}>15 Days</p>
-                <h1 style={{ color: "#ffdd7e" }}>Premium</h1>
-              </div>
             </div>
-
-            <p style={{ color: "white" }}>
-              Unlock a world of curiosity and growth with our premium plan
-              designed just for them
-            </p>
-
-            <h1 style={{ color: "#ffdd7e" }}>
-              ₹ 1999<span style={{ color: "white" }}>// 15 days</span>
-            </h1>
-            <p>What’s included</p>
-            <ul className="plan-list" style={{ color: "white" }}>
-              {/* <li>
-                <TiTick
-                  className="tick"
-                  style={{ backgroundColor: "#ffdd7e", color: "black" }}
-                />
-                Lorem ipsum dolor conse ctetur
-              </li> */}
-              <li>
-                <TiTick
-                  className="tick"
-                  style={{ backgroundColor: "#ffdd7e", color: "black" }}
-                />
-                8 sessions with kids
-              </li>
-              {/* <li>
-                <TiTick
-                  className="tick"
-                  style={{ backgroundColor: "#ffdd7e", color: "black" }}
-                />
-                Lorem ipsum dolor conse ctetur
-              </li> */}
-              <li>
-                <TiTick
-                  className="tick"
-                  style={{ backgroundColor: "#ffdd7e", color: "black" }}
-                />
-                4 review sessions with parents
-              </li>
-            </ul>
-            <button>Buy Now</button>
+            
+  
           </div>
+      
 
-          <div className="card">
-            <div className="card-text">
-              <div>
-                <img src={Plan} alt="" />
-              </div>
-              <div>
-                <p>Monthly</p>
-                <h1>Pro</h1>
-              </div>
-            </div>
 
-            <p>
-              - Experience education in a whole new light with our Pro Plan!
-            </p>
-
-            <h1>
-              ₹ 2999<span>// Monthly</span>
-            </h1>
-            <p>What’s included</p>
-            <ul className="plan-list">
-              <li>
-                <TiTick className="tick" />
-                16 sessions with kids
-              </li>
-              <li>
-                <TiTick className="tick" />8 review sessions with parents
-              </li>
-            </ul>
-            <button>Buy Now</button>
-          </div>
-        </div>
-      </div>
+      
         <div className="imsai-two">
       <div className="bottom-tele-image">
         {/* <img src={FlowerL} alt="" /> */}

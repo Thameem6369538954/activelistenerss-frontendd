@@ -1,8 +1,9 @@
 .card-inneR {
-  position: relative;
-  height: 9cm;
-  margin-top: -33px;
-  border-radius: 20px;
+    position: relative;
+    height: 7cm;
+    /* margin-top: 9px; */
+    border-radius: 20px;
+    width: 100%;
 }
 .Eealyage-headrer-box {
   display: flex;
@@ -21,6 +22,16 @@
   height: 300px;
   margin-left: 1%;
   /* background-color: rebeccapurple; */
+}
+.adaptation-video{
+  width: 30%;
+  border-radius: 10px;
+  box-shadow: 18px 17px 15px -3px rgba(0,0,0,0.1),0px 10px 15px -3px rgba(0,0,0,0.1);
+}
+.early-age-video {
+    width: 50%;
+    border-radius: 20px;
+    margin-left: -77px;
 }
 .card-inneR p,
 .card-inneR h1 {
@@ -89,7 +100,8 @@
 
 /* goaal vision .............................................. */
 .card-inneR-text {
-  margin: 30px;
+    margin: 30px;
+    width: 41%;
 }
 .green-bourd-Earlyage {
   /* margin: 50px; */
@@ -207,6 +219,11 @@
   }
 }
 @media screen and (max-width: 600px) {
+  .early-age-video {
+    width: 50%;
+    border-radius: 20px;
+    margin-left: -60px;
+}
     .MobileAddiction-yt-video {
   /* margin-top: 10%; */
   border-radius: 30px;

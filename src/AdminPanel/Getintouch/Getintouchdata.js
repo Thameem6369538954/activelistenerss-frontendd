@@ -17,13 +17,13 @@ const Getintouchdata = () => {
 
   // Filtered data based on search input
   // Filtered data based on search input
-  // const filteredData = data.length > 0 ? data.filter((item) => {
-  //   return (
-  //     item.name.toLowerCase().includes(searchInput.toLowerCase()) ||
-  //     item.email.toLowerCase().includes(searchInput.toLowerCase())
-  //     // item.mobile.includes(searchInput)
-  //   );
-  // }) : [];
+  const filteredData = data.length > 0 ? data.filter((item) => {
+    return (
+      item.name.toLowerCase().includes(searchInput.toLowerCase()) ||
+      item.email.toLowerCase().includes(searchInput.toLowerCase())
+      // item.mobile.includes(searchInput)
+    );
+  }) : [];
 
   const currentDate = new Date().toISOString().slice(0, 10);
   return (
@@ -74,7 +74,7 @@ const Getintouchdata = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {data.map((item, index) => (
+                  {filteredData.map((item, index) => (
                     <tr key={item.id}>
                       <td>{index + 1}</td>
                       <td>{item.name}</td>
