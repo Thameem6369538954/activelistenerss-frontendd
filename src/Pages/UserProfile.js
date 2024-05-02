@@ -12,7 +12,7 @@ import { toast } from "react-toastify";
 import { CgAirplane } from "react-icons/cg";
 import EllipseRed from "../Images/EllipseRed.png";
 // import Sirpro from "../Images/Sirpro.png";
-import profile from "../Images/shankar.jpeg"
+import profile from "../Images/prof.jpg"
 import { RiEdit2Line } from "react-icons/ri";
 import { useSelector } from 'react-redux';
 import axios from "../Utils/Baseurl.js";

@@ -59,7 +59,7 @@ const AffiliateProgram = () => {
                 <img src={Navarrow} alt="" />
               </div> */}
               <div className="psycologist-how-can-join-btn">
-                <Link to='/Psycologistform'>
+                <Link to="/Psycologistform">
                   <button>Apply Here</button>
                 </Link>
               </div>
@@ -149,6 +149,9 @@ const AffiliateProgram = () => {
                     Magni ducimus natus iure quos dolorum animi
                   </p>
                 </div>
+                <Link to="/Collegeandschoolform">
+                  <button>apply Here</button>
+                </Link>
               </div>
             </div>
           </div>
@@ -204,6 +207,9 @@ const AffiliateProgram = () => {
                     Magni ducimus natus iure quos dolorum animi
                   </p>
                 </div>
+                <Link to="/Ngoform">
+                  <button>Know more</button>
+                </Link>
               </div>
             </div>
           </div>

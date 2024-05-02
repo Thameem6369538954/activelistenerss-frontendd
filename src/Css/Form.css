@@ -1,0 +1,17 @@
+.input-field{
+    display: grid;
+    place-items: center;
+    grid-template-columns: repeat(2,0.9fr);
+}
+.input-field input{
+    padding: 10px;
+}
+.input-field select{
+    padding: 10px 60px;
+    border-radius: 5px;
+}
+.form-affilate{
+     display: grid;
+    place-items: center;
+    grid-template-columns: repeat(2,1fr);
+}
