@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import "../Css/UserProfile.css";
-import { Link, NavLink, Route, Routes } from "react-router-dom";
+import { Link, NavLink, Route, Routes,useNavigate } from "react-router-dom";
 import Settings from "../Pages/Settings";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
@@ -11,87 +11,67 @@ import { IoCloseCircleOutline } from "react-icons/io5";
 import { toast } from "react-toastify";
 import { CgAirplane } from "react-icons/cg";
 import EllipseRed from "../Images/EllipseRed.png";
-import Sirpro from "../Images/Sirpro.png";
+// import Sirpro from "../Images/Sirpro.png";
+import profile from "../Images/shankar.jpeg"
 import { RiEdit2Line } from "react-icons/ri";
+import { useSelector } from 'react-redux';
+import axios from "../Utils/Baseurl.js";
+import { logout,loginSuccess,setUser } from '../Redux/Slices/authSlice.js';
+// import { useDispatch } from 'react-redux';
 
 const UserProfile = () => {
-  const [username, setUsername] = useState("Ram Kumar");
-  const [email, setEmail] = useState("example@example.com");
-  const [phoneNumber, setPhoneNumber] = useState("123-456-7890");
+  // const dispatch = useDispatch();
+  const navigate = useNavigate()
+   var user = useSelector((state) => state.auth.user);
+   console.log(user,"in the name of god......................................>>>>");
+   const [userData,setUserData]=useState({}) 
+   const [noToken,setNoToken] = useState(false)
+   useEffect(() => {
+    const fetchuserData = async () => {
+      const token = localStorage.getItem("accessToken");
+      if(!token){
+        setNoToken(true)
+      }
+      if (user && user._id) {
+        try {
+          const response = await axios.get(`/my_profile/${user._id}`, {
+            headers: {
+              Authorization: `Bearer ${token}`, // Add Bearer prefix to token
+            },
+          });
+          console.log(response, "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"); // Moved console.log here
+          if (response.data.Getuser) {
+            setUserData(response.data.Getuser);
+          } else {
+            toast.error("User data not found");
+          }
+        } catch (error) {
+          if (error.response) {
+            const errorMessage = error.response.data.message;
+            if (error.response.status === 403 || error.response.status === 401) {
+              toast.error(errorMessage);
+              navigate("/Login");
+            } else {
+              toast.error("An error occurred. Please try again later.");
+            }
+          } else {
+            toast.error("An error occurred. Please try again later.");
+          }
+        }
+      }
+    };
+    fetchuserData();
+  }, [user, navigate]);
 
-  const [isEditingUsername, setIsEditingUsername] = useState(false);
-  const [isEditingEmail, setIsEditingEmail] = useState(false);
-  const [isEditingPhoneNumber, setIsEditingPhoneNumber] = useState(false);
 
-  const [tempUsername, setTempUsername] = useState(username);
-  const [tempEmail, setTempEmail] = useState(email);
-  const [tempPhoneNumber, setTempPhoneNumber] = useState(phoneNumber);
-
-  const handleEditUsernameClick = () => {
-    setIsEditingUsername(true);
-    setTempUsername(username);
-  };
-
-  const handleEditEmailClick = () => {
-    setIsEditingEmail(true);
-    setTempEmail(email);
-  };
-
-  const handleEditPhoneNumberClick = () => {
-    setIsEditingPhoneNumber(true);
-    setTempPhoneNumber(phoneNumber);
-  };
-
-  const handleCancelUsernameClick = () => {
-    setIsEditingUsername(false);
-  };
-
-  const handleCancelEmailClick = () => {
-    setIsEditingEmail(false);
-  };
-
-  const handleCancelPhoneNumberClick = () => {
-    setIsEditingPhoneNumber(false);
-  };
-
-  const handleSaveUsernameClick = () => {
-    setUsername(tempUsername);
-    setIsEditingUsername(false);
-  };
-
-  const handleSaveEmailClick = () => {
-    setEmail(tempEmail);
-    setIsEditingEmail(false);
-  };
-
-  const handleSavePhoneNumberClick = () => {
-    setPhoneNumber(tempPhoneNumber);
-    setIsEditingPhoneNumber(false);
-  };
-
-  const handleUsernameChange = (event) => {
-    setTempUsername(event.target.value);
-  };
-
-  const handleEmailChange = (event) => {
-    setTempEmail(event.target.value);
-  };
-
-  const handlePhoneNumberChange = (event) => {
-    setTempPhoneNumber(event.target.value);
-  };
-  const handlesubmit = () => {
-    toast.success("profile updated successfully!!");
-  };
-  const [clicked, setClicked] = useState(false);
-
-  const handleClick = () => {
-    setClicked(true);
-  };
+   if(noToken){
+    navigate('/Login')
+   }
 
   return (
-    <div>
+    !noToken ? (<div>
       <Navbar />
+      
       <div className="useprof-main-con">
         <img src={EllipseRed} alt="" />
         <div className="userprofile-sidebar">
@@ -99,13 +79,13 @@ const UserProfile = () => {
             <Link to="/UserProfile/Profile" className="active">
               <li>Profile</li>
             </Link>
-            <Link to="/UserProfile/Account" className="active">
+            {/* <Link to="/UserProfile/Account" className="active">
               {" "}
               <li>Account</li>
             </Link>
             <Link to="/UserProfile/profilesubscribe" className="active">
               <li>Subscribe</li>
-            </Link>
+            </Link> */}
           </ul>
         </div>
 
@@ -129,16 +109,17 @@ const UserProfile = () => {
                         <div className="editable-details">
                           <div>
                             <div className="user-detailes">
-                              <h3>Username </h3>
-                              {isEditingUsername ? (
+                            {console.log(userData,"koiiiii")}
+                              <h3> Name </h3>
+                              {userData ? (
                                 <>
                                   <input
                                     type="text"
-                                    value={tempUsername}
-                                    onChange={handleUsernameChange}
+                                    value={userData.name}
+                                    // onChange={handleUsernameChange}
                                   />
                                   <button
-                                    onClick={handleSaveUsernameClick}
+                                    // onClick={handleSaveUsernameClick}
                                     style={{
                                       color: "green",
                                       border: "none",
@@ -149,7 +130,7 @@ const UserProfile = () => {
                                     <FiSave />
                                   </button>
                                   <button
-                                    onClick={handleCancelUsernameClick}
+                                    // onClick={handleCancelUsernameClick}
                                     style={{
                                       color: "red",
                                       border: "none",
@@ -162,7 +143,7 @@ const UserProfile = () => {
                                 </>
                               ) : (
                                 <>
-                                  <p>{username}</p>
+                                  <p>{userData.name}</p>
                                   <button
                                     style={{
                                       color: "Blue",
@@ -170,7 +151,7 @@ const UserProfile = () => {
                                       backgroundColor: "transparent",
                                       fontSize: "20px",
                                     }}
-                                    onClick={handleEditUsernameClick}
+                                    // onClick={handleEditUsernameClick}
                                   >
                                     <FiEdit />
                                   </button>
@@ -183,15 +164,15 @@ const UserProfile = () => {
                             <div className="prof-img">
                               <div className="user-detailes">
                                 <h3>Email </h3>
-                                {isEditingEmail ? (
+                                {userData ? (
                                   <>
                                     <input
                                       type="text"
-                                      value={tempEmail}
-                                      onChange={handleEmailChange}
+                                      value={userData.email}
+                                      // onChange={handleEmailChange}
                                     />
                                     <button
-                                      onClick={handleSaveEmailClick}
+                                      // onClick={handleSaveEmailClick}
                                       style={{
                                         color: "green",
                                         border: "none",
@@ -202,7 +183,7 @@ const UserProfile = () => {
                                       <FiSave />
                                     </button>
                                     <button
-                                      onClick={handleCancelEmailClick}
+                                      // onClick={handleCancelEmailClick}
                                       style={{
                                         color: "red",
                                         border: "none",
@@ -215,7 +196,7 @@ const UserProfile = () => {
                                   </>
                                 ) : (
                                   <>
-                                    <p>{email}</p>
+                                    <p>{userData.email}</p>
                                     <button
                                       style={{
                                         color: "Blue",
@@ -223,7 +204,7 @@ const UserProfile = () => {
                                         backgroundColor: "transparent",
                                         fontSize: "20px",
                                       }}
-                                      onClick={handleEditEmailClick}
+                                      // onClick={handleEditEmailClick}
                                     >
                                       <FiEdit />
                                     </button>
@@ -236,15 +217,15 @@ const UserProfile = () => {
                           <div>
                             <div className="user-detailes">
                               <h3>Phone Number </h3>
-                              {isEditingPhoneNumber ? (
+                              {userData ? (
                                 <>
                                   <input
                                     type="text"
-                                    value={tempPhoneNumber}
-                                    onChange={handlePhoneNumberChange}
+                                    value={userData.mobile}
+                                    // onChange={handlePhoneNumberChange}
                                   />
                                   <button
-                                    onClick={handleSavePhoneNumberClick}
+                                    // onClick={handleSavePhoneNumberClick}
                                     style={{
                                       color: "green",
                                       border: "none",
@@ -255,7 +236,7 @@ const UserProfile = () => {
                                     <FiSave />
                                   </button>
                                   <button
-                                    onClick={handleCancelPhoneNumberClick}
+                                    // onClick={handleCancelPhoneNumberClick}
                                     style={{
                                       color: "red",
                                       border: "none",
@@ -268,7 +249,7 @@ const UserProfile = () => {
                                 </>
                               ) : (
                                 <>
-                                  <p>{phoneNumber}</p>
+                                  <p>{userData.mobile}</p>
                                   <button
                                     style={{
                                       color: "Blue",
@@ -276,7 +257,7 @@ const UserProfile = () => {
                                       backgroundColor: "transparent",
                                       fontSize: "20px",
                                     }}
-                                    onClick={handleEditPhoneNumberClick}
+                                    // onClick={handleEditPhoneNumberClick}
                                   >
                                     <FiEdit />
                                   </button>
@@ -287,14 +268,14 @@ const UserProfile = () => {
                         </div>
                         <div className="profile-box">
                           <div></div>
-                          <img src={Sirpro} alt="" />
-                          <p>Mahesh Kashinath</p>
-                          <span>mahesh@activelisteners.in</span>
+                          <img src={profile} alt="" />
+                          <p>{userData.name}</p>
+                          <span>{userData.email}</span>
                         </div>
                       </div>
 
-                      <div className="save-cancel">
-                        <button onClick={handlesubmit}>Update</button>
+                      {/* <div className="save-cancel">
+                        <button >Update</button>
                         <div className="update">
                           <p>
                             Update your password through the button below. You
@@ -305,7 +286,7 @@ const UserProfile = () => {
                       </div>
                       <div className="save-black">
                         <button>Save</button>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                   {/* <div className="log-out">
@@ -333,15 +314,15 @@ const UserProfile = () => {
                           <div>
                             <div className="user-detailes">
                               <h3>Username :</h3>
-                              {isEditingUsername ? (
+                              {userData ? (
                                 <>
                                   <input
                                     type="text"
-                                    value={tempUsername}
-                                    onChange={handleUsernameChange}
+                                    value={userData.name}
+                                    // onChange={handleUsernameChange}
                                   />
                                   <button
-                                    onClick={handleSaveUsernameClick}
+                                    // onClick={handleSaveUsernameClick}
                                     style={{
                                       color: "green",
                                       border: "none",
@@ -352,7 +333,7 @@ const UserProfile = () => {
                                     <FiSave />
                                   </button>
                                   <button
-                                    onClick={handleCancelUsernameClick}
+                                    // onClick={handleCancelUsernameClick}
                                     style={{
                                       color: "red",
                                       border: "none",
@@ -365,7 +346,7 @@ const UserProfile = () => {
                                 </>
                               ) : (
                                 <>
-                                  <p>{username}</p>
+                                  <p>{userData.name}</p>
                                   <button
                                     style={{
                                       color: "Blue",
@@ -373,7 +354,7 @@ const UserProfile = () => {
                                       backgroundColor: "transparent",
                                       fontSize: "20px",
                                     }}
-                                    onClick={handleEditUsernameClick}
+                                    // onClick={handleEditUsernameClick}
                                   >
                                     <FiEdit />
                                   </button>
@@ -386,15 +367,15 @@ const UserProfile = () => {
                             <div className="prof-img">
                               <div className="user-detailes">
                                 <h3>Email :</h3>
-                                {isEditingEmail ? (
+                                {userData ? (
                                   <>
                                     <input
                                       type="text"
-                                      value={tempEmail}
-                                      onChange={handleEmailChange}
+                                      // value={tempEmail}
+                                      // onChange={handleEmailChange}
                                     />
                                     <button
-                                      onClick={handleSaveEmailClick}
+                                      // onClick={handleSaveEmailClick}
                                       style={{
                                         color: "green",
                                         border: "none",
@@ -405,7 +386,7 @@ const UserProfile = () => {
                                       <FiSave />
                                     </button>
                                     <button
-                                      onClick={handleCancelEmailClick}
+                                      // onClick={handleCancelEmailClick}
                                       style={{
                                         color: "red",
                                         border: "none",
@@ -418,7 +399,7 @@ const UserProfile = () => {
                                   </>
                                 ) : (
                                   <>
-                                    <p>{email}</p>
+                                    <p>{userData.email}</p>
                                     <button
                                       style={{
                                         color: "Blue",
@@ -426,7 +407,7 @@ const UserProfile = () => {
                                         backgroundColor: "transparent",
                                         fontSize: "20px",
                                       }}
-                                      onClick={handleEditEmailClick}
+                                      // onClick={handleEditEmailClick}
                                     >
                                       <FiEdit />
                                     </button>
@@ -439,15 +420,15 @@ const UserProfile = () => {
                           <div>
                             <div className="user-detailes">
                               <h3>Phone Number :</h3>
-                              {isEditingPhoneNumber ? (
+                              {userData ? (
                                 <>
                                   <input
                                     type="text"
-                                    value={tempPhoneNumber}
-                                    onChange={handlePhoneNumberChange}
+                                    // value={tempPhoneNumber}
+                                    // onChange={handlePhoneNumberChange}
                                   />
                                   <button
-                                    onClick={handleSavePhoneNumberClick}
+                                    // onClick={handleSavePhoneNumberClick}
                                     style={{
                                       color: "green",
                                       border: "none",
@@ -458,7 +439,7 @@ const UserProfile = () => {
                                     <FiSave />
                                   </button>
                                   <button
-                                    onClick={handleCancelPhoneNumberClick}
+                                    // onClick={handleCancelPhoneNumberClick}
                                     style={{
                                       color: "red",
                                       border: "none",
@@ -471,7 +452,7 @@ const UserProfile = () => {
                                 </>
                               ) : (
                                 <>
-                                  <p>{phoneNumber}</p>
+                                  <p>{userData.mobile}</p>
                                   <button
                                     style={{
                                       color: "Blue",
@@ -479,7 +460,7 @@ const UserProfile = () => {
                                       backgroundColor: "transparent",
                                       fontSize: "20px",
                                     }}
-                                    onClick={handleEditPhoneNumberClick}
+                                    // onClick={handleEditPhoneNumberClick}
                                   >
                                     <FiEdit />
                                   </button>
@@ -490,14 +471,14 @@ const UserProfile = () => {
                         </div>
                         <div className="profile-box">
                           <div></div>
-                          <img src={Sirpro} alt="" />
-                          <p>Mahesh Kashinath</p>
-                          <span>mahesh@activelisteners.in</span>
+                          <img src={profile} alt="" />
+                          <p>{userData.name}</p>
+                          <span>{userData.email}</span>
                         </div>
                       </div>
 
-                      <div className="save-cancel">
-                        <button onClick={handlesubmit}>Update</button>
+                      {/* <div className="save-cancel">
+                        <button >Update</button>
                         <div className="update">
                           <p>
                             Update your password through the button below. You
@@ -508,7 +489,7 @@ const UserProfile = () => {
                       </div>
                       <div className="save-black">
                         <button>Save</button>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                   {/* <div className="log-out">
@@ -517,7 +498,7 @@ const UserProfile = () => {
                 </div>
               }
             />
-            <Route
+            {/* <Route
               path="/Account"
               element={
                 <div>
@@ -555,13 +536,13 @@ const UserProfile = () => {
                   </div>
                 </div>
               }
-            />
+            /> */}
           </Routes>
         </div>
       </div>
       <Footer />
-    </div>
-  );
+    </div>):null
+  )
 };
 
 export default UserProfile;

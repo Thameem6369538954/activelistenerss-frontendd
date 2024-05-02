@@ -19,6 +19,7 @@ import FormB from "../Images/FormB.png";
 import MM from "../SmallElements/MM.png";
 import MG from "../SmallElements/MG.png";
 import Breadcrumps from "../Components/Breadcrumps";
+import { Link } from "react-router-dom";
 
 const AffiliateProgram = () => {
   return (
@@ -57,6 +58,11 @@ const AffiliateProgram = () => {
                 <button>Know more</button>
                 <img src={Navarrow} alt="" />
               </div> */}
+              <div className="psycologist-how-can-join-btn">
+                <Link to='/Psycologistform'>
+                  <button>Apply Here</button>
+                </Link>
+              </div>
             </div>
             <div className="psycologist-how-can-join">
               <h1>Who can Join</h1>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home";
 import Teletherapy from "./Pages/Teletherapy";
 import GriefSupport from "./Pages/GriefSupport";
@@ -51,7 +51,8 @@ import Daseboard from "./AdminPanel/DaseBoard/Daseboard.js";
 import Complimetarycall from "./AdminPanel/ComplimetaryCall/Complimetarycall.js";
 // import HiringAdmin from "./AdminPanel/Hiring/HiringAdmin.js"
 import Psychologist from "./AdminPanel/psychologist/Psychologist.js";
-import Adminlogin from "./AdminLogin/AdminLogin/Adminlogin.js"
+import Adminlogin from "./AdminLogin/AdminLogin/Adminlogin.js";
+import Psycologistform from "./Components/Psycologistform.js";
 
 function App() {
   const [loading, setLoading] = useState(false);
@@ -63,9 +64,10 @@ function App() {
   }, []);
   return (
     <div className="App">
-      <BrowserRouter>
+      <Router>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/Psycologistform" element={<Psycologistform />} />
           <Route path="/Psychologist" element={<Psychologist />} />
           <Route path="/Community" element={<Community />} />
           <Route path="/Complimetarycall" element={<Complimetarycall />} />
@@ -126,7 +128,7 @@ function App() {
             element={<EarlyAgeGadgetExposure />}
           />
         </Routes>
-      </BrowserRouter>
+      </Router>
     </div>
   );
 }

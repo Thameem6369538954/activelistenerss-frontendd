@@ -1,8 +1,9 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef,useState } from 'react';
 import Chart from 'chart.js/auto'; // Import Chart.js
-
+import axios from "../Utils/Baseurl"
+import { toast } from 'react-toastify';
 const MyChart = () => {
-  const chartRef = useRef(null);
+     const chartRef = useRef(null);
 
   useEffect(() => {
     const labels = ['January', 'February', 'March', 'April', 'May', 'June'];

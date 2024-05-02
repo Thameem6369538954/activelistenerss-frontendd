@@ -11,8 +11,13 @@ import LoginG from "../Images/LoginG.png";
 import axios from "../Utils/Baseurl.js";
 import { ToastContainer, toast } from "react-toastify";
 import { Link, NavLink, useNavigate } from "react-router-dom";
+
+import { useDispatch } from "react-redux";
+import { loginSuccess, setUser } from "../Redux/Slices/authSlice.js";
 const Login = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const [formData, setFormData] = useState({ username: "", password: "" });
   const [errors, setErrors] = useState({ username: "", password: "" });
 
@@ -58,9 +63,9 @@ const Login = () => {
 
       if (response) {
         console.log(response.data.message, "hhehheeeee");
-        if (response.data.message == "invalid password or id"){
+        if (response.data.message === "invalid password or id") {
           toast.error("Invalid username or password");
-        }else if (response.data.message === "User not found!!") {
+        } else if (response.data.message === "User not found!!") {
           toast.error(response.data.message);
         } else {
           toast.success("Login Successful");
@@ -76,11 +81,12 @@ const Login = () => {
             response.data.user,
             "------------>userdata"
           );
+          //   dispatch(loginSuccess(response.data.Token));
+          // dispatch(setUser(response.data.user));
+          // const {datas} = response.data
+          dispatch(loginSuccess(response));
         }
       }
-
-
-      
     }
   };
 
@@ -92,7 +98,6 @@ const Login = () => {
   return (
     <div>
       <div>
-        
         <div className="signup-main">
           <div className="signup-top">
             <img src={EmojiA} alt="" />
