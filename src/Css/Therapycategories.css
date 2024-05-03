@@ -93,6 +93,14 @@
   text-decoration: underline;
 }
 @media screen and (max-width: 600px) {
+  .therapy-heading h2 {
+    font-family: myFont;
+    color: #256c55;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 40px;
+    margin-top: -2%;
+}
   .eclip img:nth-child(3){
   position: absolute;
   /* background-color: #256c55; */

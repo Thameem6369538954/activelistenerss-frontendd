@@ -126,38 +126,37 @@ import { ToastContainer, toast } from "react-toastify";
 
 const Navbar = () => {
   
-  const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
-  const dispatch = useDispatch();
-  const navigate = useNavigate()
-  useEffect(()=>{
-    const token = localStorage.getItem('accessToken');
-    const user = localStorage.getItem('user');
-    if(token === undefined || user ===undefined){
-      dispatch(logout(user))
-    }
-    if (token && user) {
-    // If token exists, dispatch action to set user as authenticated
-    console.log(token,user,"vaaaaaaalidd??");
-        dispatch(setUser({ token, user })); 
-  }
-},[dispatch])
-const user = useSelector((state) => state.auth.user);
-console.log(user,"heheeeeeeeeeeeeee user state");
-if(!user){
-  navigate('/Login')
-}
-  const scrollToTop = () => {
-    window.scrollTo(0, 0);
-  };
-  const [isOpen, setIsOpen] = useState(false);
+ const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+ const dispatch = useDispatch();
+ const navigate = useNavigate();
 
-  const handleLogout =()=>{
-    dispatch(logout(user))
-    toast.success("Logout successully!")
-    navigate('/Login')
-  }
-  const handleClick = () => setIsOpen(!isOpen);
-  const CloseMenu = () => setIsOpen(!isOpen);
+ useEffect(() => {
+   const token = localStorage.getItem("accessToken");
+   const user = localStorage.getItem("user");
+   if (token && user) {
+     console.log(token, user, "vaaaaaaalidd??");
+     dispatch(setUser({ token, user }));
+   } else {
+     dispatch(logout(user));
+   }
+ }, []);
+
+ const user = useSelector((state) => state.auth.user);
+ console.log(user, "heheeeeeeeeeeeeee user state");
+
+ const handleLogout = () => {
+   dispatch(logout(user));
+   toast.success("Logout successully!");
+   navigate("/");
+ };
+
+ const scrollToTop = () => {
+   window.scrollTo(0, 0);
+ };
+ const [isOpen, setIsOpen] = useState(false);
+
+ const handleClick = () => setIsOpen(!isOpen);
+ const CloseMenu = () => setIsOpen(!isOpen);
 
   return (
     <div>

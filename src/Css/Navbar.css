@@ -87,7 +87,7 @@ nav img {
     justify-content: center;
     /* border: 1px solid black; */
     width: 100%;
-    gap: 1rem;
+    gap: 0rem;
 }
   .navarrow {
     width: 20px;

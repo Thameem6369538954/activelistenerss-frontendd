@@ -338,9 +338,9 @@ box-shadow: 4px 4px 0px 0px rgba(0,0,0,0.75);
     justify-content: center;
     margin: 10px;
   }
-  .hdr-btm-text button {
+ .hdr-btm-text button {
         background-color: #ffdd7e;
-        padding: 11px 31px;
+        padding: 10px 15px;
         margin: auto;
         border-radius: 50px;
         border: none;
@@ -363,8 +363,8 @@ box-shadow: 4px 4px 0px 0px rgba(0,0,0,0.75);
   background-color: #cd4631;
   display: none;
 }
-    .inside-hdr-btm-txt img {
-        width: 135px;
+       .inside-hdr-btm-txt img {
+        width: 84px;
         /* background-color: #256c55; */
     }
   .header-top-video{

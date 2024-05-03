@@ -207,22 +207,41 @@
     width: 300px;
   }
   .psycologist-part {
-    height: 97vh;
+    height: auto;
   }
-  .Clg-graduate-part {
+     .Clg-graduate-part {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        width: 100%;
+        height: auto;
+        margin-top: 2%;
+    }
+    .psycologist-how-can-join-box img{
+      width: 80px;
+    }
+    .psycologist-how-can-join-box {
+    height: 100px;
+    width: 314px;
+    background-color: #bae8ac;
     display: flex;
     align-items: center;
     justify-content: space-around;
-    width: 100%;
-    height: 160vh;
-    margin-top: 80%;
-  }
+    border-radius: 5px;
+}
   .psycologist-how-can-join-box-container {
     margin-left: 30px;
   }
   .NGO-part {
     height: 150vh;
   }
+  .inside-button button {
+    padding: 9px 23px;
+    border: none;
+    border-radius: 20px;
+    font-size: 20px;
+    background-color: #ffdd7e;
+}
 }
 @media (min-width: 600px) and (max-width: 1024px) {
   .cls-gratuate-image-part img {
@@ -234,7 +253,7 @@
     flex-direction: column;
   }
   .affiliate-program-heading img {
-    width: 257px;
+    width: 220px;
     /* background-color: red; */
   }
   .affiliate-program-heading img:nth-child(1) {
