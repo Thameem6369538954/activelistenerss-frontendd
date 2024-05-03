@@ -92,9 +92,24 @@
   height: 40px;
   margin-bottom: 40px;
   margin-top: 20px;
+  box-shadow: 15px 17px 15px -3px rgba(0,0,0,0.1),0px 10px 15px -3px rgba(0,0,0,0.1),0px 10px 15px -3px rgba(0,0,0,0.1);
 }
 .categoreis-grid-box:hover {
   background-color: #ffdd7e;
+}
+.why-active-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+.why-active-btn img{
+  width: 22%;
+background-color: #ffdd7e;
+padding: 15px;
+border-radius: 50%;
+margin-left: -14%;
+border: 3px solid white;
 }
 
 .arrow-for-header {
@@ -215,6 +230,10 @@
   font-family: "Questrial", sans-serif;
   font-weight: 400;
   font-style: normal;
+  font-family: Blacky;
+-webkit-box-shadow: 4px 4px 0px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 4px 4px 0px 0px rgba(0,0,0,0.75);
+box-shadow: 4px 4px 0px 0px rgba(0,0,0,0.75);
 }
 .puzzle-boy {
   display: flex;

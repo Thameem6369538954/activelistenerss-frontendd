@@ -58,11 +58,7 @@ const AffiliateProgram = () => {
                 <button>Know more</button>
                 <img src={Navarrow} alt="" />
               </div> */}
-              <div className="psycologist-how-can-join-btn">
-                <Link to="/Psycologistform">
-                  <button>Apply Here</button>
-                </Link>
-              </div>
+              <div className="psycologist-how-can-join-btn"></div>
             </div>
             <div className="psycologist-how-can-join">
               <h1>Who can Join</h1>
@@ -96,6 +92,19 @@ const AffiliateProgram = () => {
                     Magni ducimus natus iure quos dolorum animi
                   </p>
                 </div>
+                <Link to="/Psycologistform">
+                  <button
+                    style={{
+                      padding: "10px 20px",
+                      backgroundColor: "#FFDD7E",
+                      border: "none",
+                      borderRadius: "20px",
+                      fontSize: "14px",
+                    }}
+                  >
+                    Apply Here
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -150,7 +159,17 @@ const AffiliateProgram = () => {
                   </p>
                 </div>
                 <Link to="/Collegeandschoolform">
-                  <button>apply Here</button>
+                  <button
+                    style={{
+                      padding: "10px 20px",
+                      backgroundColor: "#FFDD7E",
+                      border: "none",
+                      borderRadius: "20px",
+                      fontSize: "14px",
+                    }}
+                  >
+                    Apply here
+                  </button>
                 </Link>
               </div>
             </div>
@@ -208,7 +227,17 @@ const AffiliateProgram = () => {
                   </p>
                 </div>
                 <Link to="/Ngoform">
-                  <button>Know more</button>
+                  <button
+                    style={{
+                      padding: "10px 20px",
+                      backgroundColor: "#FFDD7E",
+                      border: "none",
+                      borderRadius: "20px",
+                      fontSize: "14px",
+                    }}
+                  >
+                    Know more
+                  </button>
                 </Link>
               </div>
             </div>

@@ -94,8 +94,8 @@ const Psycologistform = () => {
     <div>
       <div className="hiring-form-main">
         <div className="therapy-heading">
-          <p>Our Goals</p>
-          <h1>Join our Amazing</h1>
+          <p>Your Applying For</p>
+          <h1>Psychologist</h1>
           <h2>Team</h2>
           <img src={Yellowline} className="Yellowline" alt="" />
           {/* <div className="down-arrow-conatiner">
@@ -108,7 +108,11 @@ const Psycologistform = () => {
         </div>
         <div className="hiring-form-holeconatiner">
           <div className="container-form">
-            <form encType="multipart/form-data" onSubmit={handleSubmit}>
+            <form
+              encType="multipart/form-data"
+              onSubmit={handleSubmit}
+              className="form-affilate"
+            >
               {/* Your form fields */}
               <div className="input-field">
                 <label>Full Name</label>

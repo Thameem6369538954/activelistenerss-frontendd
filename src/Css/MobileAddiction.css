@@ -1,3 +1,7 @@
+.mobile-addiction-main-container{
+  overflow: hidden;
+}
+
 .mobile-addiction-header {
   display: flex;
   flex-direction: column;
@@ -173,6 +177,10 @@ h4 {
   margin-right: 30px;
 }
 @media screen and (max-width: 600px) {
+  .mobile-addiction-main-container{
+  overflow: hidden;
+}
+
   .header-container-mobile img {
   width: 30%;
 }

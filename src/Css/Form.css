@@ -14,4 +14,9 @@
      display: grid;
     place-items: center;
     grid-template-columns: repeat(2,1fr);
+    background-color: burlywood;
+    width: 100%;
+    margin: 10px;
+    height: 500px;
+    border-radius: 20px;
 }

@@ -12,6 +12,8 @@ import cover from "../Images/cover.png";
 import Therapycategories from "../Components/Therapycategories.js";
 import Footer from "../Components/Footer.js";
 import GetinTouch from "../Components/GetinTouch.js";
+import { Link } from "react-router-dom";
+
 const GamingAddiction = () => {
   return (
     <div>
@@ -205,7 +207,10 @@ const GamingAddiction = () => {
                   />
                   <span>Recommended Podcast</span>
                   <h4>Are you Addicted to Mobile phone?</h4>
-                  <button>Watch Now</button>
+                  <Link to="/podcast">
+                    {" "}
+                    <button>Watch Now</button>
+                  </Link>
                 </div>
               </div>
             </div>

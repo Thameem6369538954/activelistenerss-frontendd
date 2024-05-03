@@ -16,7 +16,7 @@ const Therapycategories = () => {
   return (
     <div>
       <div className="eclip">
-        <img src={EllipseRed} alt="" />
+        {/* <img src={EllipseRed} alt="" /> */}
       <div className="therapy-cate">
         <div className="bulb">
           <img src={Bulb} alt="" />
@@ -67,7 +67,7 @@ const Therapycategories = () => {
           </NavLink>
         </div>
       </div>
-      <img src={EllipseGreen} alt="" />
+      {/* <img src={EllipseGreen} alt="" /> */}
       </div>
     </div>
   );

@@ -16,7 +16,11 @@ import PodcastRed from "../Images/PodcastRed.png";
 import axios from "../Utils/Baseurl.js";
 import { toast } from "react-toastify";
 import WHYAL from "../Videos/WHYAL.mp4";
+import { Link } from "react-router-dom";
 const EarlyAgeGadgetExposure = () => {
+   const scrollToTop = () => {
+     window.scrollTo(0, 0);
+   };
   const [rows, setRows] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
@@ -93,7 +97,7 @@ const EarlyAgeGadgetExposure = () => {
           <div className="card-inneR">
             <div className="card-inneR-text">
               <h1>Impact of Gadgets on</h1>
-              
+
               <p>children</p>
             </div>
             {console.log(rows, "mahzaaaaaaaaaaaaaaaaaaaaa")}
@@ -131,7 +135,9 @@ const EarlyAgeGadgetExposure = () => {
           </div>
           <div className="getyouknow-txt">
             <h1>Are you a Perplexed Mind Person?</h1>
-            <button>Watch Now </button>
+            <Link to="/podcast" onClick={() => window.scrollTo(0, 0)}>
+              <button>Watch Now </button>
+            </Link>
           </div>
           <img src={PodcastRed} className="getyoukow-image-red" alt="" />
         </div>

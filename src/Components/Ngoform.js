@@ -11,11 +11,12 @@ import { useNavigate } from "react-router-dom";
 const Ngoform = () => {
   const [formData, setFormData] = useState({
     name: "",
+    organization: "",
     email: "",
     mobile: "",
-    gender: "",
-    state: "",
-    city: "",
+    establishment: "",
+    telephoneNumber: "",
+    websiteUrl: "",
   });
 
   const [candidateProfile, setCandidateProfile] = useState(null);
@@ -90,8 +91,8 @@ const Ngoform = () => {
     <div>
       <div className="hiring-form-main">
         <div className="therapy-heading">
-          <p>Our Goals</p>
-          <h1>Join our Amazing</h1>
+          <p>Your Applying For</p>
+          <h1>NGO </h1>
           <h2>Team</h2>
           <img src={Yellowline} className="Yellowline" alt="" />
           {/* <div className="down-arrow-conatiner">
@@ -104,7 +105,11 @@ const Ngoform = () => {
         </div>
         <div className="hiring-form-holeconatiner">
           <div className="container-form">
-            <form encType="multipart/form-data" onSubmit={handleSubmit}>
+            <form
+              encType="multipart/form-data"
+              onSubmit={handleSubmit}
+              className="form-affilate"
+            >
               {/* Your form fields */}
               <div className="input-field">
                 <label>Full Name</label>

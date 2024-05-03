@@ -247,6 +247,7 @@ import WHYAL from "../Videos/WHYAL.mp4";
 import { MdPlayCircleFilled } from "react-icons/md";
 import axios from "../Utils/Baseurl.js";
 import { toast } from "react-toastify";
+import Navarrow from "../Images/Navarrow.png"
 
 const Header = () => {
   const [rows, setRows] = useState("");
@@ -362,6 +363,18 @@ const Header = () => {
                   </p>
                 </div>
               </NavLink>
+              <NavLink to="/CurrentTimes" className="Links">
+                <div className="categoreis-grid-box" onClick={scrollToTop}>
+                  <span>Post Covid</span>
+                  <p>
+                    Current Times{" "}
+                    <img src={Arrow} className="arrow-for-header" alt="" />
+                  </p>
+                </div>
+              </NavLink>
+            </div>
+
+            <div>
               <NavLink to="/AdaptationtoMobilePhones" className="Links">
                 <div className="categoreis-grid-box" onClick={scrollToTop}>
                   <span>Ages: 13-19</span>
@@ -371,23 +384,11 @@ const Header = () => {
                   </p>
                 </div>
               </NavLink>
-            </div>
-
-            <div>
               <NavLink to="/LearningandFocus" className="Links">
                 <div className="categoreis-grid-box" onClick={scrollToTop}>
                   <span>Our Solutions</span>
                   <p>
                     Learning and Focus{" "}
-                    <img src={Arrow} className="arrow-for-header" alt="" />
-                  </p>
-                </div>
-              </NavLink>
-              <NavLink to="/CurrentTimes" className="Links">
-                <div className="categoreis-grid-box" onClick={scrollToTop}>
-                  <span>Post Covid</span>
-                  <p>
-                    Current Times{" "}
                     <img src={Arrow} className="arrow-for-header" alt="" />
                   </p>
                 </div>
@@ -401,7 +402,10 @@ const Header = () => {
           <img src={FrameA} alt="" />
 
           {!showPopup && (
-            <button onClick={togglePopup}>Why Active Listeners?</button>
+            <div className="why-active-btn">
+              <button onClick={togglePopup}>Why Active Listeners?</button>
+              <img src={Navarrow} alt="" />
+              </div>
           )}
           {showPopup && (
             <div className="popup">

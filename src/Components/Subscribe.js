@@ -2,7 +2,7 @@ import React, { Component, useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import Slider from "react-slick";
 import "../Css/Subscribe.css";
-import { NavLink } from "react-router-dom";
+import { NavLink,Link } from "react-router-dom";
 import FreeMember from "../Images/FreeMember.png";
 import Kadhoolu from "../Images/Kadhoolu.png";
 import Doc from "../Images/Doc.png";
@@ -156,6 +156,7 @@ const Subscribe = () => {
   const togglePlay = () => {
     setIsPlaying(!isPlaying);
   };
+  
   return (
     <div>
       <div className="Subscribe-main">
@@ -191,7 +192,9 @@ const Subscribe = () => {
                 <li>Elderly Support Group</li>
               </ul>
               <div className="hdrsubs-butns">
-                <button className="btn-primary">Know More</button>
+                <Link to="/GriefsupportGroup" onClick={scrollToTop}>
+                  <button className="btn-primary">Know More</button>
+                </Link>
                 <img src={Kadhoolu} alt="" />
               </div>
             </div>

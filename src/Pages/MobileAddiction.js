@@ -19,6 +19,8 @@ import OldTime from "../SmallElements/OldTime.png";
 import CB from "../SmallElements/CB.png";
 import Pinkmen from "../SmallElements/Pinkmen.png";
 import GreenClock from "../SmallElements/GreenClock.png";
+import { Link } from "react-router-dom";
+
 const MobileAddiction = () => {
   return (
     <div>
@@ -50,8 +52,6 @@ const MobileAddiction = () => {
               data-aos-duration="1000"
               alt=""
             />
-
-            
           </div>
           <div className="btn-compo">
             <button>Get Support</button>
@@ -81,15 +81,15 @@ const MobileAddiction = () => {
                 }}
                 alt=""
               /> */}
-              
+
               <iframe
-              className="addiction-videos"
-              src="https://www.youtube.com/embed/MSzppjFe1iM?si=-Bm6Z01t75zFvvZz"
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
+                className="addiction-videos"
+                src="https://www.youtube.com/embed/MSzppjFe1iM?si=-Bm6Z01t75zFvvZz"
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
             </div>
             {/* <img
               src={Rounda}
@@ -166,8 +166,7 @@ const MobileAddiction = () => {
                       {" "}
                       <p>
                         Mobile addicts may neglect tasks, causing academic,
-                        work, or family
-                         problems.
+                        work, or family problems.
                       </p>
                     </li>
                   </ul>
@@ -233,7 +232,10 @@ const MobileAddiction = () => {
                   />
                   <span>Recommended Podcast</span>
                   <h4>Are you Addicted to Mobile phone?</h4>
-                  <button>Watch Now</button>
+                  <Link to="/podcast">
+                    {" "}
+                    <button>Watch Now</button>
+                  </Link>
                 </div>
               </div>
             </div>

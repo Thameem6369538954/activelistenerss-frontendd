@@ -15,8 +15,12 @@ import Maskgroup from "../Images/Mask group.png";
 import cover from "../Images/cover.png";
 import PodcastRed from "../Images/PodcastRed.png";
 import WHYAL from "../Videos/WHYAL.mp4";
+import { Link } from "react-router-dom";
 
 const CurrentTimes = () => {
+   const scrollToTop = () => {
+     window.scrollTo(0, 0);
+   };
   return (
     <div>
       <div className="home-main">
@@ -116,7 +120,9 @@ const CurrentTimes = () => {
             </div>
             <div className="getyouknow-txt">
               <h1>Are you a Perplexed Mind Person?</h1>
-              <button>Watch Now </button>
+              <Link to="/podcast" onClick={scrollToTop}>
+                <button>Watch Now </button>
+              </Link>
             </div>
             <img src={PodcastRed} className="getyoukow-image-red" alt="" />
           </div>

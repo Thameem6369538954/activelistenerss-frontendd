@@ -88,6 +88,7 @@ const GetinTouch = () => {
             <p>With us</p>
             <div className="form-inputs">
               <div className="error-getin-touch">
+                <label> Full Name *</label>
                 <input
                   type="text"
                   name="name"
@@ -101,6 +102,7 @@ const GetinTouch = () => {
                 )}
               </div>
               <div className="error-getin-touch">
+                <label>Email *</label>
                 <input
                   type="text"
                   name="email"
@@ -113,7 +115,9 @@ const GetinTouch = () => {
                 )}
               </div>
               <div className="getintouch-msg">
+                <label>Message *</label>
                 <input
+                  // style={{ padding: "40px",marginLeft:"140px",width:"70%" }}
                   type="text"
                   value={formData.message}
                   onChange={handleChange}

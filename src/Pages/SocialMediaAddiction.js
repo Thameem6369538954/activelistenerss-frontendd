@@ -18,6 +18,7 @@ import OldTime from "../SmallElements/OldTime.png";
 import HandYellow from "../SmallElements/HandYellow.png";
 import Pinkmen from "../SmallElements/Pinkmen.png";
 import GreenClock from "../SmallElements/GreenClock.png";
+import { Link } from "react-router-dom";
 
 const SocialMediaAddiction = () => {
   return (
@@ -200,7 +201,10 @@ const SocialMediaAddiction = () => {
                   />
                   <span>Recommended Podcast</span>
                   <h4>Are you Addicted to Mobile phone?</h4>
-                  <button>Watch Now</button>
+                  <Link to="/podcast" onClick={() => window.scrollTo(0, 0)}>
+                    {" "}
+                    <button>Watch Now</button>
+                  </Link>
                 </div>
               </div>
             </div>

@@ -519,6 +519,9 @@ article {
   }
 }
 @media (min-width: 600px) and (max-width: 1024px) {
+  .benefit-inside-box img {
+    width: 62px;
+}
   .center {
     display: flex;
     align-items: center;

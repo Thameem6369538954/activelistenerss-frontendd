@@ -11,6 +11,7 @@
 .eclip{
   position: relative;
   width: 100%;
+  /* overflow: hidden; */
 }
 .eclip img:nth-child(1){
   position: absolute;
@@ -84,6 +85,7 @@
   font-weight: 900;
   font-size: 50px;
 }
+
 .therapy-heading p {
   font-family: "Satisfy", cursive;
   margin-bottom: -1%;
@@ -91,6 +93,14 @@
   text-decoration: underline;
 }
 @media screen and (max-width: 600px) {
+  .eclip img:nth-child(3){
+  position: absolute;
+  /* background-color: #256c55; */
+  margin-top: -50%;
+  margin-left: 39%;
+  z-index: -1;
+  display: none;
+}
   .therapy-heading p {
     font-family: "Satisfy", cursive;
     margin-bottom: -1%;

@@ -27,6 +27,9 @@ import Breadcrumps from "../Components/Breadcrumps";
 import { Header } from "antd/es/layout/layout";
 
 const GriefsupportGroup = () => {
+  const scrollToTop = () => {
+    window.scrollTo(0, 0);
+  };
   const [day, setDay] = useState("00");
   const [hours, setHours] = useState("00");
   const [minute, setMinute] = useState("00");

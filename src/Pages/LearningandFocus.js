@@ -16,8 +16,12 @@ import PodcastRed from "../Images/PodcastRed.png";
 import Yellowline from "../Images/Yellowline.png";
 import "../Css/Learning.css";
 import WHYAL from "../Videos/WHYAL.mp4";
+import { Link } from "react-router-dom";
 
 const LearningandFocus = () => {
+   const scrollToTop = () => {
+     window.scrollTo(0, 0);
+   };
   return (
     <div>
       <div>
@@ -122,7 +126,9 @@ const LearningandFocus = () => {
               </div>
               <div className="getyouknow-txt">
                 <h1>Are you a Perplexed Mind Person?</h1>
-                <button>Watch Now</button>
+                <Link to="/podcast" onClick={scrollToTop}>
+                  <button>Watch Now </button>
+                </Link>
               </div>
               <img src={PodcastRed} className="getyoukow-image-red" alt="" />
             </div>
