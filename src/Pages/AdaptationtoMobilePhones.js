@@ -110,7 +110,7 @@ const AdaptationtoMobilePhones = () => {
           </div>
         </div>
         <div className="getyoukow-main-container">
-          <div className="getyoukow-container">
+          {/* <div className="getyoukow-container">
             <div className="getyouknow-txt">
               <h1>Get to know How much you have adopted Mobile phones?</h1>
               <button>Take Test </button>
@@ -118,7 +118,7 @@ const AdaptationtoMobilePhones = () => {
             <div className="getyouknow-image">
               <img src={Maskgroup} alt="" />
             </div>
-          </div>
+          </div> */}
           <div className="getyoukow-container">
             <div className="getyouknow-image">
               <img

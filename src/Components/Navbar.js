@@ -162,16 +162,16 @@ if(!user){
   return (
     <div>
       <div className="Navbar-main">
-        <div onClick={handleClick} className="nav-icons">
-          {isOpen ? (
-            <IoCloseOutline className="nav-icon" onClick={CloseMenu} />
-          ) : (
-            <RiMenu5Fill className="nav-icon" onClick={handleClick} />
-          )}
-          {/* <RiMenu5Fill className="nav-icon" />
-          <IoCloseOutline className="nav-icon" /> */}
-        </div>
         <nav>
+          <div onClick={handleClick} className="nav-icons">
+            {isOpen ? (
+              <IoCloseOutline className="nav-icon" onClick={CloseMenu} />
+            ) : (
+              <RiMenu5Fill className="nav-icon" onClick={handleClick} />
+            )}
+            {/* <RiMenu5Fill className="nav-icon" />
+          <IoCloseOutline className="nav-icon" /> */}
+          </div>
           <ul className={isOpen ? "nav-links active" : "nav-links"}>
             <div>
               <NavLink to="/" className="Links">
@@ -222,36 +222,36 @@ if(!user){
           <NavLink to="/">
             <img src={ALlogo} alt="" />
           </NavLink>
-          {user ?  <div className="Login-btns">
-            
+          {user ? (
+            <div className="Login-btns">
+              <button onClick={handleLogout} className="full-rounded">
+                <NavLink className="Links">
+                  <span>Logout</span>
+                </NavLink>
+                <div className="border full-rounded"></div>
+              </button>
+              {/* <img src={Navarrow} className="navarrow" alt="" /> */}
+              <NavLink to={"/UserProfile"} className="Links">
+                <FaRegUser className="navarrow" />
+              </NavLink>
+            </div>
+          ) : (
+            <div className="Login-btns">
+              <button className="full-rounded">
+                <NavLink to="/Login" className="Links">
+                  <span>Login</span>
+                </NavLink>
+                <div className="border full-rounded"></div>
+              </button>
 
-            <button onClick={handleLogout} className="full-rounded">
-              <NavLink  className="Links">
-                <span>Logout</span>
-              </NavLink>
-              <div className="border full-rounded"></div>
-            </button>
-            {/* <img src={Navarrow} className="navarrow" alt="" /> */}
-            <NavLink to={"/UserProfile"} className="Links">
-              <FaRegUser className="navarrow" />
-            </NavLink>
-          </div> :  <div className="Login-btns">
-            <button className="full-rounded">
-              <NavLink to="/Login" className="Links">
-                <span>Login</span>
-              </NavLink>
-              <div className="border full-rounded"></div>
-            </button>
-
-            <button className="full-rounded">
-              <NavLink to="/Signup" className="Links">
-                <span>Sign up</span>
-              </NavLink>
-              <div className="border full-rounded"></div>
-            </button>
-           
-          </div> }
-         
+              <button className="full-rounded">
+                <NavLink to="/Signup" className="Links">
+                  <span>Sign up</span>
+                </NavLink>
+                <div className="border full-rounded"></div>
+              </button>
+            </div>
+          )}
         </nav>
       </div>
       <img src={AlCloud} className="Cloude" />

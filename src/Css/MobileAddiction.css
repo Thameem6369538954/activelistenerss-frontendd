@@ -1,7 +1,11 @@
 .mobile-addiction-main-container{
   overflow: hidden;
 }
-
+.gaming-videos-adi{
+  width: 30%;
+  height: 200px;
+  border-radius: 20px;
+}
 .mobile-addiction-header {
   display: flex;
   flex-direction: column;

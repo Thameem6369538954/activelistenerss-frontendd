@@ -103,7 +103,7 @@ const LearningandFocus = () => {
             </div>
           </div>
           <div className="getyoukow-main-container">
-            <div className="getyoukow-container">
+            {/* <div className="getyoukow-container">
               <div className="getyouknow-txt">
                 <h1>Get to know your Progress of Learning and Focus!</h1>
                 <button>Take Test </button>
@@ -111,7 +111,7 @@ const LearningandFocus = () => {
               <div className="getyouknow-image">
                 <img src={Maskgroup} alt="" />
               </div>
-            </div>
+            </div> */}
             <div className="getyoukow-container">
               <div className="getyouknow-image">
                 <img

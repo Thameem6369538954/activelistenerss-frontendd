@@ -97,7 +97,7 @@ const CurrentTimes = () => {
           </div>
         </div>
         <div className="getyoukow-main-container">
-          <div className="getyoukow-container">
+          {/* <div className="getyoukow-container">
             <div className="getyouknow-txt">
               <h1>How the Covid pandemic has affected your life?</h1>
               <button>Take Test </button>
@@ -105,7 +105,7 @@ const CurrentTimes = () => {
             <div className="getyouknow-image">
               <img src={Maskgroup} alt="" />
             </div>
-          </div>
+          </div> */}
           <div className="getyoukow-container">
             <div className="getyouknow-image">
               <img

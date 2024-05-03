@@ -11,7 +11,32 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import MentoonBenar from "../Images/MentoonBenar.png";
 import axios from "../Utils/Baseurl.js";
+import Yellowline from "../Images/Yellowline.png";
+import { TiArrowRightThick } from "react-icons/ti";
+import Rounda from "../Images/Rounda.png";
+import Roundb from "../Images/Roundb.png";
+// import Kadhoolu from "../Images/Kadhoolu.png";
+import Nool from "../Images/Nool.png";
+import Coc from "../Images/Coc.png";
+import Gitarakka from "../Images/Gitarakka.png";
+import spa from "../Images/spa.png";
+import Children from "../Images/Childern.png";
+import Menbulb from "../Images/Menbulb.png";
+import GetinTouch from "../Components/GetinTouch";
+import { InlineWidget } from "react-calendly";
+import { AiOutlineCloseCircle } from "react-icons/ai";
+import Breadcrumps from "../Components/Breadcrumps";
 const Subscribe = () => {
+    const [wantComplimentaryCall, setWantComplimentaryCall] = useState(false);
+    const appointmentSubmit = (e) => {
+      e.preventDefault();
+      setWantComplimentaryCall(true);
+    };
+
+    const handleClose = () => {
+      setWantComplimentaryCall(false);
+      // setCloseClick(true);
+    };
   const scrollToTop = () => {
     window.scrollTo(0, 0);
   };
@@ -213,7 +238,32 @@ const Subscribe = () => {
                 <li>Introverts</li>
               </ul>
               <div className="hdrsubs-butns-a">
-                <button>Know More</button>
+                {wantComplimentaryCall ? (
+                  <>
+                  <div className="sub-telecall">
+                    <span className="close-calendly" onClick={handleClose}>
+                      <AiOutlineCloseCircle className="senestop-icon" />
+                    </span>
+
+                    <InlineWidget
+                      url="https://calendly.com/teammentoons/active-listeners"
+                      // className="calendly-embed-header"
+                      // style={{ width: "10%", height: "100%" }}
+                    />
+
+                  </div>
+                  </>
+                ) : (
+                  <></>
+                )}
+
+                {wantComplimentaryCall ? (
+                  <></>
+                ) : (
+                  
+                    <button onClick={appointmentSubmit}>Get Appointment</button>
+                    
+                )}
                 <img src={Doc} alt="" />
               </div>
             </div>

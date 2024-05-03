@@ -116,15 +116,7 @@ const EarlyAgeGadgetExposure = () => {
         </div>
       </div>
       <div className="getyoukow-main-container">
-        <div className="getyoukow-container">
-          <div className="getyouknow-txt">
-            <h1>Get to know How much you are Attracted to Gadgets</h1>
-            <button>Take Test </button>
-          </div>
-          <div className="getyouknow-image">
-            <img src={Maskgroup} className="maskgroup-mob" alt="" />
-          </div>
-        </div>
+        
         <div className="getyoukow-container">
           <div className="getyouknow-image">
             <img

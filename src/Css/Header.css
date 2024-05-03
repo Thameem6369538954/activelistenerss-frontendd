@@ -104,11 +104,11 @@
   
 }
 .why-active-btn img{
-  width: 22%;
+  width: 50px;
 background-color: #ffdd7e;
 padding: 15px;
 border-radius: 50%;
-margin-left: -14%;
+margin-left: -10%;
 border: 3px solid white;
 }
 
@@ -201,11 +201,8 @@ border: 3px solid white;
 }
 .hdr-btm-text {
   display: flex;
-  /* flex-direction: column; */
   align-items: center;
-  /* margin-top: 120px; */
-  justify-content: space-around;
-  position: relative;
+    justify-content: space-around;
 }
     .hdr-tx p {
         text-align: center;
@@ -222,7 +219,7 @@ border: 3px solid white;
 }
 .hdr-btm-text button {
   background-color: #ffdd7e;
-  padding: 15px;
+  padding: 15px 50px;
   margin: 2% auto;
   border-radius: 50px;
   border: none;
@@ -277,16 +274,16 @@ box-shadow: 4px 4px 0px 0px rgba(0,0,0,0.75);
   width: 150px;
 }
 .element h4 {
-  font-size: 16px;
-  font-family: "Questrial", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  margin: auto;
+    font-size: 16px;
+    font-family: "Questrial", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    margin: 20px;
 }
 .puzzle-boy img {
   margin-left: 73%;
   z-index: 1;
-  margin-top: 36px;
+  margin-top: -32px;
 }
 .header-top-video{
   height: 350px;
@@ -318,7 +315,19 @@ box-shadow: 4px 4px 0px 0px rgba(0,0,0,0.75);
 /* .hdr-btm-text img:nth-child(1){
  background-color: #cd4631;
 } */
+.inside-hdr-btm-txt img {
+        width:100%;
+        /* background-color: #256c55; */
+    }
 @media screen and (max-width: 600px) {
+  .why-active-btn img {
+    width: 50px;
+    background-color: #ffdd7e;
+    padding: 15px;
+    border-radius: 50%;
+    margin-left: -14%;
+    border: 3px solid white;
+}
   .imsha {
     margin-top: 20%;
 }
@@ -354,7 +363,7 @@ box-shadow: 4px 4px 0px 0px rgba(0,0,0,0.75);
   background-color: #cd4631;
   display: none;
 }
-   .hdr-btm-text img {
+    .inside-hdr-btm-txt img {
         width: 135px;
         /* background-color: #256c55; */
     }
@@ -479,13 +488,13 @@ box-shadow: 4px 4px 0px 0px rgba(0,0,0,0.75);
     flex-direction: column;
   }
   .element img {
-    width: 50px;
+    width: 100px;
   }
   .puzzle-boy p {
     font-family: Relo;
     font-weight: 900;
     font-size: 35px;
-    margin-top: -17%;
+    margin-top: -10%;
   }
   .puzzle-boy span {
     font-family: "Satisfy", cursive;
@@ -501,7 +510,7 @@ box-shadow: 4px 4px 0px 0px rgba(0,0,0,0.75);
     font-weight: 400;
     font-style: normal;
     font-size: 60px;
-    margin-top: -21%;
+    margin-top: -17%;
   }
   .element {
     /* border: 1px solid red; */
@@ -512,7 +521,7 @@ box-shadow: 4px 4px 0px 0px rgba(0,0,0,0.75);
   }
   .puzzle-boy img {
     /* width: 150%; */
-    margin-left: 3%;
+    margin-left: 57%;
     z-index: 1;
   }
   .header-container {
@@ -564,7 +573,7 @@ box-shadow: 4px 4px 0px 0px rgba(0,0,0,0.75);
     margin-top: -2%;
     /* margin-left: -10%; */
 }
-  .hdr-btm-text img {
+  .inside-hdr-btm-txt img {
     width: 230px;
   }
   .hdr-tx p {

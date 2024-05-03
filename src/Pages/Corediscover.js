@@ -68,13 +68,17 @@ const Corediscover = () => {
             </div> */}
           </div>
         </div>
-        <img src={Elements} alt="" />
+        <div className="core-dis-hdr-image">
+          {/* <img src={Elements} alt="" /> */}
         <img
           src={Hdrright}
           data-aos="fade-right"
           data-aos-duration="1000"
           alt=""
         />
+          </div>
+
+        
       </div>
       {/* <div className="discover-box-hole">
         <div className="discover-box-container">

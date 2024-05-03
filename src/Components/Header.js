@@ -399,7 +399,10 @@ const Header = () => {
           <div></div>
         </div>
         <div className="hdr-btm-text">
+          <div className="inside-hdr-btm-txt">
+
           <img src={FrameA} alt="" />
+          </div>
 
           {!showPopup && (
             <div className="why-active-btn">
@@ -454,7 +457,10 @@ const Header = () => {
               </div>
             </div>
           )}
+           <div className="inside-hdr-btm-txt">
           <img src={FrameB} alt="" />
+
+           </div>
         </div>
       </div>
     </div>

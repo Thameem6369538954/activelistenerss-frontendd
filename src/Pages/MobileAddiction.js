@@ -212,11 +212,11 @@ const MobileAddiction = () => {
               </div>
             </div>
             <div className="yellow-box-mobile-addiction">
-              <div className="mobile-addiction-yellow-box">
+              {/* <div className="mobile-addiction-yellow-box">
                 <h4>Get to know How much you are Addicted to Mobile Phones</h4>
                 <button>Take Test</button>
                 <img src={Maskgroup} className="maskgroup-mob" alt="" />
-              </div>
+              </div> */}
 
               <div className="mobile-addiction-yellow-box">
                 <img src={PodcastRed} className="podcast-red-mob" alt="" />

@@ -47,7 +47,7 @@ const GamingAddiction = () => {
                 alt=""
               /> */}
               <iframe
-                className="addiction-videos"
+                className="gaming-videos-adi"
                 src="https://www.youtube.com/embed/MSzppjFe1iM?si=-Bm6Z01t75zFvvZz"
                 title="YouTube video player"
                 frameBorder="0"
@@ -85,7 +85,7 @@ const GamingAddiction = () => {
                 /> */}
 
                 <iframe
-                  className="adpatation-to-mobile-yt-video"
+                  className="adpatation-to-mobile-yt-vide"
                   src="https://www.youtube.com/embed/MSzppjFe1iM?si=-Bm6Z01t75zFvvZz"
                   title="YouTube video player"
                   frameBorder="0"
@@ -179,11 +179,11 @@ const GamingAddiction = () => {
                 </div>
               </div>
               <div className="yellow-box-mobile-addiction">
-                <div className="mobile-addiction-yellow-box">
+                {/* <div className="mobile-addiction-yellow-box">
                   <h4>Lack of real-life experiences</h4>
                   <button>Take Test</button>
                   <img src={Maskgroup} className="maskgroup-mob" alt="" />
-                </div>
+                </div> */}
 
                 <div className="mobile-addiction-yellow-box">
                   <img

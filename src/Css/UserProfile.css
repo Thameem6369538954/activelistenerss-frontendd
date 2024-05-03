@@ -122,6 +122,25 @@
 }
 .save-black {
   margin-left: 50px;
+  background-color:#FFDD7E;
+  height: 350px;
+  display: grid;
+  place-items: center;
+  border-radius: 30px;
+  grid-template-columns: repeat(3, 3fr);
+
+}
+.profile-form-edit{
+  display: grid;
+  place-items: center;
+  grid-template-columns: repeat(2, 1fr);
+  margin-left: 50%;
+}
+.save-black input{
+  /* background-color: black; */
+  padding: 10px 50px;
+  /* color: white; */
+  border-radius: 20px;
 }
 .useprof-main-con {
   display: flex;

@@ -12,12 +12,14 @@ import { toast } from "react-toastify";
 import { CgAirplane } from "react-icons/cg";
 import EllipseRed from "../Images/EllipseRed.png";
 // import Sirpro from "../Images/Sirpro.png";
-import profile from "../Images/prof.jpg"
+import defaultProfile from "../Images/prof.jpg";
 import { RiEdit2Line } from "react-icons/ri";
 import { useSelector } from 'react-redux';
 import axios from "../Utils/Baseurl.js";
 import { logout,loginSuccess,setUser } from '../Redux/Slices/authSlice.js';
 // import { useDispatch } from 'react-redux';
+import profileFemale from "../Images/profileFemale.jpg";
+import profileMale from "../Images/profileMale.jpg";
 
 const UserProfile = () => {
   // const dispatch = useDispatch();
@@ -68,10 +70,74 @@ const UserProfile = () => {
     navigate('/Login')
    }
 
-  return (
-    !noToken ? (<div>
+   const [showPopup, setShowPopup] = useState(false);
+
+   const togglePopup = () => {
+     setShowPopup(!showPopup);
+   }
+
+
+
+                          // update
+
+
+                           const [userDataedit, setUserDataedit] = useState({
+                             username: "",
+                             email: "",
+                             phone: "",
+                           });
+                           const [profileImage, setProfileImage] =
+                             useState(null);
+
+                           const handleUserDataChange = (event) => {
+                             const { name, value } = event.target;
+                             setUserDataedit((prevUserData) => ({
+                               ...prevUserData,
+                               [name]: value,
+                             }));
+                           };
+
+                           const handleProfileImageChange = async(event) => {
+                             setProfileImage(event.target.files[0]);
+                           };
+
+                           const handleSubmit =async (event) => {
+
+                             event.preventDefault();
+
+                             // Client-side validation
+                             const { username, email, phone } = userDataedit;
+                             if (
+                               !username ||
+                               !email ||
+                               !phone ||
+                               !profileImage
+                             ) {
+                               alert(
+                                 "Please fill out all fields and upload required files."
+                               );
+                               return;
+                             }
+
+                             // Create FormData object and append files
+                             const formData = new FormData();
+                             formData.append("name", username);
+                             formData.append("email", email);
+                             formData.append("mobile", phone);
+                            //  formData.append("profile-image", profileImage);
+                             console.log(formData,user._id,"faaaduuuuuuuuuuu");
+
+
+                             const responsee = await axios.put(`/edit_my_profile/${user._id}`, formData);
+                             console.log(responsee,"editing profileeeeeeeeeeeeeeeeeeeeeeeee");
+                             // Submit FormData to API endpoint
+                           
+                           };
+
+  return !noToken ? (
+    <div>
       <Navbar />
-      
+
       <div className="useprof-main-con">
         <img src={EllipseRed} alt="" />
         <div className="userprofile-sidebar">
@@ -109,7 +175,7 @@ const UserProfile = () => {
                         <div className="editable-details">
                           <div>
                             <div className="user-detailes">
-                            {console.log(userData,"koiiiii")}
+                              {console.log(userData, "koiiiii")}
                               <h3> Name </h3>
                               {userData ? (
                                 <>
@@ -268,14 +334,30 @@ const UserProfile = () => {
                         </div>
                         <div className="profile-box">
                           <div></div>
-                          <img src={profile} alt="" />
+                          {userData.profilePic ? (
+                            <img src={userData.profilePic} alt="" />
+                          ) : (
+                            <img
+                              src={
+                                userData.gender === "male"
+                                  ? profileMale
+                                  : userData.gender === "female"
+                                  ? profileFemale
+                                  : defaultProfile
+                              }
+                              alt=""
+                            />
+                          )}
                           <p>{userData.name}</p>
                           <span>{userData.email}</span>
+                          {/* <div className="save-blacka">
+                            <button>UPDATE</button>
+                          </div> */}
                         </div>
                       </div>
 
-                      {/* <div className="save-cancel">
-                        <button >Update</button>
+                      <div className="save-cancel">
+                        <button onClick={togglePopup}>Update</button>
                         <div className="update">
                           <p>
                             Update your password through the button below. You
@@ -284,9 +366,76 @@ const UserProfile = () => {
                           </p>
                         </div>
                       </div>
-                      <div className="save-black">
-                        <button>Save</button>
-                      </div> */}
+                      {showPopup && (
+                        <div className="save-black">
+                          <button onClick={togglePopup}>Close</button>
+                          {/* <button>Save</button> */}
+                          <form
+                            className="profile-form-edit"
+                            onSubmit={handleSubmit}
+                            encType="multipart/form-data"
+                          >
+                            <div>
+                              <label htmlFor="new-username">
+                                Enter New Username
+                              </label>
+                              <input
+                                type="text"
+                                id="new-username"
+                                name="username"
+                                value={userDataedit.username}
+                                onChange={handleUserDataChange}
+                                placeholder="Enter New Username"
+                                required
+                              />
+                            </div>
+                            <div>
+                              <label htmlFor="new-username">
+                                Enter New Email
+                              </label>
+                              <input
+                                type="email"
+                                id="new-username"
+                                name="email"
+                                value={userDataedit.email}
+                                onChange={handleUserDataChange}
+                                placeholder="Enter New Username"
+                                required
+                              />
+                            </div>
+
+                            <div>
+                              <label htmlFor="new-phone">
+                                Enter New Phone Number
+                              </label>
+                              <input
+                                type="text"
+                                id="new-phone"
+                                name="phone"
+                                value={userDataedit.phone}
+                                onChange={handleUserDataChange}
+                                placeholder="Enter New Phone Number"
+                                required
+                              />
+                            </div>
+                            {/* <div>
+                              <label htmlFor="profile-image">
+                                Upload Profile Image
+                              </label>
+                              <input
+                                type="file"
+                                id="profile-image"
+                                accept="image/*"
+                                onChange={handleProfileImageChange}
+                                required
+                              />
+                            </div> */}
+                            <div className="save-cancel">
+                              <button type="submit">Save</button>
+                            </div>
+                          </form>
+                        </div>
+                      )}
                     </div>
                   </div>
                   {/* <div className="log-out">
@@ -471,7 +620,7 @@ const UserProfile = () => {
                         </div>
                         <div className="profile-box">
                           <div></div>
-                          <img src={profile} alt="" />
+                          <img src={defaultProfile} alt="" />
                           <p>{userData.name}</p>
                           <span>{userData.email}</span>
                         </div>
@@ -541,8 +690,8 @@ const UserProfile = () => {
         </div>
       </div>
       <Footer />
-    </div>):null
-  )
+    </div>
+  ) : null;
 };
 
 export default UserProfile;
