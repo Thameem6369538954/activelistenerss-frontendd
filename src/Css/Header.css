@@ -324,6 +324,12 @@ box-shadow: 4px 4px 0px 0px rgba(0,0,0,0.75);
         /* background-color: #256c55; */
     }
 @media screen and (max-width: 600px) {
+  .hdr-tx p {
+    text-align: center;
+    color: #5B5A5A;
+    width: 95%;
+    margin: 20px;
+}
   .why-active-btn img {
     width: 50px;
     background-color: #ffdd7e;

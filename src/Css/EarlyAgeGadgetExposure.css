@@ -66,13 +66,44 @@
 }
 .getyoukow-container {
   background-color: #ffdd7e;
-  width: 45%;
+  width: 75%;
   height: 300px;
   border-radius: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
+}
+.getyoukow-container img{
+  width: 250px;
+  border-radius: 20px;
+}
+.getyoukow-container button{
+  background-color: black;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px ;
+  margin-top: 10px;
+  color: white;
+}
+.getyoukow-text-recomended{
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  justify-content: center;
+  width: 50%;
+  text-align: left;
+  margin: 10px;
+}
+.getyoukow-text-recomended p{
+  color: #CD4631;
+}
+.getyoukow-container img:nth-child(2){
+ width: 120px;
+    /* background-color: #256c55; */
+    margin-left: 70%;
+    position: absolute;
+    margin-top: -182px;
 }
 .getyoukow-main-container {
   display: flex;
@@ -117,19 +148,19 @@
   border-radius: 59px;
   object-fit: contain;
 }
-.getyoukow-image-red {
+/* .getyoukow-image-red {
   margin-top: -33%;
   margin-left: -11%;
-  /* position: absolute; */
+  position: absolute;
   width: 16%;
-}
+} */
 .getyouknow-txt {
   width: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
   row-gap: 5rem;
-  /* position: relative; */
+  position: relative;
 }
 .getyouknow-txt button {
   background-color: black;
@@ -158,13 +189,12 @@
     align-items: center;
     justify-content: center;
   }
-.getyoukow-image-red {
+/* .getyoukow-image-red {
     margin-top: -30%;
     margin-left: 79%;
     position: absolute;
     width: 13%;
-    /* mix-blend-mode: multiply; */
-}
+} */
   .card-inneR img {
     width: 56%;
     margin-left: -4%;
@@ -232,12 +262,12 @@
   margin-left: -10%;
   background-color: red;
 }
-  .getyoukow-image-red {
-    margin-top: -87%;
-    margin-left: 75%;
+.getyoukow-container img:nth-child(2) {
+    width: 99px;
+    /* background-color: #256c55; */
+    margin-left: 70%;
     position: absolute;
-    width: 41%;
-    border-radius: 10px 9pc 10pc 10pc;
+    margin-top: -263px;
 }
   .getyoukow-main-container {
     display: flex;
@@ -260,7 +290,7 @@
   }
   .getyoukow-container {
     background-color: #ffdd7e;
-    width: 85%;
+    width: 65%;
     height: 362px;
     border-radius: 20px;
     display: flex;
@@ -269,6 +299,14 @@
     justify-content: center;
     /* position: relative; */
   }
+  .getyoukow-container img {
+    width: 130px;
+    border-radius: 20px;
+}
+
+.getyoukow-text-recomended h1{
+  font-size: 20px;
+}
 .card-inneR {
     /* position: absolute; */
     background-color: #bae8ac;

@@ -257,14 +257,14 @@ const AffiliateProgram = () => {
               </div> */}
         </div>
         <div className="enagewith-conatiner">
-          <div className="enage-box">
+          {/* <div className="enage-box">
             <h2>Monthly Meets</h2>
             <img src={MM} alt="" />
-          </div>
-          <div className="enage-box">
+          </div> */}
+          {/* <div className="enage-box">
             <h2>Talk shows</h2>
             <img src={TS} alt="" />
-          </div>
+          </div> */}
           <div className="enage-box">
             <h2>Meetup group</h2>
             <img src={MG} alt="" />
@@ -278,7 +278,7 @@ const AffiliateProgram = () => {
       {/* getin touch form for affiliate program */}
 
       {/* <GetinTouch /> */}
-      <div className="getin-touch-affilate-main">
+      {/* <div className="getin-touch-affilate-main">
         <img src={FormB} alt="" />
         <div className="getin-touch-affilate">
           <div className="therapy-heading">
@@ -286,10 +286,7 @@ const AffiliateProgram = () => {
             <h1>Get in Touch </h1>
             <h2>With us</h2>
             <img src={Yellowline} className="Yellowline" alt="" />
-            {/* <div className="inside-button">
-                <button>Know more</button>
-                <img src={Navarrow} alt="" />
-              </div> */}
+           
           </div>
           <form>
             <div className="getin-touch-affilate-form">
@@ -322,8 +319,8 @@ const AffiliateProgram = () => {
           </form>
         </div>
         <img src={FormA} alt="" />
-      </div>
-
+      </div> */}
+    <GetinTouch />
       <Footer />
     </div>
   );

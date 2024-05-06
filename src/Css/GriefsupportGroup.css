@@ -563,6 +563,12 @@ article {
     margin: 10px;
     /* recomiendo quitar esto/quit this */
   }
+  .grif-icon {
+    font-size: 35px;
+    margin-left: 341px;
+    margin-top: -307px;
+    position: absolute;
+}
   .time-box {
     display: flex;
     flex-direction: column;

@@ -97,34 +97,16 @@ const CurrentTimes = () => {
           </div>
         </div>
         <div className="getyoukow-main-container">
-          {/* <div className="getyoukow-container">
-            <div className="getyouknow-txt">
-              <h1>How the Covid pandemic has affected your life?</h1>
-              <button>Take Test </button>
-            </div>
-            <div className="getyouknow-image">
-              <img src={Maskgroup} alt="" />
-            </div>
-          </div> */}
           <div className="getyoukow-container">
-            <div className="getyouknow-image">
-              <img
-                src={cover}
-                // style={{
-                //   width: "80%",
-                //   marginLeft: "10%",
-                //   borderRadius: "20px",
-                // }}
-                alt=""
-              />
-            </div>
-            <div className="getyouknow-txt">
+            <img src={cover} alt="" />
+            <img src={PodcastRed} className="getyoukow-image-red" alt="" />
+            <div className="getyoukow-text-recomended">
+              <p>FEATURED EPISODE</p>
               <h1>Are you a Perplexed Mind Person?</h1>
-              <Link to="/podcast" onClick={scrollToTop}>
+              <Link to="/podcast" onClick={() => window.scrollTo(0, 0)}>
                 <button>Watch Now </button>
               </Link>
             </div>
-            <img src={PodcastRed} className="getyoukow-image-red" alt="" />
           </div>
         </div>
         <Therapycategories />

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../Components/Navbar.js";
 import Enterleft from "../Images/Enterleft.png";
 import Enterright from "../Images/Enterright.png";
@@ -13,10 +13,27 @@ import Therapycategories from "../Components/Therapycategories.js";
 import Footer from "../Components/Footer.js";
 import GetinTouch from "../Components/GetinTouch.js";
 import { Link } from "react-router-dom";
-
+import { InlineWidget } from "react-calendly";
+import { AiOutlineCloseCircle } from "react-icons/ai";
+import Brine from "../SmallElements/Brine.png";
+import GreenClock from "../SmallElements/GreenClock.png";
+import OldTime from "../SmallElements/OldTime.png";
+import Pinkmen from "../SmallElements/Pinkmen.png";
+import HandYellow from "../SmallElements/HandYellow.png";
+import BrinBuzzle from "../SmallElements/BrinBuzzle.png";
 
 const EntertainmentandperformanceAddiction = () => {
   
+    const [wantComplimentaryCall, setWantComplimentaryCall] = useState(false);
+    const appointmentSubmit = (e) => {
+      e.preventDefault();
+      setWantComplimentaryCall(true);
+    };
+
+    const handleClose = () => {
+      setWantComplimentaryCall(false);
+      // setCloseClick(true);
+    };
   return (
     <div>
       <div>
@@ -58,8 +75,36 @@ const EntertainmentandperformanceAddiction = () => {
               ></iframe>
             </div>
             <div className="btn-compo">
-              <button>Get Support</button>
-              <img src={Navarrow} alt="" />
+              {wantComplimentaryCall ? (
+                <>
+                  <div className="sub-telecall">
+                    <span
+                      className="close-calendly-addiction"
+                      onClick={handleClose}
+                    >
+                      <AiOutlineCloseCircle className="senestop-icon" />
+                    </span>
+                    <div className="new-imsa">
+                      <InlineWidget
+                        url="https://calendly.com/teammentoons/active-listeners"
+                        // className="calendly-embed-header"
+                        // style={{ width: "10%", height: "100%" }}
+                      />
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <></>
+              )}
+
+              {wantComplimentaryCall ? (
+                <></>
+              ) : (
+                <div>
+                  <button onClick={appointmentSubmit}>Get Appointment</button>
+                  <img onClick={appointmentSubmit} src={Navarrow} alt="" />
+                </div>
+              )}
             </div>
             <p>
               We believe that early gadget exposure,Adaptation to MobilePhones
@@ -126,7 +171,7 @@ const EntertainmentandperformanceAddiction = () => {
                 {/* Fist-box */}
                 <div className="observed-result-box">
                   <div className="observed-result-box-align">
-                    <img src="" alt="" />
+                    <img src={Brine} alt="" />
                     <h2>Mental health issues</h2>
                     <p>
                       Overuse of mobile devices can cause eye strain, pain, and
@@ -135,7 +180,7 @@ const EntertainmentandperformanceAddiction = () => {
                   </div>
 
                   <div className="observed-result-box-align">
-                    <img src="" alt="" />
+                    <img src={GreenClock} alt="" />
                     <h2>Academic or work decline</h2>
                     <p>
                       Watching Tv Shows results in academic neglect, missed
@@ -146,7 +191,7 @@ const EntertainmentandperformanceAddiction = () => {
                 {/* second-box */}
                 <div className="observed-result-box">
                   <div className="observed-result-box-align">
-                    <img src="" alt="" />
+                    <img src={OldTime} alt="" />
                     <h2>Neglected Responsibilities</h2>
                     <p>
                       Enetrtainment Addiction may neglect tasks, causing
@@ -155,7 +200,7 @@ const EntertainmentandperformanceAddiction = () => {
                   </div>
 
                   <div className="observed-result-box-align">
-                    <img src="" alt="" />
+                    <img src={Pinkmen} alt="" />
                     <h2>Sleep Deprivation</h2>
                     <p>
                       Enetrtainment addiction disrupts sleep, worsening physical
@@ -166,7 +211,7 @@ const EntertainmentandperformanceAddiction = () => {
                 {/* therod-box */}
                 <div className="observed-result-box">
                   <div className="observed-result-box-align">
-                    <img src="" alt="" />
+                    <img src={HandYellow} alt="" />
                     <h2>Low Self Esteen</h2>
                     <p>
                       Exposure to violent Platform desensitizes, fosters
@@ -175,7 +220,7 @@ const EntertainmentandperformanceAddiction = () => {
                   </div>
 
                   <div className="observed-result-box-align">
-                    <img src="" alt="" />
+                    <img src={BrinBuzzle} alt="" />
                     <h2>Lack of real-life experiences</h2>
                     <p>
                       Enetrtainment addiction offers temporary escape but

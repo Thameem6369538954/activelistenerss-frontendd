@@ -26,7 +26,7 @@ width: 140px;
     grid-gap: 2rem;
     display: grid;
     gap: 2rem;
-    grid-template-columns: repeat(5, 0.2fr);
+    grid-template-columns: repeat(3, 0.2fr);
     margin: 20px;
 }
 .Team-card-inner {
@@ -117,7 +117,21 @@ width: 140px;
   color: white;
   background-color: black;
 }
+.team-psychologist-box-conatiner-main{
+  display: flex;
+  align-items:center ;
+  justify-content: center;
+  margin: auto;
+}
 @media screen and (max-width: 600px) {
+  .team-psychologist-box-conatiner {
+    grid-gap: 2rem;
+    display: grid;
+    place-items: center;
+    gap: 2rem;
+    grid-template-columns: repeat(1, 0.2fr);
+    margin: 20px;
+}
   .team-psycologiest-box {
     display: flex;
     align-items: center;
@@ -129,12 +143,12 @@ width: 140px;
     border: 2px solid black;
     margin: 30px auto;
   }
-  .team-caro-display {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: 20%;
-  }
+    .team-caro-display {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 14%;
+    }
   .mobile-addiction-txt-inside p {
     font-size: 10px;
     /* color: red; */
@@ -175,6 +189,13 @@ width: 140px;
   }
 }
 @media (min-width: 600px) and (max-width: 1024px) {
+  .team-psychologist-box-conatiner {
+    grid-gap: 2rem;
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(2, 0.2fr);
+    margin: 20px;
+}
 .team-psycologiest-box-conatiner {
     display: grid;
     grid-template-columns: repeat(1, 1fr);

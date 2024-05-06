@@ -470,14 +470,14 @@
 }
 }
 @media (min-width: 600px) and (max-width: 1024px) {
-  .hdrsubs-butns img {
-    width: 47%;
-    margin-top: -1%;
-}
-  .Subscribe-box-1 img{
-    width: 100px;
-    margin-top: -10px;
-  }
+    .hdrsubs-butns img {
+        width: 43%;
+        margin-top: -1%;
+    }
+      .Subscribe-box-1 img {
+        width: 100px;
+        margin-top: 3px;
+    }
   .cate-home-caro {
     display: flex;
     align-items: center;
@@ -521,6 +521,10 @@
     align-items: center;
     justify-content: center;
   }
+  .hdrsubs-butns-a img {
+    width: 62%;
+    margin-top: -30%;
+}
   .hdrsubs-butns-a {
     /* position: relative; */
     display: flex;
@@ -535,7 +539,7 @@
     align-items: center;
     justify-content: center;
     margin-top: -18%;
-    gap: 2rem;
+    gap: 8rem;
   }
 }
 @media screen and (max-width: 599px){

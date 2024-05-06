@@ -6,6 +6,20 @@
   padding: 10px;
   margin-top: 20px;
 }
+.top-baner img:nth-child(1){
+  width: 200px;
+  /* background-color: red; */
+  
+}
+.top-baner-inside{
+  text-align: center;
+}
+.top-baner img:nth-child(3){
+  width: 100px;
+  background-color: yellow;
+  margin-top: -160px;
+  
+}
 .dis-fle{
   display: flex;
   align-items: center;
@@ -32,17 +46,15 @@
   border-radius: 50px;
 }
 .top-baner {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
   margin: 10px auto;
   background-color: #ffdd7e;
   width: 100%;
   height: 250px;
 }
-.top-baner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
+
 .top-baner p {
   font-family: "Satisfy", cursive;
   font-weight: 400;

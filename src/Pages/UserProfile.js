@@ -17,12 +17,12 @@ import { RiEdit2Line } from "react-icons/ri";
 import { useSelector } from 'react-redux';
 import axios from "../Utils/Baseurl.js";
 import { logout,loginSuccess,setUser } from '../Redux/Slices/authSlice.js';
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import profileFemale from "../Images/profileFemale.jpg";
 import profileMale from "../Images/profileMale.jpg";
 
 const UserProfile = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const navigate = useNavigate()
    var user = useSelector((state) => state.auth.user);
    console.log(user,"in the name of god......................................>>>>");
@@ -81,59 +81,126 @@ const UserProfile = () => {
                           // update
 
 
-                           const [userDataedit, setUserDataedit] = useState({
-                             username: "",
-                             email: "",
-                             phone: "",
-                           });
+                           const [userDataedit, setUserDataedit] = useState({});
+                            useEffect(() => {
+                              if (user && user._id) {
+                                setUserDataedit({
+                                  username: userData.name,
+                                  email: userData.email,
+                                  phone: userData.mobile,
+                                });
+                              }
+                            }, [user, userData]);
                            const [profileImage, setProfileImage] =
                              useState(null);
 
-                           const handleUserDataChange = (event) => {
-                             const { name, value } = event.target;
-                             setUserDataedit((prevUserData) => ({
-                               ...prevUserData,
-                               [name]: value,
-                             }));
-                           };
+                          const handleUserDataChange = (event) => {
+                            const { name, value } = event.target;
+                            setUserDataedit((prevUserData) => ({
+                              ...prevUserData,
+                              [name]: value,
+                            }));
+                          };
 
                            const handleProfileImageChange = async(event) => {
                              setProfileImage(event.target.files[0]);
                            };
 
-                           const handleSubmit =async (event) => {
+                          //  const handleSubmit =async (event) => {
 
-                             event.preventDefault();
+                          //    event.preventDefault();
 
-                             // Client-side validation
-                             const { username, email, phone } = userDataedit;
-                             if (
-                               !username ||
-                               !email ||
-                               !phone ||
-                               !profileImage
-                             ) {
-                               alert(
-                                 "Please fill out all fields and upload required files."
-                               );
-                               return;
-                             }
+                          //    // Client-side validation
+                          //    const { username, email, phone } = userDataedit;
+                          //    if (
+                          //      !username ||
+                          //      !email ||
+                          //      !phone ||
+                          //      !profileImage
+                          //    ) {
+                          //      alert(
+                          //        "Please fill out all fields and upload required files."
+                          //      );
+                          //      return;
+                          //    }
 
-                             // Create FormData object and append files
-                             const formData = new FormData();
-                             formData.append("name", username);
-                             formData.append("email", email);
-                             formData.append("mobile", phone);
-                            //  formData.append("profile-image", profileImage);
-                             console.log(formData,user._id,"faaaduuuuuuuuuuu");
+                          //    // Create FormData object and append files
+                          //    const formData = new FormData();
+                          //    formData.append("name", username);
+                          //    formData.append("email", email);
+                          //    formData.append("mobile", phone);
+                          //   //  formData.append("profile-image", profileImage);
+                          //    console.log(formData,user._id,"faaaduuuuuuuuuuu");
 
 
-                             const responsee = await axios.put(`/edit_my_profile/${user._id}`, formData);
-                             console.log(responsee,"editing profileeeeeeeeeeeeeeeeeeeeeeeee");
-                             // Submit FormData to API endpoint
+                          //    const responsee = await axios.put(`/edit_my_profile/${user._id}`, formData);
+                          //    console.log(responsee,"editing profileeeeeeeeeeeeeeeeeeeeeeeee");
+                          //    // Submit FormData to API endpoint
                            
-                           };
+                          //  };
+const handleSubmit = async (event) => {
+    event.preventDefault();
 
+    // Client-side validation
+    const { username, email, phone } = userDataedit;
+    if (!username || !email || !phone) {
+      toast.error("Please fill out all fields!!");
+      return;
+    }
+
+    const token = localStorage.getItem("accessToken");
+    console.log(user._id, token, "faaaduuuuuuuuuuu");
+    if (!token) {
+      setNoToken(true);
+    }
+
+    if (noToken) {
+      navigate("/");
+    }
+
+    try {
+      const responsee = await axios.put(
+        `/edit_my_profile/${user._id}`,
+        userDataedit,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      console.log(responsee, "editing profileeeeeeeeeeeeeeeeeeeeeeeee");
+      if (responsee.status === 200) {
+        // toast.success("profile updated Successfully.")
+        // setShowPopup(false)
+        // setUserDataedit({})
+        // window.location.reload(); // Refresh the page
+        if (responsee.data.message == "No changes made to the user profile") {
+          toast.error(responsee.data.message);
+        } else {
+          toast.success(responsee.data.message);
+          // toast.success("profile updated Successfully.")
+          setShowPopup(false);
+          setUserDataedit({});
+          window.location.reload();
+        }
+      } else {
+        toast.error("error");
+      }
+    } catch (error) {
+      if (error.response.status == 409  ) {
+        toast.error(error.response.data.message);
+      }else{
+        if(error.response.status == 403 || error.response.status == 401){
+          toast.error(error.response.data.message);
+          dispatch(logout())
+          navigate('/')
+        }
+      }
+      console.log(error, "iam the error");
+    }
+
+    // Submit FormData to API endpoint
+  };
   return !noToken ? (
     <div>
       <Navbar />

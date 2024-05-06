@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../Components/Navbar.js";
 import SMleft from "../Images/SMleft.png";
 import SMright from "../Images/SMright.png";
@@ -19,8 +19,21 @@ import HandYellow from "../SmallElements/HandYellow.png";
 import Pinkmen from "../SmallElements/Pinkmen.png";
 import GreenClock from "../SmallElements/GreenClock.png";
 import { Link } from "react-router-dom";
+import { InlineWidget } from "react-calendly";
+import { AiOutlineCloseCircle } from "react-icons/ai";
 
 const SocialMediaAddiction = () => {
+  
+    const [wantComplimentaryCall, setWantComplimentaryCall] = useState(false);
+    const appointmentSubmit = (e) => {
+      e.preventDefault();
+      setWantComplimentaryCall(true);
+    };
+
+    const handleClose = () => {
+      setWantComplimentaryCall(false);
+      // setCloseClick(true);
+    };
   return (
     <div>
       <div>
@@ -54,8 +67,36 @@ const SocialMediaAddiction = () => {
               />
             </div>
             <div className="btn-compo">
-              <button>Get Support</button>
-              <img src={Navarrow} alt="" />
+              {wantComplimentaryCall ? (
+                <>
+                  <div className="sub-telecall">
+                    <span
+                      className="close-calendly-addiction"
+                      onClick={handleClose}
+                    >
+                      <AiOutlineCloseCircle className="senestop-icon" />
+                    </span>
+                    <div className="new-imsa">
+                      <InlineWidget
+                        url="https://calendly.com/teammentoons/active-listeners"
+                        // className="calendly-embed-header"
+                        // style={{ width: "10%", height: "100%" }}
+                      />
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <></>
+              )}
+
+              {wantComplimentaryCall ? (
+                <></>
+              ) : (
+                <div>
+                  <button onClick={appointmentSubmit}>Get Appointment</button>
+                  <img onClick={appointmentSubmit} src={Navarrow} alt="" />
+                </div>
+              )}
             </div>
           </div>
 

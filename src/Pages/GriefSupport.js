@@ -29,7 +29,7 @@ const GriefSupport = () => {
   return (
     <div>
       <Navbar />
-      <Breadcrumps /> 
+      <Breadcrumps />
       <div className="grief-main">
         <div className="grief-main-heading">
           <span>Contact us to get help</span>
@@ -148,7 +148,10 @@ const GriefSupport = () => {
           <div className="tele-buttons">
             <button onClick={appointmentSubmit}>Get Support</button>
             <p>or Call us on +91 90360 33300</p>
-            <TiArrowRightThick className="arrow-for-tele" />
+            <TiArrowRightThick
+              onClick={appointmentSubmit}
+              className="arrow-for-tele"
+            />
           </div>
         )}
         <div className="grief-suppot-form">
@@ -222,7 +225,7 @@ const GriefSupport = () => {
                       <div className="input-field">
                         <label>Mobile Number</label>
                         <input
-                          type="number"
+                          type="text"
                           placeholder="Enter mobile number"
                           required
                         />
@@ -230,61 +233,35 @@ const GriefSupport = () => {
 
                       <div className="input-field">
                         <label>Country </label>
-                        <div className="custom-select">
-                          <select>
-                            <option value="0">Select Country :</option>
-                            <option value="1">Audi</option>
-                            <option value="2">BMW</option>
-                            <option value="3">Citroen</option>
-                            <option value="4">Ford</option>
-                            <option value="5">Honda</option>
-                            <option value="6">Jaguar</option>
-                            <option value="7">Land Rover</option>
-                            <option value="8">Mercedes</option>
-                            <option value="9">Mini</option>
-                            <option value="10">Nissan</option>
-                            <option value="11">Toyota</option>
-                            <option value="12">Volvo</option>
-                          </select>
-                        </div>
+                        <input
+                          type="text"
+                          placeholder="Enter Your Country "
+                          required
+                        />
                       </div>
                       <div className="input-field">
-                        <label>State </label>
-                        <div className="custom-select">
-                          <select>
-                            <option value="0">Select State:</option>
-                            <option value="1">Audi</option>
-                            <option value="2">BMW</option>
-                            <option value="3">Citroen</option>
-                            <option value="4">Ford</option>
-                            <option value="5">Honda</option>
-                            <option value="6">Jaguar</option>
-                            <option value="7">Land Rover</option>
-                            <option value="8">Mercedes</option>
-                            <option value="9">Mini</option>
-                            <option value="10">Nissan</option>
-                            <option value="11">Toyota</option>
-                            <option value="12">Volvo</option>
-                          </select>
-                        </div>
+                        <label>State</label>
+                        <input
+                          type="text"
+                          placeholder="Enter Your state"
+                          required
+                        />
                       </div>
                       <div className="input-field">
                         <label>Support in</label>
                         <div className="custom-select">
                           <select>
                             <option value="0">Select Support:</option>
-                            <option value="1">Audi</option>
-                            <option value="2">BMW</option>
-                            <option value="3">Citroen</option>
-                            <option value="4">Ford</option>
-                            <option value="5">Honda</option>
-                            <option value="6">Jaguar</option>
-                            <option value="7">Land Rover</option>
-                            <option value="8">Mercedes</option>
-                            <option value="9">Mini</option>
-                            <option value="10">Nissan</option>
-                            <option value="11">Toyota</option>
-                            <option value="12">Volvo</option>
+                            <option value="1">
+                              Family, Relationships & Divorce
+                            </option>
+                            <option value="2">
+                              Loss of Loved Ones/ Relocation
+                            </option>
+                            <option value="3">
+                              Identity and Gender crisis
+                            </option>
+                            <option value="4">Substance abuse</option>                          
                           </select>
                         </div>
                       </div>
@@ -295,7 +272,6 @@ const GriefSupport = () => {
                           type="text"
                           placeholder="Enter your Message"
                           required
-                          style={{ width: 800, height: 90 }}
                         />
                       </div>
                     </div>

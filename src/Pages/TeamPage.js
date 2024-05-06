@@ -223,7 +223,7 @@ const TeamPage = () => {
             </span>
           </div>
         </div>
-
+        <div className="team-psychologist-box-conatiner-main">
         <div className="team-psychologist-box-conatiner">
           {psychologist.map((items) => (
             <div>
@@ -248,6 +248,8 @@ const TeamPage = () => {
               </div>
             </div>
           ))}
+        </div>
+
         </div>
       </div>
       <div className="therapy-heading">

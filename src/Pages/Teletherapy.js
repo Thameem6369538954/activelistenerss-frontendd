@@ -18,6 +18,8 @@ import axios from "../Utils/Baseurl.js";
 import { toast } from "react-toastify";
 import { InlineWidget } from "react-calendly";
 import { AiOutlineCloseCircle } from "react-icons/ai";
+import  Subscribe from "../Images/Subscribe.png";
+import  Fourtyfive from "../Images/Fourtyfive.png";
 
 const Teletherapy = () => {
  
@@ -60,9 +62,13 @@ const Teletherapy = () => {
 
       <div className="teletheropy-plans">
         <div className="top-baner">
-          <p>Packages for you!</p>
-          <h1>Subscribe to our</h1>
-          <h2>Packages</h2>
+          <img src={Subscribe} alt="" />
+          <div className="top-baner-inside">
+            <p>Packages for you!</p>
+            <h1>Subscribe to our</h1>
+            <h2>Packages</h2>
+          </div>
+          <img src={Fourtyfive} alt="" />
         </div>
         <div className="dis-fle">
           {card.map((data) => {

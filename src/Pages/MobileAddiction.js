@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import "../Css/MobileAddiction.css";
 import Navbar from "../Components/Navbar.js";
 import MobileaddLeft from "../Images/MobileaddLeft.png";
@@ -20,8 +20,20 @@ import CB from "../SmallElements/CB.png";
 import Pinkmen from "../SmallElements/Pinkmen.png";
 import GreenClock from "../SmallElements/GreenClock.png";
 import { Link } from "react-router-dom";
-
+import { InlineWidget } from "react-calendly";
+import { AiOutlineCloseCircle } from "react-icons/ai";
 const MobileAddiction = () => {
+  
+    const [wantComplimentaryCall, setWantComplimentaryCall] = useState(false);
+    const appointmentSubmit = (e) => {
+      e.preventDefault();
+      setWantComplimentaryCall(true);
+    };
+
+    const handleClose = () => {
+      setWantComplimentaryCall(false);
+      // setCloseClick(true);
+    };
   return (
     <div>
       <Navbar />
@@ -53,10 +65,38 @@ const MobileAddiction = () => {
               alt=""
             />
           </div>
-          <div className="btn-compo">
-            <button>Get Support</button>
-            <img src={Navarrow} alt="" />
-          </div>
+        </div>
+        <div className="btn-compo">
+          {wantComplimentaryCall ? (
+            <>
+              <div className="sub-telecall">
+                <span
+                  className="close-calendly-addiction"
+                  onClick={handleClose}
+                >
+                  <AiOutlineCloseCircle className="senestop-icon" />
+                </span>
+                <div className="new-imsa">
+                  <InlineWidget
+                    url="https://calendly.com/teammentoons/active-listeners"
+                    // className="calendly-embed-header"
+                    // style={{ width: "10%", height: "100%" }}
+                  />
+                </div>
+              </div>
+            </>
+          ) : (
+            <></>
+          )}
+
+          {wantComplimentaryCall ? (
+            <></>
+          ) : (
+            <div>
+              <button onClick={appointmentSubmit}>Get Appointment</button>
+              <img onClick={appointmentSubmit} src={Navarrow} alt="" />
+            </div>
+          )}
         </div>
 
         <div className="grean-box-mobile-addiction">
@@ -219,17 +259,9 @@ const MobileAddiction = () => {
               </div> */}
 
               <div className="mobile-addiction-yellow-box">
-                <img src={PodcastRed} className="podcast-red-mob" alt="" />
+                <img src={PodcastRed} alt="" />
                 <div className="over">
-                  <img
-                    src={cover}
-                    // style={{
-                    //   width: "200px",
-                    //   marginLeft: "1%",
-                    //   borderRadius: "30px",
-                    // }}
-                    alt=""
-                  />
+                  <img src={cover} alt="" />
                   <span>Recommended Podcast</span>
                   <h4>Are you Addicted to Mobile phone?</h4>
                   <Link to="/podcast">
