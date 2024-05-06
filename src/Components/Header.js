@@ -352,63 +352,61 @@ const Header = () => {
         </div>
         <div className="categoreis-haeder">
           <div className="categoreis-grid-boxs">
-            <div>
-              <NavLink to="/EarlyagegadgetExposure" className="Links">
-                {" "}
-                <div onClick={scrollToTop} className="categoreis-grid-box">
-                  <span>Ages: 6-12</span>
-                  <p>
-                    Early age gadget exposure{" "}
-                    <img src={Arrow} className="arrow-for-header" alt="" />
-                  </p>
-                </div>
-              </NavLink>
-              <NavLink to="/CurrentTimes" className="Links">
-                <div className="categoreis-grid-box" onClick={scrollToTop}>
-                  <span>Post Covid</span>
-                  <p>
-                    Current Times{" "}
-                    <img src={Arrow} className="arrow-for-header" alt="" />
-                  </p>
-                </div>
-              </NavLink>
-            </div>
+            <NavLink to="/EarlyagegadgetExposure" className="Links">
+              {" "}
+              <div onClick={scrollToTop} className="categoreis-grid-box">
+                <span>Ages: 6-12</span>
+                <p>
+                  Early age gadget exposure{" "}
+                  <img src={Arrow} className="arrow-for-header" alt="" />
+                </p>
+              </div>
+            </NavLink>
 
-            <div>
-              <NavLink to="/AdaptationtoMobilePhones" className="Links">
-                <div className="categoreis-grid-box" onClick={scrollToTop}>
-                  <span>Ages: 13-19</span>
-                  <p>
-                    Adaptation to mobile{" "}
-                    <img src={Arrow} className="arrow-for-header" alt="" />
-                  </p>
-                </div>
-              </NavLink>
-              <NavLink to="/LearningandFocus" className="Links">
-                <div className="categoreis-grid-box" onClick={scrollToTop}>
-                  <span>Our Solutions</span>
-                  <p>
-                    Learning and Focus{" "}
-                    <img src={Arrow} className="arrow-for-header" alt="" />
-                  </p>
-                </div>
-              </NavLink>
-            </div>
+            <NavLink to="/AdaptationtoMobilePhones" className="Links">
+              <div className="categoreis-grid-box" onClick={scrollToTop}>
+                <span>Ages: 13-19</span>
+                <p>
+                  Adaptation to mobile{" "}
+                </p>
+                  <img src={Arrow} className="arrow-for-header" alt="" />
+              </div>
+            </NavLink>
+
+
+            <NavLink to="/CurrentTimes" className="Links">
+              <div className="categoreis-grid-box" onClick={scrollToTop}>
+                <span>Post Covid</span>
+                <p>
+                  Current Times{" "}
+                  <img src={Arrow} className="arrow-for-header" alt="" />
+                </p>
+              </div>
+            </NavLink>
+
+            <NavLink to="/LearningandFocus" className="Links">
+              <div className="categoreis-grid-box" onClick={scrollToTop}>
+                <span>Our Solutions</span>
+                <p>
+                  Learning and Focus{" "}
+                  <img src={Arrow} className="arrow-for-header" alt="" />
+                </p>
+              </div>
+            </NavLink>
           </div>
 
           <div></div>
         </div>
         <div className="hdr-btm-text">
           <div className="inside-hdr-btm-txt">
-
-          <img src={FrameA} alt="" />
+            <img src={FrameA} alt="" />
           </div>
 
           {!showPopup && (
             <div className="why-active-btn">
               <button onClick={togglePopup}>Why Active Listeners?</button>
-              <img src={Navarrow} alt="" />
-              </div>
+              <img onClick={togglePopup} src={Navarrow} alt="" />
+            </div>
           )}
           {showPopup && (
             <div className="popup">
@@ -457,10 +455,9 @@ const Header = () => {
               </div>
             </div>
           )}
-           <div className="inside-hdr-btm-txt">
-          <img src={FrameB} alt="" />
-
-           </div>
+          <div className="inside-hdr-btm-txt">
+            <img src={FrameB} alt="" />
+          </div>
         </div>
       </div>
     </div>

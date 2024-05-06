@@ -114,9 +114,9 @@ const GoalVision = () => {
     },
     {
       id: 8,
-      name: "Harris",
-      position: "UI/UX Designer",
-      image: harris,
+      name: "Thameem Ansari",
+      position: "Frontend Developer",
+      image: Thameem,
     },
     {
       id: 9,
@@ -124,12 +124,7 @@ const GoalVision = () => {
       position: "Illustrator",
       image: shankar,
     },
-    {
-      id: 10,
-      name: "Thameem Ansari",
-      position: "Frontend Developer",
-      image: Thameem,
-    },
+    
   ];
 
   return (

@@ -46,7 +46,10 @@ const Speekeasy = () => {
           <div className="tele-buttons">
             <button onClick={appointmentSubmit}>Get Appointment</button>
             <p>Book Your Complimentary 15-min Call</p>
-            <TiArrowRightThick className="arrow-for-tele" />
+            <TiArrowRightThick
+              onClick={appointmentSubmit}
+              className="arrow-for-tele"
+            />
           </div>
         )}
       </div>

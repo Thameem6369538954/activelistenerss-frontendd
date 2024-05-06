@@ -5,9 +5,12 @@
   font-size: 60px;
   text-decoration: underline;
 }
-.gs-header-text img {
-  position: absolute;
-  margin-top: 30px;
+.gs-header-inner-text{
+  text-align: center;
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  flex-direction: column;
 }
 .gs-header-text h2 {
   font-family: myFont;
@@ -18,6 +21,10 @@
   margin-bottom: -40px;
   margin-left: 20px;
 }
+.gs-header-text-main{
+display: flex;
+    align-items: center;
+    justify-content: space-around;}
 .gs-header-text h1 {
   font-family: Relo;
   font-weight: 900;
@@ -26,20 +33,14 @@
   margin-top: -1%;
   margin-left: 11px;
 }
-.gs-header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 80px;
-}
 .gs-header img:nth-child(2) {
   width: 40%;
-  margin-top: -10%;
+  margin-top: -5%;
 }
 .button {
   display: flex;
   align-items: center;
-  /* justify-content: center; */
+  justify-content: center;
   margin: 20px;
 }
 .button button {
@@ -57,9 +58,16 @@
   border: 1px solid white;
 }
 .gs-header-inner-text h5 {
-  margin: 10px;
-  font-size: 16px;
+    font-size: 16px;
+    margin-top: 45px;
+    text-align:justify ;
 }
+.grif-icon {
+    font-size: 30px;
+    margin-left: 102%;
+}
+
+
 .gs-header-inner-text img:nth-child(3) {
   margin-left: 40%;
   margin-top: -3%;
@@ -74,6 +82,10 @@
   background-color: #bae8ac;
   margin: 5% auto;
   gap: 3rem;
+  -webkit-box-shadow: 3px 10px 5px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 3px 10px 5px 0px rgba(0,0,0,0.75);
+box-shadow: 3px 10px 5px 0px rgba(0,0,0,0.75);
+border-radius: 10px;
 }
 .color-main-boxese {
   display: flex;
@@ -106,7 +118,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-left: -2%;
+  /* margin-left: -2%; */
 }
 .time-box {
   display: flex;
@@ -325,8 +337,15 @@ article {
   /* color: #256c55; */
   font-size: 30px;
 }
-
+.grif-btn{
+  display:flex ;
+  align-items: center;
+  justify-content: center;
+}
 @media screen and (max-width: 600px) {
+  .gs-header-inner-text img{
+      width: 50px;
+  }
   .center {
     display: flex;
     align-items: center;
@@ -339,7 +358,7 @@ article {
   .gs-header img:nth-child(2) {
     width: 40%;
     /* background-color: red; */
-    display: none;
+    /* display: none; */
   }
   .button {
     display: flex;
@@ -353,6 +372,10 @@ article {
     background-color: #ffdd7e;
     border-radius: 20px;
   }
+  .Psychologists-container {
+    /* position: absolute; */
+    margin-top: 0px;
+}
   .color:nth-child(1) {
     background: #bae8ac;
     border: 5px solid white;
@@ -360,6 +383,7 @@ article {
     /* margin-left: -60px; */
     width: 250px;
     margin-bottom: 20px;
+    height: 400px;
   }
 
   .color:nth-child(2) {
@@ -368,6 +392,7 @@ article {
     border-radius: 15px;
     margin-left: -23px;
     width: 250px;
+    height: 400px;
     margin-bottom: 20px;
   }
 
@@ -378,6 +403,7 @@ article {
     /* margin-left: -60px; */
     width: 250px;
     margin-bottom: 20px;
+    height: 400px;
   }
 
   .color:nth-child(4) {
@@ -387,16 +413,18 @@ article {
     width: 250px;
     /* margin-left: -60px; */
     margin-bottom: 20px;
+    height: 400px;
   }
 
   .gs-header-inner-text img:nth-child(3) {
     /* margin-left: 52%; */
   }
-  .gs-header-inner-text h5 {
-    margin: 23px;
-    font-size: 17px;
-    font-family: "Questrial", sans-serif;
-  }
+.gs-header-inner-text h5 {
+        /* margin: 23px; */
+        font-size: 12px;
+        font-family: "Questrial", sans-serif;
+    }
+    
   article {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(40px, 3fr));
@@ -462,6 +490,15 @@ article {
     margin-top: 68px;
     gap: 0rem;
   }
+  .gs-header-inner-text {
+    text-align: center;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    flex-direction: column;
+    width: 50%;
+}
+.embed{background-color: red;}
   .black-round {
     display: flex;
     align-items: center;
@@ -487,10 +524,19 @@ article {
   .color-box-main {
     background-image: none;
     width: 100%;
-    height: 221vh;
+    height: 210vh;
     background-repeat: no-repeat;
     position: relative;
     background-position: center;
+  }
+  .colorbox-inside img{
+    width: 60px;
+  }
+  .gs-header-text-main {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 50vh;
   }
   .Psychologists-main {
     background-image: url("../Images/Smallpickbg.png");
@@ -517,6 +563,17 @@ article {
     margin: 10px;
     /* recomiendo quitar esto/quit this */
   }
+  .time-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #cd4631;
+    width: 79px;
+    height: 119px;
+    border-radius: 20px;
+    box-shadow: 7px 7px 43px 0px rgba(0, 0, 0, 0.75);
+}
 }
 @media (min-width: 600px) and (max-width: 1024px) {
   .benefit-inside-box img {
@@ -526,25 +583,24 @@ article {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: 40%;
+    /* margin-left: 40%; */
   }
-  .palette {
-    display: grid;
-    grid-template-columns: repeat(2, 2fr);
-    gap: 14px;
-    height: auto;
-    width: 80%;
-    border-radius: 15px;
-    /* overflow: hidden; */
-    margin: 10px;
-    /* recomiendo quitar esto/quit this */
-  }
+    .palette {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+        height: auto;
+        width: 70%;
+        border-radius: 15px;
+        /* overflow: hidden; */
+        margin: auto;
+    }
   .seat-box-container {
     width: 78%;
   }
   .gs-header img:nth-child(2) {
     width: 40%;
-    margin-top: -23%;
+    /* margin-top: -23%; */
     /* background-color: red; */
   }
   .gs-header img:nth-child(3) {
@@ -553,6 +609,37 @@ article {
     margin-left: 73%;
     /* background-color: red; */
   }
+  .gs-header-text p {
+    font-family: myFont;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 33px;
+    text-decoration: underline;
+    margin-left: 12%;
+}
+.gs-header-text h1 {
+    font-family: Relo;
+    font-weight: 900;
+    font-size: 32px;
+    /* color: red; */
+    margin-top: -3%;
+    /* margin-left: 11px; */
+}
+.gs-header-text h2 {
+    font-family: myFont;
+    color: #256c55;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 45px;
+    margin-top: -30px;
+    /* margin-left: 20px; */
+}
+.caro-heading-tag-a {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 26%;
+}
   .time-box {
     display: flex;
     flex-direction: column;
@@ -589,41 +676,55 @@ article {
     justify-content: center;
     margin-top: 3%;
   }
-  .color:nth-child(1) {
-    background: #bae8ac;
-    border: 5px solid white;
-    border-radius: 15px;
-    margin-left: -60px;
-    width: 350px;
-    margin-bottom: 20px;
-  }
+    .color:nth-child(1) {
+        background: #bae8ac;
+        border: 5px solid white;
+        border-radius: 15px;
+        margin-left: -60px;
+        width: 300px;
+        margin-bottom: 20px;
+    }
 
-  .color:nth-child(2) {
-    background: #ffe291;
-    border: 5px solid white;
-    border-radius: 15px;
-    margin-left: -40px;
-    width: 350px;
-    margin-bottom: 20px;
-  }
+      .color:nth-child(2) {
+        background: #ffe291;
+        border: 5px solid white;
+        border-radius: 15px;
+        margin-left: -40px;
+        width: 300px;
+        margin-bottom: 20px;
+    }
 
-  .color:nth-child(3) {
-    background: #ffd1e8;
-    border: 5px solid white;
-    border-radius: 15px;
-    margin-right: 15px;
-    width: 350px;
-    margin-bottom: 20px;
-  }
-
-  .color:nth-child(4) {
-    background: #cbd9ff;
-    border: 5px solid white;
-    border-radius: 15px;
-    width: 350px;
-    margin-left: -40px;
-    margin-bottom: 20px;
-  }
+     .color:nth-child(3) {
+        background: #ffd1e8;
+        border: 5px solid white;
+        border-radius: 15px;
+        margin-right: 15px;
+        width: 290px;
+        margin-bottom: 20px;
+    }
+.color-box-main {
+  background-image: url("../Images/ALHeaderbg.png");
+  width: 100%;
+  height: auto;
+  background-repeat: no-repeat;
+  position: relative;
+  background-position: center;
+}
+.Time-box-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 46px;
+}
+.color:nth-child(4) {
+        background: #cbd9ff;
+        border: 5px solid white;
+        border-radius: 15px;
+        width: 300px;
+        margin-left: -40px;
+        margin-bottom: 20px;
+    }
   article {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));

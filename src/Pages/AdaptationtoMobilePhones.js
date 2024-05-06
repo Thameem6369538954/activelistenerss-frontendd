@@ -68,7 +68,7 @@ const AdaptationtoMobilePhones = () => {
             We believe that early age gadget exposure, adaptaion to mobile among
             children has now led to a time where there decrease in learning
           </p> */}
-            <button>Talk to us</button>
+            {/* <button>Talk to us</button> */}
           </div>
 
           {/* <div className="hdr-btm-text">

@@ -312,54 +312,56 @@ const GriefsupportGroup = () => {
       <div className="gs-header-main">
         <div className="gs-header">
           <div className="gs-header-text">
-            <p>
-              Contact us to get help <img src={SmallElements} alt="" />
-            </p>
-            <h1>Grief Support</h1>
-            <h2>Group</h2>
-            <br></br>
-            {/* <img src={Yellowline} className="Yellowline" alt="" /> */}
-            <br></br>
-            <div className="gs-header-inner-text">
-              <h5>
-                A safe space to share experiences, connect with others, and
-                receive support while navigating the challenges of grieving
-                together.
-              </h5>
-              <div className="button">
-                <div className="center">
-                  {wantComplimentaryCall ? (
-                    <>
-                      <span className="close-calendly" onClick={handleClose}>
-                        <AiOutlineCloseCircle className="grif-grop-icon" />
-                      </span>
+            <div className="gs-header-text-main">
+              <div className="gs-header-inner-text">
+                <p>
+                  Contact us to get help <img src={SmallElements} alt="" />
+                </p>
+                <h1>Grief Support</h1>
+                <h2>Group</h2>
+                <h5>
+                  A safe space to share experiences, connect with others,{" "}
+                  <br></br>and receive support while navigating the challenges
+                  of grieving together.
+                </h5>
 
-                      <InlineWidget
-                        url="https://calendly.com/teammentoons/active-listeners"
-                        className="calendly-embed"
-                      />
-                    </>
-                  ) : (
-                    <></>
-                  )}
-
-                  {wantComplimentaryCall ? (
-                    <></>
-                  ) : (
-                    <button className="get-support" onClick={appointmentSubmit}>
-                      Get Support
-                    </button>
-                  )}
-                </div>
-
-                {/* <img src={Navarrow} alt="" /> */}
               </div>
-              <img src={Elements} alt="" />
+
+              <img src={Grief} alt="" />
             </div>
+                <div className="button">
+                  <div className="center">
+                    {wantComplimentaryCall ? (
+                      <>
+                        <span className="close-calendly" onClick={handleClose}>
+                          <AiOutlineCloseCircle className="grif-icon" />
+                        </span>
+
+                        <InlineWidget
+                          url="https://calendly.com/teammentoons/active-listeners"
+                          className="embed"
+                        />
+                      </>
+                    ) : (
+                      <></>
+                    )}
+
+                    {wantComplimentaryCall ? (
+                      <></>
+                    ) : (
+                      <button
+                        className="get-support"
+                        onClick={appointmentSubmit}
+                      >
+                        Get Support
+                      </button>
+                    )}
+                  </div>
+                </div>
           </div>
-          <img src={Grief} alt="" />
         </div>
       </div>
+      <div className="grif-btn"></div>
       {/* Green-box */}
       <div className="gsg-green-bar">
         <div className="gsg-box">

@@ -129,6 +129,9 @@
   border-bottom: 1px solid black;
 }
 @media screen and (max-width: 600px) {
+  .gv-left {
+    margin: 0px;
+}
   .goal-box-container {
     display: flex;
     flex-direction: column;
@@ -136,7 +139,7 @@
     justify-content: center;
     background-color: #ffdd7e;
     height: 300px;
-    width: 320px;
+    width: 245px;
     border-radius: 20px;
     border: 1px solid black;
     margin: 10px 12%;
@@ -172,7 +175,7 @@
   .goal-box {
     background-color: #bae8ac;
     height: 300px;
-    width: 365px;
+    width: 300px;
     border-radius: 20px;
   }
   .goalvision-box:nth-child(even) {
