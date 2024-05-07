@@ -324,40 +324,36 @@ const GriefsupportGroup = () => {
                   <br></br>and receive support while navigating the challenges
                   of grieving together.
                 </h5>
-
               </div>
 
               <img src={Grief} alt="" />
             </div>
-                <div className="button">
-                  <div className="center">
-                    {wantComplimentaryCall ? (
-                      <>
-                        <span className="close-calendly" onClick={handleClose}>
-                          <AiOutlineCloseCircle className="grif-icon" />
-                        </span>
+            <div className="button">
+              <div className="center">
+                {wantComplimentaryCall ? (
+                  <>
+                    <span className="close-calendly" onClick={handleClose}>
+                      <AiOutlineCloseCircle className="grif-icon" />
+                    </span>
 
-                        <InlineWidget
-                          url="https://calendly.com/teammentoons/active-listeners"
-                          className="embed"
-                        />
-                      </>
-                    ) : (
-                      <></>
-                    )}
+                    <InlineWidget
+                      url="https://calendly.com/teammentoons/active-listeners"
+                      className="embed"
+                    />
+                  </>
+                ) : (
+                  <></>
+                )}
 
-                    {wantComplimentaryCall ? (
-                      <></>
-                    ) : (
-                      <button
-                        className="get-support"
-                        onClick={appointmentSubmit}
-                      >
-                        Get Support
-                      </button>
-                    )}
-                  </div>
-                </div>
+                {wantComplimentaryCall ? (
+                  <></>
+                ) : (
+                  <button className="get-support" onClick={appointmentSubmit}>
+                    Get Support
+                  </button>
+                )}
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -471,92 +467,154 @@ const GriefsupportGroup = () => {
           <h2>From this meeetup</h2>
           <img src={Yellowline} className="Yellowline" alt="" />
         </div>
-        <div>
-          <div className="benefit-box-grid">
-            <div className="benefit-inside-box">
-              <img src={THands} alt="" />
-              <h2>Deeper Family Connections</h2>
-              <p>
-                Build lasting bonds through improved communication and shared
-                experiences.
-              </p>
-            </div>
-
-            <div className="benefit-inside-box">
-              <img src={GreenBulb} alt="" />
-              <h2>Enhanced Learning and Focus</h2>
-              <p>
-                Propel your loved ones toward academic and personal success with
-                sharpened focus and engagement.
-              </p>
-            </div>
-            <div className="benefit-inside-box">
-              <img src={PinkHand} alt="" />
-              <h2>Stress Reduction</h2>
-              <p>
-                Let the worries of the day melt away, creating a calm
-                environment for all family members.
-              </p>
-            </div>
+        <div className="benifit-main">
+          <div className="benefit-inside-box">
+            <ul className="benefit-box-for-griefsupport-group">
+              <li>
+                {" "}
+                <img src={THands} alt="" />
+              </li>
+              <li>
+                {" "}
+                <h2>Deeper Family Connections</h2>
+              </li>
+              <li>
+                {" "}
+                <p>
+                  Build lasting bonds through improved communication and shared
+                  experiences.
+                </p>
+              </li>
+            </ul>
           </div>
-        </div>
 
-        <div>
-          <div className="benefit-box-grid">
-            <div className="benefit-inside-box">
-              <img src={House} alt="" />
-              <h2>Personal Growth</h2>
-              <p>
-                Empower every individual to explore their interests, overcome
-                challenges, and achieve their goals.
-              </p>
-            </div>
+          <div className="benefit-inside-box">
+            <ul className="benefit-box-for-griefsupport-group">
+              <li>
+                {" "}
+                <img src={GreenBulb} alt="" />
+              </li>
+              <li>
+                {" "}
+                <h2>Enhanced Learning and Focus</h2>
+              </li>
+              <li>
+                {" "}
+                <p>
+                  Propel your loved ones toward academic and personal success
+                  with sharpened focus and engagement.
+                </p>
+              </li>
+            </ul>
+          </div>
+          <div className="benefit-inside-box">
+            <ul className="benefit-box-for-griefsupport-group">
+              <li>
+                {" "}
+                <img src={PinkHand} alt="" />
+              </li>
+              <li>
+                {" "}
+                <h2>Stress Reduction</h2>
+              </li>
+              <li>
+                <p>
+                  Let the worries of the day melt away, creating a calm
+                  environment for all family members.
+                </p>
+              </li>
+            </ul>
+          </div>
 
-            <div className="benefit-inside-box">
-              <img src={Scale} alt="" />
-              <h2>Balanced Digital Life</h2>
-              <p>
-                Strike the perfect balance with technology, ensuring it enriches
-                rather than detracts from your family's life.
-              </p>
-            </div>
-            <div className="benefit-inside-box">
-              <img src={Brine} alt="" />
-              <h2>Balanced Digital Life</h2>
-              <p>
-                Improved mental health through our therapeutic interventions is
-                achievable
-              </p>
-            </div>
+          <div className="benefit-inside-box">
+            <ul className="benefit-box-for-griefsupport-group">
+              <li>
+                {" "}
+                <img src={House} alt="" />
+              </li>
+              <li>
+                {" "}
+                <h2>Personal Growth</h2>
+              </li>
+              <li>
+                {" "}
+                <p>
+                  Empower every individual to explore their interests, overcome
+                  challenges, and achieve their goals.
+                </p>
+              </li>
+            </ul>
+          </div>
+
+          <div className="benefit-inside-box">
+            <ul className="benefit-box-for-griefsupport-group">
+              <li>
+                {" "}
+                <img src={Scale} alt="" />
+              </li>
+              <li>
+                {" "}
+                <h2>Balanced Digital Life</h2>
+              </li>
+              <li>
+                {" "}
+                <p>
+                  Strike the perfect balance with technology, ensuring it
+                  enriches rather than detracts from your family's life.
+                </p>
+              </li>
+            </ul>
+          </div>
+          <div className="benefit-inside-box">
+            <ul className="benefit-box-for-griefsupport-group">
+              <li>
+                {" "}
+                <img src={Brine} alt="" />
+              </li>
+              <li>
+                {" "}
+                <h2>Balanced Digital Life</h2>
+              </li>
+              <li>
+                <p>
+                  Improved mental health through our therapeutic interventions
+                  is achievable
+                </p>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
       {/* Psychologists */}
       <div className="Psychologists-main">
-        <div className="Psychologists-container">
-          <div className="therapy-heading">
-            <p>Meetup groups developed and Delivered By Psychologists</p>
-            <h1>What you will gain</h1>
-            <h2>From this meeetup</h2>
-            <img src={Yellowline} className="Yellowline" alt="" />
-          </div>
-          <div className="goal-box-container-hole">
-            <Slider {...settings}>
-              {employees.map((employee) => (
-                <div>
-                  <div className="goal-box-container" key={employee.id}>
-                    <img src={employee.image} alt="" />
-                    <div className="positon-name">
-                      <p style={{ color: "green" }}>{employee.position}</p>
-                      <h1>{employee.name}</h1>
+        <div className="imsha-for-grief">
+          <div className="Psychologists-container">
+            <div className="imsha-for-grief">
+              <div className="therapy-heading">
+                <p>Meetup groups developed and Delivered By Psychologists</p>
+                <h1>What you will gain</h1>
+                <h2>From this meeetup</h2>
+                <img src={Yellowline} className="Yellowline" alt="" />
+              </div>
+              <div className="goal-box-container-hole">
+                <Slider {...settings}>
+                  {employees.map((employee) => (
+                    <div>
+                      <div className="goal-box-container" key={employee.id}>
+                        <img src={employee.image} alt="" />
+                        <div className="positon-name">
+                          <p style={{ color: "green" }}>{employee.position}</p>
+                          <h1>{employee.name}</h1>
+                        </div>
+                        <div className="caro-follw">
+                          <div className="line-caro"></div>
+                        </div>
+                      </div>
                     </div>
-                    <div className="caro-follw">
-                      <div className="line-caro"></div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </Slider>
+                  ))}
+                </Slider>
+              </div>
+            </div>
           </div>
         </div>
       </div>

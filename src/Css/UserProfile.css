@@ -8,6 +8,67 @@
   font-family: myFont;
   letter-spacing: 0.1rem;
 }
+.edit-user-profile{
+  background-color: royalblue;
+  height: 200px;
+  position: absolute;
+  margin-left: -190px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 10px;
+  padding:20px;
+
+}
+.edit-user-profile button{
+  background-color: white;
+  padding: 10px 20px;
+  border: none;
+  color:black;
+  border-radius: 20px;
+}
+.edit-user-profile button:hover{
+  background-color: #02c202;
+  color: white;
+}
+.add-prof{
+  font-size: 30px;
+  margin-top: -40px;
+  margin-left: -40px;
+  color: black;
+}
+.prof-input{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.prof-input label{
+  font-size: 20px;
+  color: white;
+}
+.delete-prof{
+ display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+}
+.delete-prof button{
+  background-color:white;
+  padding: 10px 20px;
+  border: none;
+  color:black;
+  font-size: 16px;
+  border-radius: 10px;
+}
+.delete-prof button:hover{
+  background-color: red;
+}
+.prof-input input{
+  background-color: white;
+  border:  1px solid black;
+}
 .hdr-userprof {
   display: flex;
   align-items: center;

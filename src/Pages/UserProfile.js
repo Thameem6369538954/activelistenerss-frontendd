@@ -20,7 +20,8 @@ import { logout,loginSuccess,setUser } from '../Redux/Slices/authSlice.js';
 import { useDispatch } from 'react-redux';
 import profileFemale from "../Images/profileFemale.jpg";
 import profileMale from "../Images/profileMale.jpg";
-
+import { MdAddCircleOutline } from "react-icons/md";
+// import axios from "../Utils/Baseurl.js";
 const UserProfile = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate()
@@ -201,6 +202,55 @@ const handleSubmit = async (event) => {
 
     // Submit FormData to API endpoint
   };
+
+     const [editprof,setEdiprof] = useState(false);
+
+     const toggleEdit = () => {
+       setEdiprof(!editprof)
+     }
+
+       const [profilePic, setProfilePic] = useState(null);
+       const [error, setError] = useState("");
+
+       const handleFileChange = (event) => {
+         const selectedFile = event.target.files[0];
+         // Check if a file is selected
+         if (selectedFile) {
+           // Check if the selected file is an image
+           if (selectedFile.type.startsWith("image/")) {
+             setProfilePic(selectedFile);
+             setError("");
+           } else {
+             setProfilePic(null);
+             setError("Please select a valid image file.");
+           }
+         }
+       };
+   const removeProfilePic = () => {
+     setProfilePic(null); // Reset profilePic state to null to remove the image
+     // Reset the value of the file input element
+     const fileInput = document.getElementById("profilePic");
+     fileInput.value = "";
+   };
+
+   const handleSubmitu = async (event) => {
+     event.preventDefault();
+     if (!profilePic) {
+       setError("Please choose a profile picture.");
+       return;
+     }
+     console.log(profilePic,"picture........");
+     const formData = new FormData()
+     formData.append('profilePic', profilePic)
+     const response = await axios.post(
+       `/add_profile_photo/${user._id}`,
+       formData
+     );
+     console.log(response, "this is the response of registration............");
+
+     // Your form submission logic here
+    //  console.log("Form submitted successfully!");
+   };
   return !noToken ? (
     <div>
       <Navbar />
@@ -400,7 +450,46 @@ const handleSubmit = async (event) => {
                           </div>
                         </div>
                         <div className="profile-box">
-                          <div></div>
+                          <div>
+                            {editprof && (
+                              <form
+                                className="edit-user-profile"
+                                onSubmit={handleSubmitu}
+                              >
+                                <button onClick={toggleEdit}>Close</button>
+                                <div className="prof-input">
+                                  <label>Choose Profile Picture</label>
+                                  <input
+                                    type="file"
+                                    name="profilePic"
+                                    id="profilePic"
+                                    accept="image/*"
+                                    onChange={handleFileChange}
+                                    required
+                                  />
+                                  {error && (
+                                    <div className="error">{error}</div>
+                                  )}
+                                  {profilePic && (
+                                    <div>
+                                      <img src={profilePic} alt="Profile" />
+                                      <button
+                                        type="button"
+                                        onClick={removeProfilePic}
+                                      >
+                                        Remove
+                                      </button>
+                                    </div>
+                                  )}
+                                </div>
+                                <div className="delete-prof">
+                                  <label>Delete your Profile</label>
+                                  <button type="button">Delete</button>
+                                </div>
+                                <button type="submit">Save</button>
+                              </form>
+                            )}
+                          </div>
                           {userData.profilePic ? (
                             <img src={userData.profilePic} alt="" />
                           ) : (
@@ -413,8 +502,13 @@ const handleSubmit = async (event) => {
                                   : defaultProfile
                               }
                               alt=""
+                              onClick={toggleEdit}
                             />
                           )}
+                          <MdAddCircleOutline
+                            onClick={toggleEdit}
+                            className="add-prof"
+                          />
                           <p>{userData.name}</p>
                           <span>{userData.email}</span>
                           {/* <div className="save-blacka">

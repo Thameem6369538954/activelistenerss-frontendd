@@ -43,6 +43,21 @@ display: flex;
   justify-content: center;
   margin: 20px;
 }
+.benifit-main{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+}
+.benefit-box-for-griefsupport-group{
+  width: 100%;
+  text-align: left;
+}
+.benefit-box-for-griefsupport-group li{
+  text-align: left;
+  list-style: none;
+}
+.benefit-box-for-griefsupport-group img{
+  width: 30px;
+}
 .button button {
   padding: 12px 55px;
   border: none;
@@ -134,7 +149,7 @@ border-radius: 10px;
   box-shadow: 7px 7px 43px 0px rgba(0, 0, 0, 0.75);
 }
 .benefit-inside-box img {
-  width: 100px;
+    width: 60px;
 }
 .time-box h1 {
   font-size: 60px;
@@ -150,6 +165,10 @@ border-radius: 10px;
   background-repeat: no-repeat;
   position: relative;
   background-position: center;
+}
+.imsha-for-grief {
+    /* margin-top: -2px; */
+    padding: 0.2px;
 }
 .Psychologists-main {
   background-image: url("../Images/Smallpickbg.png");
@@ -524,7 +543,7 @@ article {
   .color-box-main {
     background-image: none;
     width: 100%;
-    height: 210vh;
+    height: 140vh;
     background-repeat: no-repeat;
     position: relative;
     background-position: center;
@@ -536,7 +555,7 @@ article {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    height: 50vh;
+    height: 25vh;
   }
   .Psychologists-main {
     background-image: url("../Images/Smallpickbg.png");

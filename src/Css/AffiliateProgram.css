@@ -3,13 +3,19 @@
   align-items: center;
   justify-content: space-around;
   position: relative;
+  z-index: -1;
+}
+.affiliate-program-heading img{
+  width: 250px;
 }
 .affiliate-program-heading img:nth-child(1) {
   /* background-color: black; */
   position: absolute;
   /* float: left; */
-  margin-left: -42%;
-  z-index: -1;
+  margin-left: -1242px;
+  z-index: -9999;
+  width: 500px;
+  
 }
 .inside-button {
   display: flex;
@@ -77,7 +83,7 @@
 }
 .psycologist-how-can-join-box {
   height: 100px;
-  width: 350px;
+  max-width: 300px;
   background-color: #bae8ac;
   display: flex;
   align-items: center;
@@ -110,7 +116,7 @@
 }
 .psycologist-how-can-join-box-container {
   display: grid;
-  grid-template-columns: repeat(2, 0fr);
+  grid-template-columns: repeat(2, 0.5fr);
   gap: 2rem;
 }
 .getin-touch-affilate-form {
@@ -209,14 +215,23 @@
   .psycologist-part {
     height: auto;
   }
-     .Clg-graduate-part {
+    .Clg-graduate-part {
         display: flex;
         align-items: center;
+        flex-direction: column-reverse;
         justify-content: space-around;
         width: 100%;
         height: auto;
         margin-top: 2%;
+        text-align: center;
     }
+    .psycologist-part{
+      text-align: center;
+    }
+    .cls-gratuate-image-part img {
+    width: 49%;
+    margin-left: 170px;
+}
     .psycologist-how-can-join-box img{
       width: 80px;
     }
@@ -229,11 +244,12 @@
     justify-content: space-around;
     border-radius: 5px;
 }
-  .psycologist-how-can-join-box-container {
-    margin-left: 30px;
-  }
+      .psycologist-how-can-join-box-container {
+        margin-left: 130px;
+    }
   .NGO-part {
     height: 150vh;
+    text-align: center;
   }
   .inside-button button {
     padding: 9px 23px;
@@ -261,12 +277,13 @@
   }
   .psycologist-how-can-join-box {
     height: 100px;
-    width: 290px;
+    width: 390px;
     background-color: #bae8ac;
     display: flex;
     align-items: center;
     justify-content: space-around;
 }
+
 .Clg-how-can-join-box {
     height: 100px;
     width: 281px;
@@ -292,10 +309,10 @@
     align-items: center;
     justify-content: space-around;
     position: relative;
-    height: 55vh;
+    /* height: 55vh; */
 }
   .psycologist-image-part img {
-    width: 200px;
+    width: 300px;
   }
   .psycologist-part {
     background-image: url("../Images/ALHeaderbg.png");
@@ -304,7 +321,7 @@
   }
   .NGO-part {
     background-image: url("../Images/ALHeaderbg.png");
-    height: 117vh;
+    height: auto;
   }
   .getin-touch-affilate {
     height: 1015px;
@@ -329,11 +346,12 @@
     width: 292px;
     margin-left: 60px;
   }
-  .Clg-graduate-part {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    width: 100%;
-    height: 80vh;
-}
+     .Clg-graduate-part {
+        display: flex;
+        align-items: center;
+        flex-direction: column-reverse;
+        justify-content: space-around;
+        width: 100%;
+        height: auto;
+    }
 }

@@ -147,4 +147,13 @@
     grid-template-columns: repeat(2, 1fr);
     width: 100%;
   }
+  .preppers-header-image {
+    display: grid;
+    place-items: center;
+    margin-top: 90px;
+}
+.through-therapies-box img {
+    margin: 10% 30px;
+    width: 272px;
+}
 }
