@@ -47,7 +47,7 @@ const GoalVision = () => {
         breakpoint: 1024,
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToScroll: 4,
           infinite: true,
           dots: true,
         },
@@ -196,9 +196,9 @@ const GoalVision = () => {
           <img src={Rounda} alt="" />
         </div>
         <div className="therapy-heading">
-          <p>Our team</p>
-          <h1>Our best team</h1>
-          <h2>team</h2>
+          <p>Our</p>
+          <h1> best</h1>
+          <h2>Team</h2>
           <img src={Yellowline} className="Yellowline" alt="" />
         </div>
 

@@ -103,7 +103,7 @@
     /* background-color: #256c55; */
     margin-left: 70%;
     position: absolute;
-    margin-top: -182px;
+    margin-top: -155px;
 }
 .getyoukow-main-container {
   display: flex;
@@ -267,7 +267,7 @@
     /* background-color: #256c55; */
     margin-left: 70%;
     position: absolute;
-    margin-top: -263px;
+    margin-top: -244px;
 }
   .getyoukow-main-container {
     display: flex;
@@ -361,6 +361,11 @@
   width: 60%;
   height: 250px;
   margin-left: -10%;
+}
+.getyoukow-container img {
+    width: 180px;
+    border-radius: 20px;
+    margin: 20px;
 }
 }
 

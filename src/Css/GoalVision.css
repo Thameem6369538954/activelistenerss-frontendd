@@ -99,9 +99,9 @@
   align-items: center;
   justify-content: space-evenly;
 }
-.gv-left {
+/* .gv-left {
   margin: 130px;
-}
+} */
 .gv-btn {
   background-color: #ffdd7e;
   padding: 15px 25px;
@@ -110,15 +110,15 @@
   font-size: 16px;
 }
 .goal-box-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #ffdd7e;
-  height: 300px;
-  width: 450px;
-  border-radius: 20px;
-  border: 1px solid black;
-  margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffdd7e;
+    height: 300px;
+    width: 299px;
+    border-radius: 20px;
+    border: 1px solid black;
+    margin: auto;
 }
 .goal-box-container img {
   height: 200px;

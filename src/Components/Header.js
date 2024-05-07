@@ -290,28 +290,28 @@ const Header = () => {
     <div className="header-main">
       <div className="yellow-box">
         <ul className="yellow-box-ul">
-          <marquee>
+          {/* <marquee> */}
             <div className="main-y-div">
               <div>
                 <li>
-                  Developed by <span>Psychologists</span>|
+                  Developed by <span>Psychologists</span>
                 </li>
               </div>
               <div>
-                <li>Zero - Medication |</li>
+                <li>Zero - Medication </li>
               </div>
               <div>
-                <li>Music, Aroma & Mandala Art Therapy |</li>
+                <li>Music, Aroma & Mandala Art Therapy </li>
               </div>
               <div>
-                <li>100% Safe for Kids |</li>
+                <li>100% Safe for Kids </li>
               </div>
             </div>
 
             {/* <li>Zero - Medication |</li>
             <li>  </li>
             <li></li> */}
-          </marquee>
+          {/* </marquee> */}
         </ul>
       </div>
       <div className="header">

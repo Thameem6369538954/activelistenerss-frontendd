@@ -125,16 +125,16 @@
   padding: 5px;
 }
 .hdrsubs-butns {
-  /* position: relative; */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: -17%;
-  gap: 6rem;
+    /* position: relative; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -17%;
+    gap: 3rem;
 }
 .hdrsubs-butns img {
-  width: 57%;
-  margin-top: -13%;
+    width: 47%;
+    margin-top: -3%;
 }
 .hdrsubs-butns button:nth-child(4) {
   border: none;
@@ -149,16 +149,16 @@
 }
 
 .hdrsubs-butns-a {
-  /* position: relative; */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 8%;
-  /* gap: 6rem; */
+    /* position: relative; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15%;
+    gap: 0rem;
 }
 .hdrsubs-butns-a img {
-  width: 68%;
-  margin-top: -30%;
+    width: 51%;
+    margin-top: -30%;
 }
 .hdrsubs-butns-a button {
   border: none;
@@ -263,9 +263,9 @@
   font-size: 19px;
 }
 .Subscribe-box-1 img {
-        width: 100px;
-        margin-top: -10px;
-    }
+    width: 92px;
+    margin-top: 2px;
+}
 @media screen and (max-width: 600px) {
   .hdrsubs-butns-a button {
     border: none;

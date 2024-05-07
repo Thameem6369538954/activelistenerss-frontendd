@@ -266,7 +266,7 @@ const TeamPage = () => {
         </div>
       </div>
 
-      {/* team-caro */}
+       {/* team-caro */}
       <div className="team-caro-display">
         <div className="goal-box-container-hole">
           <Slider {...settings}>
