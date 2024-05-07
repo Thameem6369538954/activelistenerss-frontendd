@@ -114,10 +114,10 @@ const Login = () => {
             <div>
               <img src={ElementB} className="ElementB" alt="" />
             </div>
-            <div>
+            <div className="log-txt">
               {/* <p>Our Goals</p> */}
-              <h1 style={{ marginTop: "25%" }}>Log in</h1>
-              <h2 style={{ marginTop: "-22%", marginLeft: "30%" }}>Now</h2>
+              <h1 >Log in</h1>
+              <h2>Now</h2>
               <img src={Yellowline} className="Yellowline" alt="" />
             </div>
             <div>

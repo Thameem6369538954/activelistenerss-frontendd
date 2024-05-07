@@ -2,8 +2,9 @@
   width: 70%;
 }
 .preppers-header-image {
-  display: grid;
-  place-items: center;
+    display: grid;
+    place-items: center;
+    margin-top: 130px;
 }
 .Yellowline-pre,
 .Yellowline-pre {
@@ -15,7 +16,6 @@
   justify-content: center;
   gap: 2rem;
 
-  margin-top: 7%;
 }
 .preppers-box {
   background-color: #ffdd7e;

@@ -19,8 +19,11 @@ import THands from "../Images/THands.png";
 import PreppersRed from "../Images/PreppersRed.png";
 import PodacstwithDif from "../Images/PodacstwithDif.png";
 import Breadcrumps from "../Components/Breadcrumps";
-
+import { Link } from "react-router-dom";
 const Preppers = () => {
+  const scrollToTop = () => {
+    window.scrollTo(0, 0);
+  };
   return (
     <div>
       <Navbar />
@@ -129,7 +132,9 @@ const Preppers = () => {
 
           <img src={PreppersRed} alt="" />
           <h3>Podcast with a Difference !</h3>
-          <button>Watch Now</button>
+          <Link to="/Podcast">
+            <button onClick={scrollToTop}>Watch Now</button>
+          </Link>
         </div>
       </div>
       <div className="mentoonsbaner">

@@ -143,10 +143,10 @@ nav img {
         height: 50px;
         margin-right: 28px;
     }
-      nav img {
-        width: 150px;
-        margin-left: -22%;
-        margin-top: -3%;
+       nav img {
+        width: 115px;
+        margin-left: -18%;
+        margin-top: 5%;
     }
 }
 .nav-icons:nth-child(1) {

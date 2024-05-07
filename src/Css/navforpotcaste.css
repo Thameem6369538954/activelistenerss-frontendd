@@ -220,7 +220,7 @@ background-color: white;
     flex-direction: column;
     flex-wrap: wrap;
   }
- .searchBox {
+.searchBox {
         display: flex;
         max-width: 436px;
         align-items: center;
@@ -230,8 +230,8 @@ background-color: white;
         border: 1px solid #ffdd7e;
         border-radius: 50px;
         position: relative;
-        margin-top: 92%;
-        margin-left: 11%;
+        margin-top: 111%;
+        margin-left: 5%;
         margin-bottom: 4%;
     }
   .sum {

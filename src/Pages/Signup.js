@@ -124,10 +124,10 @@ const Signup = () => {
           <div>
             <img src={ElementB} className="ElementB" alt="" />
           </div>
-          <div>
+          <div className="sign-txt">
             <p>Our Goals</p>
-            <h1 style={{ marginTop: "-22%" }}>Signup</h1>
-            <h2 style={{ marginTop: "-22%", marginLeft: "30%" }}>Now</h2>
+            <h1 >Signup</h1>
+            <h2 >Now</h2>
             <img src={Yellowline} className="Yellowline" alt="" />
           </div>
           <div>

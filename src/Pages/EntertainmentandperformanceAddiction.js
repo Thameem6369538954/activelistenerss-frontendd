@@ -21,6 +21,8 @@ import OldTime from "../SmallElements/OldTime.png";
 import Pinkmen from "../SmallElements/Pinkmen.png";
 import HandYellow from "../SmallElements/HandYellow.png";
 import BrinBuzzle from "../SmallElements/BrinBuzzle.png";
+import Breadcrumps from "../Components/Breadcrumps";
+
 
 const EntertainmentandperformanceAddiction = () => {
   
@@ -38,6 +40,7 @@ const EntertainmentandperformanceAddiction = () => {
     <div>
       <div>
         <Navbar />
+        <Breadcrumps />
         <div className="mobile-addiction-main-container">
           <div className="mobile-addiction-header">
             <div className="header-container">

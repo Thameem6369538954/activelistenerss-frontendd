@@ -17,6 +17,7 @@ import axios from "../Utils/Baseurl.js";
 import { toast } from "react-toastify";
 import WHYAL from "../Videos/WHYAL.mp4";
 import { Link } from "react-router-dom";
+import Breadcrumps from "../Components/Breadcrumps";
 const EarlyAgeGadgetExposure = () => {
    const scrollToTop = () => {
      window.scrollTo(0, 0);
@@ -43,6 +44,7 @@ const EarlyAgeGadgetExposure = () => {
   return (
     <div className="home-main">
       <Navbar />
+      <Breadcrumps/>
       <div className="header">
         <div className="header-container">
           <img

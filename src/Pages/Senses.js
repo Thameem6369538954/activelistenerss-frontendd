@@ -34,7 +34,7 @@ const Senses = () => {
   return (
     <div>
       <Navbar />
-      <div className="secnses-main">
+      <div className="secnses-main-con">
         <Breadcrumps />
         <div className="therapy-heading">
           <p>Therapy for you!</p>

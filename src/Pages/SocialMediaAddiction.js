@@ -21,6 +21,8 @@ import GreenClock from "../SmallElements/GreenClock.png";
 import { Link } from "react-router-dom";
 import { InlineWidget } from "react-calendly";
 import { AiOutlineCloseCircle } from "react-icons/ai";
+import Breadcrumps from "../Components/Breadcrumps";
+
 
 const SocialMediaAddiction = () => {
   
@@ -38,6 +40,7 @@ const SocialMediaAddiction = () => {
     <div>
       <div>
         <Navbar />
+        <Breadcrumps />
         <div className="mobile-addiction-main-container">
           <div className="mobile-addiction-header">
             <div className="header-container">

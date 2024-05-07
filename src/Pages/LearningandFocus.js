@@ -17,6 +17,7 @@ import Yellowline from "../Images/Yellowline.png";
 import "../Css/Learning.css";
 import WHYAL from "../Videos/WHYAL.mp4";
 import { Link } from "react-router-dom";
+ import Breadcrumps from "../Components/Breadcrumps";
 
 const LearningandFocus = () => {
    const scrollToTop = () => {
@@ -27,6 +28,7 @@ const LearningandFocus = () => {
       <div>
         <div className="home-main">
           <Navbar />
+          <Breadcrumps />
           <div className="header">
             <div className="header-container">
               <img

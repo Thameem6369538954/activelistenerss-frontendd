@@ -16,6 +16,8 @@ import cover from "../Images/cover.png";
 import PodcastRed from "../Images/PodcastRed.png";
 import WHYAL from "../Videos/WHYAL.mp4";
 import { Link } from "react-router-dom";
+import Breadcrumps from "../Components/Breadcrumps";
+
 
 const CurrentTimes = () => {
    const scrollToTop = () => {
@@ -25,6 +27,7 @@ const CurrentTimes = () => {
     <div>
       <div className="home-main">
         <Navbar />
+        <Breadcrumps />
         <div className="header">
           <div className="header-container">
             <img
