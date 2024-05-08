@@ -21,6 +21,8 @@ import { useDispatch } from 'react-redux';
 import profileFemale from "../Images/profileFemale.jpg";
 import profileMale from "../Images/profileMale.jpg";
 import { MdAddCircleOutline } from "react-icons/md";
+import { IoIosCloseCircleOutline } from "react-icons/io";
+import { VscClose } from "react-icons/vsc";
 // import axios from "../Utils/Baseurl.js";
 const UserProfile = () => {
   const dispatch = useDispatch();
@@ -251,6 +253,9 @@ const handleSubmit = async (event) => {
      // Your form submission logic here
     //  console.log("Form submitted successfully!");
    };
+   const [crop, setCrop] = useState({ x: 0, y: 0 });
+   const [zoom, setZoom] = useState(1);
+  //  const [profilePic, setProfilePic] = useState(null);
   return !noToken ? (
     <div>
       <Navbar />
@@ -293,7 +298,9 @@ const handleSubmit = async (event) => {
                           <div>
                             <div className="user-detailes">
                               {console.log(userData, "koiiiii")}
-                              <h3> Name </h3>
+                              <div className="user-detailes-txt">
+                                <h3> Name </h3>
+                              </div>
                               {userData ? (
                                 <>
                                   <input
@@ -301,28 +308,6 @@ const handleSubmit = async (event) => {
                                     value={userData.name}
                                     // onChange={handleUsernameChange}
                                   />
-                                  <button
-                                    // onClick={handleSaveUsernameClick}
-                                    style={{
-                                      color: "green",
-                                      border: "none",
-                                      backgroundColor: "transparent",
-                                      fontSize: "25px",
-                                    }}
-                                  >
-                                    <FiSave />
-                                  </button>
-                                  <button
-                                    // onClick={handleCancelUsernameClick}
-                                    style={{
-                                      color: "red",
-                                      border: "none",
-                                      backgroundColor: "transparent",
-                                      fontSize: "25px",
-                                    }}
-                                  >
-                                    <IoCloseCircleOutline />
-                                  </button>
                                 </>
                               ) : (
                                 <>
@@ -346,7 +331,9 @@ const handleSubmit = async (event) => {
                           <div>
                             <div className="prof-img">
                               <div className="user-detailes">
-                                <h3>Email </h3>
+                                <div className="user-detailes-txt">
+                                  <h3>Email </h3>
+                                </div>
                                 {userData ? (
                                   <>
                                     <input
@@ -354,28 +341,6 @@ const handleSubmit = async (event) => {
                                       value={userData.email}
                                       // onChange={handleEmailChange}
                                     />
-                                    <button
-                                      // onClick={handleSaveEmailClick}
-                                      style={{
-                                        color: "green",
-                                        border: "none",
-                                        backgroundColor: "transparent",
-                                        fontSize: "25px",
-                                      }}
-                                    >
-                                      <FiSave />
-                                    </button>
-                                    <button
-                                      // onClick={handleCancelEmailClick}
-                                      style={{
-                                        color: "red",
-                                        border: "none",
-                                        backgroundColor: "transparent",
-                                        fontSize: "25px",
-                                      }}
-                                    >
-                                      <IoCloseCircleOutline />
-                                    </button>
                                   </>
                                 ) : (
                                   <>
@@ -399,7 +364,9 @@ const handleSubmit = async (event) => {
 
                           <div>
                             <div className="user-detailes">
-                              <h3>Phone Number </h3>
+                              <div className="user-detailes-txt">
+                                <h3>Phone Number </h3>
+                              </div>
                               {userData ? (
                                 <>
                                   <input
@@ -407,28 +374,6 @@ const handleSubmit = async (event) => {
                                     value={userData.mobile}
                                     // onChange={handlePhoneNumberChange}
                                   />
-                                  <button
-                                    // onClick={handleSavePhoneNumberClick}
-                                    style={{
-                                      color: "green",
-                                      border: "none",
-                                      backgroundColor: "transparent",
-                                      fontSize: "25px",
-                                    }}
-                                  >
-                                    <FiSave />
-                                  </button>
-                                  <button
-                                    // onClick={handleCancelPhoneNumberClick}
-                                    style={{
-                                      color: "red",
-                                      border: "none",
-                                      backgroundColor: "transparent",
-                                      fontSize: "25px",
-                                    }}
-                                  >
-                                    <IoCloseCircleOutline />
-                                  </button>
                                 </>
                               ) : (
                                 <>
@@ -456,9 +401,12 @@ const handleSubmit = async (event) => {
                                 className="edit-user-profile"
                                 onSubmit={handleSubmitu}
                               >
-                                <button onClick={toggleEdit}>Close</button>
+                                <VscClose onClick={toggleEdit} />
                                 <div className="prof-input">
-                                  <label>Choose Profile Picture</label>
+                                  <label for="profilePic" role="button">
+                                    Upload New Image
+                                  </label>
+                                  <hr></hr>
                                   <input
                                     type="file"
                                     name="profilePic"
@@ -466,27 +414,34 @@ const handleSubmit = async (event) => {
                                     accept="image/*"
                                     onChange={handleFileChange}
                                     required
+                                    style={{ display: "none" }}
                                   />
+                                  <hr></hr>
                                   {error && (
                                     <div className="error">{error}</div>
                                   )}
                                   {profilePic && (
                                     <div>
                                       <img src={profilePic} alt="Profile" />
-                                      <button
-                                        type="button"
+                                      <p
+                                        role="button"
                                         onClick={removeProfilePic}
+                                        style={{ cursor: "pointer" }}
                                       >
                                         Remove
-                                      </button>
+                                      </p>
+                                      {/* <button type="button">Remove</button> */}
                                     </div>
                                   )}
                                 </div>
                                 <div className="delete-prof">
-                                  <label>Delete your Profile</label>
-                                  <button type="button">Delete</button>
+                                  <label role="button">Delete your Profile</label>
+
+                                  {/* <button type="button">Delete</button> */}
                                 </div>
-                                <button type="submit">Save</button>
+                                <div className="save-imsha">
+                                  <button type="submit">Save</button>
+                                </div>
                               </form>
                             )}
                           </div>
@@ -529,14 +484,17 @@ const handleSubmit = async (event) => {
                       </div>
                       {showPopup && (
                         <div className="save-black">
-                          <button onClick={togglePopup}>Close</button>
-                          {/* <button>Save</button> */}
+                          <IoIosCloseCircleOutline
+                            onClick={togglePopup}
+                            className="close-edit"
+                          />
+
                           <form
                             className="profile-form-edit"
                             onSubmit={handleSubmit}
                             encType="multipart/form-data"
                           >
-                            <div>
+                            <div className="prof-input-edit">
                               <label htmlFor="new-username">
                                 Enter New Username
                               </label>
@@ -550,7 +508,7 @@ const handleSubmit = async (event) => {
                                 required
                               />
                             </div>
-                            <div>
+                            <div className="prof-input-edit">
                               <label htmlFor="new-username">
                                 Enter New Email
                               </label>
@@ -565,7 +523,7 @@ const handleSubmit = async (event) => {
                               />
                             </div>
 
-                            <div>
+                            <div className="prof-input-edit">
                               <label htmlFor="new-phone">
                                 Enter New Phone Number
                               </label>

@@ -9,6 +9,11 @@
   /* border-radius: 10px; */
   margin-top: -140px;
 }
+  .psycologist-image-part img{
+    width:300px;
+    /* background-color: #256c55; */
+  }
+
 .therapy-box h1 {
   text-align: center;
   margin: 10px;
@@ -92,6 +97,7 @@
   font-family: Relo;
   font-weight: 900;
   font-size: 50px;
+  text-align: center;
 }
 
 .therapy-heading p {
@@ -99,6 +105,7 @@
   margin-bottom: -1%;
   font-size: 30px;
   text-decoration: underline;
+  text-align: center;
 }
 @media screen and (max-width: 600px) {
       .therapy-box img {
@@ -128,7 +135,7 @@
   .therapy-heading p {
     font-family: "Satisfy", cursive;
     margin-bottom: -1%;
-    font-size: 30px;
+    font-size: 26px;
     text-decoration: underline;
     width: 68%;
     text-align: center;
@@ -220,6 +227,9 @@
     border-radius: 20px;
     height: 317px;
     width: 200px;
+  }
+  .psycologist-image-part img{
+    background-color: #256c55;
   }
   .theropy-box-main {
     display: flex;

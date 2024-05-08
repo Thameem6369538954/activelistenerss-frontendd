@@ -9,8 +9,9 @@
   letter-spacing: 0.1rem;
 }
 .edit-user-profile{
-  background-color: royalblue;
+  background-color: #F5F6F6;
   height: 200px;
+  width: 300px;
   position: absolute;
   margin-left: -190px;
   display: flex;
@@ -19,7 +20,9 @@
   flex-direction: column;
   border-radius: 10px;
   padding:20px;
-
+ -webkit-box-shadow: 10px 10px 18px -9px rgba(0,0,0,0.75);
+-moz-box-shadow: 10px 10px 18px -9px rgba(0,0,0,0.75);
+box-shadow: 10px 10px 18px -9px rgba(0,0,0,0.75);
 }
 .edit-user-profile button{
   background-color: white;
@@ -46,7 +49,10 @@
 }
 .prof-input label{
   font-size: 20px;
-  color: white;
+  border-bottom: 2px solid black;
+  width: 100%;
+  /* color: white; */
+  margin: 10px;
 }
 .delete-prof{
  display: flex;
@@ -55,11 +61,12 @@
   gap: 3rem;
 }
 .delete-prof button{
-  background-color:white;
+  background-color: transparent;
   padding: 10px 20px;
   border: none;
   color:black;
   font-size: 16px;
+    border-bottom: 1px solid black;
   border-radius: 10px;
 }
 .delete-prof button:hover{
@@ -86,7 +93,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0rem;
+  gap: 1rem;
 
   /* border: 2px solid #ffdd7e; */
   border-radius: 30px;
@@ -182,20 +189,37 @@
   font-size: 20px;
 }
 .save-black {
-  margin-left: 50px;
-  background-color:#FFDD7E;
+    background-color:#FFDD7E;
   height: 350px;
-  display: grid;
-  place-items: center;
-  border-radius: 30px;
-  grid-template-columns: repeat(3, 3fr);
+ display: flex;
+ flex-direction: column;
+     border-radius: 0px 0px 20px 20px;
 
 }
+.user-detailes-txt{
+  width: 20%;
+}
 .profile-form-edit{
-  display: grid;
-  place-items: center;
-  grid-template-columns: repeat(2, 1fr);
-  margin-left: 50%;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+}
+.prof-input-edit{
+  display: flex;
+ /* flex-direction: column; */
+ align-items: center;
+ justify-content: center;
+ gap: 2rem;
+}
+.prof-input-edit input{
+  background-color: white;
+  border:  1px solid black;
+  padding: 10px;
+  border-radius: 20px;
+  max-width: 600px;
+   row-gap: 2rem;
+
 }
 .save-black input{
   /* background-color: black; */
@@ -214,7 +238,7 @@
   position: relative;
   background-image: url("../Images/Yellowbg.png");
   width: 126%;
-  height: 500px;
+  height:auto;
   background-repeat: no-repeat;
   position: relative;
   background-position: center;
@@ -231,9 +255,11 @@
   margin-left: -22%;
 } */
 .profile-box img {
-  width: 120px;
+  width: 150px;
+  height: 130px;
   background-color: white;
   border-radius: 100%;
+  aspect-ratio: 2/3;
 }
 
 .useprof-main-con img:nth-child(1) {
@@ -251,7 +277,10 @@
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
-
+.close-edit{
+  font-size: 40px;
+  margin-left: 90%;
+}
 .userprofile-sidebar-ul {
   list-style: none;
 }
@@ -277,9 +306,10 @@
 }
 
 .prof-user {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 35px;
 }
 .checkbox-con {
   margin: 10px;
@@ -402,9 +432,26 @@
     margin: 4% auto;
     text-align: left;
   }
-  .save-cancel button {
-    padding: 10px 38px;
-  }
+.save-black button {
+    background-color: black;
+    padding: 11px 106px;
+    border-radius: 30px;
+    border: none;
+    margin: 0px;
+    color: white;
+    font-size: 20px;
+    margin-top: 145px;
+}
+.save-black {
+    background-color: #FFDD7E;
+    height: 296px;
+    display: flex;
+    flex-direction: column;
+    margin-top: -72%;
+    position: absolute;
+    margin-left: 5px;
+    border-radius: 20px;
+}
   .user-detailes {
     gap: 0rem;
   }
@@ -426,9 +473,10 @@
     text-align: justify;
 }
   .profile-image {
-    width: 180%;
-    height: 727px;
-    margin-left: -75px;
+            width: 180%;
+        height: 727px;
+        margin-left: -106px;
+        margin-top: 82px;
 }
   .hdr-userprof h1 {
     border-bottom: 1px solid black;
@@ -455,6 +503,10 @@
   .Auto-Renewal {
     gap: 0rem;
   }
+      .close-edit {
+        font-size: 40px;
+        margin-left: 90%;
+    }
 .useprof-main-con {
     align-items: center;
     display: flex;
@@ -466,7 +518,7 @@
   .editable-details {
     width: 96%;
     height: 308px;
-    margin-top: -20%;
+    margin-top: -10%;
   }
   .user-detailes {
     display: flex;
@@ -474,24 +526,57 @@
     justify-content: center;
     gap: 1rem;
   }
-  .save-cancel {
-    margin-top: -80px;
-    gap: 0rem;
-  }
+ .save-cancel {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: center;
+    margin-top: -40px;
+    gap: 1rem;
+}
+.save-imsha button{
+  margin-top: 120%;
+}
   .editable-details input {
     padding: 10px;
     width: 144px;
     border-radius: 20px;
   }
-  .save-cancel button {
-    background-color: #cd4631;
-    padding: 10px 30px;
-    border-radius: 30px;
-    border: none;
-    margin: 20px;
-    color: white;
-    font-size: 20px;
-  }
+    .save-cancel button {
+        background-color: #cd4631;
+        padding: 10px 30px;
+        border-radius: 30px;
+        border: none;
+        margin: 20px;
+        color: white;
+        font-size: 20px;
+        margin-top: 64px;
+    }
+  .profile-form-edit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 63px;
+}
+.save-black {
+    background-color: #FFDD7E;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    margin-top: -82%;
+    border-radius: 20px;
+    padding: 30px;
+}
+.prof-input-edit input {
+    background-color: white;
+    border: 1px solid black;
+    padding: 10px;
+    border-radius: 20px;
+    width: 219px;
+    row-gap: 2rem;
+}
   .prof-user {
     display: flex;
     align-items: center;
