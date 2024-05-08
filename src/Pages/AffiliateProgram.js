@@ -48,6 +48,7 @@ const AffiliateProgram = () => {
           <div className="psycologist-image-part">
             <img src={PsyAff} alt="" />
           </div>
+
           <div className="psycologist-text-part">
             <div className="therapy-heading">
               <p>Meetup groups developed and Delivered By Psychologists</p>
@@ -125,7 +126,8 @@ const AffiliateProgram = () => {
             <div className="psycologist-how-can-join">
               <h1>Who can Join</h1>
               <p>A safe space to share experiences, connect with others.</p>
-              <div className="psycologist-how-can-join-box-container">
+              <div className="clg-how-can-join-box-container">
+                
                 <div className="Clg-how-can-join-box">
                   {" "}
                   <img src={THands} alt="" />
@@ -271,7 +273,7 @@ const AffiliateProgram = () => {
           </div>
           <div className="enage-box">
             <h2>Theatre Performing</h2>
-            <img src={TP} alt="" style={{ width: "115%" }} />
+            <img src={TP} alt="" style={{ width: "101%" }} />
           </div>
         </div>
       </div>

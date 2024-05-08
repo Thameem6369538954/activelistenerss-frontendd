@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import "../Css/Login.css";
 import EmojiA from "../Images/EmojiA.png";
 import ALlogo from "../Images/ALlogo.png";
@@ -14,9 +14,66 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 
 import { useDispatch } from "react-redux";
 import { loginSuccess, setUser } from "../Redux/Slices/authSlice.js";
+import { jwtDecode } from "jwt-decode";
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+
+
+
+
+const handleCallbackResponse = async (response) => {
+  console.log("encode jwt token" + response.credential);
+  const userObject = jwtDecode(response.credential);
+  console.log(userObject, userObject.name, "iam unstopable....");
+  // Extract username and email from userObject
+  const { name, email } = userObject;
+  console.log(name, email, "im a porsche with no breaks");
+
+  const respon = await axios.post("/user_signin", userObject);
+  console.log(respon, "goooooooooooogle signupp");
+  if (respon) {
+    console.log(respon.data.message, "hhehheeeee");
+    if (respon.data.message === "invalid password or id") {
+      toast.error("Invalid username or password");
+    } else if (respon.data.message === "User not found!!") {
+      toast.error(respon.data.message);
+    } else {
+      toast.success("Login Successful");
+      console.log(respon, "this is the response of registration............");
+
+      navigate("/");
+      console.log(
+        respon.data.Token,
+        "-------------->jwt token generated",
+        respon.data.user,
+        "------------>userdata"
+      );
+      //   dispatch(loginSuccess(response.data.Token));
+      // dispatch(setUser(response.data.user));
+      // const {datas} = response.data
+      dispatch(loginSuccess(respon));
+    }
+  }
+};
+useEffect(() => {
+  /*global google*/
+  google.accounts.id.initialize({
+    client_id:
+      "179669308425-k80shl5pi8umfjns22sh80dvnq2u78hh.apps.googleusercontent.com",
+    callback: handleCallbackResponse,
+  });
+  google.accounts.id.renderButton(document.getElementById("signInDiv"), {
+    theme: "outline",
+    size: "large",
+  });
+});
+
+
+
+
+
 
   const [formData, setFormData] = useState({ username: "", password: "" });
   const [errors, setErrors] = useState({ username: "", password: "" });
@@ -116,7 +173,7 @@ const Login = () => {
             </div>
             <div className="log-txt">
               {/* <p>Our Goals</p> */}
-              <h1 >Log in</h1>
+              <h1>Log in</h1>
               <h2>Now</h2>
               <img src={Yellowline} className="Yellowline" alt="" />
             </div>
@@ -177,9 +234,7 @@ const Login = () => {
               <div className="fb">
                 <LiaFacebookF />
               </div>
-              <div className="ggl">
-                <FcGoogle />
-              </div>
+              <div id="signInDiv"></div>
             </div>
             <p>
               Don't have an account?{" "}

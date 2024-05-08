@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import "../Css/Signup.css";
 import EmojiA from "../Images/EmojiA.png";
 import ALlogo from "../Images/ALlogo.png";
@@ -12,8 +12,57 @@ import { NavLink, useNavigate } from "react-router-dom";
 import axios from "../Utils/Baseurl.js";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { jwtDecode } from "jwt-decode";
 const Signup = () => {
   const navigate = useNavigate();
+
+const handleCallbackResponse = async (response) => {
+  console.log("encode jwt token" + response.credential);
+  const userObject = jwtDecode(response.credential);
+  console.log(userObject, userObject.name, "iam unstopable....");
+  // Extract username and email from userObject
+  const { name, email } = userObject;
+  console.log(name, email, "im a porsche with no breaks");
+  // Set the googleData state with the extracted values
+  // if (userObject) {
+  //   setGoogleData({
+  //     name: name,
+  //     email: email,
+
+  //   });
+  // } else {
+  //   toast.error("something went wrong!!try again!!");
+  // }
+
+  const respon = await axios.post("/user_registration", userObject);
+  console.log(respon, "goooooooooooogle signupp");
+  if (respon) {
+    console.log(respon.data.message, "hhehheeeee");
+    if (respon.data.message == "user Exist!please login!!") {
+      toast.error("User Already Exist,Please Login!!");
+    } else {
+      toast.success("User Registered successfully");
+      navigate("/Login");
+    }
+  }
+};
+useEffect(() => {
+  /*global google*/
+  google.accounts.id.initialize({
+    client_id:
+      "179669308425-k80shl5pi8umfjns22sh80dvnq2u78hh.apps.googleusercontent.com",
+    callback: handleCallbackResponse,
+  });
+  google.accounts.id.renderButton(document.getElementById("signInDiv"), {
+    theme: "outline",
+    size: "large",
+  });
+});
+
+
+
+
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -234,9 +283,7 @@ const Signup = () => {
             <div className="fb">
               <LiaFacebookF />
             </div>
-            <div className="ggl">
-              <FcGoogle />
-            </div>
+            <div id="signInDiv"></div>
           </div>
           <p>
             Already have an Account?{" "}

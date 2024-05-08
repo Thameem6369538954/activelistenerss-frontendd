@@ -9,6 +9,8 @@ import axios from "../Utils/Baseurl.js";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
+import Navbar from './Navbar.js';
+import Breadcrumps from './Breadcrumps.js';
 const Psycologistform = () => {
  const [formData, setFormData] = useState({
    name: "",
@@ -92,6 +94,8 @@ const Psycologistform = () => {
 
   return (
     <div>
+      <Navbar />
+      <Breadcrumps />
       <div className="hiring-form-main">
         <div className="therapy-heading">
           <p>Your Applying For</p>
@@ -108,94 +112,92 @@ const Psycologistform = () => {
         </div>
         <div className="hiring-form-holeconatiner">
           <div className="container-form">
-            <form
-              encType="multipart/form-data"
-              onSubmit={handleSubmit}
-              className="form-affilate"
-            >
+            <form encType="multipart/form-data" onSubmit={handleSubmit}>
+              <div className="form-affilate">
+                <div className="input-field">
+                  <label>Full Name</label>
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Enter your name"
+                    value={formData.name}
+                    onChange={handleChange}
+                  />
+                </div>
+
+                <div className="input-field">
+                  <label>Email</label>
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    value={formData.email}
+                    onChange={handleChange}
+                  />
+                </div>
+
+                <div className="input-field">
+                  <label>Mobile Number</label>
+                  <input
+                    type="text"
+                    name="mobile"
+                    placeholder="Enter mobile number"
+                    value={formData.mobile}
+                    onChange={handleChange}
+                  />
+                </div>
+
+                <div className="input-field">
+                  <label>Gender</label>
+                  <select
+                    name="gender"
+                    value={formData.gender}
+                    onChange={handleChange}
+                  >
+                    <option value="">Select</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Others">Others</option>
+                  </select>
+                </div>
+
+                <div className="input-field">
+                  <label>State</label>
+                  <input
+                    type="text"
+                    name="state"
+                    placeholder="Enter your state"
+                    value={formData.state}
+                    onChange={handleChange}
+                  />
+                </div>
+
+                <div className="input-field">
+                  <label>City</label>
+                  <input
+                    type="text"
+                    name="city"
+                    placeholder="Enter your city"
+                    value={formData.city}
+                    onChange={handleChange}
+                  />
+                </div>
+
+                <div className="input-field">
+                  <label>Candidate Profile</label>
+                  <input
+                    type="file"
+                    name="candidateProfile"
+                    onChange={handleChange}
+                  />
+                </div>
+
+                <div className="input-field">
+                  <label>Add Resume</label>
+                  <input type="file" name="resume" onChange={handleChange} />
+                </div>
+              </div>
               {/* Your form fields */}
-              <div className="input-field">
-                <label>Full Name</label>
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Enter your name"
-                  value={formData.name}
-                  onChange={handleChange}
-                />
-              </div>
-
-              <div className="input-field">
-                <label>Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Enter your email"
-                  value={formData.email}
-                  onChange={handleChange}
-                />
-              </div>
-
-              <div className="input-field">
-                <label>Mobile Number</label>
-                <input
-                  type="text"
-                  name="mobile"
-                  placeholder="Enter mobile number"
-                  value={formData.mobile}
-                  onChange={handleChange}
-                />
-              </div>
-
-              <div className="input-field">
-                <label>Gender</label>
-                <select
-                  name="gender"
-                  value={formData.gender}
-                  onChange={handleChange}
-                >
-                  <option value="">Select</option>
-                  <option value="Male">Male</option>
-                  <option value="Female">Female</option>
-                  <option value="Others">Others</option>
-                </select>
-              </div>
-
-              <div className="input-field">
-                <label>State</label>
-                <input
-                  type="text"
-                  name="state"
-                  placeholder="Enter your state"
-                  value={formData.state}
-                  onChange={handleChange}
-                />
-              </div>
-
-              <div className="input-field">
-                <label>City</label>
-                <input
-                  type="text"
-                  name="city"
-                  placeholder="Enter your city"
-                  value={formData.city}
-                  onChange={handleChange}
-                />
-              </div>
-
-              <div className="input-field">
-                <label>Candidate Profile</label>
-                <input
-                  type="file"
-                  name="candidateProfile"
-                  onChange={handleChange}
-                />
-              </div>
-
-              <div className="input-field">
-                <label>Add Resume</label>
-                <input type="file" name="resume" onChange={handleChange} />
-              </div>
 
               <div className="agree-get">
                 <button type="submit">Submit</button>

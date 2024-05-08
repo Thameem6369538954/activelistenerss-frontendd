@@ -80,8 +80,9 @@
     position: absolute;
     width: 47%;
     margin-left: -108%;
-    margin-top: -7%;
+    margin-top: -74%;
 }
+
 .get-form p {
  font-family: myFont;
     color: #256c55;
@@ -242,5 +243,10 @@
         margin-bottom: -43%;
         z-index:3;
     }
+     .psycologist-image-part{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ }
 }
 

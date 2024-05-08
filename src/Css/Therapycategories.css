@@ -9,10 +9,7 @@
   /* border-radius: 10px; */
   margin-top: -140px;
 }
-  .psycologist-image-part img{
-    width:300px;
-    /* background-color: #256c55; */
-  }
+
 
 .therapy-box h1 {
   text-align: center;
@@ -106,6 +103,7 @@
   font-size: 30px;
   text-decoration: underline;
   text-align: center;
+  width: 80%;
 }
 @media screen and (max-width: 600px) {
       .therapy-box img {
@@ -228,9 +226,7 @@
     height: 317px;
     width: 200px;
   }
-  .psycologist-image-part img{
-    background-color: #256c55;
-  }
+ 
   .theropy-box-main {
     display: flex;
     align-items: center;
