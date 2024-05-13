@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import "./Ngoandpsycologist.css"
-
+import { useReactToPrint } from "react-to-print";
 const Ngo = () => {
     const [data, setData] = useState([
       {

@@ -12,7 +12,7 @@ import Stack from '@mui/material/Stack';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import Swal from 'sweetalert2';
-
+import { useReactToPrint } from "react-to-print";
 
 
 import { LiaUserEditSolid } from 'react-icons/lia';

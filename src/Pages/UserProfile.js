@@ -384,6 +384,11 @@ const UserProfile = () => {
         console.log(error);
       }
             };
+               const [settings, setSettings] = useState(false);
+
+               const settingsPopup = () => {
+                 setSettings(!settings);
+               };
 
   return !noToken ? (
     <div>
@@ -423,10 +428,27 @@ const UserProfile = () => {
                             <RiEdit2Line />
                           </div>
                         </div>
-                        <div className="                                                                                                                                                    ">
+                        <div className="up-settings" onClick={settingsPopup}>
                           <IoSettingsSharp />
                           <p>Settings</p>
                         </div>
+                        {settings && (
+                          <div
+                            className="userprofile-setting-box"
+                            data-aos="fade-left"
+                            data-aos-anchor="#example-anchor"
+                            data-aos-offset="700"
+                            data-aos-duration="700"
+                          >
+                            <VscClose onClick={settingsPopup} />
+                            <ul className="userprofile-setting-ul">
+                              <li>Update Your Password</li>
+                              <li onClick={togglePopup}>Update Your Profile</li>
+                              <li>Logout</li>
+                              <li>Delete My Accound</li>
+                            </ul>
+                          </div>
+                        )}
                       </div>
                       <div className="prof-user">
                         <div className="editable-details">
@@ -564,14 +586,13 @@ const UserProfile = () => {
                               </div>
                               {userData.gender ? (
                                 <>
-                                <div className="user-gender">
-
-                                  <input
-                                    type="text"
-                                    value={userData.gender}
-                                    // onChange={handlePhoneNumberChange}
-                                  />
-                                </div>
+                                  <div className="user-gender">
+                                    <input
+                                      type="text"
+                                      value={userData.gender}
+                                      // onChange={handlePhoneNumberChange}
+                                    />
+                                  </div>
                                 </>
                               ) : (
                                 <>

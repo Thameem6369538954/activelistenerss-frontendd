@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { LuDownload } from "react-icons/lu";
 import './Revenue.css'
+import { useReactToPrint } from "react-to-print";
 
 const Revenue = () => {
     const [data, setData] = useState([
