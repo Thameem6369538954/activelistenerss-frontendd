@@ -163,136 +163,7 @@ const GriefsupportGroup = () => {
     },
   ];
 
-  const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
-    phoneNumber: "",
-    country: "",
-    state: "",
-    support: "",
-    message: "",
-    selectedOption: "",
-    support: "",
-  });
-
-  const [errors, setErrors] = useState({
-    fullName: "",
-    email: "",
-    phoneNumber: "",
-    country: "",
-    state: "",
-    support: "",
-    message: "",
-    option: "",
-    support: "",
-  });
-  const handleOptionChange = (e) => {
-    const selectedOption = e.target.value;
-    setFormData({
-      ...formData,
-      selectedOption,
-    });
-    setErrors({
-      ...errors,
-      option: "", // Clear any previous errors when the user selects an option
-    });
-  };
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-    validateField(name, value);
-  };
-
-  const validateField = (name, value) => {
-    const errorsCopy = { ...errors };
-
-    switch (name) {
-      case "fullName":
-        errorsCopy.fullName =
-          value.trim() === "" ? "Full name is required" : "";
-        break;
-      case "email":
-        errorsCopy.email =
-          value.trim() === ""
-            ? "Email is required"
-            : !isValidEmail(value)
-            ? "Invalid email address"
-            : "";
-        break;
-      case "phoneNumber":
-        errorsCopy.phoneNumber =
-          value.trim() === ""
-            ? "Phone number is required"
-            : !isValidPhoneNumber(value)
-            ? "Invalid phone number"
-            : "";
-        break;
-      case "country":
-        errorsCopy.country = value === "0" ? "Please select a country" : "";
-        break;
-      case "state":
-        errorsCopy.state = value === "0" ? "Please select a state" : "";
-        break;
-      case "support":
-        errorsCopy.support = value === "0" ? "Please select support" : "";
-        break;
-      case "message":
-        errorsCopy.message = value.trim() === "" ? "Message is required" : "";
-        break;
-      default:
-        break;
-    }
-
-    setErrors(errorsCopy);
-  };
-
-  const isValidEmail = (email) => {
-    const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
-    return emailRegex.test(email);
-  };
-
-  const isValidPhoneNumber = (phoneNumber) => {
-    const phoneRegex = /^\d{10}$/; // Assuming 10 digits phone number
-    return phoneRegex.test(phoneNumber);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    // Validate all fields on submit
-    Object.keys(formData).forEach((name) => {
-      validateField(name, formData[name]);
-    });
-
-    // Check if there are any errors
-    const hasErrors = Object.values(errors).some((error) => error !== "");
-
-    if (!hasErrors) {
-      console.log("Form submitted:", formData);
-      // You can make an API call or further processing here
-    }
-
-    if (!formData.selectedOption) {
-      setErrors({
-        ...errors,
-        option: "Please select an option", // Set error message if no option is selected
-      });
-      return; // Return early if there are validation errors
-    }
-    if (formData.support === "") {
-      setErrors({
-        ...errors,
-        support: "Please select any support option", // Set error message if default option is selected
-      });
-      return; // Return early if there are validation errors
-    }
-    toast.success("Successfully submitted!!");
-  };
-
+  
   const [wantComplimentaryCall, setWantComplimentaryCall] = useState(false);
   const appointmentSubmit = (e) => {
     e.preventDefault();
@@ -304,6 +175,84 @@ const GriefsupportGroup = () => {
     // setCloseClick(true);
   };
 
+
+
+      // VALIDATION FUNCTION  .....................................................................
+     const [formData, setFormData] = useState({
+       fullName: "",
+       email: "",
+       phoneNumber: "",
+       country: "",
+       state: "",
+       support: "0",
+       message: "",
+       enrollAs: "",
+     });
+     const [formErrors, setFormErrors] = useState({});
+
+     const handleChange = (e) => {
+       const { name, value, type, checked } = e.target;
+       const newValue = type === "checkbox" ? checked : value;
+       setFormData({
+         ...formData,
+         [name]: newValue,
+       });
+     };
+
+     const handleSubmit = (e) => {
+       e.preventDefault();
+       console.log(formData);
+     };
+
+     const validateForm = (data) => {
+       let errors = {};
+
+       if (!data.fullName.trim()) {
+         errors.fullName = "Full Name is required";
+       }
+
+       if (!data.email.trim()) {
+         errors.email = "Email is required";
+       } else if (!isValidEmail(data.email)) {
+         errors.email = "Please enter a valid email address";
+       }
+
+       if (!data.phoneNumber.trim()) {
+         errors.phoneNumber = "Phone Number is required";
+       } else if (!isValidPhoneNumber(data.phoneNumber)) {
+         errors.phoneNumber = "Please enter a valid phone number";
+       }
+
+       if (!data.country.trim()) {
+         errors.country = "Country is required";
+       }
+
+       if (!data.state.trim()) {
+         errors.state = "State is required";
+       }
+
+       if (data.support === "0") {
+         errors.support = "Please select a support option";
+       }
+
+       if (!data.message.trim()) {
+         errors.message = "Message is required";
+       }
+
+       if (!data.enrollAs) {
+         errors.enrollAs = "Please select an option";
+       }
+
+       return errors;
+     };
+
+     const isValidEmail = (email) => {
+       return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+     };
+
+     const isValidPhoneNumber = (phoneNumber) => {
+       return /^\d+$/.test(phoneNumber);
+     };
   return (
     <div>
       <Navbar />
@@ -732,209 +681,231 @@ const GriefsupportGroup = () => {
         <h2>Grief Support Group</h2>
         <div className="grif-form-inputs">
           <div className="container-form">
-            <form action="submit" onSubmit={handleSubmit}>
-              <div className="form first">
-                <div className="details personal">
-                  <div className="fields">
-                    <div className="radio-buttons-container">
-                      <div className="radio-button">
-                        <label>Enroll as: </label>
-                        <input
-                          name="selectedOption"
-                          id="radio2"
-                          className="radio-button__input"
-                          type="radio"
-                          value="Parent"
-                          onChange={handleOptionChange}
-                        />
-                        <label for="radio2" className="radio-button__label">
-                          <span className="radio-button__custom"></span>
-                          Parent
-                        </label>
-                      </div>
-                      <div className="radio-button">
-                        <input
-                          name="selectedOption"
-                          id="radio1"
-                          className="radio-button__input"
-                          type="radio"
-                          value="Carer"
-                          onChange={handleOptionChange}
-                        />
-                        <label for="radio1" className="radio-button__label">
-                          <span className="radio-button__custom"></span>
-                          Carer
-                        </label>
-                      </div>
-                      <div className="radio-button">
-                        <input
-                          name="selectedOption"
-                          id="radio3"
-                          className="radio-button__input"
-                          type="radio"
-                          value="Mentor/ Educator"
-                          onChange={handleOptionChange}
-                        />
-                        <label for="radio3" className="radio-button__label">
-                          <span className="radio-button__custom"></span>
-                          Mentor/ Educator
-                        </label>
-                      </div>
-                    </div>
-                    <div className="input-field">
-                      <label>Full Name</label>
+            <form onSubmit={handleSubmit}>
+              <div className="form-group-radio">
+                <label>Enroll as:</label>
+                <div className="radio-buttons-container">
+                  <div className="radio-button">
+                    <input
+                      name="enrollAs"
+                      id="radio2"
+                      className="radio-button__input"
+                      type="radio"
+                      value="Parent"
+                      checked={formData.enrollAs === "Parent"}
+                      onChange={handleChange}
+                    />
+                    <label htmlFor="radio2" className="radio-button__label">
+                      <span className="radio-button__custom"></span>
+                      Parent
+                    </label>
+                  </div>
+                  <div className="radio-button">
+                    <input
+                      name="enrollAs"
+                      id="radio1"
+                      className="radio-button__input"
+                      type="radio"
+                      value="Carer"
+                      checked={formData.enrollAs === "Carer"}
+                      onChange={handleChange}
+                    />
+                    <label htmlFor="radio1" className="radio-button__label">
+                      <span className="radio-button__custom"></span>
+                      Carer
+                    </label>
+                  </div>
+                  <div className="radio-button">
+                    <input
+                      name="enrollAs"
+                      id="radio3"
+                      className="radio-button__input"
+                      type="radio"
+                      value="Mentor/ Educator"
+                      checked={formData.enrollAs === "Mentor/ Educator"}
+                      onChange={handleChange}
+                    />
+                    <label htmlFor="radio3" className="radio-button__label">
+                      <span className="radio-button__custom"></span>
+                      Mentor/ Educator
+                    </label>
+                  </div>
+                </div>
+                {formErrors.enrollAs && (
+                  <span className="error">{formErrors.enrollAs}</span>
+                )}
+              </div>
+              <div className="form-group-grief">
+                <div className="form-group">
+                  <ul className="form-ul-grif">
+                    <li>
+                      {" "}
+                      <label htmlFor="fullName">Full Name</label>
+                    </li>
+                    <li>
+                      {" "}
                       <input
                         type="text"
-                        placeholder="Enter your name"
                         id="fullName"
                         name="fullName"
                         value={formData.fullName}
                         onChange={handleChange}
-                        required
                       />
-                      {errors.fullName && (
-                        <span className="error" style={{ color: "red" }}>
-                          * {errors.fullName}
-                        </span>
-                      )}
-                    </div>
+                    </li>
+                  </ul>
 
-                    <div className="input-field">
-                      <label>Email</label>
+                  {formErrors.fullName && (
+                    <span className="error">{formErrors.fullName}</span>
+                  )}
+                </div>
+
+                <div className="form-group">
+                  <ul className="form-ul-grif">
+                    <li>
+                      <label htmlFor="email">Email</label>
+                    </li>
+                    <li>
                       <input
                         type="email"
-                        placeholder="Enter your email"
                         id="email"
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
-                        required
                       />
-                      {errors.email && (
-                        <span className="error" style={{ color: "red" }}>
-                          *{errors.email}
-                        </span>
-                      )}
-                    </div>
+                    </li>
+                  </ul>
+                  {formErrors.email && (
+                    <span className="error">{formErrors.email}</span>
+                  )}
+                </div>
 
-                    <div className="input-field">
-                      <label>Mobile Number</label>
+                <div className="form-group">
+                  <ul className="form-ul-grif">
+                    <li>
+                      <label htmlFor="phoneNumber">Phone Number</label>
+                    </li>
+                    <li>
+                      {" "}
                       <input
                         type="text"
-                        placeholder="Enter mobile number"
+                        id="phoneNumber"
                         name="phoneNumber"
                         value={formData.phoneNumber}
                         onChange={handleChange}
-                        required
                       />
-                      {errors.phoneNumber && (
-                        <span className="error" style={{ color: "red" }}>
-                          *{errors.phoneNumber}
-                        </span>
-                      )}
-                    </div>
+                    </li>
+                  </ul>
 
-                    <div className="input-field">
-                      <label>Country </label>
-                      <div className="custom-select">
-                        <select>
-                          <option value="0">Select Country :</option>
-                          <option value="1">Mobile Addiction</option>
-                          <option value="2">Gaming Addiction</option>
-                          <option value="3">Citroen</option>
-                          <option value="4">Ford</option>
-                          <option value="5">Honda</option>
-                          <option value="6">Jaguar</option>
-                          <option value="7">Land Rover</option>
-                          <option value="8">Mercedes</option>
-                          <option value="9">Mini</option>
-                          <option value="10">Nissan</option>
-                          <option value="11">Toyota</option>
-                          <option value="12">Volvo</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div className="input-field">
-                      <label>State </label>
-                      <div className="custom-select">
-                        <select>
-                          <option value="0">Select State:</option>
-                          <option value="1">Audi</option>
-                          <option value="2">BMW</option>
-                          <option value="3">Citroen</option>
-                          <option value="4">Ford</option>
-                          <option value="5">Honda</option>
-                          <option value="6">Jaguar</option>
-                          <option value="7">Land Rover</option>
-                          <option value="8">Mercedes</option>
-                          <option value="9">Mini</option>
-                          <option value="10">Nissan</option>
-                          <option value="11">Toyota</option>
-                          <option value="12">Volvo</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div className="input-field">
-                      <label>Support in</label>
-                      <div className="custom-select">
-                        <select
-                          id="support"
-                          name="support"
-                          value={formData.support}
-                          onChange={handleChange}
-                          required
-                        >
-                          <option value="0">Select Support:</option>
-                          <option value="Mobile Addiction">
-                            Mobile Addiction
-                          </option>
-                          <option value="Gaming Addiction">
-                            Gaming Addiction
-                          </option>
-                          <option value="Social Media Addiction">
-                            Social Media Addiction
-                          </option>
-                          <option value="Entertainment and performance Addiction">
-                            Entertainment and performance Addiction
-                          </option>
-                          <option value="Others">Others</option>
-                        </select>
-                        {errors.support && (
-                          <span className="error" style={{ color: "red" }}>
-                            * {errors.support}
-                          </span>
-                        )}
-                      </div>
-                    </div>
+                  {formErrors.phoneNumber && (
+                    <span className="error">{formErrors.phoneNumber}</span>
+                  )}
+                </div>
 
-                    <div className="input-field">
-                      <label>Message</label>
+                <div className="form-group">
+                  <ul className="form-ul-grif">
+                    <li>
+                      <label htmlFor="country">Country</label>
+                    </li>
+                    <li>
+                      {" "}
                       <input
                         type="text"
-                        placeholder="Enter your Message"
+                        id="country"
+                        name="country"
+                        value={formData.country}
+                        onChange={handleChange}
+                      />
+                    </li>
+                  </ul>
+
+                  {formErrors.country && (
+                    <span className="error">{formErrors.country}</span>
+                  )}
+                </div>
+
+                <div className="form-group">
+                  <ul className="form-ul-grif">
+                    <li>
+                      {" "}
+                      <label htmlFor="state">State</label>
+                    </li>
+                    <li>
+                      {" "}
+                      <input
+                        type="text"
+                        id="state"
+                        name="state"
+                        value={formData.state}
+                        onChange={handleChange}
+                      />
+                    </li>
+                  </ul>
+
+                  {formErrors.state && (
+                    <span className="error">{formErrors.state}</span>
+                  )}
+                </div>
+
+                <div className="form-group">
+                  <ul className="form-ul-grif">
+                    <li>
+                      <label htmlFor="support">Support in</label>
+                    </li>
+                    <li>
+                      {" "}
+                      <select
+                        id="support"
+                        name="support"
+                        value={formData.support}
+                        onChange={handleChange}
+                      >
+                        <option value="0">Select Support:</option>
+                        <option value="Mobile Addiction">
+                          Mobile Addiction
+                        </option>
+                        <option value="Gaming Addiction">
+                          Gaming Addiction
+                        </option>
+                        <option value="Social Media Addiction">
+                          Social Media Addiction
+                        </option>
+                        <option value="Entertainment and performance Addiction">
+                          Entertainment and performance Addiction
+                        </option>
+                        <option value="Others">Others</option>
+                      </select>
+                    </li>
+                  </ul>
+
+                  {formErrors.support && (
+                    <span className="error">{formErrors.support}</span>
+                  )}
+                </div>
+
+                <div className="form-group">
+                  <ul className="form-ul-grif">
+                    <li>
+                      {" "}
+                      <label htmlFor="message">Message</label>
+                    </li>
+                    <li>
+                      {" "}
+                      <textarea
+                        id="message"
                         name="message"
                         value={formData.message}
                         onChange={handleChange}
-                        required
-                        style={{ width: 800, height: 90 }}
                       />
-                      {errors.message && (
-                        <span className="error" style={{ color: "red" }}>
-                          * {errors.message}
-                        </span>
-                      )}
-                    </div>
-                  </div>
+                    </li>
+                  </ul>
+
+                  {formErrors.message && (
+                    <span className="error">{formErrors.message}</span>
+                  )}
                 </div>
               </div>
-
-              <div className="agree-get">
-                {/* <input type="checkbox" />
-                <p>
-                  By Submitting your details means you agree with Privacy Policy
-                  and Term & Conditions
-                </p> */}
-                <button>Submit</button>
+              <div className="grif-submit-btn">
+              <button type="submit">Submit</button>
               </div>
             </form>
           </div>

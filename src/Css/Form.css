@@ -6,9 +6,11 @@
 .input-field input{
     padding: 10px;
 }
-.input-field select{
-    padding: 10px 60px;
+.input-field select {
+    padding: 10px 0px;
     border-radius: 5px;
+    width: 76%;
+    margin-left: 30px;
 }
 .form-affilate{
      display: grid;

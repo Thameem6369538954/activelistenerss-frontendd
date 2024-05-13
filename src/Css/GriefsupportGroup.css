@@ -236,7 +236,33 @@ border-radius: 10px;
   transition: all 0.3s ease-out;
   cursor: pointer;
 }
+.grif-submit-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.grif-submit-btn button{
+  background-color: #256c55;
+  color: white;
+  border: none;
+  padding: 10px 170px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 20px ;
 
+}
+.form-ul-grif{
+  
+}
+.form-ul-grif li{
+  list-style: none;
+  margin: 5px;
+}
+.form-group-radio{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .color span {
   opacity: 0;
   transition: opacity 0.1s linear;

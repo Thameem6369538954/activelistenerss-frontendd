@@ -26,7 +26,7 @@ import TeamPage from "./Pages/TeamPage.js";
 import HiringForm from "./Pages/HiringForm.js";
 import Preppers from "./Pages/Preppers.js";
 import SideBar from "./AdminPanel/SideBar.js";
-import Adminpanel from "./AdminPanel/Adminpanel.js";
+import Adminpanelhome from "./AdminPanel/Adminpanelhome.js";
 import Revenue from "./AdminPanel/SE Revenue/Revenue.js";
 import Videoaddadmin from "./AdminPanel/AdminaddVideo/Videoaddadmin.js";
 import Package from "./AdminPanel/Packageforadmin/Package.js";
@@ -51,11 +51,13 @@ import Daseboard from "./AdminPanel/DaseBoard/Daseboard.js";
 import Complimetarycall from "./AdminPanel/ComplimetaryCall/Complimetarycall.js";
 // import HiringAdmin from "./AdminPanel/Hiring/HiringAdmin.js"
 import Psychologist from "./AdminPanel/psychologist/Psychologist.js";
-import Adminlogin from "./AdminLogin/AdminLogin/Adminlogin.js";
+// import Adminpanel from "./AdminLogin/AdminLogin/Adminpanel.js";
 import Psycologistform from "./Components/Psycologistform.js";
 import Ngoform from "./Components/Ngoform.js";
 import Collegeandschoolform from "./Components/Collegeandschoolform.js";
 import Loginwithotp from "./Pages/Loginwithotp.js";
+import Errorpage from "./Components/Errorpage.js";
+import Adminpanel from "./AdminLogin/AdminLogin/Adminpanel.js";
 function App() {
   const [loading, setLoading] = useState(false);
   useEffect(() => {
@@ -69,6 +71,8 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/Adminpanelhome/*" element={<Adminpanelhome />} />
+          <Route path="*" element={<Errorpage />} />
           <Route path="/Loginwithotp" element={<Loginwithotp />} />
           <Route
             path="/Collegeandschoolform"
@@ -92,7 +96,7 @@ function App() {
           <Route path="/Workshop" element={<Workshop />} />
           <Route path="/TeamPage" element={<TeamPage />} />
           <Route path="/GriefsupportGroup" element={<GriefsupportGroup />} />
-          <Route path="/Adminpanel/*" element={<Adminpanel />} />
+          <Route path="/Adminpanel" element={<Adminpanel />} />
           <Route path="/Preppers" element={<Preppers />} />
           <Route path="/HiringForm/:position" element={<HiringForm />} />
           <Route path="/Hiring" element={<Hiring />} />
@@ -114,7 +118,7 @@ function App() {
             element={<AdaptationtoMobilePhones />}
           />
           <Route path="/Login" element={<Login />} />
-          <Route path="/Adminlogin" element={<Adminlogin />} />
+          {/* <Route path="/Adminlogin" element={<Adminlogin />} /> */}
           <Route path="UserProfile/*" element={<UserProfile />} />
           <Route path="/Account" element={<Account />} />
           <Route path="/Profile" element={<Profile />} />

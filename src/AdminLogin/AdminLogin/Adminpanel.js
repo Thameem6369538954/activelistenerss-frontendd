@@ -3,7 +3,7 @@ import "./adminlogin.css"
 import ALlogo from "../../Images/ALlogo.png"
 import team from "../../Images/team.png"
 
-const Adminlogin = () => {
+const Adminpanel = () => {
   return (
     <div>
       <div className="adminlog-main-containrt">
@@ -40,4 +40,4 @@ const Adminlogin = () => {
   );
 }
 
-export default Adminlogin
+export default Adminpanel

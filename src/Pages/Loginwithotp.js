@@ -15,13 +15,16 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { loginSuccess, setUser } from "../Redux/Slices/authSlice.js";
 import { jwtDecode } from "jwt-decode";
+
 const Loginwithotp = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch()
   // FIRST STEP  ............................................................................
 
   const [phoneNumber, setPhoneNumber] = useState("");
   const [error, setError] = useState("");
-
+  const [otpSend,setOtpSend] = useState(false)
+  const [mobile,setMobile] = useState("")
 const handleChange = (e) => {
   const inputValue = e.target.value;
   setPhoneNumber(inputValue);
@@ -35,15 +38,39 @@ const handleChange = (e) => {
 };
 
 
-  const handleSubmitphone = (e) => {
+  const handleSubmitphone =async (e) => {
     e.preventDefault();
     if (!error) {
       // Form submission logic goes here
       console.log("Form submitted successfully!");
+      console.log(phoneNumber, "phone number");
+      try {
+        const response = await axios.post("/send_login", {
+          mobile: phoneNumber,
+        });
+        console.log(response, "hehehuhu");
+        if (response && response.data) {
+          if (response.data.message === "otp send successfully!!") {
+            toast.success("otp send to your mobile number");
+            setOtpSend(true);
+            setMobile(response.data.user.mobile);
+          } else if (
+            response.data.message === "Mobile number not registered!!"
+          ) {
+            toast.error("Mobile number not registered!!");
+          } else {
+            console.log(error, "confusion");
+            toast.error("Try another method to login!!");
+          }
+        }
+      } catch (error) {
+        console.log(error, "im catch error");
+        toast.error("Try another method to login");
+      }
     } else {
       console.log("Form has errors. Please correct them before submitting.");
     }
-    console.log(phoneNumber, "phone number");
+    
   };
 
   // SECOND STEP    ................................................................................
@@ -66,11 +93,40 @@ const handleChange = (e) => {
   };
 
   // Function to handle form submission
-  const handleSubmitOtp = (e) => {
+  const handleSubmitOtp =async (e) => {
     e.preventDefault();
     // Your verification logic here
-    console.log(otp, "otp");
+    console.log(otp,mobile, "otp and mobile");
     //api
+    try {
+      const verification = await axios.post('/verify_otp',{
+        mobile:mobile,
+        otp:otp
+      })
+  
+      console.log(verification,"verificaiton....")
+      if(verification){
+        if(verification.data.message === "otp verified"){
+          console.log(
+            verification.data.Token,
+            "-------------->jwt token generated",
+            verification.data.user,
+            "------------>userdata"
+          );
+          toast.success("otp verified")
+          dispatch(loginSuccess(verification));
+          navigate("/");
+          toast.success("Login successful with registered mobile number")
+
+          
+        }else if(verification.data.message === "Invalid OTP"){
+          toast.error("Invalid otp")
+        }else{toast.error(verification.data.message) }
+      }
+    } catch (error) {
+      console.log(error)
+      toast.error("Invalid OTP!")
+    }
   };
 
   return (
@@ -88,8 +144,7 @@ const handleChange = (e) => {
       </div>
 
       {/* First Step for OTP */}
-
-      {/* <div className="first-step-otp">
+      {!otpSend ? (<div className="first-step-otp">
         <div className="step">
           <div className="sigin-heading">
             <div>
@@ -150,11 +205,7 @@ const handleChange = (e) => {
             </div>
           </div>
         </div>
-      </div> */}
-
-      {/* second step for OTP */}
-
-      <div className="second-step-for-otp">
+      </div>):(<div className="second-step-for-otp">
         <div className="step">
           <div className="second-step">
             <div className="otp-verfiy-container">
@@ -205,7 +256,12 @@ const handleChange = (e) => {
             </div>
           </div>
         </div>
-      </div>
+      </div>)}
+      
+
+      {/* second step for OTP */}
+
+      
     </div>
   );
 };
