@@ -55,7 +55,7 @@ import Adminlogin from "./AdminLogin/AdminLogin/Adminlogin.js";
 import Psycologistform from "./Components/Psycologistform.js";
 import Ngoform from "./Components/Ngoform.js";
 import Collegeandschoolform from "./Components/Collegeandschoolform.js";
-
+import Loginwithotp from "./Pages/Loginwithotp.js";
 function App() {
   const [loading, setLoading] = useState(false);
   useEffect(() => {
@@ -69,6 +69,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/Loginwithotp" element={<Loginwithotp />} />
           <Route
             path="/Collegeandschoolform"
             element={<Collegeandschoolform />}

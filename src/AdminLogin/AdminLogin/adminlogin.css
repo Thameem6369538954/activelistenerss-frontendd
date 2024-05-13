@@ -1,0 +1,120 @@
+.adminlog-main-containrt{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.adminlog-container-left{
+    height: 100vh;
+    width: 50%;
+        display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.adminlog-container-left img:nth-child(2){
+ /* background-color: red; */
+    width: 80%;
+}
+.adminlog-container-right{
+ background-image: url("../../Images/loginbg.png");
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 50%;
+
+}
+.login-text{
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center;
+    margin-top: 30%;
+}
+.login-text-inside{
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center;
+}
+.login-input{
+    display: grid;
+    grid-template-rows: minmax(1, 1fr);
+    margin-top: 30px;
+}
+.login-input input{
+    padding: 10px;
+    width: 90%;
+    margin: 20px;
+    border-radius: 10px;
+}
+.login-input label{
+    font-size: 20px;
+}
+.login-input-inside{
+   display: flex; 
+   align-items: center;
+   justify-content: center;
+   gap: 2rem;
+}
+.login-input-label{
+    width: 16%;
+}
+.login-input form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.login-input form button{
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    background-color: black;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    width: 50%;
+
+}
+.login-text p{
+        font-family: myFont;
+        font-size: 30px;
+}
+.login-text h1{
+      font-family: Blacky;
+ 
+}
+.login-text span{
+        font-size: 30px;
+        font-family: myFont;
+}
+@media screen and (max-width: 600px) {
+.adminlog-container-left{
+    display: none;
+
+}
+.adminlog-container-right {
+    height: 100vh;
+    width: 100%;
+}
+.login-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 80%;
+
+}
+}
+@media (min-width: 600px) and (max-width: 1024px) {
+.login-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 65%;
+    margin-left: -80px;
+}
+}

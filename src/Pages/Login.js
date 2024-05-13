@@ -229,7 +229,9 @@ useEffect(() => {
             </div>
           </form>
           <div className="other-signup">
-            <p>or Login using </p>
+            <p>
+              or Login using <Link to="/Loginwithotp">phone number </Link>{" "}
+            </p>
             <div className="ggl-fc-athentication">
               <div className="fb">
                 <LiaFacebookF />

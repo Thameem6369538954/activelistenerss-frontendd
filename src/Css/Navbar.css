@@ -6,6 +6,11 @@
   height: 150px;
   /* border: 1px solid black; */
 }
+.Login-btns img{
+  width: 30px;
+  margin-top: 10px;
+  border-radius: 100%;
+}
 nav {
   margin: 2% auto;
   display: flex;
@@ -99,14 +104,14 @@ nav img {
     border-radius: 50%;
   }
 
-  .Cloude {
-    margin-top: -4%;
-    margin-left: -3%;
-    position: absolute;
-    width: 100%;
-    height: auto;
-    /* background-color: red; */
-  }
+.Cloude {
+        margin-top: -2%;
+        margin-left: 0%;
+        position: absolute;
+        width: 100%;
+        height: auto;
+        /* background-color: red; */
+    }
   .Login-btns button:hover {
     transition: 0.1s;
     /* background-color: white; */

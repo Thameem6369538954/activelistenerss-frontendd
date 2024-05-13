@@ -1,7 +1,48 @@
 .login-btm {
   margin-top: 80px;
 }
+.input-otp input {
+    width: 80px;
+    height: 40px;
+    text-align: center;
+    background-color: transparent;
+    border: none;
+    border-bottom: solid 2px black;
+    font-size: 20px;
+    /* color: white; */
+    outline: none;
+        margin-left: 15px;
+}
+.other-signup{
+  margin: 30px;
+}
+.otp-form{
+  /* display: flex; */
+}
+.otp-verfiy-submit{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}
+.otp-verfiy-submit button{
+  background-color: #ffdd7e;
+  color: white;
+  border: none;
+  padding: 10px 30px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 20px;
 
+}
+.otp-verfiy-container{
+  margin-top: 10%;
+}
+.otp-verfiy-submit button:hover{
+   background-color:white ;
+  color: #ffdd7e ;
+  border: 2px solid #ffdd7e;
+}
 .error-input {
   animation: shake 0.3s forwards;
   animation-iteration-count: 4;

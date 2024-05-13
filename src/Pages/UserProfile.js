@@ -23,19 +23,24 @@ import profileMale from "../Images/profileMale.jpg";
 import { MdAddCircleOutline } from "react-icons/md";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import { VscClose } from "react-icons/vsc";
+import { IoSettingsSharp } from "react-icons/io5";
+
 // import axios from "../Utils/Baseurl.js";
 const UserProfile = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate()
-   var user = useSelector((state) => state.auth.user);
-   console.log(user,"in the name of god......................................>>>>");
-   const [userData,setUserData]=useState({}) 
-   const [noToken,setNoToken] = useState(false)
-   useEffect(() => {
+  const navigate = useNavigate();
+  var user = useSelector((state) => state.auth.user);
+  console.log(
+    user,
+    "in the name of god......................................>>>>"
+  );
+  const [userData, setUserData] = useState({});
+  const [noToken, setNoToken] = useState(false);
+  useEffect(() => {
     const fetchuserData = async () => {
       const token = localStorage.getItem("accessToken");
-      if(!token){
-        setNoToken(true)
+      if (!token) {
+        setNoToken(true);
       }
       if (user && user._id) {
         try {
@@ -44,7 +49,10 @@ const UserProfile = () => {
               Authorization: `Bearer ${token}`, // Add Bearer prefix to token
             },
           });
-          console.log(response, "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"); // Moved console.log here
+          console.log(
+            response,
+            "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
+          ); // Moved console.log here
           if (response.data.Getuser) {
             setUserData(response.data.Getuser);
           } else {
@@ -53,7 +61,10 @@ const UserProfile = () => {
         } catch (error) {
           if (error.response) {
             const errorMessage = error.response.data.message;
-            if (error.response.status === 403 || error.response.status === 401) {
+            if (
+              error.response.status === 403 ||
+              error.response.status === 401
+            ) {
               toast.error(errorMessage);
               navigate("/Login");
             } else {
@@ -68,80 +79,44 @@ const UserProfile = () => {
     fetchuserData();
   }, [user, navigate]);
 
+  if (noToken) {
+    navigate("/Login");
+  }
 
-   if(noToken){
-    navigate('/Login')
-   }
+  const [showPopup, setShowPopup] = useState(false);
 
-   const [showPopup, setShowPopup] = useState(false);
+  const togglePopup = () => {
+    setShowPopup(!showPopup);
+  };
 
-   const togglePopup = () => {
-     setShowPopup(!showPopup);
-   }
+  // update
 
+  const [userDataedit, setUserDataedit] = useState({});
+  useEffect(() => {
+    if (user && user._id) {
+      setUserDataedit({
+        username: userData.name,
+        email: userData.email,
+        phone: userData.mobile,
+      });
+    }
+  }, [user, userData]);
+  const [profileImage, setProfileImage] = useState(null);
 
+  const handleUserDataChange = (event) => {
+    const { name, value } = event.target;
+    setUserDataedit((prevUserData) => ({
+      ...prevUserData,
+      [name]: value,
+    }));
+  };
 
-                          // update
+  const handleProfileImageChange = async (event) => {
+    setProfileImage(event.target.files[0]);
+  };
 
-
-                           const [userDataedit, setUserDataedit] = useState({});
-                            useEffect(() => {
-                              if (user && user._id) {
-                                setUserDataedit({
-                                  username: userData.name,
-                                  email: userData.email,
-                                  phone: userData.mobile,
-                                });
-                              }
-                            }, [user, userData]);
-                           const [profileImage, setProfileImage] =
-                             useState(null);
-
-                          const handleUserDataChange = (event) => {
-                            const { name, value } = event.target;
-                            setUserDataedit((prevUserData) => ({
-                              ...prevUserData,
-                              [name]: value,
-                            }));
-                          };
-
-                           const handleProfileImageChange = async(event) => {
-                             setProfileImage(event.target.files[0]);
-                           };
-
-                          //  const handleSubmit =async (event) => {
-
-                          //    event.preventDefault();
-
-                          //    // Client-side validation
-                          //    const { username, email, phone } = userDataedit;
-                          //    if (
-                          //      !username ||
-                          //      !email ||
-                          //      !phone ||
-                          //      !profileImage
-                          //    ) {
-                          //      alert(
-                          //        "Please fill out all fields and upload required files."
-                          //      );
-                          //      return;
-                          //    }
-
-                          //    // Create FormData object and append files
-                          //    const formData = new FormData();
-                          //    formData.append("name", username);
-                          //    formData.append("email", email);
-                          //    formData.append("mobile", phone);
-                          //   //  formData.append("profile-image", profileImage);
-                          //    console.log(formData,user._id,"faaaduuuuuuuuuuu");
-
-
-                          //    const responsee = await axios.put(`/edit_my_profile/${user._id}`, formData);
-                          //    console.log(responsee,"editing profileeeeeeeeeeeeeeeeeeeeeeeee");
-                          //    // Submit FormData to API endpoint
-                           
-                          //  };
-const handleSubmit = async (event) => {
+  
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     // Client-side validation
@@ -190,13 +165,13 @@ const handleSubmit = async (event) => {
         toast.error("error");
       }
     } catch (error) {
-      if (error.response.status == 409  ) {
+      if (error.response.status == 409) {
         toast.error(error.response.data.message);
-      }else{
-        if(error.response.status == 403 || error.response.status == 401){
+      } else {
+        if (error.response.status == 403 || error.response.status == 401) {
           toast.error(error.response.data.message);
-          dispatch(logout())
-          navigate('/')
+          dispatch(logout());
+          navigate("/");
         }
       }
       console.log(error, "iam the error");
@@ -205,57 +180,211 @@ const handleSubmit = async (event) => {
     // Submit FormData to API endpoint
   };
 
-     const [editprof,setEdiprof] = useState(false);
+  const [editprof, setEdiprof] = useState(false);
 
-     const toggleEdit = () => {
-       setEdiprof(!editprof)
-     }
+  const toggleEdit = () => {
+    setEdiprof(!editprof);
+  };
 
-       const [profilePic, setProfilePic] = useState(null);
-       const [error, setError] = useState("");
+  const [profilePic, setProfilePic] = useState(null);
+  const [error, setError] = useState("");
 
-       const handleFileChange = (event) => {
-         const selectedFile = event.target.files[0];
-         // Check if a file is selected
-         if (selectedFile) {
-           // Check if the selected file is an image
-           if (selectedFile.type.startsWith("image/")) {
-             setProfilePic(selectedFile);
-             setError("");
-           } else {
-             setProfilePic(null);
-             setError("Please select a valid image file.");
-           }
-         }
-       };
-   const removeProfilePic = () => {
-     setProfilePic(null); // Reset profilePic state to null to remove the image
-     // Reset the value of the file input element
-     const fileInput = document.getElementById("profilePic");
-     fileInput.value = "";
-   };
+  const handleFileChange = (event) => {
+    const selectedFile = event.target.files[0];
+    // Check if a file is selected
+    if (selectedFile) {
+      // Check if the selected file is an image
+      if (selectedFile.type.startsWith("image/")) {
+        setProfilePic(selectedFile);
+        setError("");
+      } else {
+        setProfilePic(null);
+        setError("Please select a valid image file.");
+      }
+    }
+  };
+  const removeProfilePic = () => {
+    setProfilePic(null); // Reset profilePic state to null to remove the image
+    // Reset the value of the file input element
+    const fileInput = document.getElementById("profilePic");
+    fileInput.value = "";
+  };
 
-   const handleSubmitu = async (event) => {
-     event.preventDefault();
-     if (!profilePic) {
-       setError("Please choose a profile picture.");
-       return;
-     }
-     console.log(profilePic,"picture........");
-     const formData = new FormData()
-     formData.append('profilePic', profilePic)
-     const response = await axios.post(
-       `/add_profile_photo/${user._id}`,
-       formData
-     );
-     console.log(response, "this is the response of registration............");
+  const handleSubmitu = async (event) => {
+    event.preventDefault();
+    if (!profilePic) {
+      setError("Please choose a profile picture.");
+      return;
+    }
+    console.log(profilePic, "picture........");
+    const formData = new FormData();
+    formData.append("profilePic", profilePic);
+    const response = await axios.post(
+     `/add_profile_photo/${user._id}`,
+      formData
+    );
+    console.log(response, "this is the response of registration............");
 
-     // Your form submission logic here
+    // Your form submission logic here
     //  console.log("Form submitted successfully!");
-   };
-   const [crop, setCrop] = useState({ x: 0, y: 0 });
-   const [zoom, setZoom] = useState(1);
+  };
+  const [crop, setCrop] = useState({ x: 0, y: 0 });
+  const [zoom, setZoom] = useState(1);
   //  const [profilePic, setProfilePic] = useState(null);
+
+  const [numberpopup, setNumberpopup] = useState(false);
+  const phonenumberPopup = () => {
+    setNumberpopup(!numberpopup);
+  };
+  const [genderpopup, setGenderpopup] = useState(false);
+  const genderPopup = () => {
+    setGenderpopup(!genderpopup);
+  };
+
+  // password..............................................
+
+  const [password, setPasswordpopup] = useState(false);
+  const passwordPopup = () => {
+    setPasswordpopup(!password);
+  };
+
+  //  VALIDATION API FOR ADD PHONE NUMBER...................................................................
+
+  const [mobile, setMobile] = useState({
+    phone:""
+  });
+  const [phoneerror, setphoneError] = useState("");
+
+  const handleChangephone = (e) => {
+    setMobile({phone:e.target.value})
+    const input = e.target.value;
+    // Check if input is a valid phone number
+    if (/^[6-9]\d{9}$/.test(input) && /^\d+$/.test(input)) {
+      // setMobile({phone:input});
+      setphoneError("");
+    }   else {
+      setphoneError(
+        "Please enter a valid 10-digit phone number starting with a number from 6 to 9"
+      );
+    }
+  };
+
+  const handleSubmitphone = async (e) => {
+    e.preventDefault();
+  
+    try {
+      const token = localStorage.getItem("accessToken");
+      console.log(userData._id, mobile.phone, "userData._id");
+  
+      const response = await axios.post(
+       ` /addMobile/${userData._id}`,
+        { phone: mobile.phone }, // Send the phone number as { phone: value }
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+  
+      if (response) {
+        setMobile({ phone: "" }); // Clear the phone number
+        setphoneError(""); // Clear any error message
+      }
+  
+      console.log(response, "response of add phone number");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  
+
+  //  VALIDATION API FOR ADD GENDER.......................................................
+
+  const [gender, setGender] = useState("");
+  const [egenderrrors, setErrorsgender] = useState({});
+
+  const handleChangegender = (event) => {
+    setGender(event.target.value);
+    setErrorsgender({}); // Reset errors when user makes a selection
+  };
+
+  const handleSubmitgender = async (event) => {
+    event.preventDefault();
+    if (!gender) {
+      setErrorsgender({ gender: "Please select a gender" });
+      return;
+    }
+    // Perform submit logic here
+    console.log("Form submitted with gender:", gender);
+    
+
+     // API CONNECTION HERE
+      try{
+        const token = localStorage.getItem("accessToken");
+
+        console.log(userData._id, "userData._id");
+        const response = await axios.post(`/addGender/${userData._id}`, {Gender:gender},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+        );
+
+        console.log(response, "response of add gender");
+      }
+      catch(error){
+        console.log(error);
+      }
+  };
+
+
+
+
+            // VALIDATION FOR PASSWORD.................................
+
+            const [newPassword, setNewPassword] = useState("");
+            const [confirmPassword, setConfirmPassword] = useState("");
+            const [passwordError, setPasswordError] = useState("");
+
+            const handlePasswordChange = (event) => {
+              setNewPassword(event.target.value);
+            };
+
+            const handleConfirmPasswordChange = (event) => {
+              setConfirmPassword(event.target.value);
+            };
+
+            const handleSubmitPassword = async (event) => {
+              event.preventDefault();
+
+              if (newPassword !== confirmPassword) {
+                setPasswordError("Passwords do not match");
+              } else {
+                // Passwords match, proceed with form submission or other actions
+                setPasswordError("");
+                // Your submit logic goes here
+              }
+              console.log(newPassword, "new password",);
+               try{
+                const token = localStorage.getItem("accessToken");
+        
+        console.log(userData._id, "userData._id");
+        const response = await axios.post(`/createPassword/${userData._id}`, {password:newPassword},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+        );
+
+        console.log(response, "response of add password");
+      }
+      catch(error){
+        console.log(error);
+      }
+            };
+
   return !noToken ? (
     <div>
       <Navbar />
@@ -287,10 +416,16 @@ const handleSubmit = async (event) => {
                     <div className="profile-image">
                       <div className="hdr-userprof">
                         <div>
-                          <h1>Personal Information</h1>
+                          <div>
+                            <h1>Personal Information</h1>
+                          </div>
+                          <div>
+                            <RiEdit2Line />
+                          </div>
                         </div>
-                        <div>
-                          <RiEdit2Line />
+                        <div className="                                                                                                                                                    ">
+                          <IoSettingsSharp />
+                          <p>Settings</p>
                         </div>
                       </div>
                       <div className="prof-user">
@@ -367,7 +502,7 @@ const handleSubmit = async (event) => {
                               <div className="user-detailes-txt">
                                 <h3>Phone Number </h3>
                               </div>
-                              {userData ? (
+                              {userData.mobile ? (
                                 <>
                                   <input
                                     type="text"
@@ -381,19 +516,178 @@ const handleSubmit = async (event) => {
                                   <button
                                     style={{
                                       color: "Blue",
-                                      border: "none",
-                                      backgroundColor: "transparent",
-                                      fontSize: "20px",
+                                      backgroundColor: "white",
+                                      padding: "10px",
+                                      fontSize: "15px",
+                                      width: "40%",
+                                      border: "1px solid black",
+                                      borderRadius: "50px",
                                     }}
-                                    // onClick={handleEditPhoneNumberClick}
+                                    onClick={phonenumberPopup}
                                   >
-                                    <FiEdit />
+                                    Please add your mobile number
                                   </button>
                                 </>
+                              )}
+                              {numberpopup && (
+                                <form onSubmit={handleSubmitphone}>
+                                  <input
+                                    type="text"
+                                    value={mobile.phone}
+                                    onChange={handleChangephone}
+                                    placeholder="Enter Your Phone Number"
+                                  />
+                                  {phoneerror && (
+                                    <div style={{ color: "red" }}>
+                                      {phoneerror}
+                                    </div>
+                                  )}
+
+                                  <div className="btns-for-add-user-detials">
+                                    <button
+                                      type="button"
+                                      onClick={() => setMobile("")}
+                                    >
+                                      Cancel
+                                    </button>
+                                    <button type="submit">Submit</button>
+                                  </div>
+                                </form>
+                              )}
+                            </div>
+
+                            {/* Gander */}
+
+                            <div className="user-detailes">
+                              <div className="user-detailes-txt">
+                                <h3>Gender</h3>
+                              </div>
+                              {userData.gender ? (
+                                <>
+                                <div className="user-gender">
+
+                                  <input
+                                    type="text"
+                                    value={userData.gender}
+                                    // onChange={handlePhoneNumberChange}
+                                  />
+                                </div>
+                                </>
+                              ) : (
+                                <>
+                                  <p>{userData.gender}</p>
+                                  <button
+                                    style={{
+                                      color: "Blue",
+                                      width: "40%",
+                                      border: "1px solid black",
+                                      borderRadius: "50px",
+                                      backgroundColor: "white",
+                                      padding: "10px",
+                                      fontSize: "15px",
+                                    }}
+                                    onClick={genderPopup}
+                                  >
+                                    Please add your gender
+                                  </button>
+                                </>
+                              )}
+                              {genderpopup && (
+                                <form onSubmit={handleSubmitgender}>
+                                  <select
+                                    value={gender}
+                                    onChange={handleChangegender}
+                                  >
+                                    <option value="">Select Gender</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Other">Other</option>
+                                  </select>
+                                  {egenderrrors.gender && (
+                                    <div className="error">
+                                      {egenderrrors.gender}
+                                    </div>
+                                  )}
+                                  <div className="btns-for-add-user-detials">
+                                    <button
+                                      type="button"
+                                      onClick={() => setGender("")}
+                                    >
+                                      Cancel
+                                    </button>
+                                    <button type="submit">Submit</button>
+                                  </div>
+                                </form>
+                              )}
+                            </div>
+
+                            {/* PassWord */}
+
+                            <div className="user-detailes">
+                              <div className="user-detailes-txt"></div>
+                              {!userData.password ? (
+                                <>
+                                  <h3>Password</h3>
+                                  <p>{userData.password}</p>
+                                  <button
+                                    style={{
+                                      color: "Blue",
+                                      width: "40%",
+                                      border: "1px solid black",
+                                      borderRadius: "50px",
+                                      backgroundColor: "white",
+                                      padding: "10px",
+                                      fontSize: "15px",
+                                    }}
+                                    onClick={passwordPopup}
+                                  >
+                                    Please add your Password
+                                  </button>
+                                </>
+                              ) : (
+                                <></>
+                              )}
+                              {password && (
+                                <form onSubmit={handleSubmitPassword}>
+                                  <label>Enter Password</label>
+                                  <input
+                                    type="password"
+                                    value={newPassword}
+                                    onChange={handlePasswordChange}
+                                    placeholder="Enter Your Password"
+                                  />
+                                  <label>Re-enter Password</label>
+                                  <input
+                                    type="password"
+                                    value={confirmPassword}
+                                    onChange={handleConfirmPasswordChange}
+                                    placeholder="Re-enter Your Password"
+                                  />
+                                  {passwordError && (
+                                    <div style={{ color: "red" }}>
+                                      {passwordError}
+                                    </div>
+                                  )}
+                                  <div>
+                                    <div className="btns-for-add-user-detials">
+                                      <button
+                                        type="button"
+                                        onClick={() => {
+                                          setNewPassword("");
+                                          setConfirmPassword("");
+                                        }}
+                                      >
+                                        Cancel
+                                      </button>
+                                      <button type="submit">Submit</button>
+                                    </div>
+                                  </div>
+                                </form>
                               )}
                             </div>
                           </div>
                         </div>
+
                         <div className="profile-box">
                           <div>
                             {editprof && (
@@ -435,7 +729,9 @@ const handleSubmit = async (event) => {
                                   )}
                                 </div>
                                 <div className="delete-prof">
-                                  <label role="button">Delete your Profile</label>
+                                  <label role="button">
+                                    Delete your Profile
+                                  </label>
 
                                   {/* <button type="button">Delete</button> */}
                                 </div>
@@ -571,11 +867,14 @@ const handleSubmit = async (event) => {
                     <div className="profile-image">
                       <div className="hdr-userprof">
                         <div>
-                          <h1>Personal Information</h1>
+                          <div>
+                            <h1>Personal Information</h1>
+                          </div>
+                          <div>
+                            <RiEdit2Line />
+                          </div>
                         </div>
-                        <div>
-                          <RiEdit2Line />
-                        </div>
+                        <IoSettingsSharp />
                       </div>
                       <div className="prof-user">
                         <div className="editable-details">

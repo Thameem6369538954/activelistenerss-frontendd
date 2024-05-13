@@ -326,14 +326,12 @@ form.secActive .form.first {
   color: #333;
 }
 .container-form form .fields {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
+display: grid;
+grid-template-columns: repeat(2, 1fr);
 }
 form .fields .input-field {
   display: flex;
-  width: calc(100% / 2 - 15px);
+  width: 100%;
   flex-direction: column;
   margin: 4px 0;
 }
@@ -421,7 +419,7 @@ form .buttons button,
     display: none;
   }
   form .fields .input-field {
-    width: calc(100% / 2 - 15px);
+    width:100%;
   }
 }
 

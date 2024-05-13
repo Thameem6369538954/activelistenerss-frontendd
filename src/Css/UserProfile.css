@@ -4,9 +4,70 @@
   align-items: center;
   justify-content: center;
 }
+.up-settings{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.userprofile-setting-ul{
+  background-color: lightblue;
+  padding: 20px;
+  border-radius: 20px;
+  height: 480px;
+
+}
+.userprofile-setting-ul li{
+  list-style: none;
+  font-size: 16px;
+    font-family: "Questrial", sans-serif;
+    border-bottom: 1px solid white;
+    padding: 10px 10px;
+}
 .userprofile-hdr h1 {
   font-family: myFont;
   letter-spacing: 0.1rem;
+}
+.userprofile-setting-box{
+  position: absolute;
+margin-left: 80%;
+margin-top: 31%;
+}
+.btns-for-add-user-detials{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+.btns-for-add-user-detials button:nth-child(1){
+  background-color: lightcoral;
+  padding: 10px 30px;
+  border: 1px solid white;
+  border-radius: 20px;
+  color: white;
+}
+.btns-for-add-user-detials button:hover:nth-child(1):nth-child(1){
+  background-color: white;
+  padding: 10px 30px;
+  border: 1px solid lightcoral;
+  border-radius: 20px;
+  color: lightcoral;
+}
+.btns-for-add-user-detials button:nth-child(2){
+  background-color: lightgreen;
+  padding: 10px 30px;
+  border: 1px solid white;
+  border-radius: 20px;
+    color: white;
+
+}
+.btns-for-add-user-detials button:hover{
+  background-color: white;
+  padding: 10px 30px;
+  border: 1px solid lightgreen;
+  border-radius: 20px;
+    color: lightgreen;
+
 }
 .edit-user-profile{
   background-color: #F5F6F6;
@@ -77,12 +138,19 @@ box-shadow: 10px 10px 18px -9px rgba(0,0,0,0.75);
   border:  1px solid black;
 }
 .hdr-userprof {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* width: 70%; */
+    /* padding-left: 50px; */
+    padding-top: 50px;
+    gap: 5rem;
+}
+.profile-settings{
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 70%;
-  padding-left: 50px;
-  padding-top: 50px;
 }
 .hdr-userprof h1 {
   border-bottom: 1px solid black;
@@ -149,7 +217,7 @@ box-shadow: 10px 10px 18px -9px rgba(0,0,0,0.75);
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 3rem;
+  gap: 1rem;
 }
 .log-out {
   /* display: flex;
@@ -189,12 +257,14 @@ box-shadow: 10px 10px 18px -9px rgba(0,0,0,0.75);
   font-size: 20px;
 }
 .save-black {
-    background-color:#FFDD7E;
-  height: 350px;
- display: flex;
- flex-direction: column;
-     border-radius: 0px 0px 20px 20px;
-
+    background-color: #FFDD7E;
+    height: 293px;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    position: absolute;
+    margin-top: -45%;
 }
 .user-detailes-txt{
   width: 20%;

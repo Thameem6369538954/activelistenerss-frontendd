@@ -123,6 +123,10 @@ import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { logout,loginSuccess,setUser } from '../Redux/Slices/authSlice';
 import { ToastContainer, toast } from "react-toastify";
+import profileFemale from "../Images/profileFemale.jpg";
+import profileMale from "../Images/profileMale.jpg";
+import defaultProfile from "../Images/prof.jpg";
+
 
 const Navbar = () => {
   
@@ -231,7 +235,21 @@ const Navbar = () => {
               </button>
               {/* <img src={Navarrow} className="navarrow" alt="" /> */}
               <NavLink to={"/UserProfile"} className="Links">
-                <FaRegUser className="navarrow" />
+                {/* <FaRegUser className="navarrow" /> */}
+                {!user.profilePic ? (
+                  <img
+                    src={
+                      user.gender === "male"
+                        ? profileMale
+                        : user.gender === "female"
+                        ? profileFemale
+                        : defaultProfile
+                    }
+                    alt=""
+                  />
+                ) : (
+                  <img src={user.profilePic} alt="" />
+                )}
               </NavLink>
             </div>
           ) : (

@@ -162,7 +162,6 @@ const GriefSupport = () => {
               <form action="submit">
                 <div className="form first">
                   <div className="details personal">
-                    <div className="fields">
                       <div className="radio-buttons-container">
                         <div className="radio-button">
                           <label>Enroll as: </label>
@@ -202,6 +201,7 @@ const GriefSupport = () => {
                           </label>
                         </div>
                       </div>
+                    <div className="fields">
                       <div className="input-field">
                         <label>Full Name</label>
                         <input
