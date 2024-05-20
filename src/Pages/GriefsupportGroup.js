@@ -25,6 +25,8 @@ import { AiOutlineCloseCircle } from "react-icons/ai";
 import { InlineWidget } from "react-calendly";
 import Breadcrumps from "../Components/Breadcrumps";
 import { Header } from "antd/es/layout/layout";
+import axios from "../Utils/Baseurl.js";
+import "react-toastify/dist/ReactToastify.css";
 
 const GriefsupportGroup = () => {
   const scrollToTop = () => {
@@ -188,7 +190,7 @@ const GriefsupportGroup = () => {
        message: "",
        enrollAs: "",
      });
-     const [formErrors, setFormErrors] = useState({});
+     const [errors, setErrors] = useState({});
 
      const handleChange = (e) => {
        const { name, value, type, checked } = e.target;
@@ -199,9 +201,45 @@ const GriefsupportGroup = () => {
        });
      };
 
-     const handleSubmit = (e) => {
+     const handleSubmit = async (e) => {
        e.preventDefault();
-       console.log(formData);
+       console.log(formData,"form data..............................................");
+
+       const errors = validateForm(formData);
+
+      //  if (!errors) {
+         // No errors, proceed with form submission
+         try {
+           const response = await axios.post(
+             "/getintouch_griefSupport",
+             formData
+           );
+           console.log(response);
+           if (response && response.data.message) {
+             if (
+               response.data.message ===
+               "succesfully submitted the form!we will get in touch as soon as possible!"
+             ) {
+               toast.success("Your Form submited successfully !!");
+               setFormData({
+                 fullName: "",
+                 email: "",
+                 phoneNumber: "",
+                 country: "",
+                 state: "",
+                 support: "0",
+                 message: "",
+                 enrollAs: "",
+               })
+             }
+           }
+         } catch {
+           console.log("Error in form submission");
+         }
+      //  }else{
+      //   //if error
+      //   toast.error("please input valid datas!!")
+      //  }
      };
 
      const validateForm = (data) => {
@@ -593,6 +631,8 @@ const GriefsupportGroup = () => {
               through active listening.
             </p> */}
           </div>
+          {/* <div className="re"> */}
+
           <img
             src={Reg}
             data-aos="fade-up"
@@ -601,6 +641,7 @@ const GriefsupportGroup = () => {
             data-aos-duration="2000"
             alt=""
           />
+          {/* </div> */}
         </div>
         <div className="buttom-txt-gs">
           <span>
@@ -632,10 +673,6 @@ const GriefsupportGroup = () => {
             <div className="box"></div>
             <div className="box"></div>
             <div className="box"></div>
-            <div className="box"></div>
-            <div className="box"></div>
-            <div className="box"></div>
-            <div className="box"></div>
           </article>
           <article className="orange">
             <div className="box"></div>
@@ -644,16 +681,10 @@ const GriefsupportGroup = () => {
             <div className="box"></div>
             <div className="box"></div>
             <div className="box"></div>
-            <div className="box"></div>
-            <div className="box"></div>
-            <div className="box"></div>
-            <div className="box"></div>
+            
           </article>
           <article className="orange">
-            <div className="box"></div>
-            <div className="box"></div>
-            <div className="box"></div>
-            <div className="box"></div>
+            
             <div className="box"></div>
             <div className="box"></div>
             <div className="box"></div>
@@ -668,10 +699,7 @@ const GriefsupportGroup = () => {
             <div className="box"></div>
             <div className="box"></div>
             <div className="box"></div>
-            <div className="box"></div>
-            <div className="box"></div>
-            <div className="box"></div>
-            <div className="box"></div>
+           
           </article>
         </main>
       </div>
@@ -731,8 +759,8 @@ const GriefsupportGroup = () => {
                     </label>
                   </div>
                 </div>
-                {formErrors.enrollAs && (
-                  <span className="error">{formErrors.enrollAs}</span>
+                {errors.enrollAs && (
+                  <span className="error">{errors.enrollAs}</span>
                 )}
               </div>
               <div className="form-group-grief">
@@ -754,8 +782,8 @@ const GriefsupportGroup = () => {
                     </li>
                   </ul>
 
-                  {formErrors.fullName && (
-                    <span className="error">{formErrors.fullName}</span>
+                  {errors.fullName && (
+                    <span className="error">{errors.fullName}</span>
                   )}
                 </div>
 
@@ -774,8 +802,8 @@ const GriefsupportGroup = () => {
                       />
                     </li>
                   </ul>
-                  {formErrors.email && (
-                    <span className="error">{formErrors.email}</span>
+                  {errors.email && (
+                    <span className="error">{errors.email}</span>
                   )}
                 </div>
 
@@ -796,8 +824,8 @@ const GriefsupportGroup = () => {
                     </li>
                   </ul>
 
-                  {formErrors.phoneNumber && (
-                    <span className="error">{formErrors.phoneNumber}</span>
+                  {errors.phoneNumber && (
+                    <span className="error">{errors.phoneNumber}</span>
                   )}
                 </div>
 
@@ -818,8 +846,8 @@ const GriefsupportGroup = () => {
                     </li>
                   </ul>
 
-                  {formErrors.country && (
-                    <span className="error">{formErrors.country}</span>
+                  {errors.country && (
+                    <span className="error">{errors.country}</span>
                   )}
                 </div>
 
@@ -841,8 +869,8 @@ const GriefsupportGroup = () => {
                     </li>
                   </ul>
 
-                  {formErrors.state && (
-                    <span className="error">{formErrors.state}</span>
+                  {errors.state && (
+                    <span className="error">{errors.state}</span>
                   )}
                 </div>
 
@@ -877,8 +905,8 @@ const GriefsupportGroup = () => {
                     </li>
                   </ul>
 
-                  {formErrors.support && (
-                    <span className="error">{formErrors.support}</span>
+                  {errors.support && (
+                    <span className="error">{errors.support}</span>
                   )}
                 </div>
 
@@ -890,7 +918,8 @@ const GriefsupportGroup = () => {
                     </li>
                     <li>
                       {" "}
-                      <textarea
+                      <input
+                      type="text"
                         id="message"
                         name="message"
                         value={formData.message}
@@ -899,13 +928,13 @@ const GriefsupportGroup = () => {
                     </li>
                   </ul>
 
-                  {formErrors.message && (
-                    <span className="error">{formErrors.message}</span>
+                  {errors.message && (
+                    <span className="error">{errors.message}</span>
                   )}
                 </div>
               </div>
               <div className="grif-submit-btn">
-              <button type="submit">Submit</button>
+                <button type="submit">Submit</button>
               </div>
             </form>
           </div>

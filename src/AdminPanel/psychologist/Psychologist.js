@@ -432,6 +432,9 @@ const [searchInput, setSearchInput] = useState("");
       setImage(null);
       setResume(null);
       togglePopup(); // Close the popup after submission
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
     } catch (error) {
       console.error("Error:", error);
       // Handle error

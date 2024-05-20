@@ -149,9 +149,11 @@ const Senses = () => {
       {wantComplimentaryCall ? (
         <></>
       ) : (
-        <button className="get-support" onClick={appointmentSubmit}>
-          Get Support
-        </button>
+        <div className="tele-buttons">
+          <button className="get-support" onClick={appointmentSubmit}>
+            Get Support
+          </button>
+        </div>
       )}
 
       <GetinTouch />

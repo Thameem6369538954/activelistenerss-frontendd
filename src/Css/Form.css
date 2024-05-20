@@ -6,6 +6,21 @@
 .input-field input{
     padding: 10px;
 }
+.form-btns{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+
+}
+.form-btns button{
+    padding: 10px 30px;
+    border-radius: 20px;
+    border: none;
+    background-color: #ffdd7e;
+    cursor: pointer;
+    
+}
 .input-field select {
     padding: 10px 0px;
     border-radius: 5px;

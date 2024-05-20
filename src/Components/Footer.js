@@ -129,7 +129,9 @@ const Footer = () => {
                toast.error("Already subscribed!!");
              } else {
                toast.success("Thank you for subscribing");
+               setEmail("");  
              }
+           
         }else{
           toast.error("Please try again Later!!")
         }
@@ -141,6 +143,7 @@ const Footer = () => {
       console.error(error);
       toast.error("Failed to subscribe. Please try again later.");
     }
+     
   };
 
   const scrollToTop = () => {

@@ -83,7 +83,7 @@
   font-size: 16px;
 }
 .video-popup-content {
-  height: 600px;
+  height: auto;
   width: 980px;
   background-color: white;
   /* display: flex;

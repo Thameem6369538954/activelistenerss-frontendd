@@ -283,6 +283,16 @@ const HiringForm = (props) => {
         const response = await axios.post("/application", formData);
         if (response.status === 200) {
           toast.success("Successfully submitted the application form!");
+          setFormDatas({
+            name: "",
+            email: "",
+            mobile: "",
+            coverletter: "",
+            position: "",
+            agree: false,
+          })
+          setFile(null);
+
         } else {
           toast.error("Please try again later.");
         }

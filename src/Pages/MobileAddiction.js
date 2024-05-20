@@ -23,7 +23,7 @@ import { Link } from "react-router-dom";
 import { InlineWidget } from "react-calendly";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import Breadcrumps from "../Components/Breadcrumps";
-
+import WHYAL from "../Videos/WHYAL.mp4";
 const MobileAddiction = () => {
   
     const [wantComplimentaryCall, setWantComplimentaryCall] = useState(false);
@@ -125,14 +125,17 @@ const MobileAddiction = () => {
                 alt=""
               /> */}
 
-              <iframe
-                className="addiction-videos"
-                src="https://www.youtube.com/embed/MSzppjFe1iM?si=-Bm6Z01t75zFvvZz"
-                title="YouTube video player"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
+              <video
+                controls // Ensure controls are enabled for user interaction
+                className="early-age-video"
+                // onClick={togglePlay}
+                // onPlay={() => setIsPlaying(true)}
+                // onPause={() => setIsPlaying(false)}
+              >
+                <source src={WHYAL} type="video/mp4" />{" "}
+                {/* Make sure src and type are correctly set */}
+                Your browser does not support the video tag.
+              </video>
             </div>
             {/* <img
               src={Rounda}
@@ -262,7 +265,9 @@ const MobileAddiction = () => {
               </div> */}
 
               <div className="mobile-addiction-yellow-box">
-                <img src={PodcastRed} alt="" />
+                <div className="podcast-ylo">
+                  <img src={PodcastRed} alt="" />
+                </div>
                 <div className="over">
                   <img src={cover} alt="" />
                   <span>Recommended Podcast</span>

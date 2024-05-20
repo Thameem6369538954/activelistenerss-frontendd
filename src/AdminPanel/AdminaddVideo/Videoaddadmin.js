@@ -8,36 +8,34 @@ import { toast } from "react-toastify";
 
 const Videoaddadmin = () => {
   const [rows, setRows] = useState([]);
-  useEffect(()=>{
-    const fetchData = async()=>{
+  useEffect(() => {
+    const fetchData = async () => {
       try {
-        const response = await axios.get('admin/get_allVideos')
+        const response = await axios.get("admin/get_allVideos");
         console.log(response);
-        if(response){
-          setRows(response.data.reslt)
-        }else{
-          toast.error("something went wrong!!")
+        if (response) {
+          setRows(response.data.reslt);
+        } else {
+          toast.error("something went wrong!!");
         }
       } catch (error) {
         console.log(error);
       }
-    }
-    fetchData()
-  },[])
+    };
+    fetchData();
+  }, []);
 
   const [showPopup, setShowPopup] = useState(false);
-  const [showPopupEdit,setShowPopupEdit] = useState(false);
-  const [newPopupEdit,setNewPopupEdit] = useState(false);
+  const [showPopupEdit, setShowPopupEdit] = useState(false);
+  const [newPopupEdit, setNewPopupEdit] = useState(false);
   const [fieldData, setFieldData] = useState({
     title: "",
-    page: ""
+    page: "",
   });
 
   const [thumbnail, setThumbnail] = useState(null);
   const [source, setSource] = useState(null);
-
-
-
+  const [errors, setErrors] = useState({});
   const handleSelectThumb = (e) => {
     const thumb = e.target.files[0];
     if (thumb) {
@@ -62,19 +60,46 @@ const Videoaddadmin = () => {
   var togglePopupNew = () => {
     setNewPopupEdit(!newPopupEdit);
   };
+  // State variable to track the ID of the currently edited video
+  const [currentEditId, setCurrentEditId] = useState(null);
 
-  const [opn,setOpn] = useState(false)
-  var togglePopupEditnewone = () => {
-    setOpn(!opn)
-  }
+  // Function to toggle the edit form
+  const togglePopupEditnewone = (id) => {
+    setCurrentEditId(id);
+  };
+  // const [opn, setOpn] = useState(false);
+  // var togglePopupEditnewone = () => {
+  //   setOpn(!opn);
+  // };
 
- const togglePopupedit =()=>{
-    setShowPopupEdit(!showPopupEdit)
-  }
+  const togglePopupedit = () => {
+    setShowPopupEdit(!showPopupEdit);
+  };
+  
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(thumbnail,"pppppppppppppppppp");
+    // Validate form data
+    const formErrors = {};
+    if (!fieldData.title.trim()) {
+      formErrors.title = "Title is required";
+    }
+    if (!fieldData.page) {
+      formErrors.page = "Page selection is required";
+    }
+    if (!thumbnail) {
+      formErrors.thumbnail = "Thumbnail is required";
+    }
+    if (!source) {
+      formErrors.source = "Video file is required";
+    }
+
+
+      if (Object.keys(formErrors).length > 0) {
+    setErrors(formErrors);
+    return;
+  }
+    console.log(thumbnail, "pppppppppppppppppp");
     const formData = new FormData();
 
     formData.append("title", fieldData.title);
@@ -82,52 +107,48 @@ const Videoaddadmin = () => {
     formData.append("thumbnail", thumbnail);
     formData.append("source", source);
     console.log(formData);
-try {
-  const response = await axios.post("admin/add_videos", formData);
-    console.log(response, "kktt");
-    if(response){
-      console.log(response.data.message);
-      if(response.data.message === "successfully added Video!!"){
-
-        toast.success("successfully added Video!!")
-        setFieldData({title:"",page:""})
-        setThumbnail(null)
-        setSource(null)
-        togglePopup();
-      }else{
-        toast.error(response.data.message)
+    try {
+      const response = await axios.post("admin/add_videos", formData);
+      console.log(response, "kktt");
+      if (response) {
+        console.log(response.data.message);
+        if (response.data.message === "successfully added Video!!") {
+          toast.success("successfully added Video!!");
+          setFieldData({ title: "", page: "" });
+          setThumbnail(null);
+          setSource(null);
+          togglePopup();
+          setTimeout(() => {
+            window.location.reload();
+          }, 2000);
+        } else {
+          toast.error(response.data.message);
+        }
+      } else {
+        toast.success("Something went wrong!!");
       }
-    }else{
-      toast.success("Something went wrong!!")
+    } catch (error) {
+      console.log(error);
     }
-} catch (error) {
-  console.log(error);
-}
-    
   };
 
-  const handleDeleteClick = async(id) => {
-
+  const handleDeleteClick = async (id) => {
     try {
-      const response = await axios.delete(`admin/delete_one_video/${id}`)
+      const response = await axios.delete(`admin/delete_one_video/${id}`);
       console.log(response);
-      if(response){
-        if(response.data.message==="successfully deleted!!"){
-          toast.success("deleted!!")
-          setRows(rows.filter(row => row._id !== id));
-
+      if (response) {
+        if (response.data.message === "successfully deleted!!") {
+          toast.success("deleted!!");
+          setRows(rows.filter((row) => row._id !== id));
         }
       }
     } catch (error) {
-      toast.error("Please try again later!!")
+      toast.error("Please try again later!!");
     }
   };
 
-  
-
-  const handleEditClick = async(id) => {
-
-    togglePopupNew()
+  const handleEditClick = async (id) => {
+    togglePopupNew();
     // const response = await axios.post(admin/view_and_editVideo/${id})
     //   console.log(response);
     //   if(response){
@@ -141,95 +162,106 @@ try {
     //   toast.error("Please try again later!!")
     // }
   };
-   const [isEditing, setIsEditing] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
 
-   const handleEditClickandSave = () => {
-     setIsEditing(true);
-     // You can perform additional actions related to editing here if needed
-   };
+  const handleEditClickandSave = () => {
+    setIsEditing(true);
+    // You can perform additional actions related to editing here if needed
+  };
 
-   const [formDatass, setFormDatass] = useState({
-     title: "",
-     page: "",
-     //  category: "",
-   });
-   const [thumbnails, setThumbnails] = useState(null);
-   const [podcastVideo, setPodcastVideo] = useState(null);
-   const [errors, setErrors] = useState({});
+  const [formDatass, setFormDatass] = useState({
+    title: "",
+    page: "",
+    //  category: "",
+  });
+  const [thumbnails, setThumbnails] = useState(null);
+  const [podcastVideo, setPodcastVideo] = useState(null);
 
-   const handleTextChange = (e) => {
-     const { name, value } = e.target;
-     setFormDatass({
-       ...formDatass,
-       [name]: value,
-     });
-   };
 
-   const handleThumbnailChanged = (e) => {
-     const file = e.target.files[0];
-     setThumbnails(file);
-   };
+  const handleTextChange = (e) => {
+    const { name, value } = e.target;
+    setFormDatass({
+      ...formDatass,
+      [name]: value,
+    });
+  };
 
-   const handlePodcastVideoChange = (e) => {
-     const file = e.target.files[0];
-     setPodcastVideo(file);
-   };
+  const handleThumbnailChanged = (e) => {
+    const file = e.target.files[0];
+    setThumbnails(file);
+  };
 
-   const validateForm = () => {
-     let errors = {};
-     if (!formDatass.title) {
-       errors.title = "Title is required";
-     }
-     if (!formDatass.description) {
-       errors.description = "Description is required";
-     }
-     if (!formDatass.category) {
-       errors.category = "Category is required";
-     }
-     if (!thumbnails) {
-       errors.thumbnail = "Thumbnail is required";
-     }
-     if (!podcastVideo) {
-       errors.video = "Video is required";
-     }
-     setErrors(errors);
-     return Object.keys(errors).length === 0;
-     
-   };
+  const handlePodcastVideoChange = (e) => {
+    const file = e.target.files[0];
+    setPodcastVideo(file);
+  };
 
-   const handleSubmitt = async (e,id) => {
-     e.preventDefault();
-     console.log(id,"idddddddddddddddddddddddddddd");
-     try {
-       const isValid = 200;
-       if (isValid == 200) {
-         const formData = new FormData();
-         formData.append("title", formDatass.title);
-         formData.append("page", formDatass.page);
-         formData.append("category", formDatass.category);
-         formData.append("thumbnail", thumbnails);
-         formData.append("source", podcastVideo);
+    
+    const [updateError, setUpdateError] = useState({});
+  const handleSubmitt = async (e, id) => {
+    e.preventDefault();
+    console.log(id, "idddddddddddddddddddddddddddd");
+    
 
-         // Make your axios call here
-        //  const {Id} = id;
-        //  console.log(Id,"idddddddddddddddddddddddddddd");
-         console.log(formData, "podcasttttttttttttttttttttttttt");
-         const response = await axios.post(
-           `admin/view_and_editVideo/${id}`,
-           formData
-         );
-         console.log(response, "Response from server");
-       }else{
-        console.log("validation error");
-       }
-     } catch (error) {
-       console.log(error);
-     }
-     togglePopupEditnewone();
-   };
 
-  
+    const editErrors = {};
 
+    if (!formDatass.title.trim()) {
+      editErrors.title = "Title is required";
+    }
+    if(!formDatass.page){
+      editErrors.page = "Page selection is required";
+    }
+    if(!thumbnails){  
+      editErrors.thumbnail = "Thumbnail is required";
+    }
+    if(!podcastVideo){
+      editErrors.source = "Video file is required";
+    }
+
+    if(Object.keys(editErrors).length > 0) {
+      setUpdateError(editErrors);
+      return;
+    }
+    
+    const formData = new FormData();
+    formData.append("title", formDatass.title);
+    formData.append("page", formDatass.page);
+    formData.append("category", formDatass.category);
+    formData.append("thumbnail", thumbnails);
+    formData.append("source", podcastVideo);
+    
+    // Make your axios call here
+    //  const {Id} = id;
+    //  console.log(Id,"idddddddddddddddddddddddddddd");
+    console.log(formData, "podcasttttttttttttttttttttttttt");
+    try {
+        const response = await axios.post(
+          `admin/view_and_editVideo/${id}`,
+          formData
+        );
+        console.log(response, "Response from server");
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000);
+        if(response.data.message==="successfully updated!!"){
+          toast.success("successfully updated!!")
+        }
+      
+    } catch (error) {
+      console.log(error);
+    }
+    togglePopupEditnewone();
+  };
+  // const existingData = {
+  //   title: "title",
+  //   page: "page",
+  //   category: "category",
+  //   thumbnail: "thumbnail",
+  //   source: "source",
+  // };
+
+ 
   return (
     <div>
       <div className="video-add-main-container">
@@ -253,6 +285,9 @@ try {
                       }
                       placeholder="Enter the title"
                     />
+                    {errors.title && (
+                      <span className="error">{errors.title}</span>
+                    )}
                   </div>
                   <div className="select-page-videos">
                     <label>Select Page : </label>
@@ -269,6 +304,9 @@ try {
                       <option value="senses">Senses Resurrection</option>
                       <option value="oneone">One-On-One Session</option>
                     </select>
+                    {errors.page && (
+                      <span className="error">{errors.page}</span>
+                    )}
                   </div>
                 </div>
                 <div className="video-thumbnil-inputs">
@@ -279,6 +317,9 @@ try {
                     id="thumbnail"
                     onChange={handleSelectThumb}
                   />
+                  {errors.thumbnail && (
+                    <span className="error">{errors.thumbnail}</span>
+                  )}
                 </div>
                 <label>Upload Video</label>
                 <div className="video-admin-inputs">
@@ -298,6 +339,9 @@ try {
                     Upload a file
                   </label>
                 </div>
+                {errors.source && (
+                  <span className="error">{errors.source}</span>
+                )}
                 <div className="video-submit-btns">
                   <button type="submit">Submit</button>
                   <button type="button" onClick={togglePopup}>
@@ -337,11 +381,11 @@ try {
                         <button onClick={() => handleDeleteClick(row._id)}>
                           Delete <CgCloseO className="video-delete-new" />
                         </button>
-                        <button onClick={togglePopupEditnewone}>
+                        <button onClick={() => togglePopupEditnewone(row._id)}>
                           Edit <AiOutlineEdit className="video-edit" />
                         </button>
                       </div>
-                      {opn && (
+                      {currentEditId === row._id && (
                         <form
                           onSubmit={(e) => handleSubmitt(e, row._id)}
                           encType="multipart/form-data"
@@ -358,7 +402,9 @@ try {
                                 value={formDatass.title}
                                 onChange={handleTextChange}
                               />
-                              {errors.title && <span>{errors.title}</span>}
+                              {updateError.title && (
+                                <span>{updateError.title}</span>
+                              )}
                             </div>
                             <div>
                               <label>Page</label>
@@ -368,7 +414,9 @@ try {
                                 value={formDatass.page}
                                 onChange={handleTextChange}
                               />
-                              {errors.page && <span>{errors.page}</span>}
+                              {updateError.page && (
+                                <span>{updateError.page}</span>
+                              )}
                             </div>
                             {/* <div>
                             <label>Category</label>
@@ -389,8 +437,8 @@ try {
                                 accept="image/*"
                                 onChange={handleThumbnailChanged}
                               />
-                              {errors.thumbnail && (
-                                <span>{errors.thumbnail}</span>
+                              {updateError.thumbnail && (
+                                <span>{updateError.thumbnail}</span>
                               )}
                             </div>
                             <div>
@@ -402,7 +450,9 @@ try {
                                 accept="video/*"
                                 onChange={handlePodcastVideoChange}
                               />
-                              {errors.video && <span>{errors.video}</span>}
+                              {updateError.source && (
+                                <span>{updateError.source}</span>
+                              )}
                             </div>
                           </div>
                           <button type="submit">Submit</button>

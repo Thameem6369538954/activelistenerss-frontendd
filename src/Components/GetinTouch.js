@@ -72,11 +72,18 @@ const GetinTouch = () => {
       if(response){
 
         toast.success("Successfully submitted!!");
+        setFormData({
+          name: "",
+          email: "",
+          message: "",
+        });
       }else{
 
         toast.error("Failed to submit!!");
       }
     }
+    
+
   };
 
   return (

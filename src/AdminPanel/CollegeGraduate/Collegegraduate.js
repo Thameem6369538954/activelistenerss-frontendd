@@ -1,7 +1,19 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from "react";
 import './Collegegraduate.css'
+import { useReactToPrint } from "react-to-print";
+
 
 const Collegegraduate = () => {
+   const componentdata = useRef();
+     const openPdfInNewTab = (url) => {
+       window.open(url, "_blank");
+     };
+
+     const generatePDF = useReactToPrint({
+       content: () => componentdata.current,
+       documentTitle: "hiring Data",
+       onAfterPrint: () => alert("Print success"),
+     });
     const [data, setData] = useState([
       {
         id: 1,
@@ -130,11 +142,13 @@ const Collegegraduate = () => {
       <div className="Collegegraduate-main">
         <div className="Collegegraduate-top-btn">
           <h1>College Graduates</h1>
-          <button>All</button>
+          <button onClick={generatePDF}>Print</button>
         </div>
 
         <div className="Collegegraduate-table">
           <div className="revenue-container">
+                        <div ref={componentdata}>
+
             {filteredData.length === 0 ? (
               <div className="no-data">
                 <p>{searchInput} data found</p>
@@ -199,6 +213,7 @@ const Collegegraduate = () => {
                 </table>
               </div>
             )}
+            </div>
           </div>
         </div>
       </div>

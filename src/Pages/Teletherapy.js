@@ -77,7 +77,7 @@ const Teletherapy = () => {
                 <div className="card">
                   <div className="card-text">
                     <div>
-                      <img src={Plan} alt="" />
+                      <img src={data.package_icon} alt="" />
                     </div>
                     <div>
                       <p>{data.days_plan} Days</p>

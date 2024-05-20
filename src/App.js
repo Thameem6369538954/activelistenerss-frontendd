@@ -58,6 +58,13 @@ import Collegeandschoolform from "./Components/Collegeandschoolform.js";
 import Loginwithotp from "./Pages/Loginwithotp.js";
 import Errorpage from "./Components/Errorpage.js";
 import Adminpanel from "./AdminLogin/AdminLogin/Adminpanel.js";
+import Success from "./Components/Success.js"
+import Failed from "./Components/Failed.js";
+import Privacy_policy from "./Pages/Privacy_policy.js";
+import Terms_and_condition from "./Pages/Terms_and_condition.js";
+import Cancellation_and_refunds from "./Pages/Cancellation_and_refunds.js";
+import Customer_support from "./Pages/Customer_support.js";
+
 function App() {
   const [loading, setLoading] = useState(false);
   useEffect(() => {
@@ -71,6 +78,18 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/Customer_support" element={<Customer_support />} />
+          <Route
+            path="/Cancellation_and_refunds"
+            element={<Cancellation_and_refunds />}
+          />
+          <Route
+            path="/Terms_and_condition"
+            element={<Terms_and_condition />}
+          />
+          <Route path="/Privacy_policy" element={<Privacy_policy />} />
+          <Route path="/Success" element={<Success />} />
+          <Route path="/Failed" element={<Failed />} />
           <Route path="/Adminpanelhome/*" element={<Adminpanelhome />} />
           <Route path="*" element={<Errorpage />} />
           <Route path="/Loginwithotp" element={<Loginwithotp />} />

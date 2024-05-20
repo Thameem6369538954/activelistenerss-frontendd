@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from "react";
 import Button from 'react-bootstrap/Button';
 import './Complimetarycall.css';
 import Dropdown from 'react-bootstrap/Dropdown';
@@ -19,6 +19,16 @@ import { LiaUserEditSolid } from 'react-icons/lia';
 import { RiDeleteBin2Line } from 'react-icons/ri';
 
 const Complimetarycall = () => {
+   const componentdata = useRef();
+     const openPdfInNewTab = (url) => {
+       window.open(url, "_blank");
+     };
+
+     const generatePDF = useReactToPrint({
+       content: () => componentdata.current,
+       documentTitle: "hiring Data",
+       onAfterPrint: () => alert("Print success"),
+     });
   const [show, setShow] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(4); // Change the number of items per page as needed
@@ -90,7 +100,9 @@ const Complimetarycall = () => {
     <div>
       <div className="complimentary-admin">
         <h1>SPEAK EASY - 15 Minutes Complimentary Call</h1>
-        <Button variant="warning" size="lg">Download Report</Button>
+        <Button variant="warning" size="lg" onClick={generatePDF}>
+          Download Report
+        </Button>
       </div>
 
       <div className="filtering-complimentary">
@@ -129,9 +141,11 @@ const Complimetarycall = () => {
           </div>
         </div>
       </div>
-      <br/>
+      <br />
 
       <div className="comp-table">
+                    <div ref={componentdata}>
+
         <Table responsive>
           <thead>
             <tr>
@@ -157,7 +171,21 @@ const Complimetarycall = () => {
                 <td>{item.assignedPerson}</td>
                 <td>{item.duration}</td>
                 <td>
-                  <div className={`bg-${item.status === 'Completed' ? 'success' : item.status === 'Pending' ? 'warning' : 'danger'} p-2 text-${item.status === 'Completed' ? 'success' : item.status === 'Pending' ? 'warning' : 'danger'} bg-opacity-25`}>
+                  <div
+                    className={`bg-${
+                      item.status === "Completed"
+                        ? "success"
+                        : item.status === "Pending"
+                        ? "warning"
+                        : "danger"
+                    } p-2 text-${
+                      item.status === "Completed"
+                        ? "success"
+                        : item.status === "Pending"
+                        ? "warning"
+                        : "danger"
+                    } bg-opacity-25`}
+                  >
                     {item.status}
                   </div>
                 </td>
@@ -173,13 +201,17 @@ const Complimetarycall = () => {
             ))}
           </tbody>
         </Table>
+        </div>
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
             <Modal.Title>Assign Person</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <Form>
-              <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Group
+                className="mb-3"
+                controlId="exampleForm.ControlInput1"
+              >
                 <Form.Label>Name :</Form.Label>
                 <Form.Control
                   type="text"
@@ -188,10 +220,13 @@ const Complimetarycall = () => {
                   autoFocus
                 />
               </Form.Group>
-              <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                <br/>
+              <Form.Group
+                className="mb-3"
+                controlId="exampleForm.ControlTextarea1"
+              >
+                <br />
                 <Modal.Title>Change Call-Status</Modal.Title>
-                <br/>
+                <br />
                 <Form.Label>Change Status :</Form.Label>
                 <div className="status-buttons">
                   <Button variant="success">Completed</Button>
@@ -213,7 +248,7 @@ const Complimetarycall = () => {
       </div>
 
       <div>
-        <br/>
+        <br />
         <Stack spacing={2}>
           <Pagination
             count={Math.ceil(data.length / itemsPerPage)}

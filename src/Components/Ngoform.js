@@ -110,6 +110,17 @@ const validate = (data) => {
             toast.success(
               " Your Form Submitted successfully !! Thanks for your interest in joining our team."
             );
+             setFormData({
+               name_of_organization: "",
+               year_of_establishment: "",
+               number_of_offices: "",
+               email_id: "",
+               telephoneNumber: "",
+               websiteURL: "",
+               contact_person_name: "",
+               contact_person_designation: "",
+               contact_person_phoneNumber: "",
+             });
           }
         }
       } catch (error) {

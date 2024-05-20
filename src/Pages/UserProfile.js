@@ -24,7 +24,7 @@ import { MdAddCircleOutline } from "react-icons/md";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import { VscClose } from "react-icons/vsc";
 import { IoSettingsSharp } from "react-icons/io5";
-
+import Swal from "sweetalert2";
 // import axios from "../Utils/Baseurl.js";
 const UserProfile = () => {
   const dispatch = useDispatch();
@@ -88,6 +88,60 @@ const UserProfile = () => {
   const togglePopup = () => {
     setShowPopup(!showPopup);
   };
+
+const handleDeleteAccount = async () => {
+  // Use SweetAlert for confirmation dialog
+  console.log("delete account button clicked");
+  const swalWithBootstrapButtons = Swal.mixin({
+    customClass: {
+      confirmButton: "btn btn-success",
+      cancelButton: "btn btn-danger",
+    },
+    buttonsStyling: false,
+  });
+  swalWithBootstrapButtons
+    .fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, delete it!",
+      cancelButtonText: "No, cancel!",
+      reverseButtons: true,
+    })
+    .then(async (result) => {
+      // Make the arrow function async
+      if (result.isConfirmed) {
+              const token = localStorage.getItem("accessToken");
+
+        try {
+          const response = await axios.delete(`/delete_account/${user._id}`, {
+            headers: {
+              Authorization: `Bearer ${token}`, // Add Bearer prefix to token
+            },
+          });
+          console.log(response, "im the res");
+          dispatch(logout());
+          navigate("/");
+          swalWithBootstrapButtons.fire({
+            title: "Deleted!",
+            text: "Your account has been deleted.",
+            icon: "success",
+          });
+        } catch (error) {
+          console.error("Error deleting account:", error);
+          // Handle error here, show error message to user if needed
+        }
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        swalWithBootstrapButtons.fire({
+          title: "Cancelled",
+          text: "Your account is safe :)",
+          icon: "error",
+        });
+      }
+    });
+};
+
 
   // update
 
@@ -159,7 +213,9 @@ const UserProfile = () => {
           // toast.success("profile updated Successfully.")
           setShowPopup(false);
           setUserDataedit({});
-          window.location.reload();
+          setTimeout(() => {
+            window.location.reload();
+          }, 2000);
         }
       } else {
         toast.error("error");
@@ -390,6 +446,10 @@ const UserProfile = () => {
                  setSettings(!settings);
                };
 
+
+              
+
+
   return !noToken ? (
     <div>
       <Navbar />
@@ -445,7 +505,7 @@ const UserProfile = () => {
                               <li>Update Your Password</li>
                               <li onClick={togglePopup}>Update Your Profile</li>
                               <li>Logout</li>
-                              <li>Delete My Accound</li>
+                              <li onClick={handleDeleteAccount}>Delete My Accound</li>
                             </ul>
                           </div>
                         )}

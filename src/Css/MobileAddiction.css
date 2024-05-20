@@ -1,3 +1,4 @@
+
 .mobile-addiction-main-container{
   overflow: hidden;
 }
@@ -5,6 +6,10 @@
   width: 30%;
   height: 200px;
   border-radius: 20px;
+}
+.gaming-video-top{
+  width: 30%;
+  border-radius: 10px;
 }
 .close-calendly-addiction{
   position: absolute;
@@ -168,11 +173,13 @@
 /* .mobile-addiction-yellow-box img{
     width: 250px !important;
 } */
-.mobile-addiction-yellow-box img:nth-child(1){
-  position: absolute;
-background-color: rebeccapurple;
-width: 100px;
-/* display: none; */
+.podcast-ylo img {
+    position: absolute;
+    /* background-color: rebeccapurple; */
+    width: 100px;
+    /* display: none; */
+    margin-top: -87px;
+    margin-left: 58px;
 }
 .mobile-addiction-yellow-box img:nth-child(2){
   position: absolute;
@@ -186,17 +193,17 @@ h4 {
   align-items: center;
 }
 .over {
-  /* margin-top: 90%; */
+  /* margin-top: 100px; */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
 }
 .over img {
-  /* background-color: red; */
-  /* margin-top: 45%; */
-  width: 170px;
-  border-radius: 20px;
+    width: 150px;
+    border-radius: 20px;
+    margin: 10px;
 }
 .podcast-red-mob {
   /* background-color: yellow; */

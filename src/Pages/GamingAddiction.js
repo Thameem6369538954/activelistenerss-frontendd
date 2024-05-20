@@ -22,7 +22,7 @@ import Pinkmen from "../SmallElements/Pinkmen.png";
 import HandYellow from "../SmallElements/HandYellow.png";
 import BrinBuzzle from "../SmallElements/BrinBuzzle.png";
 import Breadcrumps from "../Components/Breadcrumps";
-
+import WHYAL from "../Videos/WHYAL.mp4";
 const GamingAddiction = () => {
   
     const [wantComplimentaryCall, setWantComplimentaryCall] = useState(false);
@@ -67,14 +67,17 @@ const GamingAddiction = () => {
                 data-aos-duration="1000"
                 alt=""
               /> */}
-              <iframe
-                className="gaming-videos-adi"
-                src="https://www.youtube.com/embed/MSzppjFe1iM?si=-Bm6Z01t75zFvvZz"
-                title="YouTube video player"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
+              <video
+                controls // Ensure controls are enabled for user interaction
+                className="gaming-video-top"
+                // onClick={togglePlay}
+                // onPlay={() => setIsPlaying(true)}
+                // onPause={() => setIsPlaying(false)}
+              >
+                <source src={WHYAL} type="video/mp4" />{" "}
+                {/* Make sure src and type are correctly set */}
+                Your browser does not support the video tag.
+              </video>
             </div>
             <div className="btn-compo">
               {wantComplimentaryCall ? (
@@ -133,14 +136,17 @@ const GamingAddiction = () => {
                   alt=""
                 /> */}
 
-                <iframe
-                  className="adpatation-to-mobile-yt-vide"
-                  src="https://www.youtube.com/embed/MSzppjFe1iM?si=-Bm6Z01t75zFvvZz"
-                  title="YouTube video player"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
+                <video
+                  controls // Ensure controls are enabled for user interaction
+                  className="early-age-video"
+                  // onClick={togglePlay}
+                  // onPlay={() => setIsPlaying(true)}
+                  // onPause={() => setIsPlaying(false)}
+                >
+                  <source src={WHYAL} type="video/mp4" />{" "}
+                  {/* Make sure src and type are correctly set */}
+                  Your browser does not support the video tag.
+                </video>
               </div>
               {/* <img
                 src={Rounda}
@@ -258,13 +264,12 @@ const GamingAddiction = () => {
                         <h2>Aggression or violence</h2>
                       </li>
                       <li>
-                    <p>
-                      Exposure to violent games desensitizes, fosters
-                      aggression, and triggers conflicts.
-                    </p>
-                    </li>
+                        <p>
+                          Exposure to violent games desensitizes, fosters
+                          aggression, and triggers conflicts.
+                        </p>
+                      </li>
                     </ul>
-
                   </div>
 
                   <div className="observed-result-box-align">
@@ -285,31 +290,18 @@ const GamingAddiction = () => {
                 </div> */}
 
                 <div className="mobile-addiction-yellow-box">
-                  <img
-                    src={PodcastRed}
-                    style={{
-                      width: "100px",
-                      position: "absolute",
-                      marginLeft: "15%",
-                      marginTop: "-16%",
-                    }}
-                    alt=""
-                  />
-                  <img
-                    src={cover}
-                    style={{
-                      width: "200px",
-                      marginLeft: "1%",
-                      borderRadius: "30px",
-                    }}
-                    alt=""
-                  />
-                  <span>Recommended Podcast</span>
-                  <h4>Are you Addicted to Mobile phone?</h4>
-                  <Link to="/podcast">
-                    {" "}
-                    <button>Watch Now</button>
-                  </Link>
+                  <div className="podcast-ylo">
+                    <img src={PodcastRed} alt="" />
+                  </div>
+                  <div className="over">
+                    <img src={cover} alt="" />
+                    <span>Recommended Podcast</span>
+                    <h4>Are you Addicted to Mobile phone?</h4>
+                    <Link to="/podcast">
+                      {" "}
+                      <button>Watch Now</button>
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>

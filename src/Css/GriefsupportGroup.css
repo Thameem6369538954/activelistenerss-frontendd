@@ -387,6 +387,9 @@ article {
   align-items: center;
   justify-content: center;
 }
+.caro-heading-tag-a img{
+ width: 40%;
+}
 @media screen and (max-width: 600px) {
      .gs-header-inner-text img {
         width: 13px;
@@ -604,10 +607,10 @@ article {
     font-size: 16px;
   }
   .palette {
-    display: inline;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     height: 300px;
-    width: 50%;
+    width: 100%;
     border-radius: 15px;
     /* overflow: hidden; */
     margin: 10px;

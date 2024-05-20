@@ -1,7 +1,17 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from "react";
 import "./Ngoandpsycologist.css"
 import { useReactToPrint } from "react-to-print";
 const Ngo = () => {
+   const componentdata = useRef();
+     const openPdfInNewTab = (url) => {
+       window.open(url, "_blank");
+     };
+
+     const generatePDF = useReactToPrint({
+       content: () => componentdata.current,
+       documentTitle: "hiring Data",
+       onAfterPrint: () => alert("Print success"),
+     });
     const [data, setData] = useState([
       {
         id: 1,
@@ -92,7 +102,7 @@ const Ngo = () => {
       <div className="Ngoandpsycologist-main-conatainer">
         <div className="Ngoandpsycologist-top-btns">
           <h1>NGO Data</h1>
-          <button>All</button>
+          <button onClick={generatePDF}>Print</button>
         </div>
         <div className="ngo-psycologist-table">
           <div className="getintouch-top">
@@ -120,12 +130,15 @@ const Ngo = () => {
           <div className="ngo-wid">
             <div className="getintouch-form">
               <div className="revenue-container">
+                          
+
                 {filteredData.length === 0 ? (
                   <div className="no-data">
                     <p>{searchInput} data found</p>
                   </div>
                 ) : (
                   <div style={{ overflowX: "auto" }}>
+                      <div ref={componentdata}>
                     <table>
                       <thead>
                         <tr>
@@ -167,6 +180,7 @@ const Ngo = () => {
                         ))}
                       </tbody>
                     </table>
+                    </div>
                   </div>
                 )}
               </div>

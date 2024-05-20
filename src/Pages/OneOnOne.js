@@ -181,9 +181,11 @@ const OneOnOne = () => {
       {wantComplimentaryCall ? (
         <></>
       ) : (
+        <div className="tele-buttons">
         <button className="get-support" onClick={appointmentSubmit}>
           Schedule Now
         </button>
+        </div>
       )}
 
       <GetinTouch />

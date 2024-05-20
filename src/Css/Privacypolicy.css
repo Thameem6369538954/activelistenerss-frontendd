@@ -1,0 +1,127 @@
+.privacypolicy-main-container{
+width: 100%;
+height: auto;
+ background-image: url("../Images/ALWhitelogo.png");
+        background-attachment: fixed;
+        background-position: center;
+        background-size: 50%;
+        background-repeat: no-repeat;
+        width: 100%;
+        height: auto;
+        background-color: #f2f2f2;
+}
+.privacypolicy{
+    margin: 20px;
+}
+.privacypolicy h1{
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}   
+.privacypolicy h2{
+    text-align: left;
+    font-family: "Questrial", sans-serif;
+}   
+.privacypolicy-ul li{
+    font-family: "Questrial", sans-serif;
+}
+
+
+
+                    /* Customer Support CSS */
+
+
+
+.customer-suppot-main {
+  padding: 10px;
+  margin: 20px;
+      background-image: url("../Images/ALWhitelogo.png");
+        background-attachment: fixed;
+        background-position: center;
+        background-size: 50%;
+        background-repeat: no-repeat;
+        width: 100%;
+        height: auto;
+        background-color: #f2f2f2;
+}
+.customer-suppot-main h1{
+  font-family: "Questrial", sans-serif; 
+  text-align: center;
+  margin: 20px;
+}
+.customer-suppot-main h2{
+  font-family: "Questrial", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  color: black;
+}
+
+
+    /* Terms_and_condition css */
+
+
+    .Terms_and_condition{
+        margin: 20px;   
+    }
+    .Terms_and_condition-main{
+        background-image: url("../Images/ALWhitelogo.png");
+        background-attachment: fixed;
+        background-position: center;
+        background-size: 50%;
+        background-repeat: no-repeat;
+        width: 100%;
+        height: auto;
+        background-color: #f2f2f2;
+    }
+    .Terms_and_condition-main h2{
+        text-align: left;  
+        font-family: "Questrial", sans-serif;
+        font-size: 25px;
+    }
+      .Terms_and_condition-main p{
+        font-family: "Questrial", sans-serif;
+        font-size: 20px;
+        margin: 20px;
+      }
+    .Terms_and_condition-main h1{
+        margin: 20px; 
+        text-align: center;  
+        font-family: "Questrial", sans-serif;
+    }
+    .Terms_and_condition-ul li{
+        font-family: "Questrial", sans-serif;
+    }
+
+
+            /* Cancellation_and_refunds-main css */
+
+.Cancellation_and_refunds-main{
+          background-image: url("../Images/ALWhitelogo.png");
+        background-attachment: fixed;
+        background-position: center;
+        background-size: 50%;
+        background-repeat: no-repeat;
+        width: 100%;
+        height: auto;
+        background-color: #f2f2f2;
+}
+.Cancellation_and_refunds-main h1{
+    font-family: "Questrial", sans-serif;
+    text-align: center;
+    margin: 20px;
+
+}
+.Cancellation_and_refunds-main span{
+     font-family: "Questrial", sans-serif;
+    font-size: 20px;
+   margin: 20px;
+}
+.Cancellation_and_refunds-main p{
+     font-family: "Questrial", sans-serif;
+    font-size: 20px;
+   margin: 20px;
+}
+.Cancellation_and_refunds p{
+     font-family: "Questrial", sans-serif;
+    font-size: 18px;
+   margin: 20px;
+}

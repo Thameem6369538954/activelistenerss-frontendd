@@ -69,6 +69,15 @@ const Psycologistform = () => {
                     toast.error("something went wrong");
                 }else{
                     toast.success(" Your Form Submitted successfully !! Thanks for your interest in joining our team.");
+                    setFormData({
+                      name: "",
+                      email: "",
+                      mobile: "",
+                      gender: "",
+                      state: "",
+                      city: "",
+                      
+                    })
                 }
             }
         } catch (error) {

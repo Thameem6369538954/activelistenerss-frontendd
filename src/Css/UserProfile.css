@@ -4,6 +4,9 @@
   align-items: center;
   justify-content: center;
 }
+.cropping{
+  position: absolute;
+}
 .up-settings{
   display: flex;
   align-items: center;

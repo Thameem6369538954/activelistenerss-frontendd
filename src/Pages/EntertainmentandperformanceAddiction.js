@@ -22,7 +22,7 @@ import Pinkmen from "../SmallElements/Pinkmen.png";
 import HandYellow from "../SmallElements/HandYellow.png";
 import BrinBuzzle from "../SmallElements/BrinBuzzle.png";
 import Breadcrumps from "../Components/Breadcrumps";
-
+import WHYAL from "../Videos/WHYAL.mp4";
 
 const EntertainmentandperformanceAddiction = () => {
   
@@ -138,14 +138,17 @@ const EntertainmentandperformanceAddiction = () => {
                   }}
                   alt=""
                 /> */}
-                <iframe
-                  className="addiction-videos"
-                  src="https://www.youtube.com/embed/iwNAe9K2NAc?si=0HUgNusCBHGP40Kn"
-                  title="YouTube video player"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
+                <video
+                  controls // Ensure controls are enabled for user interaction
+                  className="early-age-video"
+                  // onClick={togglePlay}
+                  // onPlay={() => setIsPlaying(true)}
+                  // onPause={() => setIsPlaying(false)}
+                >
+                  <source src={WHYAL} type="video/mp4" />{" "}
+                  {/* Make sure src and type are correctly set */}
+                  Your browser does not support the video tag.
+                </video>
               </div>
               {/* <img
                 src={Rounda}
@@ -240,33 +243,19 @@ const EntertainmentandperformanceAddiction = () => {
                   <button>Take Test</button>
                   <img src={Maskgroup} className="maskgroup-mob" alt="" />
                 </div> */}
-
                 <div className="mobile-addiction-yellow-box">
-                  <img
-                    src={PodcastRed}
-                    style={{
-                      width: "100px",
-                      position: "absolute",
-                      marginLeft: "15%",
-                      marginTop: "-16%",
-                    }}
-                    alt=""
-                  />
-                  <img
-                    src={cover}
-                    style={{
-                      width: "200px",
-                      marginLeft: "1%",
-                      borderRadius: "30px",
-                    }}
-                    alt=""
-                  />
-                  <span>Recommended Podcast</span>
-                  <h4>Are you Addicted to Mobile phone?</h4>
-                  <Link to="/podcast">
-                    {" "}
-                    <button>Watch Now</button>
-                  </Link>
+                  <div className="podcast-ylo">
+                    <img src={PodcastRed} alt="" />
+                  </div>
+                  <div className="over">
+                    <img src={cover} alt="" />
+                    <span>Recommended Podcast</span>
+                    <h4>Are you Addicted to Mobile phone?</h4>
+                    <Link to="/podcast">
+                      {" "}
+                      <button>Watch Now</button>
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>

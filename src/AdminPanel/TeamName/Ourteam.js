@@ -87,6 +87,9 @@ const [members, setMembers] = useState([]);
      const response = await axios.post("admin/add_member", formData);
      console.log(response, "oooooooooooooooooooooo");
      togglePopup();
+     setTimeout(() => {
+       window.location.reload();
+     }, 2000);
    } catch (error) {
      console.log(error);
    }
@@ -121,14 +124,16 @@ const [members, setMembers] = useState([]);
     // ]);
     const [editingRowId, setEditingRowId] = useState(null);
     const [editedData, setEditedData] = useState({});
+     const handleCancelEdit = (id) => {
+       setEditingRowId(null); // Reset editingRowId to null to close the form
+     };
 
     // const handleDeleteClick = (id) => {
     //   setMembers(members.filter((row) => row._id !== id));
     // };
 
-    const handleEditClick = (members) => {
-      setEditingRowId(members._id);
-      setEditedData(members);
+    const handleEditClick = (id) => {
+      setEditingRowId(id);
     };
  const handleSaveEdit = () => {
         const updatedRows = members.map((row) => {
@@ -161,9 +166,7 @@ const [members, setMembers] = useState([]);
     //     reader.readAsDataURL(file);
     // };
 
-    const handleCancelEdit = () => {
-        setEditingRowId(null); // Reset editingRowId to null to close the form
-    };
+   
 
     const currentDate = new Date().toISOString().slice(0, 10);
  const [filteredRows, setFilteredRows] = useState(members);
@@ -203,6 +206,78 @@ const [members, setMembers] = useState([]);
       toast.error("Failed to delete member");
     }
   };
+
+
+// EDIT FORM FOR MEMBERS.........................................................................
+
+
+             const [formValues, setFormValues] = useState({
+               name: "",
+               designation: "",
+               socialmediaLink: "",
+             });
+
+             const [audioFile, setAudioFile] = useState(null);
+             const [imageFile, setImageFile] = useState(null);
+
+             const [errors, setErrors] = useState({});
+
+             const validate = () => {
+               const newErrors = {};
+               if (!formValues.name)
+                 newErrors.name = "Employee Name is required";
+               if (!formValues.designation)
+                 newErrors.designation = "Designation is required";
+               if (!formValues.socialmediaLink)
+                 newErrors.socialmediaLink = "Social Media Link is required";
+               if (!audioFile) newErrors.audio = "Audio file is required";
+               if (!imageFile) newErrors.image = "Image file is required";
+               return newErrors;
+             };
+
+             const handleChanges =  (e) => {
+               const { name, value } = e.target;
+               setFormValues({
+                 ...formValues,
+                 [name]: value,
+               });
+             };
+
+             const handleAudioChange = (e) => {
+               setAudioFile(e.target.files[0]);
+             };
+
+             const handleImageChanges = (e) => {
+               setImageFile(e.target.files[0]);
+             };
+
+             const handleSubmitt = async (e,id) => {
+               e.preventDefault();
+               const newErrors = validate();
+               try{ if (Object.keys(newErrors).length > 0) {
+                 setErrors(newErrors);
+                 return;
+               }
+               const formData = new FormData();
+               formData.append("name", formValues.name);
+               formData.append("designation", formValues.designation);
+               formData.append("socialmediaLink", formValues.socialmediaLink);
+               formData.append("audio", audioFile);
+               formData.append("image", imageFile);
+
+               const response = await axios.post(
+                  `admin/update_member/${id}`,
+                 formData
+               );
+               console.log(response, "oooooooooooooooooooooo");
+              }catch(error){
+                console.log(error);
+              }
+              
+             };
+
+
+
   return (
     <div>
       <div className="Ourteam-main-conainer">
@@ -335,22 +410,92 @@ const [members, setMembers] = useState([]);
                         <p>{row.socialmediaLink}</p>
                       </td>
                       <td>
-                        {editingRowId === row.id ? (
+                        {/* {editingRowId === row.id ? (
                           <div className="action-buttons-save">
                             <button onClick={handleSaveEdit}>
                               Save <LiaSaveSolid className="video-save" />
                             </button>
                           </div>
-                        ) : (
-                          <div className="action-buttons">
-                            <button onClick={() => handleDeleteClick(row._id)}>
-                              Delete <CgCloseO className="video-delete-new" />
-                            </button>
-                            <button onClick={() => handleEditClick(row)}>
-                              Edit <AiOutlineEdit className="video-edit" />
-                            </button>
-                          </div>
-                        )}
+                        ) : ( */}
+                        <div className="action-buttons">
+                          <button onClick={() => handleDeleteClick(row._id)}>
+                            Delete <CgCloseO className="video-delete-new" />
+                          </button>
+                          <button onClick={() => handleEditClick(row._id)}>
+                            Edit <AiOutlineEdit className="video-edit" />
+                          </button>
+                          {editingRowId === row._id && (
+                            <form
+                              onSubmit={(e) => handleSubmitt(e, row._id)}
+                              encType="multipart/form-data"
+                            >
+                              <div className="video-top-inputs">
+                                <div>
+                                  <label>Employee Name :</label>
+                                  <input
+                                    type="text"
+                                    placeholder="Enter the name"
+                                    name="name"
+                                    value={formValues.name}
+                                    onChange={handleChanges}
+                                  />
+                                  {errors.name && <span>{errors.name}</span>}
+                                </div>
+                                <div>
+                                  <label>Designation:</label>
+                                  <input
+                                    type="text"
+                                    placeholder="Enter the designation"
+                                    name="designation"
+                                    value={formValues.designation}
+                                    onChange={handleChanges}
+                                  />
+                                  {errors.designation && (
+                                    <span>{errors.designation}</span>
+                                  )}
+                                </div>
+                                <div>
+                                  <label>Social Media Link:</label>
+                                  <input
+                                    type="text"
+                                    placeholder="Enter the social media link"
+                                    name="socialmediaLink"
+                                    value={formValues.socialmediaLink}
+                                    onChange={handleChanges}
+                                  />
+                                  {errors.socialmediaLink && (
+                                    <span>{errors.socialmediaLink}</span>
+                                  )}
+                                </div>
+                              </div>
+                              <div className="video-thumbnil-inputs">
+                                <label>Audio</label>
+                                <input
+                                  type="file"
+                                  name="audio"
+                                  onChange={handleAudioChange}
+                                />
+                                {errors.audio && <span>{errors.audio}</span>}
+                              </div>
+                              <div className="video-thumbnil-inputs">
+                                <label>Image</label>
+                                <input
+                                  type="file"
+                                  name="image"
+                                  onChange={handleImageChanges}
+                                />
+                                {errors.image && <span>{errors.image}</span>}
+                              </div>
+                              <div className="video-submit-btns">
+                                <button type="submit">Submit</button>
+                                <button type="button" onClick={togglePopup}>
+                                  Cancel
+                                </button>
+                              </div>
+                            </form>
+                          )}
+                        </div>
+                        {/* )} */}
                       </td>
                       <td>
                         <label className="switch">
@@ -363,46 +508,6 @@ const [members, setMembers] = useState([]);
                 </tbody>
               )}
             </table>
-            {editingRowId && (
-              <form>
-                <div className="edit-form">
-                  <div className="edit-form-cancel">
-                    <button type="button" onClick={handleCancelEdit}>
-                      Cancel
-                    </button>
-                  </div>
-                  <div>
-                    <label>image</label>
-                    <input
-                      type="file"
-                      accept="image/*"
-                      onChange={handleImageChange}
-                    />
-                  </div>
-
-                  <div>
-                    <label>Title :</label>
-                    <input
-                      type="text"
-                      name="column3"
-                      value={editedData.column3}
-                      onChange={handleInputChanged}
-                    />
-                  </div>
-                  <div>
-                    <label>Page Name :</label>
-                    <input
-                      type="text"
-                      name="column4"
-                      value={editedData.column4}
-                      onChange={handleInputChanged}
-                    />
-                  </div>
-                </div>
-
-                <div></div>
-              </form>
-            )}
           </div>
         </div>
       </div>

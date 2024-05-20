@@ -13,6 +13,7 @@ import MyChart from "../../Components/MyChart";
 import DoughnutChart from "../../Components/DoughnutChart.js";
 import axios from "../../Utils/Baseurl.js";
 import { toast } from "react-toastify";
+import Hasyaa from "../../Katha/Hasya/Hasya.js"
 const Daseboard = () => {
    const [userCount, setUserCount] = useState(0);
    useEffect(() => {
@@ -36,6 +37,7 @@ const Daseboard = () => {
    }, []);
   return (
     <div>
+      {/* <Hasyaa /> */}
       <div className="dase-main-container">
         <h2>Dashboard</h2>
         <div className="dase-borad-top-box-container">

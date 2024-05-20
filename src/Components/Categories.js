@@ -1,4 +1,4 @@
-import React from "react";
+import React,{ useState } from "react";
 import "../Css/Categories.css";
 import emoji from "../Images/emoji.png";
 import chat from "../Images/chat.png";
@@ -7,7 +7,15 @@ import community from "../Images/community.png";
 import Static from "../Images/Static.png";
 import Elements from "../Images/Elements.png";
 import { NavLink } from "react-router-dom";
+import WHYAL from "../Videos/WHYAL.mp4";
+import { MdPlayCircleFilled } from "react-icons/md";
 const Categories = () => {
+    const [isPlaying, setIsPlaying] = useState(false);
+
+    const togglePlay = () => {
+      setIsPlaying(!isPlaying);
+    };
+
   const scrollToTop = () => {
     window.scrollTo(0, 0);
   };
@@ -15,12 +23,11 @@ const Categories = () => {
     <div className="categories-main-holecontainer">
       <div className="puzzle-boy">
         <div className="imsha">
-        <div className="bg" data-aos="zoom-in" data-aos-duration="1000">
-          <span>Services we Offer</span>
-          <p>Our Core</p>
-          <h1>Discoveries</h1>
-        </div>
-
+          <div className="bg" data-aos="zoom-in" data-aos-duration="1000">
+            <span>Services we Offer</span>
+            <p>Our Core</p>
+            <h1>Discoveries</h1>
+          </div>
         </div>
         <div className="element">
           <img
@@ -52,15 +59,38 @@ const Categories = () => {
       <div className="categories-main">
         <div className="cate-yellow-box">
           <div className="Hoodi">
-            {/* <img src={Static} alt="" /> */}
-            <iframe
-              className="cate-video"
-              src="https://www.youtube.com/embed/rcxd7w9PryE?si=ZJUIHyOtmVaxFrHK"
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
+            <div style={{ position: "relative", width: "100%" }}>
+              <video
+                controls
+                className="header-video"
+                onClick={togglePlay}
+                onPlay={() => setIsPlaying(true)}
+                onPause={() => setIsPlaying(false)}
+              >
+                <source src={WHYAL} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              <div>
+                {!isPlaying && (
+                  <div
+                    style={{
+                      position: "absolute",
+                      top: "50%",
+                      left: "50%",
+                      transform: "translate(-50%, -50%)",
+                      cursor: "pointer",
+                      // width:"20px"
+                    }}
+                    className="play-center-btn"
+                    onClick={togglePlay}
+                  >
+                    <div>
+                      <MdPlayCircleFilled onClick={togglePlay} />
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
         </div>
         <div className="cate-left-box">
