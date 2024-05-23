@@ -5,6 +5,7 @@ import { AiOutlineEdit } from "react-icons/ai";
 import { LiaSaveSolid } from "react-icons/lia";
 import axios from "../../Utils/Baseurl";
 import { toast } from "react-toastify";
+import { IoMdCloseCircleOutline } from "react-icons/io";
 
 const Videoaddadmin = () => {
   const [rows, setRows] = useState([]);
@@ -149,18 +150,6 @@ const Videoaddadmin = () => {
 
   const handleEditClick = async (id) => {
     togglePopupNew();
-    // const response = await axios.post(admin/view_and_editVideo/${id})
-    //   console.log(response);
-    //   if(response){
-    //     if(response.data.message==="successfully updated!!"){
-    //       toast.success("deleted!!")
-    //       setRows(rows.filter(row => row._id !== id));
-
-    //     }
-    //   }
-    // } catch (error) {
-    //   toast.error("Please try again later!!")
-    // }
   };
   const [isEditing, setIsEditing] = useState(false);
 
@@ -386,39 +375,47 @@ const Videoaddadmin = () => {
                         </button>
                       </div>
                       {currentEditId === row._id && (
-                        <form
-                          onSubmit={(e) => handleSubmitt(e, row._id)}
-                          encType="multipart/form-data"
-                        >
-                          <div>
-                            <button onClick={togglePopupEditnewone}>
-                              Close
-                            </button>
+                        <div className="video-edit-pop">
+                          <form
+                            onSubmit={(e) => handleSubmitt(e, row._id)}
+                            encType="multipart/form-data"
+                          >
                             <div>
-                              <label>Title of the Podcast</label>
-                              <input
-                                type="text"
-                                name="title"
-                                value={formDatass.title}
-                                onChange={handleTextChange}
-                              />
-                              {updateError.title && (
-                                <span>{updateError.title}</span>
-                              )}
-                            </div>
-                            <div>
-                              <label>Page</label>
-                              <input
-                                type="text"
-                                name="page"
-                                value={formDatass.page}
-                                onChange={handleTextChange}
-                              />
-                              {updateError.page && (
-                                <span>{updateError.page}</span>
-                              )}
-                            </div>
-                            {/* <div>
+                          
+                                <IoMdCloseCircleOutline
+                                  onClick={togglePopupEditnewone}
+                                  className='video-edit-close'
+                                />
+                             
+                              <div className="video-edit-input">
+                                <label>Title of the Podcast</label>
+                                <div className="video-edit-input-div">
+                                  <input
+                                    type="text"
+                                    name="title"
+                                    value={formDatass.title}
+                                    onChange={handleTextChange}
+                                  />
+                                  {updateError.title && (
+                                    <span>{updateError.title}</span>
+                                  )}
+                                </div>
+                              </div>
+                              <div className="video-edit-input">
+                                <label>Page</label>
+                                <div className="video-edit-input-div">
+                                  <input
+                                    type="text"
+                                    name="page"
+                                    value={formDatass.page}
+                                    onChange={handleTextChange}
+                                  />
+                                  {updateError.page && (
+                                    <span>{updateError.page}</span>
+                                  )}
+                                </div>
+                              </div>
+                              {/* <div>
                             <label>Category</label>
                             <input
                               type="text"
@@ -428,35 +425,40 @@ const Videoaddadmin = () => {
                             />
                             {errors.category && <span>{errors.category}</span>}
                           </div> */}
-                            <div>
-                              <label>Thumbnail</label>
-                              <input
-                                type="file"
-                                name="thumbnail"
-                                id="thumbnail"
-                                accept="image/*"
-                                onChange={handleThumbnailChanged}
-                              />
-                              {updateError.thumbnail && (
-                                <span>{updateError.thumbnail}</span>
-                              )}
+                              <div className="video-edit-input">
+                                <label>Thumbnail</label>
+                                <div className="video-edit-input-div">
+                                  <input
+                                    type="file"
+                                    name="thumbnail"
+                                    id="thumbnail"
+                                    accept="image/*"
+                                    onChange={handleThumbnailChanged}
+                                  />
+                                  {updateError.thumbnail && (
+                                    <span>{updateError.thumbnail}</span>
+                                  )}
+                                </div>
+                              </div>
+                              <div className="video-edit-input">
+                                <label>Podcast Video</label>
+                                <div className="video-edit-input-div">
+                                  <input
+                                    type="file"
+                                    name="source"
+                                    id="source"
+                                    accept="video/*"
+                                    onChange={handlePodcastVideoChange}
+                                  />
+                                  {updateError.source && (
+                                    <span>{updateError.source}</span>
+                                  )}
+                                </div>
+                              </div>
                             </div>
-                            <div>
-                              <label>Podcast Video</label>
-                              <input
-                                type="file"
-                                name="source"
-                                id="source"
-                                accept="video/*"
-                                onChange={handlePodcastVideoChange}
-                              />
-                              {updateError.source && (
-                                <span>{updateError.source}</span>
-                              )}
-                            </div>
-                          </div>
-                          <button type="submit">Submit</button>
-                        </form>
+                            <button type="submit">Submit</button>
+                          </form>
+                        </div>
                       )}
                     </td>
                     {newPopupEdit && (

@@ -28,11 +28,11 @@ import Collegegraduate from "./CollegeGraduate/Collegegraduate.js";
 import Hiringdata from "./HiringAdmin/Hiringdata.js";
 import Ourteam from "./TeamName/Ourteam.js";
 import Userdatas from "./Userlist/Userdatas.js";
-
+import DaseBoard from "../Components/DaseBoard/Daseboard.js";
 import { BsClipboard2Data } from "react-icons/bs";
 import axios from "../Utils/Baseurl.js";
 import { toast } from "react-toastify";
-import Daseboard from "./DaseBoard/Daseboard.js";
+// import Daseboard from "../DaseBoard/Daseboard.js";
 const Adminpanelhome = () => {
   return (
     <div className="adminpanel-main-container">
@@ -48,7 +48,7 @@ const Adminpanelhome = () => {
             className="admin-ul-list"
             // style={{ maxHeight: "400px", overflowY: "auto" }}
           >
-            <Link className="Links-for-admin" to="/Adminpanelhome/Daseboard">
+            <Link className="Links-for-admin" to="/Adminpanelhome">
               <li>
                 <FiPieChart />
                 Dashboard
@@ -60,7 +60,10 @@ const Adminpanelhome = () => {
                 User Data
               </li>
             </Link>
-            <Link className="Links-for-admin" to="/Adminpanelhome/Videoaddadmin">
+            <Link
+              className="Links-for-admin"
+              to="/Adminpanelhome/Videoaddadmin"
+            >
               <li>
                 {" "}
                 <MdOutlineVideoSettings />
@@ -80,7 +83,10 @@ const Adminpanelhome = () => {
                 Speak Easy - Revenue{" "}
               </li>
             </Link>
-            <Link className="Links-for-admin" to="/Adminpanelhome/Complimetarycall">
+            <Link
+              className="Links-for-admin"
+              to="/Adminpanelhome/Complimetarycall"
+            >
               <li>
                 <MdOutlineVideoCall />
                 Speak Easy - Complimetary call
@@ -117,7 +123,10 @@ const Adminpanelhome = () => {
                 Community
               </li>
             </Link> */}
-            <Link className="Links-for-admin" to="/Adminpanelhome/Getintouchdata">
+            <Link
+              className="Links-for-admin"
+              to="/Adminpanelhome/Getintouchdata"
+            >
               <li>
                 <AiOutlineDatabase />
                 Getin touch
@@ -129,7 +138,10 @@ const Adminpanelhome = () => {
                 NGO
               </li>
             </Link>
-            <Link className="Links-for-admin" to="/Adminpanelhome/Collegegraduate">
+            <Link
+              className="Links-for-admin"
+              to="/Adminpanelhome/Collegegraduate"
+            >
               <li>
                 <CgNotes />
                 College Graduate
@@ -154,12 +166,12 @@ const Adminpanelhome = () => {
             <input class="input" type="search" placeholder="Search" />
           </div>
 
-          <p>Admin Name : Thameem</p>
+          <p>Admin</p>
         </div>
         <div className="adminpanel-route">
           <Routes>
             {/* Daseboard */}
-            <Route path="/Daseboard" element={<Daseboard />} />
+            <Route path="/Daseboard" element={<DaseBoard />} />
 
             {/* video add */}
 
@@ -179,6 +191,9 @@ const Adminpanelhome = () => {
             <Route path="/Ourteam" element={<Ourteam />} />
           </Routes>
         </div>
+      
+
+        <DaseBoard />
       </div>
     </div>
   );

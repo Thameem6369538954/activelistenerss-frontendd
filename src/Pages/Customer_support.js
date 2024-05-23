@@ -6,7 +6,8 @@ const Customer_support = () => {
   return (
     <div>
       <div className="customer-suppot-main">
-        <h1>USTOMER SUPPORT - ACTIVELISTENERS.IN</h1>
+     
+        <h1>CUSTOMER SUPPORT - ACTIVELISTENERS.IN</h1>
         <div className="customer suppot-container">
           <div>
             <h2>1. Introduction </h2>

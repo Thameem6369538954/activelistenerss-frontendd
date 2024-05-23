@@ -47,7 +47,7 @@ import Recoverpassword from "./RecoverPassword/Step1/Recoverpassword.js";
 import Verify from "./RecoverPassword/Step2/Verify.js";
 // import Craetepassword from "./RecoverPassword/Step3/Createpassword.js";
 import Createpassword from "./RecoverPassword/Step3/Createpassword.js";
-import Daseboard from "./AdminPanel/DaseBoard/Daseboard.js";
+import Daseboard from "./Components/DaseBoard/Daseboard.js";
 import Complimetarycall from "./AdminPanel/ComplimetaryCall/Complimetarycall.js";
 // import HiringAdmin from "./AdminPanel/Hiring/HiringAdmin.js"
 import Psychologist from "./AdminPanel/psychologist/Psychologist.js";

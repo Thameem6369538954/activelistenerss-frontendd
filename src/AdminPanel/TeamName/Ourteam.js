@@ -71,10 +71,41 @@ const [members, setMembers] = useState([]);
    }));
  };
 
+  const [errorsup, setErrorsup] = useState({});
+
  const handleSubmit = async(e) => {
   console.log("im here");
    e.preventDefault();
    // Perform validation here
+
+   const newErrors = {};
+
+   if (!formDatas.name) { 
+     newErrors.name = "Name is required";
+   }
+
+   if (!formDatas.designation) {
+     newErrors.designation = "Designation is required";
+   }
+
+   if (!formDatas.socialmediaLink) {
+     newErrors.socialmediaLink = "Social Media Link is required";
+   }
+
+   if (!image) {
+     newErrors.image = "Image is required";
+   }
+
+   if (!audio) {
+     newErrors.audio = "Audio is required";
+   }
+
+   if (Object.keys(newErrors).length > 0) {
+     setErrorsup(newErrors);
+     return;
+   }
+
+
    try {
      const formData = new FormData();
 
@@ -105,32 +136,13 @@ const [members, setMembers] = useState([]);
      image: null,
    });
  };
-    // const [rows, setMembers] = useState([
-    //   {
-    //     id: 1,
-    //     column1: "01",
-    //     name: "Thameem",
-    //     position: "front-end developer",
-    //     image: "https://via.placeholder.com/150",
-    //   },
-    //   {
-    //     id: 2,
-    //     column1: "02",
-    //     name: "Ansari",
-    //     position: "back-end developer",
-    //     image: "https://via.placeholder.com/150",
-    //   },
-    //   // Add more rows as needed
-    // ]);
     const [editingRowId, setEditingRowId] = useState(null);
     const [editedData, setEditedData] = useState({});
      const handleCancelEdit = (id) => {
        setEditingRowId(null); // Reset editingRowId to null to close the form
      };
 
-    // const handleDeleteClick = (id) => {
-    //   setMembers(members.filter((row) => row._id !== id));
-    // };
+ 
 
     const handleEditClick = (id) => {
       setEditingRowId(id);
@@ -154,17 +166,7 @@ const [members, setMembers] = useState([]);
         }));
     };
 
-    // const handleImageChange = (e) => {
-    //     const file = e.target.files[0];
-    //     const reader = new FileReader();
-    //     reader.onload = (event) => {
-    //         setEditedData((prevData) => ({
-    //             ...prevData,
-    //             image: event.target.result,
-    //         }));
-    //     };
-    //     reader.readAsDataURL(file);
-    // };
+
 
    
 
@@ -172,14 +174,7 @@ const [members, setMembers] = useState([]);
  const [filteredRows, setFilteredRows] = useState(members);
  
 
-//  const handleSearchInputChange = (event) => {
-//    const searchTerm = event.target.value.toLowerCase();
-//    setSearchTerm(searchTerm);
-//    const filteredRows = members.filter((row) =>
-//      row.name.toLowerCase().includes(searchTerm)
-//    );
-//    setFilteredRows(filteredRows);
-//  };
+
 
  const handleDateFilterChange = (event) => {
    // Implement date filter logic here
@@ -222,18 +217,7 @@ const [members, setMembers] = useState([]);
 
              const [errors, setErrors] = useState({});
 
-             const validate = () => {
-               const newErrors = {};
-               if (!formValues.name)
-                 newErrors.name = "Employee Name is required";
-               if (!formValues.designation)
-                 newErrors.designation = "Designation is required";
-               if (!formValues.socialmediaLink)
-                 newErrors.socialmediaLink = "Social Media Link is required";
-               if (!audioFile) newErrors.audio = "Audio file is required";
-               if (!imageFile) newErrors.image = "Image file is required";
-               return newErrors;
-             };
+        
 
              const handleChanges =  (e) => {
                const { name, value } = e.target;
@@ -253,11 +237,34 @@ const [members, setMembers] = useState([]);
 
              const handleSubmitt = async (e,id) => {
                e.preventDefault();
-               const newErrors = validate();
-               try{ if (Object.keys(newErrors).length > 0) {
+               const newErrors = {};
+               if(!formValues.name){
+                 newErrors.name = "Name is required";
+               }
+
+               if(!formValues.designation){
+                 newErrors.designation = "Designation is required";
+               }
+
+               if(!formValues.socialmediaLink){
+                 newErrors.socialmediaLink = "Social Media Link is required";
+               }
+
+               if(!imageFile){
+                 newErrors.image = "Image is required";
+               }
+
+               if(!audioFile){
+                 newErrors.audio = "Audio is required";
+               }
+
+               if(Object.keys(newErrors).length > 0){
                  setErrors(newErrors);
                  return;
                }
+
+               try{ 
+               
                const formData = new FormData();
                formData.append("name", formValues.name);
                formData.append("designation", formValues.designation);
@@ -269,6 +276,9 @@ const [members, setMembers] = useState([]);
                   `admin/update_member/${id}`,
                  formData
                );
+                 setTimeout(() => {
+                   window.location.reload();
+                 }, 2000);
                console.log(response, "oooooooooooooooooooooo");
               }catch(error){
                 console.log(error);
@@ -321,6 +331,7 @@ const [members, setMembers] = useState([]);
                         value={formDatas.name}
                         onChange={handleChange}
                       />
+                      {errorsup && <p>{errorsup.name}</p>}
                     </div>
                     <div>
                       <label>Designation:</label>
@@ -331,6 +342,7 @@ const [members, setMembers] = useState([]);
                         value={formDatas.designation}
                         onChange={handleChange}
                       />
+                      {errorsup && <p>{errorsup.designation}</p>}
                     </div>
                     <div>
                       <label>Social Media Link:</label>
@@ -341,6 +353,7 @@ const [members, setMembers] = useState([]);
                         value={formDatas.socialmediaLink}
                         onChange={handleChange}
                       />
+                      {errorsup && <p>{errorsup.socialmediaLink}</p>}
                     </div>
                   </div>
                   <div className="video-thumbnil-inputs">
@@ -350,6 +363,7 @@ const [members, setMembers] = useState([]);
                       name="audio"
                       onChange={handleResumeChange}
                     />
+                    {errorsup && <p>{errorsup.audio}</p>}
                   </div>
                   <div className="video-thumbnil-inputs">
                     <label>image</label>
@@ -358,6 +372,7 @@ const [members, setMembers] = useState([]);
                       name="image"
                       onChange={handleImageChange}
                     />
+                    {errorsup && <p>{errorsup.image}</p>}
                   </div>
                   <div className="video-submit-btns">
                     <button type="submit">Submit</button>

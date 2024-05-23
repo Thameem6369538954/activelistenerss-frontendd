@@ -38,12 +38,48 @@ const Psycologistform = () => {
    }
  };
  
- 
+
+ const [errors, setErrors] = useState({});
  
  const handleSubmit = async (e) => {
    e.preventDefault();
    // Construct FormData object
 
+    const newErrors = {};
+
+    if(!formData.name){
+        newErrors.name = "Name is required";
+    }
+    if(!formData.email){  
+        newErrors.email = "Email is required";
+    }else if(!/\S+@\S+\.\S+/.test(formData.email)){
+        newErrors.email = "Email is invalid";
+    }
+    if(!formData.mobile){
+        newErrors.mobile = "Mobile number is required";
+    }else if(!/^\d{10}$/.test(formData.mobile)){
+        newErrors.mobile = "Mobile number is invalid";
+    }
+    if(!formData.state){
+        newErrors.state = "State is required";
+    }
+    if(!formData.city){
+        newErrors.city = "City is required";
+    }
+    if(!formData.gender){
+        newErrors.gender = "Gender is required";
+    }
+    if(!candidateProfile){
+        newErrors.candidateProfile = "Candidate Profile is required";
+    }
+    if(!resume){
+        newErrors.resume = "Resume is required";
+    }
+
+    if (Object.keys(newErrors).length > 0) {
+        setErrors(newErrors);
+        return;
+    }
    
    const formDataObject = new FormData();
    formDataObject.append("name", formData.name);
@@ -132,6 +168,7 @@ const Psycologistform = () => {
                     value={formData.name}
                     onChange={handleChange}
                   />
+                  {errors.name && <p className="error">{errors.name}</p>}
                 </div>
 
                 <div className="input-field">
@@ -143,6 +180,7 @@ const Psycologistform = () => {
                     value={formData.email}
                     onChange={handleChange}
                   />
+                  {errors.email && <p className="error">{errors.email}</p>}
                 </div>
 
                 <div className="input-field">
@@ -154,6 +192,7 @@ const Psycologistform = () => {
                     value={formData.mobile}
                     onChange={handleChange}
                   />
+                  {errors.mobile && <p className="error">{errors.mobile}</p>}
                 </div>
 
                 <div className="input-field">
@@ -168,6 +207,7 @@ const Psycologistform = () => {
                     <option value="Female">Female</option>
                     <option value="Others">Others</option>
                   </select>
+                  {errors.gender && <p className="error">{errors.gender}</p>}
                 </div>
 
                 <div className="input-field">
@@ -179,6 +219,7 @@ const Psycologistform = () => {
                     value={formData.state}
                     onChange={handleChange}
                   />
+                  {errors.state && <p className="error">{errors.state}</p>}
                 </div>
 
                 <div className="input-field">
@@ -190,6 +231,7 @@ const Psycologistform = () => {
                     value={formData.city}
                     onChange={handleChange}
                   />
+                  {errors.city && <p className="error">{errors.city}</p>}
                 </div>
 
                 <div className="input-field">
@@ -199,11 +241,15 @@ const Psycologistform = () => {
                     name="candidateProfile"
                     onChange={handleChange}
                   />
+                  {errors.candidateProfile && (
+                    <p className="error">{errors.candidateProfile}</p>
+                  )}
                 </div>
 
                 <div className="input-field">
                   <label>Add Resume</label>
                   <input type="file" name="resume" onChange={handleChange} />
+                  {errors.resume && <p className="error">{errors.resume}</p>}
                 </div>
               </div>
               {/* Your form fields */}

@@ -4,6 +4,53 @@
   justify-content: space-around;
   margin: 20px;
 }
+.video-edit-pop{
+  background-color: #ffdd7e;
+  border: 1px  solid #ffdd7e;
+  display: grid;
+  place-items: center; 
+  border-radius: 20px;
+  height: auto;
+  padding: 30px;
+  width: 800px;
+
+}
+.video-edit-input{
+  display:grid;
+  place-items: center;
+  grid-template-columns: repeat(2, 1fr);
+}
+.video-edit-input-div{
+  display: flex;
+  flex-direction: column;
+}
+.video-edit-input label{
+  font-size: 20px;
+  /* color: white; */
+  margin-right: 20px;
+  text-align: end;
+   font-family: "Questrial", sans-serif;
+}
+.video-edit-input span{
+  color:red;
+}
+.video-edit-close{
+  font-size: 30px;
+  margin-left: 80%;
+}
+.video-edit-input input{
+  padding: 10px 30px;
+  margin: 10px;
+  border-radius: 20px;
+}
+.video-edit-pop button{
+  background-color: #ffdd7e;
+  padding: 10px 30px;
+  border: none;
+  font-size: 16px;
+  border-radius: 20px;
+  cursor: pointer;
+}
 .video-add-top-btn button {
   background-color: #ffdd7e;
   padding: 10px 30px;

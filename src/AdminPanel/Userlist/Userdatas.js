@@ -2,21 +2,35 @@ import React, { useEffect, useState } from "react";
 import "../Userlist/Userdatas.css";
 import axios from "../../Utils/Baseurl";
 import { toast } from "react-toastify";
+
 const Userdatas = () => {
   const [data, setData] = useState([]);
+  const [searchInput, setSearchInput] = useState("");
+
   useEffect(() => {
     const fetchUser = async () => {
-      const users = await axios.get("admin/view_all_users");
-      console.log(users, "all users");
-      if (users) {
-        setData(users.data.response);
-      } else {
+      try {
+        const users = await axios.get("admin/view_all_users");
+        if (users) {
+          setData(users.data.response);
+        } else {
+          toast.error("Something went wrong!");
+        }
+      } catch (error) {
         toast.error("Something went wrong!");
       }
     };
     fetchUser();
-  });
-  const [searchInput, setSearchInput] = useState("");
+  }, []);
+
+  // Function to format the date to dd/mm/yy
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const day = String(date.getUTCDate()).padStart(2, "0");
+    const month = String(date.getUTCMonth() + 1).padStart(2, "0"); // Months are zero-based
+    const year = String(date.getUTCFullYear()).slice(-2);
+    return `${day}/${month}/${year}`;
+  };
 
   // Filtered data based on search input
   const filteredData = data.filter((item) => {
@@ -26,7 +40,7 @@ const Userdatas = () => {
       item.amount.includes(searchInput)
     );
   });
-  const currentDate = new Date().toISOString().slice(0, 10);
+
   return (
     <div>
       <div className="Ngoandpsycologist-main-conatainer">
@@ -69,7 +83,6 @@ const Userdatas = () => {
                     <table>
                       <thead>
                         <tr>
-                          {/* <th>Select</th> */}
                           <th>No</th>
                           <th>Date</th>
                           <th>User name</th>
@@ -81,11 +94,8 @@ const Userdatas = () => {
                       <tbody>
                         {filteredData.map((item, index) => (
                           <tr key={item._id}>
-                            {/* <td>
-                        <input type="checkbox" />
-                      </td> */}
                             <td>{index + 1}</td>
-                            <td>{item.createdAt}</td>
+                            <td>{formatDate(item.createdAt)}</td>
                             <td>{item.name}</td>
                             <td style={{ textTransform: "lowercase" }}>
                               <p>{item.email}</p>

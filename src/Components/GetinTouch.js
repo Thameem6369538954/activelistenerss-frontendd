@@ -3,7 +3,6 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "../Css/GetinTouch.css";
 import CC from "../Images/CC.png";
-import FlowerR from "../Images/FlowerR.png";
 import axios from "../Utils/Baseurl.js";
 
 const GetinTouch = () => {
@@ -13,77 +12,56 @@ const GetinTouch = () => {
     message: "",
   });
 
-  const [errors, setErrors] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
+  const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
-    const { name, value, message } = e.target;
+    const { name, value } = e.target;
     setFormData({
       ...formData,
       [name]: value,
     });
-
-    // Validate the field on change
-    validateField(name, value);
   };
 
-  const validateField = (name, value) => {
-    const errorsCopy = { ...errors };
-
-    switch (name) {
-      case "name":
-        errorsCopy.name = value.trim() === "" ? "Name is required" : "";
-        break;
-      case "message":
-        errorsCopy.message = value.trim() === "" ? "Message is required" : "";
-        break;
-      case "email":
-        errorsCopy.email = !isValidEmail(value) ? "Invalid email address" : "";
-        break;
-      default:
-        break;
-    }
-
-    setErrors(errorsCopy);
-  };
-
-  const isValidEmail = (email) => {
-    // Regular expression for validating email addresses
-    const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{0,}$/;
-    return emailRegex.test(email);
-  };
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     // Validate all fields on submit
+    const formErrors = {};
 
-    const { name, email, message } = formData;
-    validateField("name", name);
-    validateField("email", email);
-    validateField("message", message);
+    if (!formData.name.trim()) {
+      formErrors.name = "Name is required";
+    }
+    if (!formData.email) {
+      formErrors.email = "Email is required";
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      formErrors.email = "Email address is invalid";
+    }
+    if (!formData.message) {
+      formErrors.message = "Message is required";
+    }
 
-    // If there are no errors, submit the form
-    if (!errors.name && !errors.email && !errors.message) {
-      console.log("Form submitted:", formData);
+    if (Object.keys(formErrors).length > 0) {
+      setErrors(formErrors);
+      return;
+    } else {
+      setErrors({});
+    }
+
+    try {
       const response = await axios.post("/get_in_touch", formData);
-      // You can make an API call or further processing here
-      if(response){
-
+      if (response) {
         toast.success("Successfully submitted!!");
         setFormData({
           name: "",
           email: "",
           message: "",
         });
-      }else{
-
-        toast.error("Failed to submit!!");
+      } else {
+        toast.error("Failed to submit");
       }
+    } catch (error) {
+      toast.error("Failed to submit");
     }
-    
-
   };
 
   return (
@@ -102,7 +80,6 @@ const GetinTouch = () => {
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="Name"
-                  required
                 />
                 {errors.name && (
                   <span style={{ color: "red" }}>*{errors.name}</span>
@@ -124,13 +101,11 @@ const GetinTouch = () => {
               <div className="getintouch-msg">
                 <label>Message *</label>
                 <input
-                  // style={{ padding: "40px",marginLeft:"140px",width:"70%" }}
                   type="text"
                   value={formData.message}
                   onChange={handleChange}
                   name="message"
                   placeholder="Message"
-                  required
                 />
                 {errors.message && (
                   <span style={{ color: "red" }}>*{errors.message}</span>
@@ -138,18 +113,13 @@ const GetinTouch = () => {
               </div>
             </div>
             <div className="agree-get">
-              {/* <input type="checkbox" />
-              <p>
-                By Submitting your details means you agree with Privacy Policy
-                and Term & Conditions
-              </p> */}
               <button type="submit">Submit</button>
             </div>
           </form>
           <img src={CC} alt="" />
         </div>
-        {/* <img src={FlowerR} alt="" /> */}
       </div>
+      <ToastContainer />
     </div>
   );
 };

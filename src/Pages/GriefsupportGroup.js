@@ -203,12 +203,38 @@ const GriefsupportGroup = () => {
 
      const handleSubmit = async (e) => {
        e.preventDefault();
-       console.log(formData,"form data..............................................");
+      //  console.log(formData,"form data..............................................");
 
-       const errors = validateForm(formData);
+        const formErrors ={};
+        if(!formData.enrollAs){
+          formErrors.enrollAs = "Enroll as is required";
+        }
+        if(!formData.fullName){
+          formErrors.fullName = "Full Name is required";
+        }
+        if(!formData.email){
+          formErrors.email = "Email is required";
+        }
+        if(!formData.phoneNumber){
+          formErrors.phoneNumber = "Phone Number is required";
+        }
+        if(!formData.country){
+          formErrors.country = "Country is required";
+        }
+        if(!formData.state){
+          formErrors.state = "State is required";
+        }
+        if(!formData.message){
+          formErrors.message = "Message is required";
+        }
 
-      //  if (!errors) {
-         // No errors, proceed with form submission
+
+        if(Object.keys(formErrors).length > 0){
+          setErrors(formErrors);
+          return;
+        }
+
+
          try {
            const response = await axios.post(
              "/getintouch_griefSupport",
@@ -242,55 +268,6 @@ const GriefsupportGroup = () => {
       //  }
      };
 
-     const validateForm = (data) => {
-       let errors = {};
-
-       if (!data.fullName.trim()) {
-         errors.fullName = "Full Name is required";
-       }
-
-       if (!data.email.trim()) {
-         errors.email = "Email is required";
-       } else if (!isValidEmail(data.email)) {
-         errors.email = "Please enter a valid email address";
-       }
-
-       if (!data.phoneNumber.trim()) {
-         errors.phoneNumber = "Phone Number is required";
-       } else if (!isValidPhoneNumber(data.phoneNumber)) {
-         errors.phoneNumber = "Please enter a valid phone number";
-       }
-
-       if (!data.country.trim()) {
-         errors.country = "Country is required";
-       }
-
-       if (!data.state.trim()) {
-         errors.state = "State is required";
-       }
-
-       if (data.support === "0") {
-         errors.support = "Please select a support option";
-       }
-
-       if (!data.message.trim()) {
-         errors.message = "Message is required";
-       }
-
-       if (!data.enrollAs) {
-         errors.enrollAs = "Please select an option";
-       }
-
-       return errors;
-     };
-
-     const isValidEmail = (email) => {
-       return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-     };
-
-     const isValidPhoneNumber = (phoneNumber) => {
-       return /^\d+$/.test(phoneNumber);
-     };
   return (
     <div>
       <Navbar />
@@ -723,6 +700,9 @@ const GriefsupportGroup = () => {
                       checked={formData.enrollAs === "Parent"}
                       onChange={handleChange}
                     />
+                    {errors.enrollAs && (
+                      <p className="error">{errors.enrollAs}</p>
+                    )}
                     <label htmlFor="radio2" className="radio-button__label">
                       <span className="radio-button__custom"></span>
                       Parent
@@ -779,12 +759,11 @@ const GriefsupportGroup = () => {
                         value={formData.fullName}
                         onChange={handleChange}
                       />
+                      {errors.fullName && (
+                        <span className="error">{errors.fullName}</span>
+                      )}
                     </li>
                   </ul>
-
-                  {errors.fullName && (
-                    <span className="error">{errors.fullName}</span>
-                  )}
                 </div>
 
                 <div className="form-group">

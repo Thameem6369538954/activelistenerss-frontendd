@@ -1,281 +1,3 @@
-// import React, { useState } from "react";
-// import "./Psychologist.css";
-// import mahesh from "../../Images/mahesh.jpeg";
-// import axios from "../../Utils/Baseurl.js";
-
-// const Psychologist = () => {
-//   const [psychologist, setPsychologist] = useState([
-//     {
-//       id: 1,
-//       name: "Mahesh",
-//       email: "active@gmail.com",
-//       cate: "Behavioural Psychologist",
-//       status: "active",
-//       image: mahesh,
-//     },
-//     {
-//       id: 2,
-//       name: "John Doe",
-//       email: "john@gmail.com",
-//       cate: "Behavioural Psychologist",
-//       status: "active",
-//       image: mahesh,
-//     },
-//     {
-//       id: 3,
-//       name: "Jukkoe Sisao",
-//       email: "john@gmail.com",
-//       cate: "Behavioural Psychologist",
-//       status: "active",
-//       image: mahesh,
-//     },
-//     {
-//       id: 4,
-//       name: "Jukkoe Sisao",
-//       email: "john@gmail.com",
-//       cate: "Behavioural Psychologist",
-//       status: "active",
-//       image: mahesh,
-//     },
-//     {
-//       id: 5,
-//       name: "Jukkoe Sisao",
-//       email: "john@gmail.com",
-//       cate: "Behavioural Psychologist",
-//       status: "active",
-//       image: mahesh,
-//     },
-//     {
-//       id: 6,
-//       name: "Jukkoe Sisao",
-//       email: "john@gmail.com",
-//       cate: "Behavioural Psychologist",
-//       status: "active",
-//       image: mahesh,
-//     },
-//     {
-//       id: 7,
-//       name: "Jukkoe Sisao",
-//       email: "john@gmail.com",
-//       cate: "Behavioural Psychologist",
-//       status: "active",
-//       image: mahesh,
-//     },
-//     {
-//       id: 8,
-//       name: "Jukkoe Sisao",
-//       email: "john@gmail.com",
-//       cate: "Behavioural Psychologist",
-//       status: "active",
-//       image: mahesh,
-//     },
-//   ]);
-//   const togglePopup = () => {
-//     setShowPopup(!showPopup);
-//   };
-
-//   const [showPopup, setShowPopup] = useState(false);
-
-
-
- 
-
-//   const handleTextChange = (e) => {
-//     const { name, value } = e.target;
-//     setTextFormData({
-//       ...textFormData,
-//       [name]: value,
-//     });
-//   };
-
-//   const handleFileChange = (e) => {
-//    setImage(e.target.files[0])
-//   };
-//   // console.log(image);
-
-
-
-
-  
-
-// const [image, setImage] = useState(null);
-// const [resume, setResume] = useState(null);
-
-// var [textFormData, setTextFormData] = useState({
-//   name: "",
-//   email: "",
-//   phoneNumber: "",
-//   city: "",
-//   state: "",
-//   gender: "", // default value
-// });
-
-
-
-// const handleSubmit = (e) => {
-//   e.preventDefault();
-//   const formData = new FormData();
-
-//   formData.append("name", textFormData.name);
-//   formData.append("image", image);
-
-//   console.log("FormData:pppppppppppppppppppppppp", formData);
-// };
-
-  
-//   return (
-//     <div>
-//       <div>
-//         <div className="headeing-admin-psygologiy">
-//           <h1>Psychologist</h1>
-//           <button onClick={togglePopup}>Add Psychologist</button>
-//         </div>
-//         {showPopup && (
-//           <div className="video-popup">
-//             <div className="video-popup-content">
-//               {/* <span className="close" onClick={togglePopup}>
-//                 <CgCloseO />
-//               </span> */}
-//               <h2>Add Psychologist</h2>
-//               <form onSubmit={handleSubmit} encType="multipart/form-data">
-//                 <div className="video-top-inputs">
-//                   <div>
-//                     <label>Name</label>
-//                     <input
-//                       type="text"
-//                       name="name"
-//                       value={textFormData.name}
-//                       placeholder="Enter the title"
-//                       onChange={handleTextChange}
-//                     />
-//                   </div>
-//                   <div>
-//                     <label>Email</label>
-//                     <input
-//                       type="text"
-//                       name="email"
-//                       value={textFormData.email}
-//                       placeholder="Enter the title"
-//                       onChange={handleTextChange}
-//                     />
-//                   </div>
-//                   <div>
-//                     <label>Phone Number</label>
-//                     <input
-//                       type="text"
-//                       name="phoneNumber"
-//                       value={textFormData.phoneNumber}
-//                       placeholder="Enter the title"
-//                       onChange={handleTextChange}
-//                     />
-//                   </div>
-//                   <div>
-//                     <label>City</label>
-//                     <input
-//                       type="text"
-//                       name="city"
-//                       value={textFormData.city}
-//                       placeholder="Enter the title"
-//                       onChange={handleTextChange}
-//                     />
-//                   </div>
-//                   <div>
-//                     <label>State</label>
-//                     <input
-//                       type="text"
-//                       name="state"
-//                       value={textFormData.state}
-//                       placeholder="Enter the title"
-//                       onChange={handleTextChange}
-//                     />
-//                   </div>
-//                   <div className="select-page-videos">
-//                     <label>Gender :</label>
-//                     <select
-//                       name="gender"
-//                       value={textFormData.gender}
-//                       onChange={handleTextChange}
-//                     >
-//                       <option value="volvo">Select the Gender</option>
-//                       <option value="Male">Male</option>
-//                       <option value="Female">Female</option>
-//                     </select>
-//                   </div>
-//                 </div>
-//                 <div className="video-thumbnil-inputs">
-//                   <label>Image</label>
-//                   <input
-//                     type="file"
-//                     name="image"
-//                     onChange={handleFileChange}
-//                   />
-//                 </div>
-//                 <div>
-//                   <label>Resume :</label>
-//                   <input
-//                     type="file"
-//                     name="resume"
-//                     // onChange={handleResumeChange}
-//                   />
-//                 </div>
-//                 <div className="video-submit-btns">
-//                   <button type="submit">Submit</button>
-//                   <button type="button" onClick={togglePopup}>
-//                     Cancel
-//                   </button>
-//                 </div>
-//               </form>
-//             </div>
-//           </div>
-//         )}
-//         <div className="psycologist-box-conatiner-admint">
-//           <div className="psycologist-box-admint-main">
-//             {psychologist.map((psycos) => {
-//               return (
-//                 <div className="psycologist-box-admint">
-//                   <div className="psycologist-box-admint-main">
-//                     <div className="psycologist-box-admint-heading">
-//                       <img src={mahesh} alt="" />
-//                       <h1>{psycos.name}</h1>
-//                       <h3>{psycos.email}</h3>
-//                       <p>{psycos.cate}</p>
-//                       <div className="active-pspyco-btn">
-//                         <button>View Profile</button>
-//                       </div>
-//                     </div>
-//                   </div>
-//                 </div>
-//               );
-//             })}
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Psychologist;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 import React, { useEffect, useState } from "react";
 import "./Psychologist.css";
@@ -290,52 +12,6 @@ import Psyco from "../../Images/Psyco.png";
 import Item from "antd/es/list/Item.js";
 
 const Psychologist = () => {
-
-  // const psychologist = [
-  //   {
-  //     id: 1,
-  //     name: "Jennifer kale",
-  //     position: "Psychologist",
-  //     image: Psyco,
-  //     dis: "Lorem ipsum dolor sit amet consectet piscing elit, sed do eiusmod tempor rarylet podofcast.",
-  //   },
-  //   {
-  //     id: 2,
-  //     name: "Jennifer kale",
-  //     position: "Psychologist",
-  //     image: Psyco,
-  //     dis: "Lorem ipsum dolor sit amet consectet piscing elit, sed do eiusmod tempor rarylet podofcast.",
-  //   },
-  //   {
-  //     id: 3,
-  //     name: "Jennifer kale",
-  //     position: "Psychologist",
-  //     image: Psyco,
-  //     dis: "Lorem ipsum dolor sit amet consectet piscing elit, sed do eiusmod tempor rarylet podofcast.",
-  //   },
-  //   {
-  //     id: 4,
-  //     name: "Jennifer kale",
-  //     position: "Psychologist",
-  //     image: Psyco,
-  //     dis: "Lorem ipsum dolor sit amet consectet piscing elit, sed do eiusmod tempor rarylet podofcast.",
-  //   },
-  //   {
-  //     id: 5,
-  //     name: "Jennifer kale",
-  //     position: "Psychologist",
-  //     image: Psyco,
-  //     dis: "Lorem ipsum dolor sit amet consectet piscing elit, sed do eiusmod tempor rarylet podofcast.",
-  //   },
-  //   {
-  //     id: 6,
-  //     name: "Jennifer kale",
-  //     position: "Psychologist",
-  //     image: Psyco,
-  //     dis: "Lorem ipsum dolor sit amet consectet piscing elit, sed do eiusmod tempor rarylet podofcast.",
-  //   },
-  // ];
-
   const [psychologist,setPsychologist] = useState([]);
 const [searchInput, setSearchInput] = useState("");
   useEffect(() => {
@@ -396,13 +72,59 @@ const [searchInput, setSearchInput] = useState("");
     }
   };
 
+  const [errors,setErrors] = useState({});
 
   const handleSubmit = async (e) => {
     console.log("im here");
     console.log(textFormData,"datas");
     console.log(image,"image");
     console.log(resume,"resume");
-      e.preventDefault();
+      
+    e.preventDefault();
+    const formErrors = {};
+
+    if(!textFormData.name.trim()){
+      formErrors.name = "Name is required";
+    }
+
+    if(!textFormData.email){
+      formErrors.email = "Email is required";
+    }else if(!/\S+@\S+\.\S+/.test(textFormData.email)){
+      formErrors.email = "Email address is invalid";
+    }
+
+    if(!textFormData.phoneNumber){
+      formErrors.phoneNumber = "Phone number is required";
+    }else if(!/^[0-9]{10}$/.test(textFormData.phoneNumber)){
+      formErrors.phoneNumber = "Invalid phone number";
+    }
+
+    if(!textFormData.city){
+      formErrors.city = "City is required";
+    }
+
+    if(!textFormData.state){
+      formErrors.state = "State is required";
+    }
+
+    if(!textFormData.gender){
+      formErrors.gender = "Gender is required";
+    }
+
+    if(!image){
+      formErrors.image = "Image is required";
+    }
+
+    if(!resume){
+      formErrors.resume = "Resume is required";
+    }
+
+    if(Object.keys(formErrors).length > 0){ 
+      setErrors(formErrors);
+      return;     
+    }
+
+
       const formData = new FormData();
 
       formData.append("name", textFormData.name);
@@ -495,6 +217,7 @@ const [searchInput, setSearchInput] = useState("");
                     placeholder="Enter the name"
                     onChange={handleTextChange}
                   />
+                  {errors.name && <p>{errors.name}</p>}
                 </div>
                 <div>
                   <label>Email</label>
@@ -505,6 +228,7 @@ const [searchInput, setSearchInput] = useState("");
                     placeholder="Enter the email"
                     onChange={handleTextChange}
                   />
+                  {errors.email && <p>{errors.email}</p>}
                 </div>
                 <div>
                   <label>Phone Number</label>
@@ -515,6 +239,7 @@ const [searchInput, setSearchInput] = useState("");
                     placeholder="Enter the phone number"
                     onChange={handleTextChange}
                   />
+                  {errors.phoneNumber && <p>{errors.phoneNumber}</p>}
                 </div>
                 <div>
                   <label>City</label>
@@ -525,6 +250,7 @@ const [searchInput, setSearchInput] = useState("");
                     placeholder="Enter the city"
                     onChange={handleTextChange}
                   />
+                  {errors.city && <p>{errors.city}</p>}
                 </div>
                 <div>
                   <label>State</label>
@@ -535,6 +261,7 @@ const [searchInput, setSearchInput] = useState("");
                     placeholder="Enter the state"
                     onChange={handleTextChange}
                   />
+                  {errors.state && <p>{errors.state}</p>}
                 </div>
                 <div className="select-page-videos">
                   <label>Gender :</label>
@@ -547,11 +274,13 @@ const [searchInput, setSearchInput] = useState("");
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
                   </select>
+                  {errors.gender && <p>{errors.gender}</p>}
                 </div>
               </div>
               <div className="video-thumbnil-inputs">
                 <label>Image</label>
                 <input type="file" name="image" onChange={handleImageChange} />
+                {errors.image && <p>{errors.image}</p>}
               </div>
               <div>
                 <label>Resume :</label>
@@ -560,6 +289,7 @@ const [searchInput, setSearchInput] = useState("");
                   name="resume"
                   onChange={handleResumeChange}
                 />
+                {errors.resume && <p>{errors.resume}</p>}
               </div>
               <div className="video-submit-btns">
                 <button type="submit">Submit</button>

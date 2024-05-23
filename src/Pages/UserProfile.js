@@ -1,6 +1,6 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "../Css/UserProfile.css";
-import { Link, NavLink, Route, Routes,useNavigate } from "react-router-dom";
+import { Link, NavLink, Route, Routes, useNavigate } from "react-router-dom";
 import Settings from "../Pages/Settings";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
@@ -14,10 +14,10 @@ import EllipseRed from "../Images/EllipseRed.png";
 // import Sirpro from "../Images/Sirpro.png";
 import defaultProfile from "../Images/prof.jpg";
 import { RiEdit2Line } from "react-icons/ri";
-import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
 import axios from "../Utils/Baseurl.js";
-import { logout,loginSuccess,setUser } from '../Redux/Slices/authSlice.js';
-import { useDispatch } from 'react-redux';
+import { logout, loginSuccess, setUser } from "../Redux/Slices/authSlice.js";
+import { useDispatch } from "react-redux";
 import profileFemale from "../Images/profileFemale.jpg";
 import profileMale from "../Images/profileMale.jpg";
 import { MdAddCircleOutline } from "react-icons/md";
@@ -89,59 +89,58 @@ const UserProfile = () => {
     setShowPopup(!showPopup);
   };
 
-const handleDeleteAccount = async () => {
-  // Use SweetAlert for confirmation dialog
-  console.log("delete account button clicked");
-  const swalWithBootstrapButtons = Swal.mixin({
-    customClass: {
-      confirmButton: "btn btn-success",
-      cancelButton: "btn btn-danger",
-    },
-    buttonsStyling: false,
-  });
-  swalWithBootstrapButtons
-    .fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonText: "Yes, delete it!",
-      cancelButtonText: "No, cancel!",
-      reverseButtons: true,
-    })
-    .then(async (result) => {
-      // Make the arrow function async
-      if (result.isConfirmed) {
-              const token = localStorage.getItem("accessToken");
-
-        try {
-          const response = await axios.delete(`/delete_account/${user._id}`, {
-            headers: {
-              Authorization: `Bearer ${token}`, // Add Bearer prefix to token
-            },
-          });
-          console.log(response, "im the res");
-          dispatch(logout());
-          navigate("/");
-          swalWithBootstrapButtons.fire({
-            title: "Deleted!",
-            text: "Your account has been deleted.",
-            icon: "success",
-          });
-        } catch (error) {
-          console.error("Error deleting account:", error);
-          // Handle error here, show error message to user if needed
-        }
-      } else if (result.dismiss === Swal.DismissReason.cancel) {
-        swalWithBootstrapButtons.fire({
-          title: "Cancelled",
-          text: "Your account is safe :)",
-          icon: "error",
-        });
-      }
+  const handleDeleteAccount = async () => {
+    // Use SweetAlert for confirmation dialog
+    console.log("delete account button clicked");
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: "btn btn-success",
+        cancelButton: "btn btn-danger",
+      },
+      buttonsStyling: false,
     });
-};
+    swalWithBootstrapButtons
+      .fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, delete it!",
+        cancelButtonText: "No, cancel!",
+        reverseButtons: true,
+      })
+      .then(async (result) => {
+        // Make the arrow function async
+        if (result.isConfirmed) {
+          const token = localStorage.getItem("accessToken");
 
+          try {
+            const response = await axios.delete(`/delete_account/${user._id}`, {
+              headers: {
+                Authorization: `Bearer ${token}`, // Add Bearer prefix to token
+              },
+            });
+            console.log(response, "im the res");
+            dispatch(logout());
+            navigate("/");
+            swalWithBootstrapButtons.fire({
+              title: "Deleted!",
+              text: "Your account has been deleted.",
+              icon: "success",
+            });
+          } catch (error) {
+            console.error("Error deleting account:", error);
+            // Handle error here, show error message to user if needed
+          }
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+          swalWithBootstrapButtons.fire({
+            title: "Cancelled",
+            text: "Your account is safe :)",
+            icon: "error",
+          });
+        }
+      });
+  };
 
   // update
 
@@ -169,7 +168,6 @@ const handleDeleteAccount = async () => {
     setProfileImage(event.target.files[0]);
   };
 
-  
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -276,7 +274,7 @@ const handleDeleteAccount = async () => {
     const formData = new FormData();
     formData.append("profilePic", profilePic);
     const response = await axios.post(
-     `/add_profile_photo/${user._id}`,
+      `/add_profile_photo/${user._id}`,
       formData
     );
     console.log(response, "this is the response of registration............");
@@ -307,18 +305,18 @@ const handleDeleteAccount = async () => {
   //  VALIDATION API FOR ADD PHONE NUMBER...................................................................
 
   const [mobile, setMobile] = useState({
-    phone:""
+    phone: "",
   });
   const [phoneerror, setphoneError] = useState("");
 
   const handleChangephone = (e) => {
-    setMobile({phone:e.target.value})
+    setMobile({ phone: e.target.value });
     const input = e.target.value;
     // Check if input is a valid phone number
     if (/^[6-9]\d{9}$/.test(input) && /^\d+$/.test(input)) {
       // setMobile({phone:input});
       setphoneError("");
-    }   else {
+    } else {
       setphoneError(
         "Please enter a valid 10-digit phone number starting with a number from 6 to 9"
       );
@@ -327,13 +325,13 @@ const handleDeleteAccount = async () => {
 
   const handleSubmitphone = async (e) => {
     e.preventDefault();
-  
+
     try {
       const token = localStorage.getItem("accessToken");
       console.log(userData._id, mobile.phone, "userData._id");
-  
+
       const response = await axios.post(
-       ` /addMobile/${userData._id}`,
+        `/addMobile/${userData._id}`,
         { phone: mobile.phone }, // Send the phone number as { phone: value }
         {
           headers: {
@@ -341,18 +339,17 @@ const handleDeleteAccount = async () => {
           },
         }
       );
-  
+
       if (response) {
         setMobile({ phone: "" }); // Clear the phone number
         setphoneError(""); // Clear any error message
       }
-  
+
       console.log(response, "response of add phone number");
     } catch (error) {
       console.log(error);
     }
   };
-  
 
   //  VALIDATION API FOR ADD GENDER.......................................................
 
@@ -364,91 +361,104 @@ const handleDeleteAccount = async () => {
     setErrorsgender({}); // Reset errors when user makes a selection
   };
 
+
   const handleSubmitgender = async (event) => {
     event.preventDefault();
+    const genderError = {};
+
     if (!gender) {
-      setErrorsgender({ gender: "Please select a gender" });
+      genderError.gender = "Please select your gender";
+      setErrorsgender(genderError);
       return;
     }
+    if(Object.keys(genderError).length > 0) {
+      setErrorsgender(genderError);
+      return;
+    }
+    
+    
     // Perform submit logic here
     console.log("Form submitted with gender:", gender);
-    
 
-     // API CONNECTION HERE
-      try{
-        const token = localStorage.getItem("accessToken");
+    // API CONNECTION HERE
+    try {
+      const token = localStorage.getItem("accessToken");
 
-        console.log(userData._id, "userData._id");
-        const response = await axios.post(`/addGender/${userData._id}`, {Gender:gender},
+      console.log(userData._id, "userData._id");
+      const response = await axios.post(
+        `/addGender/${userData._id}`,
+        { Gender: gender },
         {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         }
-        );
+      );
 
-        console.log(response, "response of add gender");
-      }
-      catch(error){
-        console.log(error);
-      }
+      console.log(response, "response of add gender");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
+  // VALIDATION FOR PASSWORD.................................
 
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [passwordError, setPasswordError] = useState("");
 
+  const handlePasswordChange = (event) => {
+    setNewPassword(event.target.value);
+  };
 
-            // VALIDATION FOR PASSWORD.................................
+  const handleConfirmPasswordChange = (event) => {
+    setConfirmPassword(event.target.value);
+  };
 
-            const [newPassword, setNewPassword] = useState("");
-            const [confirmPassword, setConfirmPassword] = useState("");
-            const [passwordError, setPasswordError] = useState("");
+  const handleSubmitPassword = async (event) => {
+    event.preventDefault();
 
-            const handlePasswordChange = (event) => {
-              setNewPassword(event.target.value);
-            };
+    if (newPassword !== confirmPassword) {
+      setPasswordError("Passwords do not match");
+    } else {
+      // Passwords match, proceed with form submission or other actions
+      setPasswordError("");
+      // Your submit logic goes here
+    }
+    if(!newPassword) {
+      setPasswordError("Please enter a new password");
+      return;
+    }
 
-            const handleConfirmPasswordChange = (event) => {
-              setConfirmPassword(event.target.value);
-            };
+    if(Object.keys(passwordError).length > 0) {
+      setPasswordError(passwordError);  
+      return;
+    }
+    console.log(newPassword, "new password");
+    try {
+      const token = localStorage.getItem("accessToken");
 
-            const handleSubmitPassword = async (event) => {
-              event.preventDefault();
-
-              if (newPassword !== confirmPassword) {
-                setPasswordError("Passwords do not match");
-              } else {
-                // Passwords match, proceed with form submission or other actions
-                setPasswordError("");
-                // Your submit logic goes here
-              }
-              console.log(newPassword, "new password",);
-               try{
-                const token = localStorage.getItem("accessToken");
-        
-        console.log(userData._id, "userData._id");
-        const response = await axios.post(`/createPassword/${userData._id}`, {password:newPassword},
+      console.log(userData._id, "userData._id");
+      const response = await axios.post(
+        `/createPassword/${userData._id}`,
+        { password: newPassword },
         {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         }
-        );
+      );
 
-        console.log(response, "response of add password");
-      }
-      catch(error){
-        console.log(error);
-      }
-            };
-               const [settings, setSettings] = useState(false);
+      console.log(response, "response of add password");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const [settings, setSettings] = useState(false);
 
-               const settingsPopup = () => {
-                 setSettings(!settings);
-               };
-
-
-              
-
+  const settingsPopup = () => {
+    setSettings(!settings);
+  };
 
   return !noToken ? (
     <div>
@@ -505,7 +515,9 @@ const handleDeleteAccount = async () => {
                               <li>Update Your Password</li>
                               <li onClick={togglePopup}>Update Your Profile</li>
                               <li>Logout</li>
-                              <li onClick={handleDeleteAccount}>Delete My Accound</li>
+                              <li onClick={handleDeleteAccount}>
+                                Delete My Accound
+                              </li>
                             </ul>
                           </div>
                         )}
@@ -737,6 +749,11 @@ const handleDeleteAccount = async () => {
                                     onChange={handlePasswordChange}
                                     placeholder="Enter Your Password"
                                   />
+                                  {passwordError && (
+                                    <div style={{ color: "red" }}>
+                                      {passwordError}
+                                    </div>
+                                  )}
                                   <label>Re-enter Password</label>
                                   <input
                                     type="password"

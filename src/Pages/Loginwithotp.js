@@ -26,21 +26,21 @@ const Loginwithotp = () => {
   const [otpSend,setOtpSend] = useState(false)
   const [mobile,setMobile] = useState("")
 const handleChange = (e) => {
-  const inputValue = e.target.value;
-  setPhoneNumber(inputValue);
-  if (!/^[6789]\d{9}$/.test(inputValue)) {
-    setError(
-      "Phone number must start with 6, 7, 8, or 9 and be exactly 10 digits long."
-    );
-  } else {
-    setError("");
-  }
+  setPhoneNumber(e.target.value);
 };
 
 
   const handleSubmitphone =async (e) => {
     e.preventDefault();
-    if (!error) {
+    if(!phoneNumber) {
+      setError("Please enter your phone number");
+      return;
+    }
+
+    if(Object.keys(error).length > 0) {
+      setError(error);
+      return
+    }
       // Form submission logic goes here
       console.log("Form submitted successfully!");
       console.log(phoneNumber, "phone number");
@@ -67,9 +67,7 @@ const handleChange = (e) => {
         console.log(error, "im catch error");
         toast.error("Try another method to login");
       }
-    } else {
-      console.log("Form has errors. Please correct them before submitting.");
-    }
+    
     
   };
 

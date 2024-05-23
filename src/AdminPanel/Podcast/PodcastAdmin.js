@@ -147,8 +147,38 @@ const PodcastAdmin = () => {
     });
   };
 
+  const [errorsMain, setErrorsmain] = useState({});
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const formErrorss = {};
+
+    if (!formDatas.title.trim()) {
+      formErrorss.title = "Title is required";
+    }
+
+    if (!formDatas.discription.trim()) {
+      formErrorss.discription = "Discription is required";
+    }
+
+    if (!formDatas.category.trim()) {
+      formErrorss.category = "Category is required";
+    }
+
+    if (!thumbnail) {
+      formErrorss.thumbnail = "Thumbnail is required";
+    }
+
+    if (!source) {
+      
+      formErrorss.source = "Source is required";
+    }
+
+    if (Object.keys(formErrorss).length > 0) {
+      setErrorsmain(formErrorss);
+      return;
+    }
+
+
     try {
       const formData = new FormData();
       formData.append("title", formDatas.title);
@@ -164,6 +194,14 @@ const PodcastAdmin = () => {
 
       const response = await axios.post("admin/add_podcast", formData);
       console.log(response, "reeeeeeeeeeeeeeeesss");
+      if(response.status === 200){
+        toast.success("Podcast added successfully");
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000);
+      }else{
+        toast.error("Failed to add podcast");
+      }
     } catch (error) {
       console.log(error);
     }
@@ -186,6 +224,9 @@ const PodcastAdmin = () => {
       // Update the state after successful deletion
       setRows(rows.filter((row) => row.id !== id));
       toast.success("Podcast deleted successfully");
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
     } catch (error) {
       console.error("Error deleting podcast:", error);
       toast.error("Failed to delete podcast");
@@ -230,33 +271,32 @@ const PodcastAdmin = () => {
     setPodcastVideo(file);
   };
 
- const validateForm = () => {
-   let errors = {};
-  if (!formDatass.title) {
-    errors.title = "Title is required";
-  }
-  if (!formDatass.description) {
-    errors.description = "Description is required";
-  }
-  if (!formDatass.category) {
-    errors.category = "Category is required";
-  }
-  if (!thumbnails) {
-    errors.thumbnail = "Thumbnail is required";
-  }
-  if (!podcastVideo) {
-    errors.video = "Video is required";
-  }
-   // Add validation for other text fields as needed
-   setErrors(errors);
-   return Object.keys(errors).length === 0;
- };
+
 
   const handleSubmitt = async (e) => {
     e.preventDefault();
+    const formErorrs = {};
+    if (!formDatass.title.trim()) {
+      formErorrs.title = "Title is required";
+    }
+    if (!formDatass.description.trim()) {
+      formErorrs.description = "Description is required";
+    }
+    if (!formDatass.category.trim()) {
+      formErorrs.category = "Category is required";
+    }
+    if (!thumbnails) {
+      formErorrs.thumbnail = "Thumbnail is required";
+    }
+    if (!podcastVideo) {
+      formErorrs.source = "Video file is required";
+    }
+    if (Object.keys(formErorrs).length > 0) {
+      setErrors(formErorrs);
+      return;
+    }
     try {
-      const isValid = validateForm();
-      if (isValid) {
+         
         const formData = new FormData();
         formData.append("title", formDatass.title);
         formData.append("description", formDatass.description);
@@ -268,7 +308,7 @@ const PodcastAdmin = () => {
         console.log(formData, "podcasttttttttttttttttttttttttt");
         const response = await axios.post("admin/add_podcast", formData);
         console.log(response, "Response from server");
-      }
+      
     } catch (error) {
       console.log(error);
     }
@@ -403,8 +443,8 @@ const PodcastAdmin = () => {
                         name="title"
                         value={formDatas.title}
                         onChange={handleChange}
-                        required // HTML5 validation: makes this field required
                       />
+                      {errorsMain && <p>{errorsMain.title}</p>}
                     </div>
                     <div>
                       <label>Description</label>
@@ -414,8 +454,8 @@ const PodcastAdmin = () => {
                         name="discription"
                         value={formDatas.discription}
                         onChange={handleChange}
-                        required // HTML5 validation
                       />
+                      {errorsMain && <p>{errorsMain.discription}</p>}
                     </div>
                     <div>
                       <label>Category</label>
@@ -425,17 +465,14 @@ const PodcastAdmin = () => {
                         name="category"
                         value={formDatas.category}
                         onChange={handleChange}
-                        required // HTML5 validation
                       />
+                      {errorsMain && <p>{errorsMain.category}</p>}
                     </div>
                   </div>
                   <div className="video-thumbnil-inputs">
                     <label>Thumbnail</label>
-                    <input
-                      type="file"
-                      onChange={handleThumbnailChange}
-                      required // HTML5 validation: makes this field required
-                    />
+                    <input type="file" onChange={handleThumbnailChange} />
+                    {errorsMain && <p>{errorsMain.thumbnail}</p>}
                   </div>
                   <label>Upload Podcast</label>
                   <div className="video-admin-inputs">
@@ -445,9 +482,10 @@ const PodcastAdmin = () => {
                       id="videoFile"
                       name="videoFile"
                       onChange={handleSourceChange}
-                      required // HTML5 validation
+
                       // style={{ display: "none" }}
                     />
+                    {errorsMain && <p>{errorsMain.video}</p>}
                     <label
                       htmlFor="videoFile"
                       className="custom-file-input"
@@ -455,6 +493,7 @@ const PodcastAdmin = () => {
                     >
                       Upload a file
                     </label>
+                    {errorsMain && <p>{errorsMain.video}</p>}
                   </div>
                   <div className="video-submit-btns">
                     <button type="submit">Submit</button>
