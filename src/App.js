@@ -77,7 +77,7 @@ function App() {
     <div className="App">
       {loading ? (
         <div className="loading-container">
-          {/* <Lottie animationData={Loading} /> */}
+          <Lottie animationData={Loading} />
         </div>
       ) : (
       <Router>
