@@ -25,6 +25,7 @@
   align-items: center;
   justify-content: center;
   gap: 2rem;
+  flex-wrap: wrap;
 }
 .tele-buttons button {
   background-color: #ffdd7e;
