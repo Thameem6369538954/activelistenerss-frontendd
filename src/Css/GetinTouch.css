@@ -207,6 +207,12 @@
   
 } */
 @media (min-width: 600px) and (max-width: 1024px) {
+      .form-inputs input {
+        padding: 10px;
+        width: 100%;
+        border-radius: 10px;
+        /* margin: 10px auto; */
+    }
   .getintouch-msg input {
     border-radius: 10px;
     padding: 20px;

@@ -13,6 +13,8 @@ import axios from "../Utils/Baseurl.js";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { jwtDecode } from "jwt-decode";
+import { PiEyeBold } from "react-icons/pi";
+import { PiEyeSlash } from "react-icons/pi";
 const Signup = () => {
   const navigate = useNavigate();
 
@@ -82,6 +84,8 @@ useEffect(() => {
     setErrors({ ...errors, [name]: "" });
   };
 
+   const [showPasswordRequirements, setShowPasswordRequirements] =
+     useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -90,14 +94,19 @@ useEffect(() => {
     if (!formData.name.trim()) {
       newErrors.name = "Name is required";
     }
+    
     function isValidEmail(email) {
-      // Regular expression pattern for a valid email address
-      const emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
+      // Regular expression pattern for a valid Gmail address with lowercase local part not starting with a number
+      // and with a domain ending in either .com or .in
+      const gmailPattern = /^[a-z][a-z0-9._%+-]*@gmail\.(com|in)$/;
 
       // Check if the email matches the pattern
-      return emailPattern.test(email);
+      return gmailPattern.test(email);
     }
 
+     function isValidGmail(email) {
+      
+     }
     // Check if the email field is not empty
     if (!formData.email.trim()) {
       newErrors.email = "Email is required";
@@ -117,14 +126,21 @@ useEffect(() => {
       newErrors.phoneNumber =
         "Please enter a valid 10-digit phone number starting with 6, 7, 8, or 9.";
     }
-    if (!formData.password.trim()) {
-      newErrors.password = "Password is required";
-    }
-    if (!formData.confirmPassword.trim()) {
-      newErrors.confirmPassword = "Confirm Password is required";
-    } else if (formData.password !== formData.confirmPassword) {
-      newErrors.confirmPassword = "Passwords do not match";
-    }
+      const passwordRegex =
+        /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).{8,}$/;
+
+      if (!formData.password.trim()) {
+        newErrors.password = "Password is required";
+      } else if (!passwordRegex.test(formData.password.trim())) {
+        newErrors.password =
+          "Password must contain at least 8 characters, including at least one uppercase letter, one lowercase letter, one number, and one special character (@#$%^&+=)";
+      }
+
+      if (!formData.confirmPassword.trim()) {
+        newErrors.confirmPassword = "Confirm Password is required";
+      } else if (formData.password !== formData.confirmPassword) {
+        newErrors.confirmPassword = "Passwords do not match";
+      }
     // if (!formData.agree) {
     //   newErrors.agree = "You must agree to the Terms & Conditions";
     // }
@@ -154,6 +170,16 @@ useEffect(() => {
     }
   };
 
+  const [showPass, setShowPass] = useState(false);
+  const [showPasscon, setShowPasscon] = useState(false);
+
+const handleshowpass = () =>{
+  setShowPass(!showPass)
+}
+const handleConfrim = () =>{
+  setShowPasscon(!showPasscon)
+}
+
   return (
     <div>
       <div className="signup-main">
@@ -175,8 +201,8 @@ useEffect(() => {
           </div>
           <div className="sign-txt">
             <p>Our Goals</p>
-            <h1 >Signup</h1>
-            <h2 >Now</h2>
+            <h1>Signup</h1>
+            <h2>Now</h2>
             <img src={Yellowline} className="Yellowline" alt="" />
           </div>
           <div>
@@ -233,31 +259,58 @@ useEffect(() => {
               <label>
                 Password<span>*</span>
               </label>
-              <input
-                type="password"
-                name="password"
-                value={formData.password}
-                onChange={handleChange}
-                placeholder="Password"
-                className={errors.password ? "error-input" : ""}
-              />
+              <div className="eye-sig">
+                <input
+                  type={showPass ? "text" : "password"}
+                  name="password"
+                  value={formData.password}
+                  onChange={handleChange}
+                  placeholder="Password"
+                  className={errors.password ? "error-input" : ""}
+                />
+                {showPass ? (
+                  <PiEyeBold onClick={handleshowpass} className="eye-signup" />
+                ) : (
+                  <PiEyeSlash onClick={handleshowpass} className="eye-signup" />
+                )}
+                {/* <PiEyeBold />
+                <PiEyeSlash /> */}
+              </div>
+              {showPasswordRequirements && (
+                <p className="password-requirements">
+                  Password must contain at least 8 characters, including at
+                  least one uppercase letter, one lowercase letter, one number,
+                  and one special character (@#$%^&+=)
+                </p>
+              )}
               {errors.password && (
-                <span className="error">{errors.password}</span>
+                <div className="error">
+                  <p>{errors.password}</p>
+                </div>
               )}
               <label>
                 Confirm Password<span>*</span>
               </label>
-              <input
-                type="password"
-                name="confirmPassword"
-                value={formData.confirmPassword}
-                onChange={handleChange}
-                placeholder="Confirm Password"
-                className={errors.confirmPassword ? "error-input" : ""}
-              />
-              {errors.confirmPassword && (
-                <span className="error">{errors.confirmPassword}</span>
-              )}
+              <div className="eye-sig">
+                <input
+                  type={showPasscon ? "text" : "password"}
+                  name="confirmPassword"
+                  value={formData.confirmPassword}
+                  onChange={handleChange}
+                  placeholder="Confirm Password"
+                  className={errors.confirmPassword ? "error-input" : ""}
+                />
+                {showPasscon ? (
+                  <PiEyeBold onClick={handleConfrim} className="eye-signup" />
+                ) : (
+                  <PiEyeSlash onClick={handleConfrim} className="eye-signup" />
+                )}
+                {errors.confirmPassword && (
+                  <div className="error">
+                    <p>{errors.confirmPassword}</p>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
           <div className="signup-aggry-form">

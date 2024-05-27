@@ -157,7 +157,7 @@ const Psycologistform = () => {
         </div>
         <div className="hiring-form-holeconatiner">
           <div className="container-form">
-            <form encType="multipart/form-data" onSubmit={handleSubmit}>
+            <form encType="multipart/form-data" className='psyco-form' onSubmit={handleSubmit}>
               <div className="form-affilate">
                 <div className="input-field">
                   <label>Full Name</label>

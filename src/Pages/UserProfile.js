@@ -25,6 +25,7 @@ import { IoIosCloseCircleOutline } from "react-icons/io";
 import { VscClose } from "react-icons/vsc";
 import { IoSettingsSharp } from "react-icons/io5";
 import Swal from "sweetalert2";
+
 // import axios from "../Utils/Baseurl.js";
 const UserProfile = () => {
   const dispatch = useDispatch();
@@ -168,15 +169,34 @@ const UserProfile = () => {
     setProfileImage(event.target.files[0]);
   };
 
+        const [updateError, setUpdateError] = useState({});
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     // Client-side validation
-    const { username, email, phone } = userDataedit;
-    if (!username || !email || !phone) {
-      toast.error("Please fill out all fields!!");
+    const formError = {};
+    const emailRegex = /^[a-zA-Z][^\s@]+@gmail\.com$/;
+    if (!userDataedit.username) {
+      formError.username = "Username is required";
+    }
+
+    if (!userDataedit.email) {
+      formError.email = "Email is required";
+    }else if (!emailRegex.test(userDataedit.email)) {
+      formError.email = "Please enter a valid email address";
+    }
+
+    if (!userDataedit.phone) {
+      formError.phone = "Phone number is required";
+    }
+
+    if (Object.keys(formError).length > 0) {
+      setUpdateError(formError);
       return;
     }
+
+    
 
     const token = localStorage.getItem("accessToken");
     console.log(user._id, token, "faaaduuuuuuuuuuu");
@@ -326,10 +346,18 @@ const UserProfile = () => {
   const handleSubmitphone = async (e) => {
     e.preventDefault();
 
+    if (!mobile.phone) {
+      setphoneError("Please enter your phone number");
+      return;
+    }
+    if (Object.keys(phoneerror).length > 0) {
+      setphoneError(phoneerror);
+      return;
+    }
+
     try {
       const token = localStorage.getItem("accessToken");
       console.log(userData._id, mobile.phone, "userData._id");
-
       const response = await axios.post(
         `/addMobile/${userData._id}`,
         { phone: mobile.phone }, // Send the phone number as { phone: value }
@@ -343,12 +371,21 @@ const UserProfile = () => {
       if (response) {
         setMobile({ phone: "" }); // Clear the phone number
         setphoneError(""); // Clear any error message
+        if (response.data.message == "Mobile updated!!") {
+          toast.success("Mobile updated!!");
+          
+        }
+        
       }
 
       console.log(response, "response of add phone number");
     } catch (error) {
       console.log(error);
     }
+    phonenumberPopup();
+    setTimeout(() => {
+      window.location.reload();
+    }, 2000);
   };
 
   //  VALIDATION API FOR ADD GENDER.......................................................
@@ -396,6 +433,12 @@ const UserProfile = () => {
       );
 
       console.log(response, "response of add gender");
+      if (response.data.message == "gender updated!!") {
+        toast.success("Gender updated!!");
+      }
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
     } catch (error) {
       console.log(error);
     }
@@ -418,22 +461,33 @@ const UserProfile = () => {
   const handleSubmitPassword = async (event) => {
     event.preventDefault();
 
-    if (newPassword !== confirmPassword) {
-      setPasswordError("Passwords do not match");
-    } else {
-      // Passwords match, proceed with form submission or other actions
-      setPasswordError("");
-      // Your submit logic goes here
-    }
-    if(!newPassword) {
-      setPasswordError("Please enter a new password");
-      return;
-    }
+  const passwordValidation =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&+=]).{8,}$/;
 
-    if(Object.keys(passwordError).length > 0) {
-      setPasswordError(passwordError);  
-      return;
-    }
+  // Initial validation checks
+  if (!newPassword) {
+    setPasswordError("Please enter a new password");
+    return;
+  }
+
+  if (!passwordValidation.test(newPassword)) {
+    setPasswordError(
+      "Password must be at least 8 characters long, including at least one uppercase letter, one lowercase letter, one number, and one special character (@#$%^&+=)"
+    );
+    return;
+  }
+
+  if (newPassword !== confirmPassword) {
+    setPasswordError("Passwords do not match");
+    return;
+  }
+
+  // If no errors, clear the error state
+if(Object.keys(passwordError).length > 0) {
+  setPasswordError(passwordError);
+  return;
+}
+
     console.log(newPassword, "new password");
     try {
       const token = localStorage.getItem("accessToken");
@@ -448,7 +502,12 @@ const UserProfile = () => {
           },
         }
       );
-
+      if(response.data.message == "Password updated!!") {
+        toast.success("Password updated!!");
+      }
+setTimeout(() => {
+  window.location.reload();
+}, 2000);
       console.log(response, "response of add password");
     } catch (error) {
       console.log(error);
@@ -466,20 +525,13 @@ const UserProfile = () => {
 
       <div className="useprof-main-con">
         <img src={EllipseRed} alt="" />
-        <div className="userprofile-sidebar">
+        {/* <div className="userprofile-sidebar">
           <ul className="userprofile-sidebar-ul">
             <Link to="/UserProfile/Profile" className="active">
               <li>Profile</li>
             </Link>
-            {/* <Link to="/UserProfile/Account" className="active">
-              {" "}
-              <li>Account</li>
-            </Link>
-            <Link to="/UserProfile/profilesubscribe" className="active">
-              <li>Subscribe</li>
-            </Link> */}
           </ul>
-        </div>
+        </div> */}
 
         <div className="routers">
           <Routes>
@@ -606,52 +658,53 @@ const UserProfile = () => {
                                 </>
                               ) : (
                                 <>
+                                <div>
                                   <p>{userData.mobile}</p>
-                                  <button
-                                    style={{
-                                      color: "Blue",
-                                      backgroundColor: "white",
-                                      padding: "10px",
-                                      fontSize: "15px",
-                                      width: "40%",
-                                      border: "1px solid black",
-                                      borderRadius: "50px",
-                                    }}
-                                    onClick={phonenumberPopup}
-                                  >
-                                    Please add your mobile number
-                                  </button>
+                                  <div onClick={phonenumberPopup}>
+                                    <p>Please add your mobile number</p>
+                                  </div>
+                                </div>
                                 </>
                               )}
                               {numberpopup && (
-                                <form onSubmit={handleSubmitphone}>
-                                  <input
-                                    type="text"
-                                    value={mobile.phone}
-                                    onChange={handleChangephone}
-                                    placeholder="Enter Your Phone Number"
-                                  />
-                                  {phoneerror && (
-                                    <div style={{ color: "red" }}>
-                                      {phoneerror}
-                                    </div>
-                                  )}
+                                <div className="phone-number-popup">
+                                  <form
+                                    onSubmit={handleSubmitphone}
+                                    className="phone-number-form"
+                                  >
+                                    <VscClose
+                                      onClick={phonenumberPopup}
+                                      className="close-icon-phone-us"
+                                    />
+                                    <input
+                                      type="text"
+                                      value={mobile.phone}
+                                      onChange={handleChangephone}
+                                      placeholder="Enter Your Phone Number"
+                                    />
+                                    {phoneerror && (
+                                      <div className="phone-error-user">
+                                        {phoneerror}
+                                      </div>
+                                    )}
 
-                                  <div className="btns-for-add-user-detials">
-                                    <button
-                                      type="button"
-                                      onClick={() => setMobile("")}
-                                    >
-                                      Cancel
-                                    </button>
-                                    <button type="submit">Submit</button>
-                                  </div>
-                                </form>
+                                    <div className="btns-for-add-user-detials">
+                                      <button
+                                        type="button"
+                                        onClick={() => setMobile("")}
+                                      >
+                                        Cancel
+                                      </button>
+                                      <button type="submit">Submit</button>
+                                    </div>
+                                  </form>
+                                </div>
                               )}
+                            </div>
                             </div>
 
                             {/* Gander */}
-
+                            <div>
                             <div className="user-detailes">
                               <div className="user-detailes-txt">
                                 <h3>Gender</h3>
@@ -668,119 +721,124 @@ const UserProfile = () => {
                                 </>
                               ) : (
                                 <>
+                                <div>
                                   <p>{userData.gender}</p>
-                                  <button
-                                    style={{
-                                      color: "Blue",
-                                      width: "40%",
-                                      border: "1px solid black",
-                                      borderRadius: "50px",
-                                      backgroundColor: "white",
-                                      padding: "10px",
-                                      fontSize: "15px",
-                                    }}
-                                    onClick={genderPopup}
-                                  >
-                                    Please add your gender
-                                  </button>
+                                  <div>
+                                    <p onClick={genderPopup}>
+                                      Please add your gender
+                                    </p>
+                                  </div>
+                                </div>
                                 </>
                               )}
                               {genderpopup && (
-                                <form onSubmit={handleSubmitgender}>
-                                  <select
-                                    value={gender}
-                                    onChange={handleChangegender}
+                                <div className="phone-number-popup">
+                                  <form
+                                    className="phone-number-form"
+                                    onSubmit={handleSubmitgender}
                                   >
-                                    <option value="">Select Gender</option>
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
-                                    <option value="Other">Other</option>
-                                  </select>
-                                  {egenderrrors.gender && (
-                                    <div className="error">
-                                      {egenderrrors.gender}
-                                    </div>
-                                  )}
-                                  <div className="btns-for-add-user-detials">
-                                    <button
-                                      type="button"
-                                      onClick={() => setGender("")}
+                                    <VscClose
+                                      onClick={genderPopup}
+                                      className="close-icon-phone-us"
+                                    />
+
+                                    <select
+                                      value={gender}
+                                      onChange={handleChangegender}
                                     >
-                                      Cancel
-                                    </button>
-                                    <button type="submit">Submit</button>
-                                  </div>
-                                </form>
+                                      <option value="">Select Gender</option>
+                                      <option value="Male">Male</option>
+                                      <option value="Female">Female</option>
+                                      <option value="Other">Other</option>
+                                    </select>
+                                    {egenderrrors.gender && (
+                                      <div className="error">
+                                        {egenderrrors.gender}
+                                      </div>
+                                    )}
+                                    <div className="btns-for-add-user-detials">
+                                      <button
+                                        type="button"
+                                        onClick={() => setGender("")}
+                                      >
+                                        Cancel
+                                      </button>
+                                      <button type="submit">Submit</button>
+                                    </div>
+                                  </form>
+                                </div>
                               )}
                             </div>
 
                             {/* PassWord */}
 
                             <div className="user-detailes">
-                              <div className="user-detailes-txt"></div>
                               {!userData.password ? (
                                 <>
                                   <h3>Password</h3>
+                                  <div>
+
                                   <p>{userData.password}</p>
-                                  <button
-                                    style={{
-                                      color: "Blue",
-                                      width: "40%",
-                                      border: "1px solid black",
-                                      borderRadius: "50px",
-                                      backgroundColor: "white",
-                                      padding: "10px",
-                                      fontSize: "15px",
-                                    }}
-                                    onClick={passwordPopup}
-                                  >
-                                    Please add your Password
-                                  </button>
+
+                                  <div onClick={passwordPopup}>
+                                    {" "}
+                                    <p>Please add your Password</p>
+                                  </div>
+                                  </div>
                                 </>
                               ) : (
                                 <></>
                               )}
                               {password && (
-                                <form onSubmit={handleSubmitPassword}>
-                                  <label>Enter Password</label>
-                                  <input
-                                    type="password"
-                                    value={newPassword}
-                                    onChange={handlePasswordChange}
-                                    placeholder="Enter Your Password"
-                                  />
-                                  {passwordError && (
-                                    <div style={{ color: "red" }}>
-                                      {passwordError}
+                                <div className="phone-number-popup">
+                                  <form
+                                    className="phone-number-form"
+                                    onSubmit={handleSubmitPassword}
+                                  >
+                                    <VscClose
+                                      onClick={passwordPopup}
+                                      className="close-icon-phone-us"
+                                    />
+                                    <label>Enter Password</label>
+                                    <input
+                                      type="password"
+                                      value={newPassword}
+                                      onChange={handlePasswordChange}
+                                      placeholder="Enter Your Password"
+                                    />
+                                    {passwordError && (
+                                      <div style={{ color: "red" }}>
+                                        {passwordError}
+                                      </div>
+                                    )}
+                                    <label>Re-enter Password</label>
+                                    <input
+                                      type="password"
+                                      value={confirmPassword}
+                                      onChange={handleConfirmPasswordChange}
+                                      placeholder="Re-enter Your Password"
+                                    />
+                                    {passwordError && (
+                                      <div style={{ color: "red" }}>
+                                        {passwordError}
+                                      </div>
+                                    )}
+                                    <div>
+                                      <div className="btns-for-add-user-detials">
+                                        <button
+                                          type="button"
+                                          onClick={() => {
+                                            setNewPassword("");
+                                            setConfirmPassword("");
+                                          }}
+                                        >
+                                          Cancel
+                                        </button>
+                                        <button type="submit">Submit</button>
+                                      </div>
                                     </div>
-                                  )}
-                                  <label>Re-enter Password</label>
-                                  <input
-                                    type="password"
-                                    value={confirmPassword}
-                                    onChange={handleConfirmPasswordChange}
-                                    placeholder="Re-enter Your Password"
-                                  />
-                                  {passwordError && (
-                                    <div style={{ color: "red" }}>
-                                      {passwordError}
-                                    </div>
-                                  )}
-                                  <div>
-                                    <div className="btns-for-add-user-detials">
-                                      <button
-                                        type="button"
-                                        onClick={() => {
-                                          setNewPassword("");
-                                          setConfirmPassword("");
-                                        }}
-                                      >
-                                        Cancel
-                                      </button>
-                                      <button type="submit">Submit</button>
-                                    </div>
-                                  </div>
-                                </form>
+                                  </form>
+                                </div>
                               )}
                             </div>
                           </div>
@@ -793,7 +851,10 @@ const UserProfile = () => {
                                 className="edit-user-profile"
                                 onSubmit={handleSubmitu}
                               >
-                                <VscClose onClick={toggleEdit} />
+                                <VscClose
+                                  onClick={toggleEdit}
+                                  className="close-icon-phone-us"
+                                />
                                 <div className="prof-input">
                                   <label for="profilePic" role="button">
                                     Upload New Image
@@ -899,8 +960,11 @@ const UserProfile = () => {
                                 value={userDataedit.username}
                                 onChange={handleUserDataChange}
                                 placeholder="Enter New Username"
-                                required
+                                // required
                               />
+                              {updateError.username && (
+                                <div className="error">{updateError.username}</div>
+                              )}
                             </div>
                             <div className="prof-input-edit">
                               <label htmlFor="new-username">
@@ -913,8 +977,11 @@ const UserProfile = () => {
                                 value={userDataedit.email}
                                 onChange={handleUserDataChange}
                                 placeholder="Enter New Username"
-                                required
+                                // required
                               />
+                              {updateError.email && (
+                                <div className="error">{updateError.email}</div>
+                              )}
                             </div>
 
                             <div className="prof-input-edit">
@@ -928,8 +995,11 @@ const UserProfile = () => {
                                 value={userDataedit.phone}
                                 onChange={handleUserDataChange}
                                 placeholder="Enter New Phone Number"
-                                required
+                                // required
                               />
+                              {updateError.phone && (
+                                <div className="error">{updateError.phone}</div>
+                              )}
                             </div>
                             {/* <div>
                               <label htmlFor="profile-image">

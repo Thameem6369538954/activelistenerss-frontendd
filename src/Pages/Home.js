@@ -8,10 +8,12 @@ import GetinTouch from "../Components/GetinTouch";
 import Footer from "../Components/Footer";
 import Therapycategories from "../Components/Therapycategories";
 import Subscribe from "../Components/Subscribe";
+import TopUpButton from "../Components/TopUpButton.js"
 const Home = () => {
   return (
     <div className="home-main">
       <Navbar />
+      <TopUpButton />
       <Header />
       <Categories />
       <Therapycategories />

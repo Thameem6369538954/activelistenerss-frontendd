@@ -65,50 +65,7 @@ const TeamPage = () => {
     ],
   };
   const [employees, setemployees] = useState([ ]);
-  // const psychologist = [
-  //   {
-  //     id: 1,
-  //     name: "Jennifer kale",
-  //     position: "Psychologist",
-  //     image: Psyco,
-  //     dis: "Lorem ipsum dolor sit amet consectet piscing elit, sed do eiusmod tempor rarylet podofcast.",
-  //   },
-  //   {
-  //     id: 2,
-  //     name: "Jennifer kale",
-  //     position: "Psychologist",
-  //     image: Psyco,
-  //     dis: "Lorem ipsum dolor sit amet consectet piscing elit, sed do eiusmod tempor rarylet podofcast.",
-  //   },
-  //   {
-  //     id: 3,
-  //     name: "Jennifer kale",
-  //     position: "Psychologist",
-  //     image: Psyco,
-  //     dis: "Lorem ipsum dolor sit amet consectet piscing elit, sed do eiusmod tempor rarylet podofcast.",
-  //   },
-  //   {
-  //     id: 4,
-  //     name: "Jennifer kale",
-  //     position: "Psychologist",
-  //     image: Psyco,
-  //     dis: "Lorem ipsum dolor sit amet consectet piscing elit, sed do eiusmod tempor rarylet podofcast.",
-  //   },
-  //   {
-  //     id: 5,
-  //     name: "Jennifer kale",
-  //     position: "Psychologist",
-  //     image: Psyco,
-  //     dis: "Lorem ipsum dolor sit amet consectet piscing elit, sed do eiusmod tempor rarylet podofcast.",
-  //   },
-  //   {
-  //     id: 6,
-  //     name: "Jennifer kale",
-  //     position: "Psychologist",
-  //     image: Psyco,
-  //     dis: "Lorem ipsum dolor sit amet consectet piscing elit, sed do eiusmod tempor rarylet podofcast.",
-  //   },
-  // ];
+
 
   
   const [psychologist, setPsychologist] = useState([]);

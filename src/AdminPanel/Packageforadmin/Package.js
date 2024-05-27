@@ -68,6 +68,7 @@ const Package = () => {
   };
 
     const [formErrors,setFormErrors] = useState({}); // [formErrors]
+    const [loading,setLoading] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
     // You can perform form submission logic here
@@ -378,7 +379,9 @@ const Package = () => {
                 </div>
 
                 <div className="video-submit-btns">
-                  <button type="submit">Submit</button>
+                  <button type="submit" disabled={loading}>
+                    {loading ? "Submitting..." : "Submit"}
+                  </button>
                   <button type="button" onClick={togglePopup}>
                     Cancel
                   </button>

@@ -10,6 +10,8 @@
   width: 30px;
   margin-top: 10px;
   border-radius: 100%;
+  aspect-ratio: 3/2;
+  object-fit: contain;
 }
 nav {
   margin: 2% auto;
@@ -89,7 +91,7 @@ nav img {
     margin: 2% auto;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     /* border: 1px solid black; */
     width: 100%;
     gap: 0rem;

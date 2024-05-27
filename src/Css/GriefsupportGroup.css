@@ -608,13 +608,11 @@ article {
   }
   .palette {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
     height: 300px;
     width: 100%;
     border-radius: 15px;
-    /* overflow: hidden; */
-    margin: 10px;
-    /* recomiendo quitar esto/quit this */
+    margin-left: 30%;
   }
     .grif-icon {
         font-size: 35px;

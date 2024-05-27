@@ -4,6 +4,11 @@
   justify-content: flex-start;
   gap: 22rem;
 }
+.eye-sig {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
 .signup-top img {
   width: 15%;
 }
@@ -38,6 +43,12 @@
 .signup-form span {
   color: red;
   /* margin-left: 5px; */
+  font-family: "Questrial", sans-serif;
+  font-size: 16px;
+}
+.eye-signup{
+  margin: 20px;
+  font-size: 30px;
 }
 .inside-sigup-from {
   display: flex;
@@ -135,8 +146,8 @@
 }
 .other-signup img {
   position: absolute;
-  margin-left: 70%;
-  width: 430px;
+  margin-left:50%;
+  width: 330px;
 }
 .fb,
 .ggl {

@@ -33,7 +33,7 @@ import Package from "./AdminPanel/Packageforadmin/Package.js";
 import Community from "./AdminPanel/Community/Community.js";
 import PodcastAdmin from "./AdminPanel/Podcast/PodcastAdmin.js";
 import GriefsupportGroup from "./Pages/GriefsupportGroup.js";
-import loading from "./Anime/loading.json";
+import Loading from "./Anime/Loading.json";
 import Lottie from "lottie-react";
 import Settings from "./Pages/Settings.js";
 import CareerCounselling from "./Pages/CareerCounselling.js";
@@ -64,7 +64,7 @@ import Privacy_policy from "./Pages/Privacy_policy.js";
 import Terms_and_condition from "./Pages/Terms_and_condition.js";
 import Cancellation_and_refunds from "./Pages/Cancellation_and_refunds.js";
 import Customer_support from "./Pages/Customer_support.js";
-
+import KalaKriti from "./Katha/KalaKriti/KalaKriti.js"
 function App() {
   const [loading, setLoading] = useState(false);
   useEffect(() => {
@@ -75,6 +75,11 @@ function App() {
   }, []);
   return (
     <div className="App">
+      {loading ? (
+        <div className="loading-container">
+          <Lottie animationData={Loading} />
+        </div>
+      ) : (
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -160,6 +165,7 @@ function App() {
           />
         </Routes>
       </Router>
+      )}
     </div>
   );
 }

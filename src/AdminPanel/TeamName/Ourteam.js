@@ -111,7 +111,7 @@ const [members, setMembers] = useState([]);
 
      formData.append("name", formDatas.name);
      formData.append("designation", formDatas.designation);
-     formData.append("socialmediaLink", formDatas.socialmediaLink);
+     formData.append("socialMediaLink", formDatas.socialmediaLink);
      formData.append("image", image);
      formData.append("audio", audio);
 
@@ -264,11 +264,11 @@ const [members, setMembers] = useState([]);
                }
 
                try{ 
-               
+               console.log(formValues,",,,,,,,,,,iiiiiiiiiiiiiiii");
                const formData = new FormData();
                formData.append("name", formValues.name);
                formData.append("designation", formValues.designation);
-               formData.append("socialmediaLink", formValues.socialmediaLink);
+               formData.append("socialMediaLink", formValues.socialmediaLink);
                formData.append("audio", audioFile);
                formData.append("image", imageFile);
 

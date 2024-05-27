@@ -263,9 +263,11 @@ h4 {
     position: absolute;
     z-index: 9999;
   }
-  .inside-mobile-addiction-txt h1 {
-    font-size: 19px;
-  }
+    .inside-mobile-addiction-txt h1 {
+        font-size: 19px;
+        width: 35%;
+                font-family: Relo;
+    }
   .observed-result-cate {
     display: flex;
     flex-direction: column;
