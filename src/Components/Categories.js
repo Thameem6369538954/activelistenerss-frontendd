@@ -1,4 +1,4 @@
-import React,{ useState } from "react";
+import React,{ useState,useEffect } from "react";
 import "../Css/Categories.css";
 import emoji from "../Images/emoji.png";
 import chat from "../Images/chat.png";
@@ -9,9 +9,30 @@ import Elements from "../Images/Elements.png";
 import { NavLink } from "react-router-dom";
 import WHYAL from "../Videos/WHYAL.mp4";
 import { MdPlayCircleFilled } from "react-icons/md";
+import axios from "../Utils/Baseurl.js";
+import { toast } from "react-toastify";
 const Categories = () => {
     const [isPlaying, setIsPlaying] = useState(false);
-
+    const [vid2, setVid2] = useState('');
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const response = await axios.get("admin/get_allVideos");
+          console.log(response.data.reslt, "oooooqqqqqqqqqqq"); // Log the second object in the response
+          if (response) {
+            // const videoData = response.data.reslt[1]; // Retrieve the video data
+            // Now you can use videoData to set the state or display the video
+            setVid2(response.data.reslt[1].source);
+            // setVid2;(response.data.reslt[1].source)
+          } else {
+            toast.error("something went wrong!!");
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      };
+      fetchData();
+    }, []);
     const togglePlay = () => {
       setIsPlaying(!isPlaying);
     };
@@ -19,6 +40,8 @@ const Categories = () => {
   const scrollToTop = () => {
     window.scrollTo(0, 0);
   };
+
+
   return (
     <div className="categories-main-holecontainer">
       <div className="puzzle-boy">
@@ -60,16 +83,19 @@ const Categories = () => {
         <div className="cate-yellow-box">
           <div className="Hoodi">
             <div style={{ position: "relative", width: "100%" }}>
-              <video
-                controls
-                className="header-video"
-                onClick={togglePlay}
-                onPlay={() => setIsPlaying(true)}
-                onPause={() => setIsPlaying(false)}
-              >
-                <source src={WHYAL} type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
+              {vid2 && (
+                <video
+                  controls // Ensure controls are enabled for user interaction
+                  className="Header-video"
+                  onClick={togglePlay}
+                  // onPlay={() => setIsPlaying(true)}
+                  // onPause={() => setIsPlaying(false)}
+                >
+                  <source src={vid2} type="video/mp4" />
+                  {/* Make sure src and type are correctly set */}
+                  Your browser does not support the video tag.
+                </video>
+              )}
               <div>
                 {!isPlaying && (
                   <div

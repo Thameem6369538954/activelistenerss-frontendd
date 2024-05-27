@@ -22,17 +22,22 @@ const EarlyAgeGadgetExposure = () => {
    const scrollToTop = () => {
      window.scrollTo(0, 0);
    };
-  const [rows, setRows] = useState([]);
+     const [isPlaying, setIsPlaying] = useState(false);
+
+     const togglePlay = () => {
+       setIsPlaying(!isPlaying);
+     };
+  const [rows, setRows] = useState('');
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get("admin/get_allVideos");
         console.log(response.data.reslt,"ppppppppppppppppppppppppppppppp"); // Log the second object in the response
         if (response) {
-          const videoData = response.data.reslt; // Retrieve the video data
+          // const videoData = response.data.reslt[3].source; // Retrieve the video data
           // Now you can use videoData to set the state or display the video
-          setRows(videoData);
-        } else {
+setRows(response.data.reslt[3].source);        
+} else {
           toast.error("something went wrong!!");
         }
       } catch (error) {
@@ -44,7 +49,7 @@ const EarlyAgeGadgetExposure = () => {
   return (
     <div className="home-main">
       <Navbar />
-      <Breadcrumps/>
+      <Breadcrumps />
       <div className="header">
         <div className="header-container">
           <img
@@ -103,17 +108,19 @@ const EarlyAgeGadgetExposure = () => {
               <p>children</p>
             </div>
             {console.log(rows, "mahzaaaaaaaaaaaaaaaaaaaaa")}
-            <video
-              controls // Ensure controls are enabled for user interaction
-              className="early-age-video"
-              // onClick={togglePlay}
-              // onPlay={() => setIsPlaying(true)}
-              // onPause={() => setIsPlaying(false)}
-            >
-              <source src={WHYAL} type="video/mp4" />{" "}
-              {/* Make sure src and type are correctly set */}
-              Your browser does not support the video tag.
-            </video>
+            {rows && (
+              <video
+                controls // Ensure controls are enabled for user interaction
+                className="Header-video-top"
+                onClick={togglePlay}
+                // onPlay={() => setIsPlaying(true)}
+                // onPause={() => setIsPlaying(false)}
+              >
+                <source src={rows} type="video/mp4" />
+                {/* Make sure src and type are correctly set */}
+                Your browser does not support the video tag.
+              </video>
+            )}
           </div>
         </div>
       </div>

@@ -296,7 +296,7 @@ p {
   margin-top: 16px;
   min-height: 290px;
   /* background-color: #fff; */
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 .containerform form .form {
   position: absolute;

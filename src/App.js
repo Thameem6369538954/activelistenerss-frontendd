@@ -63,6 +63,7 @@ import Privacy_policy from "./Pages/Privacy_policy.js";
 import Terms_and_condition from "./Pages/Terms_and_condition.js";
 import Cancellation_and_refunds from "./Pages/Cancellation_and_refunds.js";
 import Customer_support from "./Pages/Customer_support.js";
+import "animate.css";
 // import KalaKriti from "./Katha/KalaKriti/KalaKriti.js"
 function App() {
   const [loading, setLoading] = useState(false);
@@ -72,11 +73,17 @@ function App() {
       setLoading(false);
     }, 5000);
   }, []);
+
+
+
+
+  
   return (
     <div className="App">
       {loading ? (
         <div className="loading-container">
-          <Lottie animationData={New} />
+          <Lottie animationData={New} />          
+          
         </div>
       ) : (
       <Router>

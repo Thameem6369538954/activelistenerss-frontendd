@@ -97,14 +97,15 @@ const Teletherapy = () => {
                       {data.benefits}
                     </li>
                     <li>
-                      <TiTick className="tick" />2 sessions with parents
+                      <TiTick className="tick" />
+                      {data.sub_benefits}
                     </li>
-                    <li>
+                    {/* <li>
                       <TiTick className="tick" />1 intro session
                     </li>
                     <li>
                       <TiTick className="tick" />1 review session
-                    </li>
+                    </li> */}
                   </ul>
                   <button>Buy Now</button>
                 </div>

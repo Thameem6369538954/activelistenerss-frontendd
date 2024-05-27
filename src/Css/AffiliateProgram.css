@@ -212,12 +212,19 @@ width: 260px;
   .enagewith-conatiner {
     flex-wrap: wrap;
   }
- .psycologist-how-can-join-box-container {
-    display: grid;
-    grid-template-columns: repeat(1, 0.5fr);
-    gap: 2rem;
-    margin-left: 138px;
-}
+    .psycologist-how-can-join-box-container {
+        display: grid;
+        grid-template-columns: repeat(1, 0.5fr);
+        gap: 2rem;
+        margin-left: 90px;
+        place-items: center;
+    }
+    .psycologist-how-can-join-box-container-center{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: auto;
+    }
 .aff-bix-imsha{
   margin-left: 15%;
 }

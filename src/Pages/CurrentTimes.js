@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 
 import Navbar from "../Components/Navbar";
 import GetinTouch from "../Components/GetinTouch";
@@ -17,12 +17,33 @@ import PodcastRed from "../Images/PodcastRed.png";
 import WHYAL from "../Videos/WHYAL.mp4";
 import { Link } from "react-router-dom";
 import Breadcrumps from "../Components/Breadcrumps";
-
+import axios from "../Utils/Baseurl.js";
+import { toast } from "react-toastify";
 
 const CurrentTimes = () => {
    const scrollToTop = () => {
      window.scrollTo(0, 0);
    };
+
+     const [rows, setRows] = useState("");
+     useEffect(() => {
+       const fetchData = async () => {
+         try {
+           const response = await axios.get("admin/get_allVideos");
+           console.log(response.data.reslt, "ppppppppppppppppppppppppppppppp"); // Log the second object in the response
+           if (response) {
+             // const videoData = response.data.reslt[3].source; // Retrieve the video data
+             // Now you can use videoData to set the state or display the video
+             setRows(response.data.reslt[2].source);
+           } else {
+             toast.error("something went wrong!!");
+           }
+         } catch (error) {
+           console.log(error);
+         }
+       };
+       fetchData();
+     }, []);
   return (
     <div>
       <div className="home-main">

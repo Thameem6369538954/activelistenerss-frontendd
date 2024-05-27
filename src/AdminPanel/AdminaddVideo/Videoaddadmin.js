@@ -381,12 +381,11 @@ const Videoaddadmin = () => {
                             encType="multipart/form-data"
                           >
                             <div>
-                          
-                                <IoMdCloseCircleOutline
-                                  onClick={togglePopupEditnewone}
-                                  className='video-edit-close'
-                                />
-                             
+                              <IoMdCloseCircleOutline
+                                onClick={togglePopupEditnewone}
+                                className="video-edit-close"
+                              />
+
                               <div className="video-edit-input">
                                 <label>Title of the Podcast</label>
                                 <div className="video-edit-input-div">
@@ -504,6 +503,29 @@ const Videoaddadmin = () => {
                                   </option>
                                   <option value="oneone">
                                     One-On-One Session
+                                  </option>
+                                  <option value="learning and focus">
+                                    Learning and focus
+                                  </option>
+                                  <option value="early age and gadget exposure">
+                                    Early age and gadget exposure
+                                  </option>
+                                  <option value="post covid">Post covid</option>
+                                  <option value="adaptation to mobile">
+                                    Adaptation to Mobile
+                                  </option>
+                                  <option value="mobile addiction">
+                                    Mobile Addiction
+                                  </option>
+                                  <option value="gaming addiction">
+                                    Gaming Addiction
+                                  </option>
+                                  <option value="entertainment and performance addiction">
+                                    Entertainment and Performance Addiction
+                                  </option>
+                                  <option value="about us">About us</option>
+                                  <option value="hiring">
+                                    Hiring
                                   </option>
                                 </select>
                               </div>
