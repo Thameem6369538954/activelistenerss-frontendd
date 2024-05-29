@@ -862,7 +862,7 @@ const UserProfile = () => {
                               >
                                 <VscClose
                                   onClick={toggleEdit}
-                                  className="close-icon-phone-us"
+                                  className=" close-icon-pro-us"
                                 />
                                 <div className="prof-input">
                                   <label for="profilePic" role="button">
