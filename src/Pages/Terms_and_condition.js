@@ -1,4 +1,5 @@
 import React from 'react'
+import Footer from '../Components/Footer';
 
 const Terms_and_condition = () => {
   return (
@@ -126,6 +127,7 @@ const Terms_and_condition = () => {
           </ul>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

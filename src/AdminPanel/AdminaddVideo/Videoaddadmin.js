@@ -292,6 +292,17 @@ const Videoaddadmin = () => {
                       <option value="home">Home Page</option>
                       <option value="senses">Senses Resurrection</option>
                       <option value="oneone">One-On-One Session</option>
+                      <option value="Early age gadget exposure">
+                        Early age gadget exposure
+                      </option>
+                      <option value="Mobile Addicton">Mobile Addicton</option>
+                      <option value="Gaming Addiction">Gaming Addiction</option>
+                      <option value="Social Media Addiction">
+                        Social Media Addiction
+                      </option>
+                      <option value="Post Covid">Post Covid</option>
+                      <option value="Learning and Focus">Learning and Focus</option>
+                      <option value=""></option>
                     </select>
                     {errors.page && (
                       <span className="error">{errors.page}</span>
@@ -524,9 +535,7 @@ const Videoaddadmin = () => {
                                     Entertainment and Performance Addiction
                                   </option>
                                   <option value="about us">About us</option>
-                                  <option value="hiring">
-                                    Hiring
-                                  </option>
+                                  <option value="hiring">Hiring</option>
                                 </select>
                               </div>
                             </div>

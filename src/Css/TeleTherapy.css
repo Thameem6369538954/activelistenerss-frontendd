@@ -78,7 +78,7 @@
 }
 .card {
   position: relative;
-  width: 400px;
+  width: 350px;
   height: 600px;
   background: white;
   border: 2px solid #ffdd7e;
@@ -284,6 +284,11 @@ li {
   }
 }
 @media (min-width: 600px) and (max-width: 1024px) {
+  .top-baner h1 {
+    font-family: Relo;
+    font-weight: 900;
+    font-size: 44px;
+}
   .bottom-tele-image {
     display: flex;
     align-items: center;

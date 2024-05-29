@@ -28,6 +28,7 @@ const EarlyAgeGadgetExposure = () => {
        setIsPlaying(!isPlaying);
      };
   const [rows, setRows] = useState('');
+
   useEffect(() => {
     const fetchData = async () => {
       try {

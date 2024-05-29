@@ -52,9 +52,8 @@ const Navbar = () => {
   return (
     <div>
       <div className="Navbar-main">
-
+        
         <nav>
-          
           <div onClick={handleClick} className="nav-icons">
             {isOpen ? (
               <IoCloseOutline className="nav-icon" onClick={CloseMenu} />

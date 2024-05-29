@@ -169,7 +169,7 @@ const UserProfile = () => {
     setProfileImage(event.target.files[0]);
   };
 
-        const [updateError, setUpdateError] = useState({});
+  const [updateError, setUpdateError] = useState({});
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -183,7 +183,7 @@ const UserProfile = () => {
 
     if (!userDataedit.email) {
       formError.email = "Email is required";
-    }else if (!emailRegex.test(userDataedit.email)) {
+    } else if (!emailRegex.test(userDataedit.email)) {
       formError.email = "Please enter a valid email address";
     }
 
@@ -195,8 +195,6 @@ const UserProfile = () => {
       setUpdateError(formError);
       return;
     }
-
-    
 
     const token = localStorage.getItem("accessToken");
     console.log(user._id, token, "faaaduuuuuuuuuuu");
@@ -373,9 +371,9 @@ const UserProfile = () => {
         setphoneError(""); // Clear any error message
         if (response.data.message == "Mobile updated!!") {
           toast.success("Mobile updated!!");
-          
+        }else if (response.data.message == "Mobile number already registered!!") {
+          toast.error("Mobile number already registered!!");
         }
-        
       }
 
       console.log(response, "response of add phone number");
@@ -398,7 +396,6 @@ const UserProfile = () => {
     setErrorsgender({}); // Reset errors when user makes a selection
   };
 
-
   const handleSubmitgender = async (event) => {
     event.preventDefault();
     const genderError = {};
@@ -408,12 +405,11 @@ const UserProfile = () => {
       setErrorsgender(genderError);
       return;
     }
-    if(Object.keys(genderError).length > 0) {
+    if (Object.keys(genderError).length > 0) {
       setErrorsgender(genderError);
       return;
     }
-    
-    
+
     // Perform submit logic here
     console.log("Form submitted with gender:", gender);
 
@@ -458,59 +454,60 @@ const UserProfile = () => {
     setConfirmPassword(event.target.value);
   };
 
+    const [confirmPasswordError, setConfirmPasswordError] = useState("");
+      const [newPasswordError, setNewPasswordError] = useState("");
   const handleSubmitPassword = async (event) => {
     event.preventDefault();
+       let isValid = true;
+       const passwordRegex =
+         /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.*[a-zA-Z]).{8,}$/;
 
-  const passwordValidation =
-    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&+=]).{8,}$/;
-
-  // Initial validation checks
-  if (!newPassword) {
-    setPasswordError("Please enter a new password");
-    return;
-  }
-
-  if (!passwordValidation.test(newPassword)) {
-    setPasswordError(
-      "Password must be at least 8 characters long, including at least one uppercase letter, one lowercase letter, one number, and one special character (@#$%^&+=)"
-    );
-    return;
-  }
-
-  if (newPassword !== confirmPassword) {
-    setPasswordError("Passwords do not match");
-    return;
-  }
-
-  // If no errors, clear the error state
-if(Object.keys(passwordError).length > 0) {
-  setPasswordError(passwordError);
-  return;
-}
+     if (newPassword === "") {
+       setNewPasswordError("Please enter a password.");
+       isValid = false;
+     } else if (!passwordRegex.test(newPassword)) {
+       setNewPasswordError(
+         "Password must contain at least 8 characters, including uppercase, lowercase, numbers, and special characters."
+       );
+       isValid = false;
+     } else {
+       setNewPasswordError("");
+     }
+     if (confirmPassword === "") {
+       setConfirmPasswordError("Please confirm your password.");
+       isValid = false;
+     } else if (newPassword !== confirmPassword) {
+       setConfirmPasswordError("Passwords do not match.");
+       isValid = false;
+     } else {
+       setConfirmPasswordError("");
+     }
 
     console.log(newPassword, "new password");
-    try {
-      const token = localStorage.getItem("accessToken");
+    if (isValid){
+      try {
+        const token = localStorage.getItem("accessToken");
 
-      console.log(userData._id, "userData._id");
-      const response = await axios.post(
-        `/createPassword/${userData._id}`,
-        { password: newPassword },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
+        console.log(userData._id, "userData._id");
+        const response = await axios.post(
+          `/createPassword/${userData._id}`,
+          { password: newPassword },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        if (response.data.message == "Password updated!!") {
+          toast.success("Password updated!!");
         }
-      );
-      if(response.data.message == "Password updated!!") {
-        toast.success("Password updated!!");
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000);
+        console.log(response, "response of add password");
+      } catch (error) {
+        console.log(error);
       }
-setTimeout(() => {
-  window.location.reload();
-}, 2000);
-      console.log(response, "response of add password");
-    } catch (error) {
-      console.log(error);
     }
   };
   const [settings, setSettings] = useState(false);
@@ -658,53 +655,58 @@ setTimeout(() => {
                                 </>
                               ) : (
                                 <>
-                                <div>
-                                  <p>{userData.mobile}</p>
-                                  <div onClick={phonenumberPopup}>
-                                    <p>Please add your mobile number</p>
+                                  <div>
+                                    <p>{userData.mobile}</p>
+                                    <div onClick={phonenumberPopup}>
+                                      <p>Please add your mobile number</p>
+                                    </div>
                                   </div>
-                                </div>
                                 </>
                               )}
-                              {numberpopup && (
-                                <div className="phone-number-popup">
-                                  <form
-                                    onSubmit={handleSubmitphone}
-                                    className="phone-number-form"
-                                  >
-                                    <VscClose
-                                      onClick={phonenumberPopup}
-                                      className="close-icon-phone-us"
-                                    />
-                                    <input
-                                      type="text"
-                                      value={mobile.phone}
-                                      onChange={handleChangephone}
-                                      placeholder="Enter Your Phone Number"
-                                    />
-                                    {phoneerror && (
-                                      <div className="phone-error-user">
-                                        {phoneerror}
+                              <div className="phone-number-popup-container">
+                                {numberpopup && (
+                                        <div className="phone-phone-popup-container">
+                                  <div className="phone-number-popup">
+                                    <form
+                                      onSubmit={handleSubmitphone}
+                                      className="phone-number-form"
+                                    >
+                                      <VscClose
+                                        onClick={phonenumberPopup}
+                                        className="close-icon-phone-us"
+                                      />
+                                      <h1>Add Your Phone Number</h1>
+                                      <input
+                                        type="text"
+                                        value={mobile.phone}
+                                        onChange={handleChangephone}
+                                        placeholder="Enter Your Phone Number"
+                                      />
+                                      {phoneerror && (
+                                        <div className="phone-error-user">
+                                          {phoneerror}
+                                        </div>
+                                      )}
+
+                                      <div className="btns-for-add-user-detials">
+                                        <button
+                                          type="button"
+                                          onClick={() => setMobile("")}
+                                        >
+                                          Cancel
+                                        </button>
+                                        <button type="submit">Submit</button>
                                       </div>
-                                    )}
-
-                                    <div className="btns-for-add-user-detials">
-                                      <button
-                                        type="button"
-                                        onClick={() => setMobile("")}
-                                      >
-                                        Cancel
-                                      </button>
-                                      <button type="submit">Submit</button>
-                                    </div>
-                                  </form>
-                                </div>
-                              )}
+                                    </form>
+                                  </div>
+                                  </div>
+                                )}
+                              </div>
                             </div>
-                            </div>
+                          </div>
 
-                            {/* Gander */}
-                            <div>
+                          {/* Gander */}
+                          <div>
                             <div className="user-detailes">
                               <div className="user-detailes-txt">
                                 <h3>Gender</h3>
@@ -721,17 +723,18 @@ setTimeout(() => {
                                 </>
                               ) : (
                                 <>
-                                <div>
-                                  <p>{userData.gender}</p>
                                   <div>
-                                    <p onClick={genderPopup}>
-                                      Please add your gender
-                                    </p>
+                                    <p>{userData.gender}</p>
+                                    <div>
+                                      <p onClick={genderPopup}>
+                                        Please add your gender
+                                      </p>
+                                    </div>
                                   </div>
-                                </div>
                                 </>
                               )}
                               {genderpopup && (
+                                      <div className="phone-email-popup-container">
                                 <div className="phone-number-popup">
                                   <form
                                     className="phone-number-form"
@@ -741,7 +744,7 @@ setTimeout(() => {
                                       onClick={genderPopup}
                                       className="close-icon-phone-us"
                                     />
-
+                                  <h1>Select Your Gender</h1>
                                     <select
                                       value={gender}
                                       onChange={handleChangegender}
@@ -767,6 +770,7 @@ setTimeout(() => {
                                     </div>
                                   </form>
                                 </div>
+                                </div>
                               )}
                             </div>
 
@@ -777,67 +781,70 @@ setTimeout(() => {
                                 <>
                                   <h3>Password</h3>
                                   <div>
+                                    <p>{userData.password}</p>
 
-                                  <p>{userData.password}</p>
-
-                                  <div onClick={passwordPopup}>
-                                    {" "}
-                                    <p>Please add your Password</p>
-                                  </div>
+                                    <div onClick={passwordPopup}>
+                                      {" "}
+                                      <p>Please add your Password</p>
+                                    </div>
                                   </div>
                                 </>
                               ) : (
                                 <></>
                               )}
+
                               {password && (
-                                <div className="phone-number-popup">
-                                  <form
-                                    className="phone-number-form"
-                                    onSubmit={handleSubmitPassword}
-                                  >
+                                <div className="phone-email-popup-container">
+                                  <div className="phone-number-popup">
                                     <VscClose
                                       onClick={passwordPopup}
                                       className="close-icon-phone-us"
                                     />
-                                    <label>Enter Password</label>
-                                    <input
-                                      type="password"
-                                      value={newPassword}
-                                      onChange={handlePasswordChange}
-                                      placeholder="Enter Your Password"
-                                    />
-                                    {passwordError && (
-                                      <div style={{ color: "red" }}>
-                                        {passwordError}
+                                    <h1>Upadate Your Password</h1>
+                                    <form
+                                      className="phone-number-form"
+                                      onSubmit={handleSubmitPassword}
+                                    >
+                                      <label>Enter Password</label>
+                                      <input
+                                        type="password"
+                                        value={newPassword}
+                                        onChange={handlePasswordChange}
+                                        placeholder="Enter Your Password"
+                                      />
+                                      {newPasswordError && (
+                                        <div style={{ color: "red" }}>
+                                          {newPasswordError}
+                                        </div>
+                                      )}
+                                      <label>Re-enter Password</label>
+                                      <input
+                                        type="password"
+                                        value={confirmPassword}
+                                        onChange={handleConfirmPasswordChange}
+                                        placeholder="Re-enter Your Password"
+                                      />
+                                      {confirmPasswordError && (
+                                        <div style={{ color: "red" }}>
+                                          {confirmPasswordError}
+                                        </div>
+                                      )}
+                                      <div>
+                                        <div className="btns-for-add-user-detials">
+                                          <button
+                                            type="button"
+                                            onClick={() => {
+                                              setNewPassword("");
+                                              setConfirmPassword("");
+                                            }}
+                                          >
+                                            Cancel
+                                          </button>
+                                          <button type="submit">Submit</button>
+                                        </div>
                                       </div>
-                                    )}
-                                    <label>Re-enter Password</label>
-                                    <input
-                                      type="password"
-                                      value={confirmPassword}
-                                      onChange={handleConfirmPasswordChange}
-                                      placeholder="Re-enter Your Password"
-                                    />
-                                    {passwordError && (
-                                      <div style={{ color: "red" }}>
-                                        {passwordError}
-                                      </div>
-                                    )}
-                                    <div>
-                                      <div className="btns-for-add-user-detials">
-                                        <button
-                                          type="button"
-                                          onClick={() => {
-                                            setNewPassword("");
-                                            setConfirmPassword("");
-                                          }}
-                                        >
-                                          Cancel
-                                        </button>
-                                        <button type="submit">Submit</button>
-                                      </div>
-                                    </div>
-                                  </form>
+                                    </form>
+                                  </div>
                                 </div>
                               )}
                             </div>
@@ -963,7 +970,9 @@ setTimeout(() => {
                                 // required
                               />
                               {updateError.username && (
-                                <div className="error">{updateError.username}</div>
+                                <div className="error">
+                                  {updateError.username}
+                                </div>
                               )}
                             </div>
                             <div className="prof-input-edit">

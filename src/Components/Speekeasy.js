@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import "../Css/Speekeasy.css";
 import Greenbg from "../Images/Greenbg.png";
 import { TiArrowRightThick } from "react-icons/ti";
 import Yellowline from "../Images/Yellowline.png";
 import { AiOutlineCloseCircle } from "react-icons/ai";
+import axios from "../Utils/Baseurl.js";
+import { toast } from "react-toastify";
+
+
 import { InlineWidget } from "react-calendly";
 const Speekeasy = () => {
   const [wantComplimentaryCall, setWantComplimentaryCall] = useState(false);
@@ -16,6 +20,36 @@ const Speekeasy = () => {
     setWantComplimentaryCall(false);
     // setCloseClick(true);
   };
+
+
+  const [rows, setRows] = useState("");
+    // console.log(rows, "ppppppppppppppppppppppppppppppp");
+
+   
+
+    useEffect(() => {
+       const fetch = async () => {
+        try {
+          const response = await axios.get("admin/get_allVideos");
+          console.log(response, "ppppppppppppppppppppppppppppppp");
+            
+          if (response) {
+            // const videoData = response.data.reslt[3].source; // Retrieve the video data
+            // Now you can use videoData to set the state or display the video
+            console.log(response.data.reslt[4].source, "pppppppppiiiippppppppiiiiiiiiipppppppppppppp");// // Log the second object in the response
+            // const vidData = response.data.reslt[4].source;
+            setRows(response.data.reslt[4].source);
+            console.log(rows,"this is rowwwss aftr setting useState......")
+          } else {
+            toast.error("something went wrong!!");
+          }
+        } catch (error) {
+          console.log(error);
+        }
+       };
+     fetch();
+    },[]);
+
   return (
     <div>
       <div className="therapy-heading">
@@ -58,14 +92,19 @@ const Speekeasy = () => {
 
         <div className="centered">
           <div className="para">
-            <iframe
-              className="iframe-for-speekeassy"
-              src="https://www.youtube.com/embed/Ndu04N8ZcdE"
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
+            {rows && (
+              <video
+                controls // Ensure controls are enabled for user interaction
+                className="early-age-video"
+                // onClick={togglePlay}
+                // onPlay={() => setIsPlaying(true)}
+                // onPause={() => setIsPlaying(false)}
+              >
+                <source src={rows} type="video/mp4" />{" "}
+                {/* Make sure src and type are correctly set */}
+                Your browser does not support the video tag.
+              </video>
+            )}
             {/* <p>
               Transformative support for those seeking clarity and understanding
               through active listening.

@@ -1,4 +1,5 @@
 import React from 'react'
+import Footer from '../Components/Footer';
 
 const Cancellation_and_refunds = () => {
   return (
@@ -76,6 +77,7 @@ const Cancellation_and_refunds = () => {
           <p>Email: activelisteners2024@gmail.com</p>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

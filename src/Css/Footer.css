@@ -1,6 +1,24 @@
-.logo img {
-  width: 20%;
+.logo img{
+  width: 50%;
 }
+.logo{
+  width:30%;
+    font-family: "Questrial", sans-serif;
+
+}
+.footer-list-ul{
+width: 30%;
+}
+.footer-list-ul li{
+  list-style: none;
+  font-family: "Questrial", sans-serif;
+}
+.contact{
+width: 30%;
+  font-family: "Questrial", sans-serif;
+
+}
+
 .footer-main {
   background-color: black;
   padding: 30px;

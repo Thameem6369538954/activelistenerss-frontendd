@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
 import "../Css/TeleTherapy.css";
-import Navbar from "../Components/Navbar";
-import Footer from "../Components/Footer";
+import Navbar from "../Components/Navbar.js";
+import Footer from "../Components/Footer.js";
 import { TiArrowRightThick } from "react-icons/ti";
 import Plan from "../Images/Plan.png";
 import Planb from "../Images/Planb.png";
-import Speekeasy from "../Components/Speekeasy";
+import Speekeasy from "../Components/Speekeasy.js";
 import { TiTick } from "react-icons/ti";
 import FlowerL from "../Images/FlowerL.png";
 import FlowerR from "../Images/FlowerR.png";
 import Doc from "../Images/Doc.png";
 import Telegroup from "../Images/Telegroup.png";
 import Arrow from "../Images/Arrow.png";
-import Breadcrumps from "../Components/Breadcrumps";
+import Breadcrumps from "../Components/Breadcrumps.js";
 import { Link, useLocation, useHistory } from "react-router-dom";
 import axios from "../Utils/Baseurl.js";
 import { toast } from "react-toastify";
@@ -20,9 +20,11 @@ import { InlineWidget } from "react-calendly";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import  Subscribe from "../Images/Subscribe.png";
 import  Fourtyfive from "../Images/Fourtyfive.png";
+// import axios from "../Utils/Baseurl.js";
 
-const Teletherapy = () => {
- 
+const Speak_easy = () => {
+
+
     const [wantComplimentaryCall, setWantComplimentaryCall] = useState(false);
     const appointmentSubmit = (e) => {
       e.preventDefault();
@@ -177,4 +179,4 @@ const Teletherapy = () => {
   );
 };
 
-export default Teletherapy;
+export default Speak_easy;

@@ -17,8 +17,10 @@
     margin-left: -2%;
     padding: 10px;
     border-radius: 20px;
-    margin-bottom: -24%;
+    margin-bottom: -14%;
 }
+
+
 .form-inputs {
     display: grid;
     place-items: center;

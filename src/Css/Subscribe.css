@@ -27,13 +27,13 @@
   justify-content: center;
 }
 .caro-for-hdr {
-  border: 2px solid black;
-  width: 90%;
-  height: 300px;
-  margin: auto;
-  border-radius: 10px;
-  background-color: white;
-}
+    border: 2px solid black;
+    width: 95%;
+    height: 250px;
+    margin: auto;
+    border-radius: 10px;
+    background-color: white;
+} 
 .epi-list li {
   list-style: none;
   text-align: left;

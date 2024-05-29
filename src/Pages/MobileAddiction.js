@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React,{useEffect, useState} from "react";
 import "../Css/MobileAddiction.css";
 import Navbar from "../Components/Navbar.js";
 import MobileaddLeft from "../Images/MobileaddLeft.png";
@@ -24,6 +24,7 @@ import { InlineWidget } from "react-calendly";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import Breadcrumps from "../Components/Breadcrumps";
 import WHYAL from "../Videos/WHYAL.mp4";
+import axios from "../Utils/Baseurl";
 const MobileAddiction = () => {
   
     const [wantComplimentaryCall, setWantComplimentaryCall] = useState(false);
@@ -36,6 +37,27 @@ const MobileAddiction = () => {
       setWantComplimentaryCall(false);
       // setCloseClick(true);
     };
+
+    const [video,setVideo] = useState('');
+
+      useEffect(()=>{
+        const apiFetch = async () => {
+          try{
+            const res = await axios.get("admin/get_allVideos");
+            console.log(res,"dmskd--------------->>nkdsjcnsjdnskjdnskjdk");
+            if(res){
+            setVideo(res.data.reslt[5].source);
+            }else{
+              console.log("error");
+            }
+
+          }catch (error) {
+            console.log("error");
+          }
+        };
+        apiFetch();
+      },[])
+
   return (
     <div>
       <Navbar />
@@ -125,17 +147,19 @@ const MobileAddiction = () => {
                 alt=""
               /> */}
 
-              <video
-                controls // Ensure controls are enabled for user interaction
-                className="early-age-video"
-                // onClick={togglePlay}
-                // onPlay={() => setIsPlaying(true)}
-                // onPause={() => setIsPlaying(false)}
-              >
-                <source src={WHYAL} type="video/mp4" />{" "}
-                {/* Make sure src and type are correctly set */}
-                Your browser does not support the video tag.
-              </video>
+              {video && (
+                <video
+                  controls // Ensure controls are enabled for user interaction
+                  className="early-age-video"
+                  // onClick={togglePlay}
+                  // onPlay={() => setIsPlaying(true)}
+                  // onPause={() => setIsPlaying(false)}
+                >
+                  <source src={video} type="video/mp4" />{" "}
+                  {/* Make sure src and type are correctly set */}
+                  Your browser does not support the video tag.
+                </video>
+              )}
             </div>
             {/* <img
               src={Rounda}
