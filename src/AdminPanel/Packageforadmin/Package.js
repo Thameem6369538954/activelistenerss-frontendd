@@ -382,7 +382,7 @@ const Package = () => {
                   <button type="submit" disabled={loading}>
                     {loading ? "Submitting..." : "Submit"}
                   </button>
-                  <button type="button" onClick={togglePopup}>
+                  <button type="button">
                     Cancel
                   </button>
                 </div>

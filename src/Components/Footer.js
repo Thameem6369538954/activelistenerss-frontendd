@@ -70,16 +70,28 @@ const Footer = () => {
             <li>Copyright © 2024 • Propelling Stories.</li>
           </ul>
           <ul className="footer-list-ul">
-            <Link to="/Privacy_Policy"  className="Links"  onClick={scrollToTop}>
+            <Link to="/Privacy_Policy" className="Links" onClick={scrollToTop}>
               <li>Privacy Policy</li>
             </Link>
-            <Link to="/Terms_and_condition"  className="Links" onClick={scrollToTop}>
+            <Link
+              to="/Terms_and_condition"
+              className="Links"
+              onClick={scrollToTop}
+            >
               <li>Terms of Conditions</li>
             </Link>
-            <Link to="/Cancellation_and_refunds"  className="Links" onClick={scrollToTop}> 
+            <Link
+              to="/Cancellation_and_refunds"
+              className="Links"
+              onClick={scrollToTop}
+            >
               <li>Cancellation and refunds</li>
             </Link>
-            <Link to="/Customer_support" className="Links"  onClick={scrollToTop}>
+            <Link
+              to="/Customer_support"
+              className="Links"
+              onClick={scrollToTop}
+            >
               <li>Customer_support</li>
             </Link>
           </ul>
@@ -96,7 +108,13 @@ const Footer = () => {
                 <FaFacebookF className="footer-icon" />
               </li>
               <li>
-                <IoLogoYoutube className="footer-icon" />
+                <a
+                  href="https://www.youtube.com/@ActiveListeners"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <IoLogoYoutube className="footer-icon" />
+                </a>
               </li>
             </div>
           </ul>
