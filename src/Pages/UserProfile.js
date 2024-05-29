@@ -371,7 +371,9 @@ const UserProfile = () => {
         setphoneError(""); // Clear any error message
         if (response.data.message == "Mobile updated!!") {
           toast.success("Mobile updated!!");
-        }else if (response.data.message == "Mobile number already registered!!") {
+        } else if (
+          response.data.message == "Mobile number already registered!!"
+        ) {
           toast.error("Mobile number already registered!!");
         }
       }
@@ -454,37 +456,37 @@ const UserProfile = () => {
     setConfirmPassword(event.target.value);
   };
 
-    const [confirmPasswordError, setConfirmPasswordError] = useState("");
-      const [newPasswordError, setNewPasswordError] = useState("");
+  const [confirmPasswordError, setConfirmPasswordError] = useState("");
+  const [newPasswordError, setNewPasswordError] = useState("");
   const handleSubmitPassword = async (event) => {
     event.preventDefault();
-       let isValid = true;
-       const passwordRegex =
-         /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.*[a-zA-Z]).{8,}$/;
+    let isValid = true;
+    const passwordRegex =
+      /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.*[a-zA-Z]).{8,}$/;
 
-     if (newPassword === "") {
-       setNewPasswordError("Please enter a password.");
-       isValid = false;
-     } else if (!passwordRegex.test(newPassword)) {
-       setNewPasswordError(
-         "Password must contain at least 8 characters, including uppercase, lowercase, numbers, and special characters."
-       );
-       isValid = false;
-     } else {
-       setNewPasswordError("");
-     }
-     if (confirmPassword === "") {
-       setConfirmPasswordError("Please confirm your password.");
-       isValid = false;
-     } else if (newPassword !== confirmPassword) {
-       setConfirmPasswordError("Passwords do not match.");
-       isValid = false;
-     } else {
-       setConfirmPasswordError("");
-     }
+    if (newPassword === "") {
+      setNewPasswordError("Please enter a password.");
+      isValid = false;
+    } else if (!passwordRegex.test(newPassword)) {
+      setNewPasswordError(
+        "Password must contain at least 8 characters, including uppercase, lowercase, numbers, and special characters."
+      );
+      isValid = false;
+    } else {
+      setNewPasswordError("");
+    }
+    if (confirmPassword === "") {
+      setConfirmPasswordError("Please confirm your password.");
+      isValid = false;
+    } else if (newPassword !== confirmPassword) {
+      setConfirmPasswordError("Passwords do not match.");
+      isValid = false;
+    } else {
+      setConfirmPasswordError("");
+    }
 
     console.log(newPassword, "new password");
-    if (isValid){
+    if (isValid) {
       try {
         const token = localStorage.getItem("accessToken");
 
@@ -665,40 +667,40 @@ const UserProfile = () => {
                               )}
                               <div className="phone-number-popup-container">
                                 {numberpopup && (
-                                        <div className="phone-phone-popup-container">
-                                  <div className="phone-number-popup">
-                                    <form
-                                      onSubmit={handleSubmitphone}
-                                      className="phone-number-form"
-                                    >
-                                      <VscClose
-                                        onClick={phonenumberPopup}
-                                        className="close-icon-phone-us"
-                                      />
-                                      <h1>Add Your Phone Number</h1>
-                                      <input
-                                        type="text"
-                                        value={mobile.phone}
-                                        onChange={handleChangephone}
-                                        placeholder="Enter Your Phone Number"
-                                      />
-                                      {phoneerror && (
-                                        <div className="phone-error-user">
-                                          {phoneerror}
-                                        </div>
-                                      )}
+                                  <div className="phone-phone-popup-container">
+                                    <div className="phone-number-popup">
+                                      <form
+                                        onSubmit={handleSubmitphone}
+                                        className="phone-number-form"
+                                      >
+                                        <VscClose
+                                          onClick={phonenumberPopup}
+                                          className="close-icon-phone-us"
+                                        />
+                                        <h1>Add Your Phone Number</h1>
+                                        <input
+                                          type="text"
+                                          value={mobile.phone}
+                                          onChange={handleChangephone}
+                                          placeholder="Enter Your Phone Number"
+                                        />
+                                        {phoneerror && (
+                                          <div className="phone-error-user">
+                                            {phoneerror}
+                                          </div>
+                                        )}
 
-                                      <div className="btns-for-add-user-detials">
-                                        <button
-                                          type="button"
-                                          onClick={() => setMobile("")}
-                                        >
-                                          Cancel
-                                        </button>
-                                        <button type="submit">Submit</button>
-                                      </div>
-                                    </form>
-                                  </div>
+                                        <div className="btns-for-add-user-detials">
+                                          <button
+                                            type="button"
+                                            onClick={() => setMobile("")}
+                                          >
+                                            Cancel
+                                          </button>
+                                          <button type="submit">Submit</button>
+                                        </div>
+                                      </form>
+                                    </div>
                                   </div>
                                 )}
                               </div>
@@ -734,42 +736,42 @@ const UserProfile = () => {
                                 </>
                               )}
                               {genderpopup && (
-                                      <div className="phone-email-popup-container">
-                                <div className="phone-number-popup">
-                                  <form
-                                    className="phone-number-form"
-                                    onSubmit={handleSubmitgender}
-                                  >
-                                    <VscClose
-                                      onClick={genderPopup}
-                                      className="close-icon-phone-us"
-                                    />
-                                  <h1>Select Your Gender</h1>
-                                    <select
-                                      value={gender}
-                                      onChange={handleChangegender}
+                                <div className="phone-email-popup-container">
+                                  <div className="phone-number-popup">
+                                    <form
+                                      className="phone-number-form"
+                                      onSubmit={handleSubmitgender}
                                     >
-                                      <option value="">Select Gender</option>
-                                      <option value="Male">Male</option>
-                                      <option value="Female">Female</option>
-                                      <option value="Other">Other</option>
-                                    </select>
-                                    {egenderrrors.gender && (
-                                      <div className="error">
-                                        {egenderrrors.gender}
-                                      </div>
-                                    )}
-                                    <div className="btns-for-add-user-detials">
-                                      <button
-                                        type="button"
-                                        onClick={() => setGender("")}
+                                      <VscClose
+                                        onClick={genderPopup}
+                                        className="close-icon-phone-us"
+                                      />
+                                      <h1>Select Your Gender</h1>
+                                      <select
+                                        value={gender}
+                                        onChange={handleChangegender}
                                       >
-                                        Cancel
-                                      </button>
-                                      <button type="submit">Submit</button>
-                                    </div>
-                                  </form>
-                                </div>
+                                        <option value="">Select Gender</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                        <option value="Other">Other</option>
+                                      </select>
+                                      {egenderrrors.gender && (
+                                        <div className="error">
+                                          {egenderrrors.gender}
+                                        </div>
+                                      )}
+                                      <div className="btns-for-add-user-detials">
+                                        <button
+                                          type="button"
+                                          onClick={() => setGender("")}
+                                        >
+                                          Cancel
+                                        </button>
+                                        <button type="submit">Submit</button>
+                                      </div>
+                                    </form>
+                                  </div>
                                 </div>
                               )}
                             </div>
@@ -933,7 +935,7 @@ const UserProfile = () => {
                           </div> */}
                         </div>
                       </div>
-
+{/* 
                       <div className="save-cancel">
                         <button onClick={togglePopup}>Update</button>
                         <div className="update">
@@ -943,7 +945,7 @@ const UserProfile = () => {
                             instructions.
                           </p>
                         </div>
-                      </div>
+                      </div> */}
                       {showPopup && (
                         <div className="save-black">
                           <IoIosCloseCircleOutline

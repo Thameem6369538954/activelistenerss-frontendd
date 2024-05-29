@@ -91,6 +91,21 @@ width: 30%;
   margin-left: 13%;
 }
 @media screen and (max-width: 600px) {
+  .logo img{
+  width: 100%;
+}
+.logo{
+  width:100%;
+    font-family: "Questrial", sans-serif;
+
+}
+.footer-list-ul{
+width: 100%;
+}
+.contact {
+    width: 100%;
+    font-family: "Questrial", sans-serif;
+}
   .news-letter input {
         width: 15px;
         height: 61px;
@@ -213,6 +228,21 @@ width: 30%;
         border-radius: 20px;
         /* margin: auto; */
     }
+     .logo img{
+  width: 100%;
+}
+.logo{
+  width:100%;
+    font-family: "Questrial", sans-serif;
+
+}
+.footer-list-ul{
+width: 100%;
+}
+.contact {
+    width: 100%;
+    font-family: "Questrial", sans-serif;
+}
 }
 /* @media screen and (max-width: 1224px) {
   .two-flower {
