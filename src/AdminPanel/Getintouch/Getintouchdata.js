@@ -4,28 +4,29 @@ import axios from "../../Utils/Baseurl";
 
 const Getintouchdata = () => {
   const [data, setData] = useState([]);
+  const [searchInput, setSearchInput] = useState("");
+
   useEffect(() => {
     const fetchMessage = async () => {
-      const response = await axios.get("admin/view_getInTouch");
-      console.log(response.data.getintouch.allGet, "kkkkk");
-      setData(response.data.getintouch.allGet);
+      try {
+        const response = await axios.get("admin/view_getInTouch");
+        console.log(response.data.getintouch.allGet, "kkkkk");
+        setData(response.data.getintouch.allGet);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
     };
     fetchMessage();
   }, []);
 
-  const [searchInput, setSearchInput] = useState("");
-
   // Filtered data based on search input
-  // Filtered data based on search input
-  const filteredData = data.length > 0 ? data.filter((item) => {
+  const filteredData = data.filter((item) => {
     return (
       item.name.toLowerCase().includes(searchInput.toLowerCase()) ||
       item.email.toLowerCase().includes(searchInput.toLowerCase())
-      // item.mobile.includes(searchInput)
     );
-  }) : [];
+  });
 
-  const currentDate = new Date().toISOString().slice(0, 10);
   return (
     <div>
       <div className="getintouch-main-container">
@@ -57,19 +58,17 @@ const Getintouchdata = () => {
         </div>
         <div className="getintouch-form">
           <div className="revenue-container">
-            {data.length === 0 ? (
+            {filteredData.length === 0 ? (
               <div className="no-data">
-                <p>{searchInput} data not found</p>
+                <p>{searchInput} is not found</p>
               </div>
             ) : (
               <table>
                 <thead>
                   <tr>
-                    {/* <th>Select</th> */}
                     <th>No</th>
                     <th>Name</th>
                     <th>Email</th>
-                    {/* <th>Phone Number</th> */}
                     <th>Message</th>
                   </tr>
                 </thead>

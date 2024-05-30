@@ -341,7 +341,10 @@ const [searchInput, setSearchInput] = useState("");
                 </div>
               ))
             ) : (
-              <p>No psychologists found</p>
+              
+              <div className="not-found">
+              <p>{searchInput} is s found</p>
+              </div>
             )}
           </div>
         </div>

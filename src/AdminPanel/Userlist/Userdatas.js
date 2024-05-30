@@ -35,9 +35,11 @@ const Userdatas = () => {
   // Filtered data based on search input
   const filteredData = data.filter((item) => {
     return (
-      item.name.toLowerCase().includes(searchInput.toLowerCase()) ||
-      item.email.toLowerCase().includes(searchInput.toLowerCase()) ||
-      item.amount.includes(searchInput)
+      (item.name &&
+        item.name.toLowerCase().includes(searchInput.toLowerCase())) ||
+      (item.email &&
+        item.email.toLowerCase().includes(searchInput.toLowerCase())) ||
+      (item.amount && item.amount.includes(searchInput))
     );
   });
 
@@ -46,7 +48,7 @@ const Userdatas = () => {
       <div className="Ngoandpsycologist-main-conatainer">
         <div className="Ngoandpsycologist-top-btns">
           <h1>User Data</h1>
-          <button>All</button>
+          <button>Print </button>
         </div>
         <div className="ngo-psycologist-table">
           <div className="getintouch-top">

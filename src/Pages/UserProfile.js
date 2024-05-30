@@ -28,6 +28,19 @@ import Swal from "sweetalert2";
 
 // import axios from "../Utils/Baseurl.js";
 const UserProfile = () => {
+
+   const [settings,setSettings] = useState(false);
+
+   const settingsPopup = () => {
+     setSettings(!settings);
+   };
+
+
+   const [showModal, setShowModal] = useState(false);
+   const toggleModal = () => {
+     setShowModal(!showModal);
+   };
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   var user = useSelector((state) => state.auth.user);
@@ -275,12 +288,8 @@ const UserProfile = () => {
       }
     }
   };
-  const removeProfilePic = () => {
-    setProfilePic(null); // Reset profilePic state to null to remove the image
-    // Reset the value of the file input element
-    const fileInput = document.getElementById("profilePic");
-    fileInput.value = "";
-  };
+
+  // const [profilePic,setProfilePic] = useState('')
 
   const handleSubmitu = async (event) => {
     event.preventDefault();
@@ -512,12 +521,42 @@ const UserProfile = () => {
       }
     }
   };
-  const [settings, setSettings] = useState(false);
+ 
 
-  const settingsPopup = () => {
-    setSettings(!settings);
+
+              // PROFILE DELETE
+
+
+
+   const removeProfilePic = async(Id) => {
+    console.log(Id,"userId to remove profile pic!!")
+    try {
+      const token = localStorage.getItem("accessToken");
+      console.log(token,"token to remove profile pic!!")
+
+      const removeProfilePicResponse = await axios.post(
+        `/delete_profile_pic/${Id}`,{},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      if(removeProfilePicResponse.data.msg === "your profile picture removed!!" ){
+          toast.success("your profile picture removed!!")
+          window.location.reload()
+      }else{
+        toast.error(removeProfilePicResponse.data.msg)
+      }
+        // console.log(removeProfilePicResponse,"response of profile pic remove function*******")
+    } catch (error) {
+      console.log(error)
+    }
+ 
   };
 
+
+ 
   return !noToken ? (
     <div>
       <Navbar />
@@ -897,7 +936,12 @@ const UserProfile = () => {
                                   )}
                                 </div>
                                 <div className="delete-prof">
-                                  <label role="button">
+                                  <label
+                                    role="button"
+                                    onClick={() =>
+                                      removeProfilePic(userData._id)
+                                    }
+                                  >
                                     Delete your Profile
                                   </label>
 
@@ -935,7 +979,7 @@ const UserProfile = () => {
                           </div> */}
                         </div>
                       </div>
-{/* 
+                      {/* 
                       <div className="save-cancel">
                         <button onClick={togglePopup}>Update</button>
                         <div className="update">

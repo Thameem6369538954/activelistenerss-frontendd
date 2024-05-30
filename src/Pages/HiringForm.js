@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import "../Css/HiringForm.css";
 import Navbar from "../Components/Navbar";
@@ -44,38 +43,8 @@ const HiringForm = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-   
-      const formErrors = {};
-
-      if(!formDatas.name.trim()){
-        formErrors.name = "Name is required";
-      }
-
-      if(!formDatas.email.trim()){  
-        formErrors.email = "Email is required";
-      }
-
-      if(!formDatas.mobile){
-        formErrors.mobile = "Mobile is required";
-      }
-
-      if(!formDatas.position){
-        formErrors.position = "Position is required";
-      }
-      if(!formDatas.coverletter){
-        formErrors.coverletter = "Cover letter is required";
-      }
-      if(!file){
-        formErrors.resume = "Resume is required";
-      }
-
-      if(Object.keys(formErrors).length > 0){
-        setErrors(formErrors);
-        toast.error("Please fill out all fields");
-        return;
-      }
-
-
+    const newErrors = validateFormData(formDatas);
+    if (Object.keys(newErrors).length === 0) {
       // Form is valid, proceed with submission
       const formData = new FormData();
       formData.append("resume", file);
@@ -88,29 +57,26 @@ const HiringForm = (props) => {
 
       try {
         const response = await axios.post("/application", formData);
-        if (response.status === 200) {
-          toast.success("Successfully submitted the application form!");
-          setFormDatas({
-            name: "",
-            email: "",
-            mobile: "",
-            coverletter: "",
-            position: "",
-            agree: false,
-          })
-          setFile(null);
-
-        } else {
-          toast.error("Please try again later.");
-        }
+        console.log("response.................>>", response);
+        // if (response.status === 200) {
+        //   toast.success("Successfully submitted the application form!");
+        // } else {
+        //   toast.error("Please try again later.");
+        // }
       } catch (error) {
         console.error("Error submitting form:", error);
         toast.error("Error submitting form. Please try again later.");
       }
- 
+    } else {
+      setErrors(newErrors);
+    }
   };
 
-
+  const validateFormData = (data) => {
+    const errors = {};
+    // Add validation logic here
+    return errors;
+  };
 
   return (
     <div>
@@ -133,10 +99,10 @@ const HiringForm = (props) => {
           <div className="container-form">
             <form onSubmit={handleSubmit} encType="multipart/form-data">
               <div className="green-information">
-              <input type="hidden" name="position" value={position} />
-              <span className="form-position">
-                Position Applied For :{position}
-              </span>
+                <input type="hidden" name="position" value={position} />
+                <span className="form-position">
+                  Position Applied For :{position}
+                </span>
               </div>
               <div className="form-first">
                 <div className="details personal">

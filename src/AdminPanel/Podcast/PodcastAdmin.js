@@ -405,6 +405,7 @@ const PodcastAdmin = () => {
                 onChange={(e) => setSelectedCategory(e.target.value)}
               >
                 <option value="">Select Category</option>
+                <option value="">All</option>
                 {categoryOptions.map((category) => (
                   <option key={category} value={category}>
                     {category}

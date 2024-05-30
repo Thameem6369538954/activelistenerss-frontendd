@@ -12,13 +12,13 @@
   border-radius: 20px;
   height: auto;
   padding: 30px;
-  width: 800px;
+  width: 400px;
 
 }
 .video-edit-input{
   display:grid;
   place-items: center;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(1video, 1fr);
 }
 .video-edit-input-div{
   display: flex;
@@ -98,7 +98,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  position: fixed;
+  /* position: fixed; */
   margin-left: 10%;
   margin-top: -4%;
   z-index: 9999;
@@ -131,7 +131,7 @@
 }
 .video-popup-content {
   height: auto;
-  width: 980px;
+  width: auto;
   background-color: white;
   /* display: flex;
   flex-direction: column;
@@ -193,7 +193,7 @@ table tr td {
   border-radius: 5px;
 }
 .video-thumbnil-inputs input {
-  width: 730px;
+  width: auto;
   border: 1px solid black;
   padding: 10px;
   border-radius: 5px;
@@ -220,7 +220,7 @@ table tr td {
   margin: 20px;
   border: 2px dashed black;
   height: 200px;
-  width: 800px;
+  width: auto;
   background-image: url("../../Images/GreenMountain.png");
   background-repeat: no-repeat;
   background-size: cover;

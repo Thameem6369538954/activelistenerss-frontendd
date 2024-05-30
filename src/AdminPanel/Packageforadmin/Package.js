@@ -264,132 +264,6 @@ const Package = () => {
   return (
     <div>
       <div className="teletheropy-planss">
-        {showPopup && (
-          <div className="video-popup">
-            <div className="video-popup-content">
-              <h2>Add New Package</h2>
-              <form onSubmit={handleSubmit}>
-                <div className="video-top-inputs">
-                  <div>
-                    <label>Package Name:</label>
-                    <input
-                      type="text"
-                      // required
-                      placeholder="Enter the title"
-                      value={textData.title}
-                      onChange={(e) => handleChange(e, "title")}
-                    />
-                    {formErrors.title && (
-                      <p style={{ color: "red" }}>{formErrors.title}</p>
-                    )}
-                  </div>
-                  <div className="select-page-videos">
-                    <label>Days Plan:</label>
-                    <input
-                      type="text"
-                      // required
-                      placeholder="Enter the number of days plan"
-                      value={textData.plan}
-                      onChange={(e) => handleChange(e, "plan")}
-                    />
-                    {formErrors.plan && (
-                      <p style={{ color: "red" }}>{formErrors.plan}</p>
-                    )}
-                  </div>
-                </div>
-                <div className="video-thumbnil-inputs">
-                  <label>Package Icon:</label>
-                  <input
-                    type="file"
-                    //  required
-                    onChange={handleImageChange}
-                  />
-                  {formErrors.icon && (
-                    <p style={{ color: "red" }}>{formErrors.icon}</p>
-                  )}
-                </div>
-
-                <div className="video-thumbnil-inputs">
-                  <label>Benefits:</label>
-                  <input
-                    type="text"
-                    // required
-                    value={textData.benefits}
-                    onChange={(e) => handleChange(e, "benefits")}
-                  />
-                  {formErrors.benefits && (
-                    <p style={{ color: "red" }}>{formErrors.benefits}</p>
-                  )}
-                </div>
-
-                <div className="video-thumbnil-inputs">
-                  <label>Sub Benefits:</label>
-                  <p style={{ color: "red" }}>
-                    If no sub benefits, please type "nill"
-                  </p>
-                  <input
-                    type="text"
-                    // required
-                    value={textData.subBenefits}
-                    onChange={(e) => handleChange(e, "subBenefits")}
-                  />
-                  {formErrors.subBenefits && (
-                    <p style={{ color: "red" }}>{formErrors.subBenefits}</p>
-                  )}
-                </div>
-                <div className="video-thumbnil-inputs">
-                  <label>Description:</label>
-                  <input
-                    type="text"
-                    // required
-                    value={textData.description}
-                    onChange={(e) => handleChange(e, "description")}
-                  />
-                  {formErrors.description && (
-                    <p style={{ color: "red" }}>{formErrors.description}</p>
-                  )}
-                </div>
-
-                <div className="video-thumbnil-inputs">
-                  <label>Price:</label>
-                  <input
-                    type="text"
-                    // required
-                    value={textData.price}
-                    onChange={(e) => handleChange(e, "price")}
-                  />
-                  {formErrors.price && (
-                    <p style={{ color: "red" }}>{formErrors.price}</p>
-                  )}
-                </div>
-
-                <div className="video-thumbnil-inputs">
-                  <label>Recommended?</label>
-                  <select
-                    name="recommended"
-                    value={textData.recommended}
-                    onChange={(e) => handleChange(e, "recommended")}
-                  >
-                    <option value="true">Yes</option>
-                    <option value="false">No</option>
-                  </select>
-                  {formErrors.recommended && (
-                    <p style={{ color: "red" }}>{formErrors.recommended}</p>
-                  )}
-                </div>
-
-                <div className="video-submit-btns">
-                  <button type="submit" disabled={loading}>
-                    {loading ? "Submitting..." : "Submit"}
-                  </button>
-                  <button type="button">
-                    Cancel
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-        )}
         <div className="packege-top-btns">
           <p>Packages Edit</p>
           <button onClick={togglePopup}>Add Package</button>
@@ -397,7 +271,7 @@ const Package = () => {
         <div className="card-containers">
           {/* Card components */}
           {card.map((item, index) => (
-            <div className="card" key={item._id}>
+            <div className="card-package" key={item._id}>
               <div className="card-text">
                 <div>
                   <img
@@ -418,7 +292,7 @@ const Package = () => {
                 ₹ {item.price} <span> {item.days_plan} days</span>
               </h1>
               <p>What’s included</p>
-              <ul className="plan-list">
+              <ul className="plan-list-pack">
                 <li>
                   <TiTick className="tick" />4 sessions with kids
                 </li>
@@ -440,9 +314,11 @@ const Package = () => {
               {editform === item._id && (
                 <form onSubmit={(e) => handleSubmitt(e, item._id)}>
                   <div className="video-top-inputs-edit">
-                    <span onClick={handlePopedit}>
-                      <IoIosCloseCircleOutline />
-                    </span>
+                    <IoIosCloseCircleOutline
+                      onClick={handlePopedit}
+                      className="close-icon-package"
+                    />
+
                     <h1>Edit Package</h1>
                     <div>
                       <label>Package Name:</label>
@@ -558,7 +434,7 @@ const Package = () => {
                       )}
                     </div>
 
-                    <div className="video-submit-btns">
+                    <div className="package-submit-btns">
                       <button type="submit">Submit</button>
                       <button type="button" onClick={togglePopup}>
                         Cancel
@@ -570,6 +446,130 @@ const Package = () => {
             </div>
           ))}
         </div>
+        {showPopup && (
+          <div className="video-popup">
+            <div className="psychologist-popup-content ">
+              <h2>Add New Package</h2>
+              <form onSubmit={handleSubmit}>
+                <div className="video-top-inputs">
+                  <div>
+                    <label>Package Name:</label>
+                    <input
+                      type="text"
+                      // required
+                      placeholder="Enter the title"
+                      value={textData.title}
+                      onChange={(e) => handleChange(e, "title")}
+                    />
+                    {formErrors.title && (
+                      <p style={{ color: "red" }}>{formErrors.title}</p>
+                    )}
+                  </div>
+                  <div className="select-page-videos">
+                    <label>Days Plan:</label>
+                    <input
+                      type="text"
+                      // required
+                      placeholder="Enter the number of days plan"
+                      value={textData.plan}
+                      onChange={(e) => handleChange(e, "plan")}
+                    />
+                    {formErrors.plan && (
+                      <p style={{ color: "red" }}>{formErrors.plan}</p>
+                    )}
+                  </div>
+                  <div>
+                    <label>Package Icon:</label>
+                    <input
+                      type="file"
+                      //  required
+                      onChange={handleImageChange}
+                    />
+                    {formErrors.icon && (
+                      <p style={{ color: "red" }}>{formErrors.icon}</p>
+                    )}
+                  </div>
+
+                  <div>
+                    <label>Benefits:</label>
+                    <input
+                      type="text"
+                      // required
+                      value={textData.benefits}
+                      onChange={(e) => handleChange(e, "benefits")}
+                    />
+                    {formErrors.benefits && (
+                      <p style={{ color: "red" }}>{formErrors.benefits}</p>
+                    )}
+                  </div>
+
+                  <div>
+                    <label>Sub Benefits:</label>
+                    {/* <p style={{ color: "red" }}>
+                      If no sub benefits, please type "nill"
+                    </p> */}
+                    <input
+                      type="text"
+                      // required
+                      value={textData.subBenefits}
+                      onChange={(e) => handleChange(e, "subBenefits")}
+                    />
+                    {formErrors.subBenefits && (
+                      <p style={{ color: "red" }}>{formErrors.subBenefits}</p>
+                    )}
+                  </div>
+                  <div>
+                    <label>Description:</label>
+                    <input
+                      type="text"
+                      // required
+                      value={textData.description}
+                      onChange={(e) => handleChange(e, "description")}
+                    />
+                    {formErrors.description && (
+                      <p style={{ color: "red" }}>{formErrors.description}</p>
+                    )}
+                  </div>
+
+                  <div>
+                    <label>Price:</label>
+                    <input
+                      type="text"
+                      // required
+                      value={textData.price}
+                      onChange={(e) => handleChange(e, "price")}
+                    />
+                    {formErrors.price && (
+                      <p style={{ color: "red" }}>{formErrors.price}</p>
+                    )}
+                  </div>
+
+                  <div>
+                    <label>Recommended?</label>
+                    <select
+                      name="recommended"
+                      value={textData.recommended}
+                      onChange={(e) => handleChange(e, "recommended")}
+                    >
+                      <option value="true">Yes</option>
+                      <option value="false">No</option>
+                    </select>
+                    {formErrors.recommended && (
+                      <p style={{ color: "red" }}>{formErrors.recommended}</p>
+                    )}
+                  </div>
+                </div>
+
+                <div className="video-submit-btns">
+                  <button type="submit" disabled={loading}>
+                    {loading ? "Submitting..." : "Submit"}
+                  </button>
+                  <button type="button">Cancel</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

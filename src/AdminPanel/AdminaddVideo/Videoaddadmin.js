@@ -235,6 +235,8 @@ const Videoaddadmin = () => {
         }, 2000);
         if(response.data.message==="successfully updated!!"){
           toast.success("successfully updated!!")
+        }else if (response.data.message === "Request failed with status code 500") {
+          toast.error("Something went wrong!!");
         }
       
     } catch (error) {

@@ -5,6 +5,28 @@
 
     margin: 20px;
 }
+.not-found {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 50%;
+}
+.not-found p{
+text-align: center;
+
+}
+.psychologist-popup-content {
+    height: auto;
+    width: auto;
+    background-color: white;
+    /* justify-content: center; */
+    border: 2px solid black;
+    border-radius: 20px;
+    padding: 50px;
+    z-index: 3;
+    box-shadow: 12px 8px 54px -11px rgba(0, 0, 0, 0.75);
+    margin-top: -100%;
+}
 .headeing-admin-psygologiy button{
     background-color: #ffdd7e;
     padding: 10px 30px;

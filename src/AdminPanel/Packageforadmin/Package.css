@@ -6,19 +6,76 @@
     margin-top: 20px;
     flex-wrap: wrap;
 }
-.video-top-inputs-edit{
-    background-color: #ffdd7e;
+.video-top-inputs-edit {
+      background-color: #ffdd7e;
     position: absolute;
-    margin-top: -120%;
-    height: 100%;
+    margin-top: -185%;
+    height: 846px;
     width: 100%;
 }
-.video-top-inputs-edit span{
+.card-package {
+    position: relative;
+    width: 350px;
+    height: 811px;
+    background: white;
+    border: 2px solid #ffdd7e;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: rgba(141, 177, 205, 0.618) 0px 40px 30px -25px;
+    transition: all 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    box-shadow: 17px 18px 15px -3px rgba(0, 0, 0, 0.1);
+}
+.plan-list-pack li{
+    list-style: none;
+     margin: 40px;
+}
+.card-package h1{
+    margin: 20px    ;
+}
+.add-delete-for-pakacjgae{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.add-delete-for-pakacjgae button{
+    background-color: #ffdd7e;
+    padding: 10px 20px;
+    border: none;
+    font-size: 16px;
+    border-radius: 20px;
+    cursor: pointer
+}
+.video-top-inputs-edit input{
+    width: 80%;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    margin: 10px;
+}
+.video-top-inputs-edit span {
     /* position: absolute; */
     top: 5%;
     right: 5%;
     cursor: pointer;
-    font-size: 30px;
+    font-size: 15px;
+    text-align: center;
+    color: red;
+    /* margin-top: -19px; */
+}
+.close-icon-package{
+    position: absolute;
+    margin-top: 10px;
+    margin-left: 310px;
+    font-size: 29px;
+    color: red;
+    cursor: pointer;
+    background-color: white;
+    /* padding: 10px; */
+    border-radius: 50px;
+}
+.video-top-inputs-edit label{
+    margin: 5px;
+    font-size: 16px;
 }
 .packege-top-btns{
     display: flex;
@@ -28,6 +85,22 @@
 }
 .packege-top-btns p{
     font-size: 30px;
+   
+}
+.package-submit-btns {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    gap: 2rem;
+}
+.package-submit-btns button{
+    background-color: white;
+    padding: 10px 30px;
+    border: none;
+    font-size: 16px;
+    border-radius: 20px;
+    cursor: pointer;    
 }
 .packege-top-btns button{
     background-color: #ffdd7e;
