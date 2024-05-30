@@ -43,39 +43,67 @@ const HiringForm = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const newErrors = validateFormData(formDatas);
-    if (Object.keys(newErrors).length === 0) {
-      // Form is valid, proceed with submission
-      const formData = new FormData();
-      formData.append("resume", file);
-      formData.append("name", formDatas.name);
-      formData.append("email", formDatas.email);
-      formData.append("mobile", formDatas.mobile);
-      formData.append("position", formDatas.position);
-      formData.append("coverletter", formDatas.coverletter);
-      console.log(formData);
 
-      try {
-        const response = await axios.post("/application", formData);
-        console.log("response.................>>", response);
-        // if (response.status === 200) {
-        //   toast.success("Successfully submitted the application form!");
-        // } else {
-        //   toast.error("Please try again later.");
-        // }
-      } catch (error) {
-        console.error("Error submitting form:", error);
-        toast.error("Error submitting form. Please try again later.");
-      }
-    } else {
-      setErrors(newErrors);
+    const formErrors = {};
+
+    if (!formDatas.name.trim()) {
+      formErrors.name = "Name is required";
     }
-  };
 
-  const validateFormData = (data) => {
-    const errors = {};
-    // Add validation logic here
-    return errors;
+    if (!formDatas.email.trim()) {
+      formErrors.email = "Email is required";
+    }
+
+    if (!formDatas.mobile) {
+      formErrors.mobile = "Mobile is required";
+    }
+
+    if (!formDatas.position) {
+      formErrors.position = "Position is required";
+    }
+    if (!formDatas.coverletter) {
+      formErrors.coverletter = "Cover letter is required";
+    }
+    if(!file){
+      formErrors.resume = "Resume is required";
+    }
+
+    if (Object.keys(formErrors).length > 0) {
+      setErrors(formErrors);
+      toast.error("Please fill out all fields");
+      return;
+    }
+
+    // Form is valid, proceed with submission
+    const formData = new FormData();
+    formData.append("resume", file);
+    formData.append("name", formDatas.name);
+    formData.append("email", formDatas.email);
+    formData.append("mobile", formDatas.mobile);
+    formData.append("position", formDatas.position);
+    formData.append("coverletter", formDatas.coverletter);
+    console.log(formData);
+
+    try {
+      const response = await axios.post("/application", formData);
+      if (response.status === 200) {
+        toast.success("Successfully submitted the application form!");
+        setFormDatas({
+          name: "",
+          email: "",
+          mobile: "",
+          coverletter: "",
+          position: "",
+          agree: false,
+        });
+        setFile(null);
+      } else {
+        toast.error("Please try again later.");
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      toast.error("Error submitting form. Please try again later.");
+    }
   };
 
   return (
@@ -105,7 +133,7 @@ const HiringForm = (props) => {
                 </span>
               </div>
               <div className="form-first">
-                <div className="details personal">
+                <div className="details-personal">
                   <div className="fields">
                     <div className="input-field">
                       <label>Full Name</label>
@@ -167,6 +195,7 @@ const HiringForm = (props) => {
                       <input
                         type="file"
                         name="resume"
+                        accept="application/pdf, application/msword"
                         onChange={handleFileSelect}
                         style={{ marginTop: "0px" }}
                       />

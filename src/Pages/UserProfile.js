@@ -600,7 +600,7 @@ const UserProfile = () => {
                             data-aos-offset="700"
                             data-aos-duration="700"
                           >
-                            <VscClose onClick={settingsPopup} />
+                            <VscClose onClick={settingsPopup} className="close-side-blue-menu" />
                             <ul className="userprofile-setting-ul">
                               <li>Update Your Password</li>
                               <li onClick={togglePopup}>Update Your Profile</li>
@@ -622,11 +622,14 @@ const UserProfile = () => {
                               </div>
                               {userData ? (
                                 <>
-                                  <input
+                                  {/* <input
                                     type="text"
                                     value={userData.name}
-                                    // onChange={handleUsernameChange}
-                                  />
+                                  
+                                  /> */}
+                                  <div className="user-detailes-txt-name">
+                                    <p>{userData.name}</p>
+                                  </div>
                                 </>
                               ) : (
                                 <>
@@ -655,11 +658,14 @@ const UserProfile = () => {
                                 </div>
                                 {userData ? (
                                   <>
-                                    <input
+                                    {/* <input
                                       type="text"
                                       value={userData.email}
-                                      // onChange={handleEmailChange}
-                                    />
+                                     
+                                    /> */}
+                                    <div className="user-detailes-txt-name">
+                                      <p>{userData.email}</p>
+                                    </div>
                                   </>
                                 ) : (
                                   <>
@@ -684,15 +690,18 @@ const UserProfile = () => {
                           <div>
                             <div className="user-detailes">
                               <div className="user-detailes-txt">
-                                <h3>Phone Number </h3>
+                                <h3>Phone Number : </h3>
                               </div>
                               {userData.mobile ? (
                                 <>
-                                  <input
+                                  {/* <input
                                     type="text"
                                     value={userData.mobile}
-                                    // onChange={handlePhoneNumberChange}
-                                  />
+                                    
+                                  /> */}
+                                  <div className="user-detailes-txt-name">
+                                  <p>{userData.mobile}</p>
+                                  </div>
                                 </>
                               ) : (
                                 <>
@@ -755,11 +764,12 @@ const UserProfile = () => {
                               {userData.gender ? (
                                 <>
                                   <div className="user-gender">
-                                    <input
+                                    {/* <input
                                       type="text"
                                       value={userData.gender}
-                                      // onChange={handlePhoneNumberChange}
-                                    />
+                                     
+                                    /> */}
+                                    <p>{userData.gender}</p>
                                   </div>
                                 </>
                               ) : (
@@ -992,10 +1002,10 @@ const UserProfile = () => {
                       </div> */}
                       {showPopup && (
                         <div className="save-black">
-                          <IoIosCloseCircleOutline
+                          {/* <IoIosCloseCircleOutline
                             onClick={togglePopup}
                             className="close-edit"
-                          />
+                          /> */}
 
                           <form
                             className="profile-form-edit"

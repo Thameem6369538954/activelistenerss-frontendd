@@ -297,12 +297,12 @@ box-shadow: 10px 10px 18px -9px rgba(0,0,0,0.75);
   grid-template-columns: repeat(3, 3fr);
 }
 .save-cancel {
-  display: flex;
-  flex-direction: row-reverse;
-  align-items: center;
-  justify-content: center;
-  margin-top: 40px;
-  gap: 1rem;
+    display: flex;
+    /* flex-direction: row-reverse; */
+    align-items: center;
+    justify-content: center;
+    /* margin-top: -70px; */
+    gap: 1rem;
 }
 .save-cancel button {
   background-color: #cd4631;
@@ -449,6 +449,8 @@ box-shadow: 10px 10px 18px -9px rgba(0,0,0,0.75);
     align-items: center;
     justify-content: space-around;
     margin-top: 35px;
+    padding-bottom: 50px;
+    padding-right: 40px;
 }
 .checkbox-con {
   margin: 10px;
@@ -500,6 +502,19 @@ box-shadow: 10px 10px 18px -9px rgba(0,0,0,0.75);
   transform: translate(133%, 13%);
   transition: all 0.3s ease-in-out;
 }
+.user-gender p{
+  
+  background-color: white;
+  width: 250px;
+  border-radius: 10px;
+}
+.user-detailes-txt-name {
+    
+    background-color: white;
+    width: 250px;
+    border-radius: 10px;
+}
+
 
 .checkbox-con input[type="checkbox"]:checked::after {
   content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='15' height='13' viewBox='0 0 15 13' fill='none'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M14.8185 0.114533C15.0314 0.290403 15.0614 0.605559 14.8855 0.818454L5.00187 12.5L0.113036 6.81663C-0.0618274 6.60291 -0.0303263 6.2879 0.183396 6.11304C0.397119 5.93817 0.71213 5.96967 0.886994 6.18339L5.00187 11L14.1145 0.181573C14.2904 -0.0313222 14.6056 -0.0613371 14.8185 0.114533Z' fill='%2302C202' fill-opacity='0.9'/%3E%3C/svg%3E");
@@ -612,10 +627,13 @@ box-shadow: 10px 10px 18px -9px rgba(0,0,0,0.75);
     padding: 11px 106px;
     border-radius: 30px;
     border: none;
-    margin: 0px;
+    margin: 10px;
     color: white;
     font-size: 20px;
-    margin-top: 145px;
+    cursor: pointer;
+    
+
+
 }
 .close-icon-phone-us {
     /* position: absolute; */
@@ -633,7 +651,7 @@ box-shadow: 10px 10px 18px -9px rgba(0,0,0,0.75);
     height: 296px;
     display: flex;
     flex-direction: column;
-    margin-top: -72%;
+    margin-top: -60%;
     position: absolute;
     margin-left: 5px;
     border-radius: 20px;
@@ -653,11 +671,19 @@ box-shadow: 10px 10px 18px -9px rgba(0,0,0,0.75);
     width: 123%;
     height: 472px;
   }
-        .profile-image {
+ .profile-image {
         width: 180%;
-        height: 800px;
+        height: 576px;
         margin: auto -37%;
     }
+    .save-cancel {
+    display: flex;
+    /* flex-direction: row-reverse; */
+    align-items: center;
+    justify-content: center;
+    /* margin-top: -91px; */
+    gap: 1rem;
+}
     .close-icon-phone-us {
     /* position: absolute; */
     margin-top: 20px;
@@ -686,10 +712,26 @@ box-shadow: 10px 10px 18px -9px rgba(0,0,0,0.75);
     margin-left: 0%;
     margin-top: -30%;
 }
+.userprofile-setting-ul {
+    background-color: lightblue;
+    padding: 20px;
+    border-radius: 20px;
+    height: 480px;
+    width: 134%;
+    margin-top: 130px;
+    margin-left: -50%;
+}
+    .close-side-blue-menu {
+        position: absolute;
+        margin-top: 81%;
+        margin-left: -36%;
+        font-size: 20px;
+    }
 }
 @media screen and (max-width: 600px) {
  .editable-details input::placeholder{
   text-align: center;
+  padding: 10px;
  }
   .profile-image {
     text-align: left;
@@ -835,9 +877,9 @@ box-shadow: 10px 10px 18px -9px rgba(0,0,0,0.75);
     margin-top: -40px;
     gap: 1rem;
 }
-.save-imsha button{
+/* .save-imsha button{
   margin-top: 120%;
-}
+} */
   .editable-details input {
     padding: 10px;
     width: 144px;
@@ -859,6 +901,21 @@ box-shadow: 10px 10px 18px -9px rgba(0,0,0,0.75);
     align-items: center;
     justify-content: center;
     margin-top: 63px;
+}
+.userprofile-setting-ul {
+    background-color: lightblue;
+    padding: 20px;
+    border-radius: 20px;
+    height: 701px;
+    width: 155%;
+    margin-left: -74%;
+    margin-top: 200%;
+}
+.close-side-blue-menu{
+  position: absolute;
+  margin-top: 189%;
+  font-size: 60px;
+  margin-left: -120px;
 }
 .save-black {
     background-color: #FFDD7E;
