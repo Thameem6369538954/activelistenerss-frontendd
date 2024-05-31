@@ -25,9 +25,23 @@ import { IoIosCloseCircleOutline } from "react-icons/io";
 import { VscClose } from "react-icons/vsc";
 import { IoSettingsSharp } from "react-icons/io5";
 import Swal from "sweetalert2";
+import Button from "@mui/material/Button";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
 
 // import axios from "../Utils/Baseurl.js";
 const UserProfile = () => {
+   const [anchorEl, setAnchorEl] = useState(null);
+   const open = Boolean(anchorEl);
+
+   const handleClicku = (event) => {
+     setAnchorEl(event.currentTarget);
+   };
+
+   const handleClose = () => {
+     setAnchorEl(null);
+   };
+
 
    const [settings,setSettings] = useState(false);
 
@@ -298,13 +312,25 @@ const UserProfile = () => {
       return;
     }
     console.log(profilePic, "picture........");
-    const formData = new FormData();
-    formData.append("profilePic", profilePic);
-    const response = await axios.post(
-      `/add_profile_photo/${user._id}`,
-      formData
-    );
-    console.log(response, "this is the response of registration............");
+    try{
+      const formData = new FormData();
+      formData.append("profilePic", profilePic);
+      const response = await axios.post(
+        `/add_profile_photo/${user._id}`,
+        formData
+      );
+      console.log(response, "this is the response of registration............");
+      if(response.status == 200){
+        toast.success(response.data.message);
+        window.location.reload();
+      }else{
+        console.log(error, "error");
+      }
+    }catch (error){
+
+      console.log(error, "error");
+    }
+      
 
     // Your form submission logic here
     //  console.log("Form submitted successfully!");
@@ -605,7 +631,10 @@ const logoutUser = ()=>{
                             data-aos-offset="700"
                             data-aos-duration="700"
                           >
-                            <VscClose onClick={settingsPopup} className="close-side-blue-menu" />
+                            <VscClose
+                              onClick={settingsPopup}
+                              className="close-side-blue-menu"
+                            />
                             <ul className="userprofile-setting-ul">
                               <li>Update Your Password</li>
                               <li onClick={togglePopup}>Update Your Profile</li>
@@ -705,7 +734,7 @@ const logoutUser = ()=>{
                                     
                                   /> */}
                                   <div className="user-detailes-txt-name">
-                                  <p>{userData.mobile}</p>
+                                    <p>{userData.mobile}</p>
                                   </div>
                                 </>
                               ) : (
@@ -907,67 +936,17 @@ const logoutUser = ()=>{
                           </div>
                         </div>
 
-                        <div className="profile-box">
-                          <div>
-                            {editprof && (
-                              <form
-                                className="edit-user-profile"
-                                onSubmit={handleSubmitu}
-                              >
-                                <VscClose
-                                  onClick={toggleEdit}
-                                  className=" close-icon-pro-us"
-                                />
-                                <div className="prof-input">
-                                  <label for="profilePic" role="button">
-                                    Upload New Image
-                                  </label>
-                                  <hr></hr>
-                                  <input
-                                    type="file"
-                                    name="profilePic"
-                                    id="profilePic"
-                                    accept="image/*"
-                                    onChange={handleFileChange}
-                                    required
-                                    style={{ display: "none" }}
-                                  />
-                                  <hr></hr>
-                                  {error && (
-                                    <div className="error">{error}</div>
-                                  )}
-                                  {profilePic && (
-                                    <div>
-                                      <img src={profilePic} alt="Profile" />
-                                      <p
-                                        role="button"
-                                        onClick={removeProfilePic}
-                                        style={{ cursor: "pointer" }}
-                                      >
-                                        Remove
-                                      </p>
-                                      {/* <button type="button">Remove</button> */}
-                                    </div>
-                                  )}
-                                </div>
-                                <div className="delete-prof">
-                                  <label
-                                    role="button"
-                                    onClick={() =>
-                                      removeProfilePic(userData._id)
-                                    }
-                                  >
-                                    Delete your Profile
-                                  </label>
+                        <div
+                          id="profile-menu"
+                          aria-controls={open ? "basic-menu" : undefined}
+                          aria-haspopup="true"
+                          aria-expanded={open ? "true" : undefined}
+                          onClick={handleClicku}
+                          style={{ cursor: "pointer", display: "inline-block" }} // Add any other styling needed
+                          className="profile-box"
+                        >
+                          <div></div>
 
-                                  {/* <button type="button">Delete</button> */}
-                                </div>
-                                <div className="save-imsha">
-                                  <button type="submit">Save</button>
-                                </div>
-                              </form>
-                            )}
-                          </div>
                           {userData.profilePic ? (
                             <img src={userData.profilePic} alt="" />
                           ) : (
@@ -993,6 +972,61 @@ const logoutUser = ()=>{
                             <button>UPDATE</button>
                           </div> */}
                         </div>
+                        {editprof && (
+                          <form
+                            className="edit-user-profile"
+                            onSubmit={handleSubmitu}
+                          >
+                            <VscClose
+                              onClick={toggleEdit}
+                              className=" close-icon-pro-us"
+                            />
+                            <div className="prof-input">
+                              <label for="profilePic" role="button">
+                                Upload New Image
+                              </label>
+                              <hr></hr>
+                              <input
+                                type="file"
+                                name="profilePic"
+                                id="profilePic"
+                                accept="image/*"
+                                onChange={handleFileChange}
+                                required
+                                style={{ display: "none" }}
+                              />
+                              <hr></hr>
+                              {error && <div className="error">{error}</div>}
+                              {profilePic && (
+                                <div>
+                                  <img src={profilePic} alt="Profile" />
+                                  <p
+                                    role="button"
+                                    onClick={removeProfilePic}
+                                    style={{ cursor: "pointer" }}
+                                  >
+                                    Remove
+                                  </p>
+                                  {/* <button type="button">Remove</button> */}
+                                </div>
+                              )}
+                            </div>
+                            <div className="prof-input">
+                              <label
+                                role="button"
+                                onClick={() => removeProfilePic(userData._id)}
+                              >
+                                Delete your Profile
+                              </label>
+                              <hr></hr>
+
+                              {/* <button type="button">Delete</button> */}
+                            </div>
+                            <div className="save-imsha">
+                              <button type="submit">Save</button>
+                            </div>
+                          </form>
+                        )}
                       </div>
                       {/* 
                       <div className="save-cancel">
@@ -1017,6 +1051,16 @@ const logoutUser = ()=>{
                             onSubmit={handleSubmit}
                             encType="multipart/form-data"
                           >
+                            <div
+                              style={{
+                                display: "flex",
+                                justifyContent: "space-between",
+                                alignItems: "center",
+                              }}
+                            >
+                              <h1>Edit Your Profile</h1>
+                              <IoCloseCircleOutline onClick={togglePopup} />
+                            </div>
                             <div className="prof-input-edit">
                               <label htmlFor="new-username">
                                 Enter New Username
@@ -1036,19 +1080,22 @@ const logoutUser = ()=>{
                                 </div>
                               )}
                             </div>
-                            <div className="prof-input-edit">
-                              <label htmlFor="new-username">
-                                Enter New Email
-                              </label>
-                              <input
-                                type="email"
-                                id="new-username"
-                                name="email"
-                                value={userDataedit.email}
-                                onChange={handleUserDataChange}
-                                placeholder="Enter New Username"
-                                // required
-                              />
+                            <div className="prof-input-edi-new">
+                              <div className="prof-input-edit">
+                                <label htmlFor="new-username">
+                                  Enter New Email
+                                </label>
+                                <input
+                                  type="email"
+                                  id="new-username"
+                                  name="email"
+                                  value={userDataedit.email}
+                                  onChange={handleUserDataChange}
+                                  placeholder="Enter New Username"
+                                  // required
+                                />
+                              </div>
+
                               {updateError.email && (
                                 <div className="error">{updateError.email}</div>
                               )}

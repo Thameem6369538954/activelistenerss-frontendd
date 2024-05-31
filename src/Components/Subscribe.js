@@ -316,7 +316,7 @@ const Subscribe = () => {
                         <div className="home-caro-align">
                           <video
                             controls
-                            style={{ width: "40%" }}
+                            
                             className="posdcast-video"
                             onClick={togglePlay}
                             onPlay={() => setIsPlaying(true)}

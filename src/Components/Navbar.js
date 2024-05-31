@@ -4,7 +4,7 @@ import "../Css/Navbar.css";
 import ALlogo from "../Images/ALlogo.png";
 import { RiMenu5Fill } from "react-icons/ri";
 import { IoCloseOutline } from "react-icons/io5";
-import { NavLink,useNavigate } from "react-router-dom";
+import { NavLink,useNavigate,Link } from "react-router-dom";
 import AlCloud from "../Images/AlCloud.png";
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
@@ -13,9 +13,23 @@ import { ToastContainer, toast } from "react-toastify";
 import profileFemale from "../Images/profileFemale.jpg";
 import profileMale from "../Images/profileMale.jpg";
 import defaultProfile from "../Images/prof.jpg";
+import Button from "@mui/material/Button";
+// import Menu from "@mui/material/Menu";
+// import MenuItem from "@mui/material/MenuItem";
+import { Menu, MenuItem } from "@mui/material";
 
 
 const Navbar = () => {
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+
+  const handleClicku = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
   
  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
  const dispatch = useDispatch();
@@ -118,24 +132,51 @@ const Navbar = () => {
                 <div className="border full-rounded"></div>
               </button>
               {/* <img src={Navarrow} className="navarrow" alt="" /> */}
-              <NavLink to={"/UserProfile"} className="Links">
-                {/* <p>profile</p> */}
-                {!user.profilePic ? (
-                  <img
-                    src={
-                      user.gender === "male"
-                        ? profileMale
-                        : user.gender === "female"
-                        ? profileFemale
-                        : defaultProfile
-                    }
-                    alt="noImage"
-                  />
-                ) : (
-                  <img src={user.profilePic} alt="noImage" />
-                )}
-                {/* <img src={user.profilePic} alt="" /> */}
-              </NavLink>
+              {/* <NavLink to={"/UserProfile"} className="Links"> */}
+              {/* <p>profile</p> */}
+
+              {/* <img src={user.profilePic} alt="" /> */}
+              {/* </NavLink> */}
+              <div>
+                <div
+                  id="profile-menu"
+                  aria-controls={open ? "basic-menu" : undefined}
+                  aria-haspopup="true"
+                  aria-expanded={open ? "true" : undefined}
+                  onClick={handleClicku}
+                  style={{ cursor: "pointer", display: "inline-block" }} // Add any other styling needed
+                >
+                  {!user.profilePic ? (
+                    <img
+                      src={
+                        user.gender === "male"
+                          ? profileMale
+                          : user.gender === "female"
+                          ? profileFemale
+                          : defaultProfile
+                      }
+                      alt="noImage"
+                    />
+                  ) : (
+                    <img src={user.profilePic} alt="noImage" />
+                  )}
+                </div>
+                <Menu
+                  id="basic-menu"
+                  anchorEl={anchorEl}
+                  open={open}
+                  onClose={handleClose}
+                  MenuListProps={{
+                    "aria-labelledby": "profile-menu",
+                  }}
+                >
+                  <Link to="/UserProfile" className="Links">
+                    <MenuItem onClick={handleClose}>Profile</MenuItem>
+                  </Link>
+                  {/* <MenuItem onClick={handleClose}>My account</MenuItem> */}
+                  <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                </Menu>
+              </div>
             </div>
           ) : (
             <div className="Login-btns">
