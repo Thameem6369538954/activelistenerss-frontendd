@@ -329,65 +329,6 @@ const PodcastAdmin = () => {
 
   return (
     <div>
-      {isOpen && (
-        <div className="popup">
-          <div className="popup-inner">
-            <button className="close-btn" onClick={togglePopupone}>
-              &times;
-            </button>
-            <h2>Popup Form</h2>
-            <form onSubmit={handleSubmitt}>
-              <div className="form-group">
-                <label>Title:</label>
-                <input
-                  type="text"
-                  name="title"
-                  value={formDatass.title}
-                  onChange={handleTextChange}
-                />
-                {errors.title && <span className="error">{errors.title}</span>}
-              </div>
-              <div className="form-group">
-                <label>Description:</label>
-                <input
-                  type="text"
-                  name="description"
-                  value={formDatass.description}
-                  onChange={handleTextChange}
-                />
-                {errors.description && (
-                  <span className="error">{errors.description}</span>
-                )}
-              </div>
-              <div className="form-group">
-                <label>Category:</label>
-                <input
-                  type="text"
-                  name="category"
-                  value={formDatass.category}
-                  onChange={handleTextChange}
-                />
-                {errors.category && (
-                  <span className="error">{errors.category}</span>
-                )}
-              </div>
-              <div className="form-group">
-                <label>Thumbnail:</label>
-                <input type="file" onChange={handleThumbnailChanged} />
-                {errors.thumbnail && (
-                  <span className="error">{errors.thumbnail}</span>
-                )}
-              </div>
-              <div className="form-group">
-                <label>Podcast Video:</label>
-                <input type="file" onChange={handlePodcastVideoChange} />
-                {errors.video && <span className="error">{errors.video}</span>}
-              </div>
-              <button type="submit">Submit</button>
-            </form>
-          </div>
-        </div>
-      )}
       <div className="PodcastAdmin-main-coantiner">
         <div className="video-add-main-container">
           <div className="video-add-top-btn">
@@ -433,7 +374,7 @@ const PodcastAdmin = () => {
           {showPopup && (
             <div className="video-popup">
               <div className="video-popup-content">
-                <h2>Upload Video</h2>
+                <h2>Upload podcast Video</h2>
                 <form onSubmit={handleSubmit} encType="multipart/form-data">
                   <div className="video-top-inputs">
                     <div>
@@ -549,6 +490,88 @@ const PodcastAdmin = () => {
                             <button onClick={togglePopupone}>
                               Edit <AiOutlineEdit className="video-edit" />
                             </button>
+                            {isOpen && (
+                              <div className="popup">
+                                <div className="popup-inner">
+                                  <button
+                                    className="close-btn"
+                                    onClick={togglePopupone}
+                                  >
+                                    &times;
+                                  </button>
+                                  <h2>Popup Form</h2>
+                                  <form onSubmit={handleSubmitt}>
+                                    <div className="form-group">
+                                      <label>Title:</label>
+                                      <input
+                                        type="text"
+                                        name="title"
+                                        value={formDatass.title}
+                                        onChange={handleTextChange}
+                                      />
+                                      {errors.title && (
+                                        <span className="error">
+                                          {errors.title}
+                                        </span>
+                                      )}
+                                    </div>
+                                    <div className="form-group">
+                                      <label>Description:</label>
+                                      <input
+                                        type="text"
+                                        name="description"
+                                        value={formDatass.description}
+                                        onChange={handleTextChange}
+                                      />
+                                      {errors.description && (
+                                        <span className="error">
+                                          {errors.description}
+                                        </span>
+                                      )}
+                                    </div>
+                                    <div className="form-group">
+                                      <label>Category:</label>
+                                      <input
+                                        type="text"
+                                        name="category"
+                                        value={formDatass.category}
+                                        onChange={handleTextChange}
+                                      />
+                                      {errors.category && (
+                                        <span className="error">
+                                          {errors.category}
+                                        </span>
+                                      )}
+                                    </div>
+                                    <div className="form-group">
+                                      <label>Thumbnail:</label>
+                                      <input
+                                        type="file"
+                                        onChange={handleThumbnailChanged}
+                                      />
+                                      {errors.thumbnail && (
+                                        <span className="error">
+                                          {errors.thumbnail}
+                                        </span>
+                                      )}
+                                    </div>
+                                    <div className="form-group">
+                                      <label>Podcast Video:</label>
+                                      <input
+                                        type="file"
+                                        onChange={handlePodcastVideoChange}
+                                      />
+                                      {errors.video && (
+                                        <span className="error">
+                                          {errors.video}
+                                        </span>
+                                      )}
+                                    </div>
+                                    <button type="submit">Submit</button>
+                                  </form>
+                                </div>
+                              </div>
+                            )}
                           </div>
                         )}
                       </td>

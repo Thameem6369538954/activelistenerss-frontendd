@@ -56,7 +56,7 @@ const generatePDF = useReactToPrint({
     <div>
       <div className="Hiringdata-main-container">
         <div className="hiring-top-btns">
-          <h1>Add Team Members </h1>
+          <h1>Hiring Data </h1>
           <button onClick={generatePDF}>Export</button>
         </div>
         <div className="fiter-box">
@@ -83,10 +83,10 @@ const generatePDF = useReactToPrint({
         </div>
         <div className="hiringdata-table">
           <div className="revenvue-container">
-            <div ref={componentdata} >
-            {filteredData.length === 0 ? (
-              <p>Sorry, the data is not found</p>
-            ) : (
+            <div ref={componentdata}>
+              {filteredData.length === 0 ? (
+                <p>{searchInput} is not found</p>
+              ) : (
                 <table width={"100%"}>
                   <thead>
                     <tr>
@@ -174,8 +174,8 @@ const generatePDF = useReactToPrint({
                       ))}
                   </tbody>
                 </table>
-            )}
-              </div>
+              )}
+            </div>
           </div>
         </div>
       </div>

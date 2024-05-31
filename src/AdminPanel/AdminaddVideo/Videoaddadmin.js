@@ -303,7 +303,9 @@ const Videoaddadmin = () => {
                         Social Media Addiction
                       </option>
                       <option value="Post Covid">Post Covid</option>
-                      <option value="Learning and Focus">Learning and Focus</option>
+                      <option value="Learning and Focus">
+                        Learning and Focus
+                      </option>
                       <option value=""></option>
                     </select>
                     {errors.page && (
@@ -416,17 +418,35 @@ const Videoaddadmin = () => {
                               <div className="video-edit-input">
                                 <label>Page</label>
                                 <div className="video-edit-input-div">
-                                  <input
-                                    type="text"
+                                  <select
                                     name="page"
                                     value={formDatass.page}
                                     onChange={handleTextChange}
-                                  />
+                                  >
+                                    <option value="" disabled>
+                                      Select a page
+                                    </option>
+                                    <option value="page1">Home Page </option>
+                                    <option value="page2">
+                                      {" "}
+                                      Speak Easy Page
+                                    </option>
+                                    <option value="page3">
+                                      Learning And Focus Page
+                                    </option>
+                                    <option value="page4">
+                                      Early Age And Gadget Exposure
+                                    </option>
+                                    <option value="page4">
+                                      Mobile Addiction
+                                    </option>
+                                  </select>
                                   {updateError.page && (
                                     <span>{updateError.page}</span>
                                   )}
                                 </div>
                               </div>
+
                               {/* <div>
                             <label>Category</label>
                             <input

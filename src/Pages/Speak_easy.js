@@ -20,21 +20,22 @@ import { InlineWidget } from "react-calendly";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import  Subscribe from "../Images/Subscribe.png";
 import  Fourtyfive from "../Images/Fourtyfive.png";
-// import axios from "../Utils/Baseurl.js";
+import appConfig from "../Utils/appConfig.js";
+import { useSelector } from "react-redux";
 
 const Speak_easy = () => {
+  const [data,setData] = useState({})
+  const user = useSelector((state) => state.auth.user);
+  const [wantComplimentaryCall, setWantComplimentaryCall] = useState(false);
+  const appointmentSubmit = (e) => {
+    e.preventDefault();
+    setWantComplimentaryCall(true);
+  };
 
-
-    const [wantComplimentaryCall, setWantComplimentaryCall] = useState(false);
-    const appointmentSubmit = (e) => {
-      e.preventDefault();
-      setWantComplimentaryCall(true);
-    };
-
-    const handleClose = () => {
-      setWantComplimentaryCall(false);
-      // setCloseClick(true);
-    };
+  const handleClose = () => {
+    setWantComplimentaryCall(false);
+    // setCloseClick(true);
+  };
   const [card, setCard] = useState([]);
 
   useEffect(() => {
@@ -53,7 +54,95 @@ const Speak_easy = () => {
       }
     };
     fetchCard();
-  },[]);
+  }, []);
+
+  // PAYMENT SECTION......................................................
+  useEffect(() => {
+    if (user) {
+      setData({
+        item: "premium",
+        itemCod: "99",
+        name: user.name,
+        email: user.email,
+        mobile: user.mobile,
+        userId: user._id,
+      });
+    }
+  }, [user]); // Only update data when user changes
+
+  const handleSubscription = async (packageData) => {
+    console.log(packageData, "package details");
+
+    const paymentCCAvenue = async () => {
+      var paymentData = {
+        merchant_id: "MERCHANT_ID", // Merchant ID (Required)
+        order_id: `ORD${Date.now()}`, // Order ID - It can be generated from our project
+        amount: packageData.price, // Payment Amount (Required)
+        currency: "INR", // Payment Currency Type (Required)
+        billing_email: user.email, // Billing Email (Optional)
+        billing_name: user.name, // Billing Name (Optional)
+        billing_address: "Address Details", // Billing Address (Optional)
+        billing_city: "City", // Billing City (Optional)
+        billing_state: "State", // Billing State (Optional)
+        billing_zip: "Zip Code", // Billing Zip (Optional)
+        billing_country: "India", // Billing Country (Optional)
+        redirect_url: `${window.location.origin}/api/ccavenue-handle`, // Success URL (Required)
+        cancel_url: `${window.location.origin}/api/ccavenue-handle`, // Failed/Cancel Payment URL (Required)
+        merchant_param1: "Extra Information", // Extra Information (Optional)
+        merchant_param2: "Extra Information", // Extra Information (Optional)
+        merchant_param3: "Extra Information", // Extra Information (Optional)
+        merchant_param4: "Extra Information", // Extra Information (Optional)
+        language: "EN", // Language (Optional)
+        billing_tel: user.mobile, // Billing Mobile Number (Optional)
+      };
+
+      // let encReq = CCAvenue.getEncryptedOrder(paymentData);
+      // let accessCode = "ACCESS_CODE";
+      // let URL = https://secure.ccavenue.com/transaction/transaction.do?command=initiateTransaction&merchant_id=${paymentData.merchant_id}&encRequest=${encReq}&access_code=${accessCode};
+      // window.location.href = URL;
+
+      try {
+        const token = localStorage.getItem("accessToken");
+        console.log(
+          paymentData,
+          "daaaatttttttttttttttttt",
+          token,
+          "tokennnnnnnnnnnnnnnnnnnnnnnn::::::::::::::::>>>>>>>>>>>>>"
+        );
+        const response = await axios.post(
+          "/create-ccavenue-order",
+          paymentData,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        // const { encRequest } = response.data;
+        // const accessCode = "YOUR_ACCESS_CODE"; // Replace with your access code
+        // const URL = https://secure.ccavenue.com/transaction/transaction.do?command=initiateTransaction&merchant_id=${paymentData.merchant_id}&encRequest=${encRequest}&access_code=${accessCode};
+        // window.location.href = URL;
+      } catch (error) {
+        toast.error("Something went wrong!");
+      }
+    };
+    paymentCCAvenue();
+
+    // try {
+    //   const token = localStorage.getItem("accessToken");
+
+    //   const response = await axios.post('/create-stripe-session-subscription',packageData,
+    //   {
+    //     headers: {
+    //       Authorization: Bearer ${token},
+    //     },
+    //   }
+    //   )
+    // } catch (error) {
+    //   console.log(error)
+    // }
+  };
+
   return (
     <div>
       <Navbar />
@@ -109,7 +198,9 @@ const Speak_easy = () => {
                       <TiTick className="tick" />1 review session
                     </li> */}
                   </ul>
-                  <button>Buy Now</button>
+                  <button onClick={() => handleSubscription(data)}>
+                    Buy Now
+                  </button>
                 </div>
               </div>
             );

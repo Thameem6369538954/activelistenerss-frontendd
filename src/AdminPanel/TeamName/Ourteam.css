@@ -147,3 +147,17 @@ input:checked + .slider:after {
     background-color: #0d0c22;
 }
 
+.team-edit-form{
+    display: grid;
+    place-items: center;
+    grid-template-columns: repeat(1,1fr);
+    background-color: #9e9ea7;
+    width: 100%;
+    height: 500px;
+    border-radius: 10px;
+}
+.team-edit-form input{
+    padding: 10px;
+    border-radius: 10px;
+    margin: 5px;
+}

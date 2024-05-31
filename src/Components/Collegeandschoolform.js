@@ -15,8 +15,8 @@ const Collegeandschoolform = () => {
 
  const [formData, setFormData] = useState({
    name: "",
-   email: "",
-   mobile: "",
+   email_id: "",
+   telephoneNumber: "",
    pincode: "",
    state: "",
    city: "",
@@ -25,12 +25,6 @@ const Collegeandschoolform = () => {
    qualification: "",
    yearOfPassing: "",
    college: "",
-   cgpa: "",
-   internship: "",
-   internshipDetails: "",
-   github: "",
-   linkedIn: "",
-   otherSocialMedia: "",
  });
 
  const [errors, setErrors] = useState({});

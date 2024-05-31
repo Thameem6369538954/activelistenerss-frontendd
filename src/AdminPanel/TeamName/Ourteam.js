@@ -320,6 +320,7 @@ const [members, setMembers] = useState([]);
                 <CgCloseO />
               </span> */}
                 <h2>Upload Video</h2>
+
                 <form onSubmit={handleSubmit} encType="multipart/form-data">
                   <div className="video-top-inputs">
                     <div>
@@ -440,74 +441,81 @@ const [members, setMembers] = useState([]);
                             Edit <AiOutlineEdit className="video-edit" />
                           </button>
                           {editingRowId === row._id && (
-                            <form
-                              onSubmit={(e) => handleSubmitt(e, row._id)}
-                              encType="multipart/form-data"
-                            >
-                              <div className="video-top-inputs">
-                                <div>
-                                  <label>Employee Name :</label>
-                                  <input
-                                    type="text"
-                                    placeholder="Enter the name"
-                                    name="name"
-                                    value={formValues.name}
-                                    onChange={handleChanges}
-                                  />
-                                  {errors.name && <span>{errors.name}</span>}
+                            <div className="">
+                              <form
+                                onSubmit={(e) => handleSubmitt(e, row._id)}
+                                encType="multipart/form-data"
+                              >
+                                <div className="team-edit-form">
+                                  <div>
+                                    <label>Employee Name :</label>
+                                    <input
+                                      type="text"
+                                      placeholder="Enter the name"
+                                      name="name"
+                                      value={formValues.name}
+                                      onChange={handleChanges}
+                                    />
+                                    {errors.name && <span>{errors.name}</span>}
+                                  </div>
+                                  <div>
+                                    <label>Designation:</label>
+                                    <input
+                                      type="text"
+                                      placeholder="Enter the designation"
+                                      name="designation"
+                                      value={formValues.designation}
+                                      onChange={handleChanges}
+                                    />
+                                    {errors.designation && (
+                                      <span>{errors.designation}</span>
+                                    )}
+                                  </div>
+                                  <div>
+                                    <label>Social Media Link:</label>
+                                    <input
+                                      type="text"
+                                      placeholder="Enter the social media link"
+                                      name="socialmediaLink"
+                                      value={formValues.socialmediaLink}
+                                      onChange={handleChanges}
+                                    />
+                                    {errors.socialmediaLink && (
+                                      <span>{errors.socialmediaLink}</span>
+                                    )}
+                                  </div>
+
+                                  <div className="video-thumbnil-inputs">
+                                    <label>Audio</label>
+                                    <input
+                                      type="file"
+                                      name="audio"
+                                      onChange={handleAudioChange}
+                                    />
+                                    {errors.audio && (
+                                      <span>{errors.audio}</span>
+                                    )}
+                                  </div>
+                                  <div className="video-thumbnil-inputs">
+                                    <label>Image</label>
+                                    <input
+                                      type="file"
+                                      name="image"
+                                      onChange={handleImageChanges}
+                                    />
+                                    {errors.image && (
+                                      <span>{errors.image}</span>
+                                    )}
+                                  </div>
+                                  <div className="video-submit-btns">
+                                    <button type="submit">Submit</button>
+                                    <button type="button" onClick={togglePopup}>
+                                      Cancel
+                                    </button>
+                                  </div>
                                 </div>
-                                <div>
-                                  <label>Designation:</label>
-                                  <input
-                                    type="text"
-                                    placeholder="Enter the designation"
-                                    name="designation"
-                                    value={formValues.designation}
-                                    onChange={handleChanges}
-                                  />
-                                  {errors.designation && (
-                                    <span>{errors.designation}</span>
-                                  )}
-                                </div>
-                                <div>
-                                  <label>Social Media Link:</label>
-                                  <input
-                                    type="text"
-                                    placeholder="Enter the social media link"
-                                    name="socialmediaLink"
-                                    value={formValues.socialmediaLink}
-                                    onChange={handleChanges}
-                                  />
-                                  {errors.socialmediaLink && (
-                                    <span>{errors.socialmediaLink}</span>
-                                  )}
-                                </div>
-                              </div>
-                              <div className="video-thumbnil-inputs">
-                                <label>Audio</label>
-                                <input
-                                  type="file"
-                                  name="audio"
-                                  onChange={handleAudioChange}
-                                />
-                                {errors.audio && <span>{errors.audio}</span>}
-                              </div>
-                              <div className="video-thumbnil-inputs">
-                                <label>Image</label>
-                                <input
-                                  type="file"
-                                  name="image"
-                                  onChange={handleImageChanges}
-                                />
-                                {errors.image && <span>{errors.image}</span>}
-                              </div>
-                              <div className="video-submit-btns">
-                                <button type="submit">Submit</button>
-                                <button type="button" onClick={togglePopup}>
-                                  Cancel
-                                </button>
-                              </div>
-                            </form>
+                              </form>
+                            </div>
                           )}
                         </div>
                         {/* )} */}

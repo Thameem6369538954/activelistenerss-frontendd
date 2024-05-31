@@ -555,7 +555,12 @@ const UserProfile = () => {
  
   };
 
-
+const logoutUser = ()=>{
+  localStorage.removeItem("accessToken")
+  dispatch(logout());
+  navigate("/");
+  // window.location.reload()
+}
  
   return !noToken ? (
     <div>
@@ -604,7 +609,7 @@ const UserProfile = () => {
                             <ul className="userprofile-setting-ul">
                               <li>Update Your Password</li>
                               <li onClick={togglePopup}>Update Your Profile</li>
-                              <li>Logout</li>
+                              <li onClick={logoutUser}>Logout</li>
                               <li onClick={handleDeleteAccount}>
                                 Delete My Accound
                               </li>

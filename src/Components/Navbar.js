@@ -52,7 +52,6 @@ const Navbar = () => {
   return (
     <div>
       <div className="Navbar-main">
-        
         <nav>
           <div onClick={handleClick} className="nav-icons">
             {isOpen ? (
@@ -68,7 +67,7 @@ const Navbar = () => {
               <NavLink to="/" className="Links">
                 <li>Home</li>
               </NavLink>
-              <NavLink to="/Teletherapy" className="Links">
+              <NavLink to="/Speak_easy" className="Links">
                 <li>Speak-Easy</li>
               </NavLink>
               <NavLink to="/Senses" className="Links">
