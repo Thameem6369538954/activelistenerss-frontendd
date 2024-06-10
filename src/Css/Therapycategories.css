@@ -190,6 +190,13 @@
 }
 
 @media (min-width: 600px) and (max-width: 1024px) {
+  .therapy-box h1 {
+    text-align: center;
+    margin: 10px;
+    font-family: Relo;
+    padding-top: 20px;
+    font-size: 19px;
+}
   .therapy-box img{
   width: 200px;
   aspect-ratio: 1 / 2;

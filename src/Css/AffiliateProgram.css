@@ -216,7 +216,7 @@ width: 260px;
         display: grid;
         grid-template-columns: repeat(1, 0.5fr);
         gap: 2rem;
-        margin-left: 90px;
+        margin-left: 20px;
         place-items: center;
     }
     .psycologist-how-can-join-box-container-center{
@@ -330,10 +330,14 @@ width: 260px;
     background-color: #ffdd7e;
 }
 .clg-how-can-join-box-container {
-    display: grid;
-    grid-template-columns: repeat(1, 0.3fr);
-    gap: 2rem;
-}
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 2rem;
+        margin-left: -12%;
+    }
+    .psycologist-imsha{
+      margin-left: 35px;
+    }
 }
 @media (min-width: 600px) and (max-width: 1024px) {
   .psycologist-how-can-join{

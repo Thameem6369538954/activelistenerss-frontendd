@@ -14,6 +14,8 @@ import { TiArrowRightThick } from "react-icons/ti";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { InlineWidget } from "react-calendly";
 import Breadcrumps from "../Components/Breadcrumps";
+import axios from "../Utils/Baseurl.js";
+import { toast } from "react-toastify";
 
 const GriefSupport = () => {
   const [wantComplimentaryCall, setWantComplimentaryCall] = useState(false);
@@ -26,6 +28,90 @@ const GriefSupport = () => {
     setWantComplimentaryCall(false);
     // setCloseClick(true);
   };
+
+
+   const [formData, setFormData] = useState({
+     fullName: "",
+     email: "",
+     phoneNumber: "",
+     country: "",
+     state: "",
+     support: "0",
+     message: "",
+     enrollAs: "",
+   });
+   const [errors, setErrors] = useState({});
+
+   const handleChange = (e) => {
+     const { name, value, type, checked } = e.target;
+     const newValue = type === "checkbox" ? checked : value;
+     setFormData({
+       ...formData,
+       [name]: newValue,
+     });
+   };
+
+   const handleSubmit = async (e) => {
+     e.preventDefault();
+     //  console.log(formData,"form data..............................................");
+
+     const formErrors = {};
+     if (!formData.enrollAs) {
+       formErrors.enrollAs = "Enroll as is required";
+     }
+     if (!formData.fullName) {
+       formErrors.fullName = "Full Name is required";
+     }
+     if (!formData.email) {
+       formErrors.email = "Email is required";
+     }
+     if (!formData.phoneNumber) {
+       formErrors.phoneNumber = "Phone Number is required";
+     }
+     if (!formData.country) {
+       formErrors.country = "Country is required";
+     }
+     if (!formData.state) {
+       formErrors.state = "State is required";
+     }
+     if (!formData.message) {
+       formErrors.message = "Message is required";
+     }
+
+     if (Object.keys(formErrors).length > 0) {
+       setErrors(formErrors);
+       return;
+     }
+
+     try {
+       const response = await axios.post("/getintouch_griefSupport", formData);
+       console.log(response);
+       if (response && response.data.message) {
+         if (
+           response.data.message ===
+           "succesfully submitted the form!we will get in touch as soon as possible!"
+         ) {
+           toast.success("Your Form submited successfully !!");
+           setFormData({
+             fullName: "",
+             email: "",
+             phoneNumber: "",
+             country: "",
+             state: "",
+             support: "0",
+             message: "",
+             enrollAs: "",
+           });
+         }
+       }
+     } catch {
+       console.log("Error in form submission");
+     }
+     //  }else{
+     //   //if error
+     //   toast.error("please input valid datas!!")
+     //  }
+   };
   return (
     <div>
       <Navbar />
@@ -159,132 +245,234 @@ const GriefSupport = () => {
           <h2>Grief Support Group</h2>
           <div className="grif-form-inputs">
             <div className="container-form">
-              <form action="submit">
-                <div className="form first">
-                  <div className="details personal">
-                      <div className="radio-buttons-container">
-                        <div className="radio-button">
-                          <label>Enroll as: </label>
-                          <input
-                            name="radio-group"
-                            id="radio2"
-                            className="radio-button__input"
-                            type="radio"
-                          />
-                          <label for="radio2" className="radio-button__label">
-                            <span className="radio-button__custom"></span>
-                            Parent
-                          </label>
-                        </div>
-                        <div className="radio-button">
-                          <input
-                            name="radio-group"
-                            id="radio1"
-                            className="radio-button__input"
-                            type="radio"
-                          />
-                          <label for="radio1" className="radio-button__label">
-                            <span className="radio-button__custom"></span>
-                            Carer
-                          </label>
-                        </div>
-                        <div className="radio-button">
-                          <input
-                            name="radio-group"
-                            id="radio3"
-                            className="radio-button__input"
-                            type="radio"
-                          />
-                          <label for="radio3" className="radio-button__label">
-                            <span className="radio-button__custom"></span>
-                            Mentor/ Educator
-                          </label>
-                        </div>
-                      </div>
-                    <div className="fields">
-                      <div className="input-field">
-                        <label>Full Name</label>
-                        <input
-                          type="text"
-                          placeholder="Enter your name"
-                          id="email"
-                          required
-                        />
-                      </div>
-
-                      <div className="input-field">
-                        <label>Email</label>
-                        <input
-                          type="email"
-                          placeholder="Enter your email"
-                          id="email"
-                          required
-                        />
-                      </div>
-
-                      <div className="input-field">
-                        <label>Mobile Number</label>
-                        <input
-                          type="text"
-                          placeholder="Enter mobile number"
-                          required
-                        />
-                      </div>
-
-                      <div className="input-field">
-                        <label>Country </label>
-                        <input
-                          type="text"
-                          placeholder="Enter Your Country "
-                          required
-                        />
-                      </div>
-                      <div className="input-field">
-                        <label>State</label>
-                        <input
-                          type="text"
-                          placeholder="Enter Your state"
-                          required
-                        />
-                      </div>
-                      <div className="input-field">
-                        <label>Support in</label>
-                        <div className="custom-select">
-                          <select>
-                            <option value="0">Select Support:</option>
-                            <option value="1">
-                              Family, Relationships & Divorce
-                            </option>
-                            <option value="2">
-                              Loss of Loved Ones/ Relocation
-                            </option>
-                            <option value="3">
-                              Identity and Gender crisis
-                            </option>
-                            <option value="4">Substance abuse</option>                          
-                          </select>
-                        </div>
-                      </div>
-
-                      <div className="input-field">
-                        <label>Message</label>
-                        <input
-                          type="text"
-                          placeholder="Enter your Message"
-                          required
-                        />
-                      </div>
+              <form onSubmit={handleSubmit}>
+                <div className="form-group-radio">
+                  <label>Enroll as:</label>
+                  <div className="radio-buttons-container">
+                    <div className="radio-button">
+                      <input
+                        name="enrollAs"
+                        id="radio2"
+                        className="radio-button__input"
+                        type="radio"
+                        value="Parent"
+                        checked={formData.enrollAs === "Parent"}
+                        onChange={handleChange}
+                      />
+                      {errors.enrollAs && (
+                        <p className="error">{errors.enrollAs}</p>
+                      )}
+                      <label htmlFor="radio2" className="radio-button__label">
+                        <span className="radio-button__custom"></span>
+                        Parent
+                      </label>
+                    </div>
+                    <div className="radio-button">
+                      <input
+                        name="enrollAs"
+                        id="radio1"
+                        className="radio-button__input"
+                        type="radio"
+                        value="Carer"
+                        checked={formData.enrollAs === "Carer"}
+                        onChange={handleChange}
+                      />
+                      <label htmlFor="radio1" className="radio-button__label">
+                        <span className="radio-button__custom"></span>
+                        Carer
+                      </label>
+                    </div>
+                    <div className="radio-button">
+                      <input
+                        name="enrollAs"
+                        id="radio3"
+                        className="radio-button__input"
+                        type="radio"
+                        value="Mentor/ Educator"
+                        checked={formData.enrollAs === "Mentor/ Educator"}
+                        onChange={handleChange}
+                      />
+                      <label htmlFor="radio3" className="radio-button__label">
+                        <span className="radio-button__custom"></span>
+                        Mentor/ Educator
+                      </label>
                     </div>
                   </div>
+                  {errors.enrollAs && (
+                    <span className="error">{errors.enrollAs}</span>
+                  )}
                 </div>
+                <div className="form-group-grief">
+                  <div className="form-group">
+                    <ul className="form-ul-grif">
+                      <li>
+                        {" "}
+                        <label htmlFor="fullName">Full Name</label>
+                      </li>
+                      <li>
+                        {" "}
+                        <input
+                          type="text"
+                          id="fullName"
+                          name="fullName"
+                          value={formData.fullName}
+                          onChange={handleChange}
+                        />
+                        {errors.fullName && (
+                          <span className="error">{errors.fullName}</span>
+                        )}
+                      </li>
+                    </ul>
+                  </div>
 
-                <div className="agree-get">
-                  {/* <input type="checkbox" />
-                  <p>
-                    By Submitting your details means you agree with Privacy
-                    Policy and Term & Conditions
-                  </p> */}
-                  <button>Submit</button>
+                  <div className="form-group">
+                    <ul className="form-ul-grif">
+                      <li>
+                        <label htmlFor="email">Email</label>
+                      </li>
+                      <li>
+                        <input
+                          type="email"
+                          id="email"
+                          name="email"
+                          value={formData.email}
+                          onChange={handleChange}
+                        />
+                      </li>
+                    </ul>
+                    {errors.email && (
+                      <span className="error">{errors.email}</span>
+                    )}
+                  </div>
+
+                  <div className="form-group">
+                    <ul className="form-ul-grif">
+                      <li>
+                        <label htmlFor="phoneNumber">Phone Number</label>
+                      </li>
+                      <li>
+                        {" "}
+                        <input
+                          type="text"
+                          id="phoneNumber"
+                          name="phoneNumber"
+                          value={formData.phoneNumber}
+                          onChange={handleChange}
+                        />
+                      </li>
+                    </ul>
+
+                    {errors.phoneNumber && (
+                      <span className="error">{errors.phoneNumber}</span>
+                    )}
+                  </div>
+
+                  <div className="form-group">
+                    <ul className="form-ul-grif">
+                      <li>
+                        <label htmlFor="country">Country</label>
+                      </li>
+                      <li>
+                        {" "}
+                        <input
+                          type="text"
+                          id="country"
+                          name="country"
+                          value={formData.country}
+                          onChange={handleChange}
+                        />
+                      </li>
+                    </ul>
+
+                    {errors.country && (
+                      <span className="error">{errors.country}</span>
+                    )}
+                  </div>
+
+                  <div className="form-group">
+                    <ul className="form-ul-grif">
+                      <li>
+                        {" "}
+                        <label htmlFor="state">State</label>
+                      </li>
+                      <li>
+                        {" "}
+                        <input
+                          type="text"
+                          id="state"
+                          name="state"
+                          value={formData.state}
+                          onChange={handleChange}
+                        />
+                      </li>
+                    </ul>
+
+                    {errors.state && (
+                      <span className="error">{errors.state}</span>
+                    )}
+                  </div>
+
+                  <div className="form-group">
+                    <ul className="form-ul-grif">
+                      <li>
+                        <label htmlFor="support">Support in</label>
+                      </li>
+                      <li>
+                        {" "}
+                        <select
+                          id="support"
+                          name="support"
+                          value={formData.support}
+                          onChange={handleChange}
+                        >
+                          <option value="0">Select Support:</option>
+                          <option value="Mobile Addiction">
+                            Mobile Addiction
+                          </option>
+                          <option value="Gaming Addiction">
+                            Gaming Addiction
+                          </option>
+                          <option value="Social Media Addiction">
+                            Social Media Addiction
+                          </option>
+                          <option value="Entertainment and performance Addiction">
+                            Entertainment and performance Addiction
+                          </option>
+                          <option value="Others">Others</option>
+                        </select>
+                      </li>
+                    </ul>
+
+                    {errors.support && (
+                      <span className="error">{errors.support}</span>
+                    )}
+                  </div>
+
+                  <div className="form-group">
+                    <ul className="form-ul-grif">
+                      <li>
+                        {" "}
+                        <label htmlFor="message">Message</label>
+                      </li>
+                      <li>
+                        {" "}
+                        <input
+                          type="text"
+                          id="message"
+                          name="message"
+                          value={formData.message}
+                          onChange={handleChange}
+                        />
+                      </li>
+                    </ul>
+
+                    {errors.message && (
+                      <span className="error">{errors.message}</span>
+                    )}
+                  </div>
+                </div>
+                <div className="grif-submit-btn">
+                  <button type="submit">Submit</button>
                 </div>
               </form>
             </div>

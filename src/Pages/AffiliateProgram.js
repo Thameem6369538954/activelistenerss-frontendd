@@ -202,6 +202,7 @@ const AffiliateProgram = () => {
             <div className="psycologist-how-can-join">
               <h1>Who can Join</h1>
               <p>A safe space to share experiences, connect with others.</p>
+              <div className="psycologist-imsha">
               <div className="psycologist-how-can-join-box-container">
                 <div className="psycologist-how-can-join-box">
                   <img src={THands} alt="" />
@@ -244,6 +245,8 @@ const AffiliateProgram = () => {
                     Know more
                   </button>
                 </Link>
+              </div>
+
               </div>
             </div>
           </div>

@@ -140,6 +140,11 @@
   border-radius: 20px;
 }
 @media (min-width: 600px) and (max-width: 1024px) {
+  .posdcast-video {
+    width: 57%;
+    border-radius: 20px;
+    margin: 20px;
+}
   .searchBox {
         display: flex;
         max-width: 550px;

@@ -45,46 +45,53 @@ const Preppers = () => {
           </h4>
         </div>
         <div className="preppers-yellow-box-container">
-          <div className="preppers-box">
-            <h2>Speak Easy</h2>
-            <img src={Greanline} className="greenline-preppers" alt="" />
-            <p>
-              Our sessions are not just activities; they are gateways to
-              improved mental health, heightened focus and a balanced lifestyle
-              for the children's, Parents & Carers..
-            </p>
-            <div className="preppers-box-bottom-thinks">
-              <img src={Navarrow} alt="" />
-              <img src={SpeekAKka} alt="" />
+          <Link to="/Speak_easy" onClick={scrollToTop} className="Links">
+            <div className="preppers-box">
+              <h2>Speak Easy</h2>
+              <img src={Greanline} className="greenline-preppers" alt="" />
+              <p>
+                Our sessions are not just activities; they are gateways to
+                improved mental health, heightened focus and a balanced
+                lifestyle for the children's, Parents & Carers..
+              </p>
+              <div className="preppers-box-bottom-thinks">
+                <img src={Navarrow} alt="" />
+                <img src={SpeekAKka} alt="" />
+              </div>
             </div>
-          </div>
-          <div className="preppers-box">
-            <h2>Senses Resurrection</h2>
-            <img src={Greanline} className="greenline-preppers" alt="" />
-            <p>
-              Our sessions are not just activities; they are gateways to
-              improved mental health, heightened focus and a balanced lifestyle
-              for the children's, Parents & Carers..
-            </p>
-            <div className="preppers-box-bottom-thinks">
-              <img src={Navarrow} alt="" />
-              <img src={Gitarsis} alt="" />
+          </Link>
+          <Link to="/Senses" onClick={scrollToTop} className="Links">
+            <div className="preppers-box">
+              <h2>Senses Resurrection</h2>
+              <img src={Greanline} className="greenline-preppers" alt="" />
+              <p>
+                Our sessions are not just activities; they are gateways to
+                improved mental health, heightened focus and a balanced
+                lifestyle for the children's, Parents & Carers..
+              </p>
+              <div className="preppers-box-bottom-thinks">
+                <img src={Navarrow} alt="" />
+                <img src={Gitarsis} alt="" />
+              </div>
             </div>
-          </div>
-          <div className="preppers-box">
-            <h2>One On One Session</h2>
-            <img src={Greanline} className="greenline-preppers" alt="" />
-            <p>
-              Our sessions are not just activities; they are gateways to
-              improved mental health, heightened focus and a balanced lifestyle
-              for the children's, Parents & Carers..
-            </p>
-            <div className="preppers-box-bottom-thinks">
-              <img src={Navarrow} alt="" />
-              <img src={DocCons} alt="" />
+          </Link>
+          <Link to="/OneOnOne" onClick={scrollToTop} className="Links">
+            <div className="preppers-box">
+              <h2>One On One Session</h2>
+              <img src={Greanline} className="greenline-preppers" alt="" />
+              <p>
+                Our sessions are not just activities; they are gateways to
+                improved mental health, heightened focus and a balanced
+                lifestyle for the children's, Parents & Carers..
+              </p>
+              <div className="preppers-box-bottom-thinks">
+                <img src={Navarrow} alt="" />
+                <img src={DocCons} alt="" />
+              </div>
             </div>
-          </div>
+          </Link>
         </div>
+
         <div className="therapy-heading">
           <p>Workshops developed and Delivered By Psychologists</p>
           <h1>Learning & Focus </h1>

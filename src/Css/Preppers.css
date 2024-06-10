@@ -15,7 +15,7 @@
   align-items: center;
   justify-content: center;
   gap: 2rem;
-
+  flex-wrap: wrap;
 }
 .preppers-box {
   background-color: #ffdd7e;
@@ -120,6 +120,7 @@
     align-items: center;
     justify-content: space-around;
     margin: 40px;
+    flex-wrap: wrap;
   }
 }
 @media screen and (max-width: 600px) {
@@ -155,5 +156,13 @@
 .through-therapies-box img {
     margin: 10% 30px;
     width: 272px;
+}
+.through-therapies-box img:nth-child(2) {
+    /* background-color: red; */
+    position: absolute;
+    width: 90px;
+    margin-top: 1px;
+    margin-left: -30%;
+    z-index: 1;
 }
 }

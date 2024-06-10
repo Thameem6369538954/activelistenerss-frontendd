@@ -24,6 +24,7 @@ const GetinTouch = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const emailPattern = /^[a-z]+[a-z0-9]*@gmail\.(com|in)$/;
 
     // Validate all fields on submit
     const formErrors = {};
@@ -31,11 +32,11 @@ const GetinTouch = () => {
     if (!formData.name.trim()) {
       formErrors.name = "Name is required";
     }
-    if (!formData.email) {
-      formErrors.email = "Email is required";
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      formErrors.email = "Email address is invalid";
-    }
+   if (!formData.email) {
+     formErrors.email = "Email is required";
+   } else if (!emailPattern.test(formData.email)) {
+     formErrors.email = "Email address is invalid";
+   }
     if (!formData.message) {
       formErrors.message = "Message is required";
     }

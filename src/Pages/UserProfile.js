@@ -16,7 +16,7 @@ import defaultProfile from "../Images/prof.jpg";
 import { RiEdit2Line } from "react-icons/ri";
 import { useSelector } from "react-redux";
 import axios from "../Utils/Baseurl.js";
-import { logout, loginSuccess, setUser } from "../Redux/Slices/authSlice.js";
+import { logout, loginSuccess, setUser,updateUserProfile } from "../Redux/Slices/authSlice.js";
 import { useDispatch } from "react-redux";
 import profileFemale from "../Images/profileFemale.jpg";
 import profileMale from "../Images/profileMale.jpg";
@@ -319,10 +319,13 @@ const UserProfile = () => {
         `/add_profile_photo/${user._id}`,
         formData
       );
-      console.log(response, "this is the response of registration............");
+      console.log(response, "this is the response of profilepic change............");
       if(response.status == 200){
+      dispatch(updateUserProfile(response.data.updatedData));
+
         toast.success(response.data.message);
-        window.location.reload();
+        setEdiprof(false)
+        // window.location.reload();
       }else{
         console.log(error, "error");
       }
@@ -568,13 +571,15 @@ const UserProfile = () => {
           },
         }
       );
-      if(removeProfilePicResponse.data.msg === "your profile picture removed!!" ){
-          toast.success("your profile picture removed!!")
-          window.location.reload()
-      }else{
-        toast.error(removeProfilePicResponse.data.msg)
-      }
-        // console.log(removeProfilePicResponse,"response of profile pic remove function*******")
+      // if(removeProfilePicResponse.data.msg === "your profile picture removed!!" ){
+      //   // dispatch(updateUserProfile(updatedData));
+
+      //     toast.success("your profile picture removed!!")
+      //     window.location.reload()
+      // }else{
+      //   toast.error(removeProfilePicResponse.data.msg)
+      // }
+        console.log(removeProfilePicResponse,"response of profile pic remove function*******")
     } catch (error) {
       console.log(error)
     }
@@ -885,7 +890,7 @@ const logoutUser = ()=>{
                                       onClick={passwordPopup}
                                       className="close-icon-phone-us"
                                     />
-                                    <h1>Upadate Your Password</h1>
+                                    {/* <h1>Upadate Your Password</h1> */}
                                     <form
                                       className="phone-number-form"
                                       onSubmit={handleSubmitPassword}

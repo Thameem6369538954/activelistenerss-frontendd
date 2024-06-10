@@ -40,6 +40,8 @@ const handleChange = (e) => {
 };
 const validate = (data) => {
   let errors = {};
+   const gmailRegex = /^[a-z][a-z0-9]*@gmail\.(com|in)$/;
+   const specificNumber = "1234567890";
 
   if (!data.name_of_organization) {
     errors.name_of_organization = "Name of Organization is required";
@@ -50,7 +52,7 @@ const validate = (data) => {
 
   if (!data.email_id) {
     errors.email_id = "Email is required";
-  } else if (!/\S+@\S+\.\S+/.test(data.email_id)) {
+  } else if (!gmailRegex.test(data.email_id)) {
     errors.email_id = "Email is invalid";
   }
 

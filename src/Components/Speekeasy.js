@@ -95,7 +95,7 @@ const Speekeasy = () => {
             {rows && (
               <video
                 controls // Ensure controls are enabled for user interaction
-                className="early-age-video"
+                className="speakeasy-age-video"
                 // onClick={togglePlay}
                 // onPlay={() => setIsPlaying(true)}
                 // onPause={() => setIsPlaying(false)}

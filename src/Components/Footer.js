@@ -13,9 +13,28 @@ import axios from "../Utils/Baseurl.js";
 import { Link } from "react-router-dom";
 const Footer = () => {
   const [email, setEmail] = useState("");
+  const [error, setError] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const errorform = {};
+    const emailPattern = /^[a-z]+[a-z0-9]*@gmail\.(com|in)$/;
+
+    if (!email) {
+      errorform.email = "Email is required";
+    }
+
+    if (!email) {
+      errorform.email = "Email is required";
+    } else if (!emailPattern.test(email)) {
+      errorform.email = "Email address is invalid";
+    }
+    if (Object.keys(errorform).length > 0) {
+      setError(errorform);
+      return;
+    }
+
     try {
       const response = await axios.post("/newsletter_subscription", {
         email,
@@ -130,6 +149,7 @@ const Footer = () => {
                 onChange={handleInputChange}
                 required
               />
+              {error.email && <p style={{ color: "red" }}>{error.email}</p>}
             </div>
             <button type="submit">Submit</button>
           </form>

@@ -7,6 +7,11 @@
 .container-speek img {
   width: 70%;
 }
+.speakeasy-age-video {
+        width: 70%;
+        border-radius: 20px;
+        margin-left: -50px;
+    }
 .centered {
   position: absolute;
   top: 50%;
@@ -78,6 +83,11 @@
   height: 100px;
   margin-left: -10%;
 }
+.speakeasy-age-video {
+    width: 100%;
+    border-radius: 20px;
+    margin-left: -26px;
+}
 }
 @media (min-width: 600px) and (max-width: 1024px) {
   .speektop-icon {
@@ -94,4 +104,9 @@
   height: 150px;
   margin-left: -10%;
 }
+.speakeasy-age-video {
+        width: 67%;
+        border-radius: 20px;
+        margin-left: -20px;
+    }
 }

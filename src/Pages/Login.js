@@ -233,9 +233,9 @@ useEffect(() => {
               or Login using <Link to="/Loginwithotp">phone number </Link>{" "}
             </p>
             <div className="ggl-fc-athentication">
-              <div className="fb">
+              {/* <div className="fb">
                 <LiaFacebookF />
-              </div>
+              </div> */}
               <div id="signInDiv"></div>
             </div>
             <p>

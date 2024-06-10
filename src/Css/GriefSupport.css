@@ -430,6 +430,17 @@ form .buttons button,
   }
 }
 @media screen and (max-width: 600px) {
+  .weekly-meetup-box-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    flex-wrap: wrap;
+    /* justify-content: space-around; */
+    align-items: center;
+    gap: 3rem;
+    /* border: 1px solid saddlebrown; */
+    margin-bottom: 45px;
+}
   .grief-main-heading {
     display: flex;
     flex-direction: column;

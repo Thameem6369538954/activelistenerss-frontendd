@@ -46,6 +46,60 @@ const Psycologistform = () => {
    // Construct FormData object
 
 
+   const formErrors = {};
+   
+   const gmailRegex = /^[a-z][a-z0-9]*@gmail\.(com|in)$/;
+
+   if (!formData.name.trim()) {
+     formErrors.name = "Name is required";
+   }
+  
+
+   if (!formData.email) {
+     formErrors.email = "Email is required";
+
+   } else if (!gmailRegex.test(formData.email)) {
+     formErrors.email = "Email address is invalid";
+   }
+
+   if (!formData.mobile) {
+     formErrors.mobile = "Mobile is required";
+
+   } else if (!/^[0-9]{10}$/.test(formData.mobile)) {
+     formErrors.mobile = "Invalid mobile number";
+   }
+
+   if (!formData.gender) {
+     formErrors.gender = "Gender is required";
+
+   }
+
+   if (!formData.state) {
+     formErrors.state = "State is required";
+
+   }
+
+   if (!formData.city) {
+     formErrors.city = "City is required";
+
+   }
+
+   if(!candidateProfile){
+     formErrors.candidateProfile = "Candidate Profile is required";
+   }
+
+   if(!resume){
+     formErrors.resume = "Resume is required";
+   }
+
+
+   if (Object.keys(formErrors).length > 0) {
+     setErrors(formErrors);
+     return;
+   }
+
+
+
    
    const formDataObject = new FormData();
    formDataObject.append("name", formData.name);
