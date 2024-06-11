@@ -42,6 +42,7 @@ const Recoverpassword = () => {
     console.log(response,"hehehuhu")
     if(response){
       if(response.data.message === "otp send successfully!!"){
+        
         toast.success("otp send to your mobile number")
         setOtpSend(true)
         setMobile(response.data.data.mobile)

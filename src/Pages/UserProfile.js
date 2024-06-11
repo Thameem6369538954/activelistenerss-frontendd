@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "../Css/UserProfile.css";
 import { Link, NavLink, Route, Routes, useNavigate } from "react-router-dom";
 import Settings from "../Pages/Settings";
@@ -592,6 +592,19 @@ const logoutUser = ()=>{
   navigate("/");
   // window.location.reload()
 }
+
+
+
+
+        // IMAGE CROPPING
+
+
+
+        
+
+
+
+
  
   return !noToken ? (
     <div>

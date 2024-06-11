@@ -262,3 +262,39 @@ width: 100%;
   }
  
 } */
+.whatsapp-fix-img{
+  width: 70%;
+  position: absolute;
+  border-radius: 50%;
+font-size: 50px !important;
+animation: pulse 2s infinite;
+  
+}
+
+.w-app{
+  /* background-color: #e4e4e4; */
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  width: 135px;
+  height: 38px;
+  position: fixed;
+  bottom: 10%;
+  right:-10px;
+}
+@keyframes pulse {
+	0% {
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 green;
+	}
+
+	70% {
+		transform: scale(1);
+		box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+	}
+
+	100% {
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+	}
+}

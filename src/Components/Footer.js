@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import "../Css/Footer.css";
 import ALWhitelogo from "../Images/ALWhitelogo.png";
@@ -11,6 +10,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "../Utils/Baseurl.js";
 import { Link } from "react-router-dom";
+import WatsapIcon from "../Images/WhatsAppIcon.png";
 const Footer = () => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
@@ -41,18 +41,16 @@ const Footer = () => {
       });
       if (response) {
         console.log(response);
-        if(response.status === 200){
-             if (response.data.message === "already subscribed!!") {
-               toast.error("Already subscribed!!");
-             } else {
-               toast.success("Thank you for subscribing");
-               setEmail("");  
-             }
-           
-        }else{
-          toast.error("Please try again Later!!")
+        if (response.status === 200) {
+          if (response.data.message === "already subscribed!!") {
+            toast.error("Already subscribed!!");
+          } else {
+            toast.success("Thank you for subscribing");
+            setEmail("");
+          }
+        } else {
+          toast.error("Please try again Later!!");
         }
-         
       } else {
         throw new Error("Failed to subscribe");
       }
@@ -60,7 +58,6 @@ const Footer = () => {
       console.error(error);
       toast.error("Failed to subscribe. Please try again later.");
     }
-     
   };
 
   const scrollToTop = () => {
@@ -154,6 +151,20 @@ const Footer = () => {
             <button type="submit">Submit</button>
           </form>
         </div>
+        <a
+          href="https://wa.me/+917892858593"
+          style={{ textDecoration: "none", cursor: "pointer", color: "black" }}
+          target="_blank"
+        ></a>
+        <a
+          href="https://wa.me/+917892858593"
+          style={{ textDecoration: "none", cursor: "pointer", color: "black" }}
+          target="_blank"
+        >
+          <div className="w-app">
+            <img src={WatsapIcon} alt="" className="whatsapp-fix-img" />
+          </div>
+        </a>
       </div>
     </div>
   );

@@ -48,9 +48,7 @@ import Verify from "./RecoverPassword/Step2/Verify.js";
 import Createpassword from "./RecoverPassword/Step3/Createpassword.js";
 import Daseboard from "./Components/DaseBoard/Daseboard.js";
 import Complimetarycall from "./AdminPanel/ComplimetaryCall/Complimetarycall.js";
-// import HiringAdmin from "./AdminPanel/Hiring/HiringAdmin.js"
 import Psychologist from "./AdminPanel/psychologist/Psychologist.js";
-// import Adminpanel from "./AdminLogin/AdminLogin/Adminpanel.js";
 import Psycologistform from "./Components/Psycologistform.js";
 import Ngoform from "./Components/Ngoform.js";
 import Collegeandschoolform from "./Components/Collegeandschoolform.js";
@@ -65,7 +63,6 @@ import Cancellation_and_refunds from "./Pages/Cancellation_and_refunds.js";
 import Customer_support from "./Pages/Customer_support.js";
 import Speekeasy from "./Components/Speekeasy.js"
 import "animate.css";
-// import KalaKriti from "./Katha/KalaKriti/KalaKriti.js"
 function App() {
   const [loading, setLoading] = useState(false);
   useEffect(() => {
