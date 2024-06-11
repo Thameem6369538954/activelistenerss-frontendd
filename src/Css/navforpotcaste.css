@@ -11,9 +11,10 @@
   flex-wrap: wrap;
   /* margin-top: 20%; */
 }
-.posdcast-video{
-  width: 100%;
-  border-radius: 20px;
+.posdcast-video {
+    width: 50%;
+    margin: 10px;
+    border-radius: 20px;
 }
 .postcast-txt{
   margin: 10px;

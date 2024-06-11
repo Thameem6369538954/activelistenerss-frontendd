@@ -10,7 +10,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "../Utils/Baseurl.js";
 import { Link } from "react-router-dom";
-import WatsapIcon from "../Images/WhatsAppIcon.png";
+import WatsapIcon from "../Images/WatsapIcon.jpeg";
 const Footer = () => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
