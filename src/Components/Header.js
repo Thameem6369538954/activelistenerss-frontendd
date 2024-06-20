@@ -164,7 +164,7 @@ const Header = () => {
           {rows && (
             
               <video
-                ref={videoRef}
+              
                 controls
                 className="Header-video-top"
                 onClick={handlePlayClick}
@@ -253,7 +253,7 @@ const Header = () => {
                         onClick={handlePlayClick}
                         onPlay={() => setIsPlaying(true)}
                         onPause={() => setIsPlaying(false)}
-                        ref={videoRef}
+                      
                         // ref={videoRef}
                       >
                         <source src={WHYAL} type="video/mp4" />

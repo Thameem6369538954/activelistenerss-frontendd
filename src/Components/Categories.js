@@ -163,7 +163,7 @@ const Categories = () => {
                  onClick={handlePlayClick}
                   // onPlay={() => setIsPlaying(true)}
                   // onPause={() => setIsPlaying(false)}
-                  ref={videoRef}
+               
                 >
                   <source src={vid2} type="video/mp4" />
                   {/* Make sure src and type are correctly set */}
