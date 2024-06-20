@@ -37,12 +37,12 @@ const Preppers = () => {
           <h1>Preppers Offer Multiple</h1>
           <h2>Therapies</h2>
           <img src={Yellowline} className="Yellowline" alt="" />
-          <h4>
+          <span style={{fontFamily:"Poppins"}}>
             <img src={Downarrow} className="down-arrow" alt="" /> Our sessions
             are not just activities; they are gateways to improved mental
             health,<br></br> heightened focus and a balanced lifestyle for the
             children's, Parents & Carers..
-          </h4>
+          </span>
         </div>
         <div className="preppers-yellow-box-container">
           <Link to="/Speak_easy" onClick={scrollToTop} className="Links">

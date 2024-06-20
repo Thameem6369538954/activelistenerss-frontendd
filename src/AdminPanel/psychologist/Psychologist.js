@@ -174,11 +174,14 @@ const [searchInput, setSearchInput] = useState("");
 
     const handleDelete = async (id) => {
       try {
-        await axios.delete(`admin/delete_psychologyst/${id}`);
-        setPsychologist((prevPsychologist) =>
-          prevPsychologist.filter((psych) => psych._id !== id)
-        );
-        toast.success("Psychologist deleted successfully");
+        const response = await axios.delete(`admin/delete_psychologyst/${id}`);
+        console.log(response,"uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu")
+        if(response){
+          psychologist.filter((psych) => psych._id !== id);
+          toast.success("Psychologist deleted successfully");
+        }else{
+          toast.error("Something went wrong!!")
+        }
       } catch (error) {
         console.log(error);
         toast.error("Failed to delete psychologist");

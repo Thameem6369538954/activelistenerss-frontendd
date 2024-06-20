@@ -105,6 +105,12 @@
   text-align: center;
   width: 80%;
 }
+  .therapy-heading span {
+    /* background-color: red; */
+    margin: auto;
+    font-family: "Questrial", sans-serif;
+    margin: 10px;
+  }
 @media screen and (max-width: 600px) {
       .therapy-box img {
         width: 219px;
@@ -141,7 +147,7 @@
   .therapy-heading span {
     /* background-color: red; */
     margin: auto;
-    font-family: "Satisfy", cursive;
+    font-family: "Questrial", sans-serif;
     margin: 10px;
   }
   .therapy-heading h1 {
@@ -241,5 +247,11 @@
     gap: 2rem;
     margin: auto;
     padding: 10px;
+  }
+    .therapy-heading span {
+    /* background-color: red; */
+    margin: auto;
+    font-family: "Questrial", sans-serif;
+    margin: 10px;
   }
 }

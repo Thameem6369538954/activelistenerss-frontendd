@@ -160,9 +160,23 @@ const Videoaddadmin = () => {
 
   const [formDatass, setFormDatass] = useState({
     title: "",
-    page: "",
+    pagen: "",
     //  category: "",
   });
+ useEffect(() => {
+   if (currentEditId) {
+     const currentRow = rows.find((row) => row._id === currentEditId);
+     console.log(currentRow, "<<<<<<<<<<<<<<<currentRow");
+     if (currentRow) {
+       setFormDatass({
+         title: currentRow.title,
+         pagen: currentRow.page,
+       });
+     } else {
+       console.log("No matching row found for currentEditId:", currentEditId);
+     }
+   }
+ }, [currentEditId, rows]);
   const [thumbnails, setThumbnails] = useState(null);
   const [podcastVideo, setPodcastVideo] = useState(null);
 
@@ -198,7 +212,7 @@ const Videoaddadmin = () => {
     if (!formDatass.title.trim()) {
       editErrors.title = "Title is required";
     }
-    if(!formDatass.page){
+    if (!formDatass.pagen) {
       editErrors.page = "Page selection is required";
     }
     if(!thumbnails){  
@@ -215,7 +229,7 @@ const Videoaddadmin = () => {
     
     const formData = new FormData();
     formData.append("title", formDatass.title);
-    formData.append("page", formDatass.page);
+    formData.append("page", formDatass.pagen);
     formData.append("category", formDatass.category);
     formData.append("thumbnail", thumbnails);
     formData.append("source", podcastVideo);
@@ -420,7 +434,7 @@ const Videoaddadmin = () => {
                                 <div className="video-edit-input-div">
                                   <select
                                     name="page"
-                                    value={formDatass.page}
+                                    value={formDatass.pagen}
                                     onChange={handleTextChange}
                                   >
                                     <option value="" disabled>

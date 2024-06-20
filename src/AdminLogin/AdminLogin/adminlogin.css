@@ -14,6 +14,7 @@
 .adminlog-container-left img:nth-child(2){
  /* background-color: red; */
     width: 80%;
+    margin-top: -30%;
 }
 .adminlog-container-right{
  background-image: url("../../Images/loginbg.png");

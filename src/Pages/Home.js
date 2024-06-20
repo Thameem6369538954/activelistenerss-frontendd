@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useState,useEffect } from "react";
 import "../Css/Home.css";
 import Navbar from "../Components/Navbar";
 import Header from "../Components/Header";
@@ -9,7 +9,9 @@ import Footer from "../Components/Footer";
 import Therapycategories from "../Components/Therapycategories";
 import Subscribe from "../Components/Subscribe";
 import TopUpButton from "../Components/TopUpButton.js"
-const Home = () => {
+import HomeAudio from "../Audio/HomeAudio.mp3";
+const Home = () => { 
+
   return (
     <div className="home-main">
       <Navbar />
@@ -21,6 +23,7 @@ const Home = () => {
       {/* <Speekeasy /> */}
       <GetinTouch />
       <Footer />
+      
     </div>
   );
 };

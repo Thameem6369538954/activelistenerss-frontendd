@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState,useEffect,useRef} from "react";
 
 import Navbar from "../Components/Navbar";
 import GetinTouch from "../Components/GetinTouch";
@@ -20,6 +20,83 @@ import Breadcrumps from "../Components/Breadcrumps";
 
 
 const AdaptationtoMobilePhones = () => {
+
+
+ const videoRef = useRef(null);
+ const [lastScrollTop, setLastScrollTop] = useState(0);
+ const [isPlaying, setIsPlaying] = useState(false);
+
+ useEffect(() => {
+   const videoElement = videoRef.current;
+
+   const handleScroll = () => {
+     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+     const isScrollingDown = scrollTop > lastScrollTop;
+     setLastScrollTop(scrollTop);
+
+     // Pause the video if scrolling down
+     if (videoElement && isPlaying && isScrollingDown) {
+       videoElement.pause();
+       setIsPlaying(false);
+     }
+   };
+
+   const handleIntersection = (entries) => {
+     entries.forEach((entry) => {
+       if (!videoElement) return;
+
+       if (entry.isIntersecting && !isPlaying) {
+         // Play the video only if it's not already playing and user interacted
+         if (videoElement.paused) {
+           videoElement
+             .play()
+             .then(() => setIsPlaying(true))
+             .catch((error) =>
+               console.error("Failed to play the video:", error)
+             );
+         }
+       } else if (!entry.isIntersecting && isPlaying) {
+         videoElement.pause();
+         setIsPlaying(false);
+       }
+     });
+   };
+
+   const observer = new IntersectionObserver(handleIntersection, {
+     threshold: 0.5,
+   });
+
+   if (videoElement) {
+     observer.observe(videoElement);
+   }
+
+   window.addEventListener("scroll", handleScroll);
+
+   return () => {
+     if (videoElement) {
+       observer.unobserve(videoElement);
+     }
+     window.removeEventListener("scroll", handleScroll);
+   };
+ }, [lastScrollTop, isPlaying]);
+
+ // Handle video play on user click
+ const handlePlayClick = () => {
+   const videoElement = videoRef.current;
+
+   if (!videoElement) return;
+
+   // Start playing only if it's paused and user interacted
+   if (videoElement.paused) {
+     videoElement
+       .play()
+       .then(() => setIsPlaying(true))
+       .catch((error) => console.error("Failed to play the video:", error));
+   }
+ };
+
+
+
    const scrollToTop = () => {
      window.scrollTo(0, 0);
    };
@@ -60,6 +137,7 @@ const AdaptationtoMobilePhones = () => {
               // onClick={togglePlay}
               // onPlay={() => setIsPlaying(true)}
               // onPause={() => setIsPlaying(false)}
+              ref={videoRef}
             >
               <source src={WHYAL} type="video/mp4" />{" "}
               {/* Make sure src and type are correctly set */}

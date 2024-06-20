@@ -248,9 +248,9 @@ const PodcastAdmin = () => {
   const [podcastVideo, setPodcastVideo] = useState(null);
   const [errors, setErrors] = useState({});
 
-  const togglePopupone = () => {
-    setIsOpen(!isOpen);
-  };
+
+
+ 
 
   const handleTextChange = (e) => {
     const { name, value } = e.target;
@@ -273,40 +273,47 @@ const PodcastAdmin = () => {
 
 
 
-  const handleSubmitt = async (e) => {
+  const handleSubmitt = async (e,id) => {
+    console.log(id,"id ADAAAAAAAAAAAAAAAAAAAAAAAAAAA");
     e.preventDefault();
-    const formErorrs = {};
-    if (!formDatass.title.trim()) {
-      formErorrs.title = "Title is required";
-    }
-    if (!formDatass.description.trim()) {
-      formErorrs.description = "Description is required";
-    }
-    if (!formDatass.category.trim()) {
-      formErorrs.category = "Category is required";
-    }
-    if (!thumbnails) {
-      formErorrs.thumbnail = "Thumbnail is required";
-    }
-    if (!podcastVideo) {
-      formErorrs.source = "Video file is required";
-    }
-    if (Object.keys(formErorrs).length > 0) {
-      setErrors(formErorrs);
-      return;
-    }
+    // const formErorrs = {};
+    // if (!formDatass.title.trim()) {
+    //   formErorrs.title = "Title is required";
+    // }
+    // if (!formDatass.description.trim()) {
+    //   formErorrs.description = "Description is required";
+    // }
+    // if (!formDatass.category.trim()) {
+    //   formErorrs.category = "Category is required";
+    // }
+    // if (!thumbnails) {
+    //   formErorrs.thumbnail = "Thumbnail is required";
+    // }
+    // if (!podcastVideo) {
+    //   formErorrs.source = "Video file is required";
+    // }
+    // if (Object.keys(formErorrs).length > 0) {
+    //   setErrors(formErorrs);
+    //   return;
+    // }
     try {
          
+      console.log(
+        formDatass,
+        thumbnails,
+        podcastVideo,
+        "formdataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      );
         const formData = new FormData();
         formData.append("title", formDatass.title);
-        formData.append("description", formDatass.description);
+        formData.append("discription", formDatass.discription);
         formData.append("category", formDatass.category);
         formData.append("thumbnails", thumbnails);
         formData.append("podcastVideo", podcastVideo);
 
         // Make your axios call here
         console.log(formData, "podcasttttttttttttttttttttttttt");
-        const response = await axios.post("admin/add_podcast", formData);
+        const response = await axios.post(`admin/view_and_editPodcast/${id}`, formData);
         console.log(response, "Response from server");
       
     } catch (error) {
@@ -316,8 +323,24 @@ const PodcastAdmin = () => {
 
  
 
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(null);
+   const togglePopupone = (id) => {
+     setIsOpen(id);
+   };
 
+     useEffect(() => {
+    if (isOpen) {
+      const currentRow = rows.find((row) => row._id === isOpen);
+      // console.log(currentRow.discription, "currentRow");
+      if (currentRow) {
+        setFormDatass({
+          title: currentRow.title,
+          description: currentRow.discription,
+          category: currentRow.category,
+        });
+      }
+    }
+  }, [isOpen, rows]);
 //  const handleEditClick = (row) => {
 //    if (row && row.id) {
 //      setEditingRowId(row.id);
@@ -487,10 +510,10 @@ const PodcastAdmin = () => {
                             <button onClick={() => handleDeleteClick(row._id)}>
                               Delete <CgCloseO className="video-delete-new" />
                             </button>
-                            <button onClick={togglePopupone}>
+                            <button onClick={() => togglePopupone(row._id)}>
                               Edit <AiOutlineEdit className="video-edit" />
                             </button>
-                            {isOpen && (
+                            {isOpen === row._id && (
                               <div className="popup">
                                 <div className="popup-inner">
                                   <button
@@ -500,7 +523,7 @@ const PodcastAdmin = () => {
                                     &times;
                                   </button>
                                   <h2>Popup Form</h2>
-                                  <form onSubmit={handleSubmitt}>
+                                  <form onSubmit={(e) => handleSubmitt(e,row._id)}>
                                     <div className="form-group">
                                       <label>Title:</label>
                                       <input

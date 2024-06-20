@@ -1,4 +1,4 @@
-import React,{ useState,useEffect } from "react";
+import React,{ useState,useEffect,useRef } from "react";
 import "../Css/Categories.css";
 import emoji from "../Images/emoji.png";
 import chat from "../Images/chat.png";
@@ -12,35 +12,108 @@ import { MdPlayCircleFilled } from "react-icons/md";
 import axios from "../Utils/Baseurl.js";
 import { toast } from "react-toastify";
 const Categories = () => {
-    const [isPlaying, setIsPlaying] = useState(false);
-    const [vid2, setVid2] = useState('');
-    useEffect(() => {
-      const fetchData = async () => {
-        try {
-          const response = await axios.get("admin/get_allVideos");
-          console.log(response.data.reslt, "oooooqqqqqqqqqqq"); // Log the second object in the response
-          if (response) {
-            // const videoData = response.data.reslt[1]; // Retrieve the video data
-            // Now you can use videoData to set the state or display the video
-            setVid2(response.data.reslt[1].source);
-            // setVid2;(response.data.reslt[1].source)
-          } else {
-            toast.error("something went wrong!!");
-          }
-        } catch (error) {
-          console.log(error);
+  // const [isPlaying, setIsPlaying] = useState(false);
+ const videoRef = useRef(null);
+ const [lastScrollTop, setLastScrollTop] = useState(0);
+ const [isPlaying, setIsPlaying] = useState(false);
+
+ useEffect(() => {
+   const videoElement = videoRef.current;
+
+   const handleScroll = () => {
+     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+     const isScrollingDown = scrollTop > lastScrollTop;
+     setLastScrollTop(scrollTop);
+
+     // Pause the video if scrolling down
+     if (videoElement && isPlaying && isScrollingDown) {
+       videoElement.pause();
+       setIsPlaying(false);
+     }
+   };
+
+   const handleIntersection = (entries) => {
+     entries.forEach((entry) => {
+       if (!videoElement) return;
+
+       if (entry.isIntersecting && !isPlaying) {
+         // Play the video only if it's not already playing and user interacted
+         if (videoElement.paused) {
+           videoElement
+             .play()
+             .then(() => setIsPlaying(true))
+             .catch((error) =>
+               console.error("Failed to play the video:", error)
+             );
+         }
+       } else if (!entry.isIntersecting && isPlaying) {
+         videoElement.pause();
+         setIsPlaying(false);
+       }
+     });
+   };
+
+   const observer = new IntersectionObserver(handleIntersection, {
+     threshold: 0.5,
+   });
+
+   if (videoElement) {
+     observer.observe(videoElement);
+   }
+
+   window.addEventListener("scroll", handleScroll);
+
+   return () => {
+     if (videoElement) {
+       observer.unobserve(videoElement);
+     }
+     window.removeEventListener("scroll", handleScroll);
+   };
+ }, [lastScrollTop, isPlaying]);
+
+ // Handle video play on user click
+ const handlePlayClick = () => {
+   const videoElement = videoRef.current;
+
+   if (!videoElement) return;
+
+   // Start playing only if it's paused and user interacted
+   if (videoElement.paused) {
+     videoElement
+       .play()
+       .then(() => setIsPlaying(true))
+       .catch((error) => console.error("Failed to play the video:", error));
+   }
+ };
+
+  const [vid2, setVid2] = useState("");
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("admin/get_allVideos");
+        console.log(response.data.reslt, "oooooqqqqqqqqqqq"); // Log the second object in the response
+        if (response) {
+          // const videoData = response.data.reslt[1]; // Retrieve the video data
+          // Now you can use videoData to set the state or display the video
+          setVid2(response.data.reslt[1].source);
+          // setVid2;(response.data.reslt[1].source)
+        } else {
+          toast.error("something went wrong!!");
         }
-      };
-      fetchData();
-    }, []);
-    const togglePlay = () => {
-      setIsPlaying(!isPlaying);
+      } catch (error) {
+        console.log(error);
+      }
     };
+    fetchData();
+  }, []);
+  // const togglePlay = () => {
+  //   setIsPlaying(!isPlaying);
+  // };
 
   const scrollToTop = () => {
     window.scrollTo(0, 0);
   };
-
 
   return (
     <div className="categories-main-holecontainer">
@@ -87,9 +160,10 @@ const Categories = () => {
                 <video
                   controls // Ensure controls are enabled for user interaction
                   className="Header-video"
-                  onClick={togglePlay}
+                 onClick={handlePlayClick}
                   // onPlay={() => setIsPlaying(true)}
                   // onPause={() => setIsPlaying(false)}
+                  ref={videoRef}
                 >
                   <source src={vid2} type="video/mp4" />
                   {/* Make sure src and type are correctly set */}
@@ -108,10 +182,10 @@ const Categories = () => {
                       // width:"20px"
                     }}
                     className="play-center-btn"
-                    onClick={togglePlay}
+                   onClick={handlePlayClick}
                   >
                     <div>
-                      <MdPlayCircleFilled onClick={togglePlay} />
+                      <MdPlayCircleFilled onClick={handlePlayClick} />
                     </div>
                   </div>
                 )}

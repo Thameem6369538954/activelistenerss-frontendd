@@ -55,7 +55,7 @@ try{
   console.log(response);
   if (response.data.message === "Admin loggedIn successfully!!") {
     toast.success("Login Successful");
-    navigate("/Adminpanelhome");
+    navigate("/Adminpanelhome/DaseBoard");
   }
 
 

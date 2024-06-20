@@ -142,9 +142,11 @@ input:checked + .slider:after {
 
 
 
-.team-admin-form{
+.team-admin-form {
     margin-top: -20%;
-    background-color: #0d0c22;
+    margin-left: -6%;
+    width: 98%;
+    z-index: 3;
 }
 
 .team-edit-form{

@@ -48,7 +48,7 @@ const Adminpanelhome = () => {
             className="admin-ul-list"
             // style={{ maxHeight: "400px", overflowY: "auto" }}
           >
-            <Link className="Links-for-admin" to="/Adminpanelhome">
+            <Link className="Links-for-admin" to="/Adminpanelhome/DaseBoard">
               <li>
                 <FiPieChart />
                 Dashboard
@@ -193,7 +193,7 @@ const Adminpanelhome = () => {
         </div>
       
 
-        <DaseBoard />
+        {/* <DaseBoard /> */}
       </div>
     </div>
   );

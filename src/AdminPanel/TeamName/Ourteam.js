@@ -33,8 +33,7 @@ const [members, setMembers] = useState([]);
       setShowPopup(!showPopup);
     };
 
-    const [image,setImage] = useState(null);
-    const [audio,setAudio] = useState(null);
+   
 
  const handleImageChange = (e) => {
    const selectedImage = e.target.files[0];
@@ -62,6 +61,26 @@ const [members, setMembers] = useState([]);
    designation: "",
    socialmediaLink: "",
  });
+  const [image, setImage] = useState(null);
+  const [audio, setAudio] = useState(null);
+    const [editingRowId, setEditingRowId] = useState(null);
+ useEffect(() => {
+   if (editingRowId !== null) {
+     const selectedRow = members.find((row) => row._id === editingRowId);
+     if (selectedRow) {
+       setFormValues({
+         name: selectedRow.name,
+         designation: selectedRow.designation,
+         socialmediaLink: selectedRow.socialmediaLink,
+         
+       });
+       setImage(selectedRow.image);
+       setAudio(selectedRow.audio);
+     }
+   }
+ }, [editingRowId, members]);
+
+  
 
  const handleChange = (e) => {
    const { name, value, type, files } = e.target;
@@ -136,7 +155,7 @@ const [members, setMembers] = useState([]);
      image: null,
    });
  };
-    const [editingRowId, setEditingRowId] = useState(null);
+
     const [editedData, setEditedData] = useState({});
      const handleCancelEdit = (id) => {
        setEditingRowId(null); // Reset editingRowId to null to close the form
@@ -250,13 +269,13 @@ const [members, setMembers] = useState([]);
                  newErrors.socialmediaLink = "Social Media Link is required";
                }
 
-               if(!imageFile){
-                 newErrors.image = "Image is required";
-               }
+              //  if(!imageFile){
+              //    newErrors.image = "Image is required";
+              //  }
 
-               if(!audioFile){
-                 newErrors.audio = "Audio is required";
-               }
+              //  if(!audioFile){
+              //    newErrors.audio = "Audio is required";
+              //  }
 
                if(Object.keys(newErrors).length > 0){
                  setErrors(newErrors);

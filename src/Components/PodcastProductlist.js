@@ -222,18 +222,10 @@ const PodcastProductlist = () => {
                   </div>
                 </div>
                 <div className="potcast-category">
-                  <div>
-                    <button>{list.category}</button>
+                 
+                    <p>category</p>
+                    <p>{list.category}</p>
 
-                    {/* <button>{list.cateD}</button> */}
-                  </div>
-                  {/* <div className="card___wrapper-acounts">
-                    <p>Hosted by: </p>
-                    <div className="card__acounts">
-                      <img src={list.fravatara} alt="" />
-                      <img src={list.fravatarb} alt="" />
-                    </div>
-                  </div> */}
                 </div>
               </div>
             </div>

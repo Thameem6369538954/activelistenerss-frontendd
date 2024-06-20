@@ -13,8 +13,13 @@
   align-items: center;
   justify-content: center;
 }
-.container-form form {
-  /* padding: 50px; */
+.full-form-hiring {
+  background-color: #bae8ac;
+  border-radius: 20px;
+  padding: 10px;
+}
+.full-form-hiring p{
+  font-family: "Questrial", sans-serif; 
 }
 .form-first {
   margin-top: 50px;
@@ -34,19 +39,9 @@
   margin: 10px;
   text-decoration: none;
 }
-@media screen and (max-width: 599px){
- .container-form form {
-    position: relative;
-    margin-top: 16px;
-    height: auto;
-    /* background-color: red; */
-    overflow: hidden;
-}
-.hiring-form-main {
-    height: auto;
+  .hiring-form-main{
+    height: 150vh;
   }
-
-}
 @media screen and (max-width: 600px) {
   .hiring-form-holeconatiner {
     display: flex;
@@ -67,4 +62,16 @@
         /* position: absolute; */
         
     }
+    .container-form form {
+    position: relative;
+    height: auto;
+}
+  .hiring-form-main{
+    height: 150vh;
+  }
+}
+@media (min-width: 600px) and (max-width: 1024px){
+  .hiring-form-main{
+    height: 150vh;
+  }
 }

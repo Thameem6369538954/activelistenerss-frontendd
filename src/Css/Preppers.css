@@ -1,10 +1,10 @@
 .preppers-header-image img {
-  width: 70%;
+  width: 50%;
 }
 .preppers-header-image {
     display: grid;
     place-items: center;
-    margin-top: 130px;
+    margin-top: 30px;
 }
 .Yellowline-pre,
 .Yellowline-pre {
@@ -58,7 +58,8 @@
 .through-therapies li {
   list-style: none;
   text-align: left;
-  /* width: 50%; */
+      display: grid;
+    place-items: flex-start;
 }
 .through-therapies {
   display: grid;
@@ -82,14 +83,14 @@
   margin: auto;
 }
 .through-therapies-box img {
-  margin: 10% auto;
-  width: 330px;
+  margin: 20% 10%;
+    width: 267px;
 }
 .through-therapies-box img:nth-child(2) {
   /* background-color: red; */
   position: absolute;
   width: 90px;
-  margin-top: -10px;
+  margin-top: 1px;
   margin-left: -30%;
   z-index: 1;
 }
@@ -143,6 +144,9 @@
     border-radius: 20px;
     margin: 40px;
   }
+  .preppers-header-image img {
+    width: 80%;
+}
   .through-therapies {
     display: grid;
     grid-template-columns: repeat(2, 1fr);

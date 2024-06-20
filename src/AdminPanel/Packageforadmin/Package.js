@@ -13,6 +13,8 @@ const Package = () => {
   const [card, setCard] = useState([]);
   const [editPackage, setEditPackage] = useState(null);
 
+  console.log(card, "kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
+
   useEffect(() => {
     const fetchCard = async () => {
       try {
@@ -67,41 +69,41 @@ const Package = () => {
     });
   };
 
-    const [formErrors,setFormErrors] = useState({}); // [formErrors]
-    const [loading,setLoading] = useState(false);
+  const [formErrors, setFormErrors] = useState({}); // [formErrors]
+  const [loading, setLoading] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
     // You can perform form submission logic here
 
-      const newErrors = {};
-      if (!textData.title.trim()) {
-        newErrors.title = "Title is required";  
-      }
-      if(!textData.plan){
-        newErrors.plan = "Plan is required";
-      }
-      if(!textData.description){
-        newErrors.description = "Description is required";
-      }
-      if(!textData.benefits){
-        newErrors.benefits = "Benefits is required";
-      }
-      if(!textData.subBenefits){
-        newErrors.subBenefits = "Sub Benefits is required";
-      }
-      if(!textData.price){
-        newErrors.price = "Price is required";
-      }
-      if(!textData.recommended){
-        newErrors.recommended = "Recommended is required";
-      }
-      if(!icon){
-        newErrors.icon = "Icon is required";
-      }
-      if (Object.keys(newErrors).length > 0) {
-        setFormErrors(newErrors);
-        return;
-      }
+    const newErrors = {};
+    if (!textData.title.trim()) {
+      newErrors.title = "Title is required";
+    }
+    if (!textData.plan) {
+      newErrors.plan = "Plan is required";
+    }
+    if (!textData.description) {
+      newErrors.description = "Description is required";
+    }
+    if (!textData.benefits) {
+      newErrors.benefits = "Benefits is required";
+    }
+    if (!textData.subBenefits) {
+      newErrors.subBenefits = "Sub Benefits is required";
+    }
+    if (!textData.price) {
+      newErrors.price = "Price is required";
+    }
+    if (!textData.recommended) {
+      newErrors.recommended = "Recommended is required";
+    }
+    if (!icon) {
+      newErrors.icon = "Icon is required";
+    }
+    if (Object.keys(newErrors).length > 0) {
+      setFormErrors(newErrors);
+      return;
+    }
 
     const formData = new FormData();
     formData.append("title", textData.title);
@@ -147,12 +149,7 @@ const Package = () => {
 
   // EDIT PACKAGE HERE...................................................................
 
-  const [editform, setEditform] = useState(null);
 
-  const handlePopedit = (id) => {
-    console.log(id,"clicked product id.......................")
-    setEditform(id);
-  };
 
   // State for form values
   const [formValues, setFormValues] = useState({
@@ -164,13 +161,36 @@ const Package = () => {
     price: "",
     recommended: "false",
   });
-  console.log(formValues,"asssssssssssssssssssssssssssssssssssssssssssssss");
+    const [editform, setEditform] = useState(null);
+
+  const handlePopedit = (id) => {
+    console.log(id, "clicked product id.......................");
+   
+    setEditform(id);
+  };
+useEffect(() => {
+  if (card.length > 0 && editform !== null) {
+    const editedPackage = card.find((item) => item._id === editform);
+    if (editedPackage) {
+      setFormValues({
+        title: editedPackage.package_title,
+        daysPlan: editedPackage.days_plan,
+        benefits: editedPackage.benefits,
+        subBenefits: editedPackage.sub_benefits,
+        description: editedPackage.description,
+        price: editedPackage.price,
+        recommended: "false",
+      });
+    }
+  }
+}, [card, editform]);
+
+  console.log(formValues, "asssssssssssssssssssssssssssssssssssssssssssssss");
 
   // State for file input
   const [packageIcon, setPackageIcon] = useState(null);
   console.log(packageIcon, "packageIcon");
 
-  
   // Handle text input change
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -179,19 +199,19 @@ const Package = () => {
       [name]: value,
     }));
   };
-  
+
   // Handle file input change
   const handleFileChange = (e) => {
     setPackageIcon(e.target.files[0]);
   };
   // State for errors
   const [errors, setErrors] = useState({});
-  
+
   // Handle form submission
   const handleSubmitt = async (e, id) => {
     e.preventDefault();
     console.log(id, "kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
-    
+
     const newErrors = {};
     if (!formValues.title.trim()) {
       newErrors.title = "Package Name is required";
@@ -224,42 +244,45 @@ const Package = () => {
     }
     console.log(errors, "errors.....................");
 
-      try{
-  
-    const formDatas = new FormData();
-    formDatas.append("title", formValues.title);
-    formDatas.append("daysPlan", formValues.daysPlan);
-    formDatas.append("benefits", formValues.benefits);
-    formDatas.append("subBenefits", formValues.subBenefits);
-    formDatas.append("description", formValues.description);
-    formDatas.append("price", formValues.price);
-    formDatas.append("recommended", formValues.recommended);
-    formDatas.append("icon", packageIcon);
+    try {
+      const formDatas = new FormData();
+      formDatas.append("title", formValues.title);
+      formDatas.append("daysPlan", formValues.daysPlan);
+      formDatas.append("benefits", formValues.benefits);
+      formDatas.append("subBenefits", formValues.subBenefits);
+      formDatas.append("description", formValues.description);
+      formDatas.append("price", formValues.price);
+      formDatas.append("recommended", formValues.recommended);
+      formDatas.append("icon", packageIcon);
 
-    // Submit form data to your API
-    // Example: axios.post('/api/packages', formDatas);
+      // Submit form data to your API
+      // Example: axios.post('/api/packages', formDatas);
 
-    console.log(formDatas, "Form submitteddddddddddddddddddd Thameem");
+      console.log(formDatas, "Form submitteddddddddddddddddddd Thameem");
 
-    const response = await axios.post(`admin/update_package/${id}`, formDatas);
-    console.log(response, "this is EDit the server response...................");
-    if (response) {
-      if (response.data.message === "updated successfully!!") {
-        toast.success("updated successfully!!");
-        setEditform(null);
-        setTimeout(() => {
-          window.location.reload();
-        }, 2000);
-      } else {
-        toast.error(response.data.message);
+      const response = await axios.post(
+        `admin/update_package/${id}`,
+        formDatas
+      );
+      console.log(
+        response,
+        "this is EDit the server response..................."
+      );
+      if (response) {
+        if (response.data.message === "updated successfully!!") {
+          toast.success("updated successfully!!");
+          setEditform(null);
+          setTimeout(() => {
+            window.location.reload();
+          }, 2000);
+        } else {
+          toast.error(response.data.message);
+        }
       }
-    }
-    
-    }catch (error) {
+    } catch (error) {
       console.log(error);
     }
     // Create form data
-
   };
   return (
     <div>

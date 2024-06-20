@@ -7,17 +7,6 @@
     text-align: center;
     color: red;
 }
-.details-personal{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 70vh;
-    width: 50%;
-    margin: auto;
-    background-color: antiquewhite;
-    border-radius: 20px;
-}
 .error p{
    color: red;
   /* margin-left: 5px; */
