@@ -10,6 +10,7 @@ import Therapycategories from "../Components/Therapycategories";
 import Subscribe from "../Components/Subscribe";
 import TopUpButton from "../Components/TopUpButton.js"
 import HomeAudio from "../Audio/HomeAudio.mp3";
+import UpcomingUbdates from "../Components/UpcomingUbdates.js";
 const Home = () => { 
 
   return (
@@ -19,6 +20,7 @@ const Home = () => {
       <Header />
       <Categories />
       <Therapycategories />
+      <UpcomingUbdates />
       <Subscribe />
       {/* <Speekeasy /> */}
       <GetinTouch />

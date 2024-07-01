@@ -61,6 +61,7 @@ import Privacy_policy from "./Pages/Privacy_policy.js";
 import Terms_and_condition from "./Pages/Terms_and_condition.js";
 import Cancellation_and_refunds from "./Pages/Cancellation_and_refunds.js";
 import Customer_support from "./Pages/Customer_support.js";
+import FAQPage from "./Pages/FAQPage.js";
 import Speekeasy from "./Components/Speekeasy.js"
 import "animate.css";
 function App() {
@@ -86,6 +87,7 @@ function App() {
         <Router>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/FAQPage" element={<FAQPage />} />
             <Route path="/Speekeasy" element={<Speekeasy />} />
             <Route path="/Customer_support" element={<Customer_support />} />
             <Route

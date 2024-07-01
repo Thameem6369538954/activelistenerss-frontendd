@@ -162,23 +162,24 @@ const Header = () => {
           {/* <img src={Maskgroup} alt="" /> */}
 
           {rows && (
-            
-              <video
-              
-                controls
-                className="Header-video-top"
-                onClick={handlePlayClick}
-              >
-                <source src={rows} type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
+            <video
+              controls
+              className="Header-video-top"
+              onClick={handlePlayClick}
+            >
+              <source src={rows} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
           )}
         </div>
         <div className="hdr-tx">
           <p>
-            At Active Listeners,We believe that early age gadgets exposure,
-            Adaptation to mobile among children has now led to time where there
-            is decrease in focus and learning
+            Our diverse range of services includes workshops, listening
+            sessions, and creative therapies tailored specifically for children
+            and families dealing with anxiety, depression, and social isolation.
+            From music and art therapy to engaging games and comics, we create
+            safe, fun, and supportive environments to foster communication,
+            understanding, and healing.
           </p>
         </div>
         <div className="categoreis-haeder">
@@ -253,7 +254,7 @@ const Header = () => {
                         onClick={handlePlayClick}
                         onPlay={() => setIsPlaying(true)}
                         onPause={() => setIsPlaying(false)}
-                      
+
                         // ref={videoRef}
                       >
                         <source src={WHYAL} type="video/mp4" />

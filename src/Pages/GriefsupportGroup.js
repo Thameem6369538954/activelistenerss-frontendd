@@ -355,80 +355,20 @@ const GriefsupportGroup = () => {
         </div>
       </div>
       {/* color-boxes */}
-      <div className="color-box-main">
-        {/* <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br> */}
-        <div className="box-header">
-          <div className="therapy-heading">
-            <p>Meetup group</p>
-            <h1>Topics to be</h1>
-            <h2>Discussed</h2>
-          </div>
-          <div className="color-main-boxese">
-            <div className="palette">
-              <div className="color">
-                <div className="colorbox-inside">
-                  <img src={THands} alt="" />
-                  <h1>
-                    How to bring the<br></br> Self Confidence back
-                  </h1>
-                  <p>
-                    A safe space to share experiences, connect with others, and
-                    receive support while navigating the challenges of grieving
-                    together.
-                  </p>
-                </div>
-              </div>
-              <div className="color">
-                <div className="colorbox-inside">
-                  <img src={THands} alt="" />
-                  <h1>Tips to Get your de-addicted to social media</h1>
-                  <p>
-                    A safe space to share experiences, connect with others, and
-                    receive support while navigating the challenges of grieving
-                    together.
-                  </p>
-                </div>
-              </div>
-              <div className="color">
-                <div className="colorbox-inside">
-                  <img src={THands} alt="" />
-                  <h1>Maintain you work life Balance</h1>
-                  <p>
-                    A safe space to share experiences, connect with others, and
-                    receive support while navigating the challenges of grieving
-                    together.
-                  </p>
-                </div>
-              </div>
-
-              <div className="color">
-                <div className="colorbox-inside">
-                  <img src={THands} alt="" />
-                  <h1>How to bring the Self Confidence back</h1>
-                  <p>
-                    A safe space to share experiences, connect with others, and
-                    receive support while navigating the challenges of grieving
-                    together.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div className="color-box-main-container">
+      <div className="div-color-a">
+        
+      </div>
+      <div className="div-color-b"></div>
+      <div className="div-color-c"></div>
+      <div className="div-color-d"></div>
       </div>
       {/* from-this-form */}
       <div className="benefit-boxes-main">
         <div className="therapy-heading">
           <p>Meetup groups developed and Delivered By Psychologists</p>
           <h1>What you will gain</h1>
-          <h2>From this meeetup</h2>
+          <h2>From this meetup</h2>
           <img src={Yellowline} className="Yellowline" alt="" />
         </div>
         <div className="benifit-main">

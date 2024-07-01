@@ -96,7 +96,6 @@
   margin-top: -13px;
 }
 .green-bourd-grief {
-  margin: 55px auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -626,18 +625,6 @@ form .buttons button,
     right: -44px;
     animation-name: move-down1;
     width: 30%;
-  }
-  .searchBox {
-    display: flex;
-    max-width: 730px;
-    align-items: center;
-    justify-content: space-between;
-    gap: 8px;
-    /* background: #2f3640; */
-    border: 1px solid #ffdd7e;
-    border-radius: 50px;
-    position: relative;
-    margin: 19% auto;
   }
   .grief-suppot-form {
     background-color: #bae8ac;

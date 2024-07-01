@@ -19,16 +19,16 @@ const Podcast = () => {
 
       <Breadcrumps />
       <div className="podcast-main">
-        <div className="therapy-heading">
+        {/* <div className="therapy-heading">
           <p>Our Goals</p>
           <h1>Podcasts To refresh your</h1>
           <h2>Mind</h2>
           <img src={Yellowline} className="Yellowline" alt="" />
-        </div>
+        </div> */}
 
         <div className="green-bourd-grief">
           <div className="card-grif">
-            <div className="circle">
+            {/* <div className="circle">
               <img src={Roundb} alt="" />
             </div>
             <div className="circle-b">
@@ -62,7 +62,7 @@ const Podcast = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
 
             <div className="therapy-heading">
               <p>Our Goals</p>

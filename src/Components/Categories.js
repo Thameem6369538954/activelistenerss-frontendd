@@ -114,6 +114,26 @@ const Categories = () => {
   const scrollToTop = () => {
     window.scrollTo(0, 0);
   };
+   const [expandedA, setExpandedA] = useState(false);
+
+   const toggleExpanded = () => {
+     setExpandedA(!expandedA);
+   };
+   const [expandedB, setExpandedB] = useState(false);
+
+   const toggleExpandedB = () => {
+     setExpandedB(!expandedB);
+   };
+   const [expandedC, setExpandedC] = useState(false);
+
+   const toggleExpandedC = () => {
+     setExpandedC(!expandedC);
+   };
+   const [expandedD, setExpandedD] = useState(false);
+
+   const toggleExpandedD = () => {
+     setExpandedD(!expandedD);
+   };
 
   return (
     <div className="categories-main-holecontainer">
@@ -160,10 +180,9 @@ const Categories = () => {
                 <video
                   controls // Ensure controls are enabled for user interaction
                   className="Header-video"
-                 onClick={handlePlayClick}
+                  onClick={handlePlayClick}
                   // onPlay={() => setIsPlaying(true)}
                   // onPause={() => setIsPlaying(false)}
-               
                 >
                   <source src={vid2} type="video/mp4" />
                   {/* Make sure src and type are correctly set */}
@@ -182,7 +201,7 @@ const Categories = () => {
                       // width:"20px"
                     }}
                     className="play-center-btn"
-                   onClick={handlePlayClick}
+                    onClick={handlePlayClick}
                   >
                     <div>
                       <MdPlayCircleFilled onClick={handlePlayClick} />
@@ -202,10 +221,36 @@ const Categories = () => {
           >
             <img src={community} alt="" />
             <h2>Mobile Addiction</h2>
-            <p>
-              Obsessive smartphone usage hampers daily life, social interaction,
-              productivity.
-            </p>
+            <div className="read-more-paragraph">
+              <p>
+                Cell phone addiction is becoming a big problem for many people.
+                It when someone can't stop using their phone, even when it's not
+                necessary, and it starts to affect their daily life.
+                {expandedA || (
+                  <span className="read-more-link" onClick={toggleExpanded}>
+                    Read more
+                  </span>
+                )}
+              </p>
+              {expandedA && (
+                <p>
+                  People check their phones constantly for messages, updates on
+                  social media, or just to scroll through the internet. This
+                  habit can make it hard to focus on work or school, and it can
+                  even make it tough to enjoy time with family and friends. It's
+                  important to find a balance make sure that we control our
+                  phone use, rather than letting our phones control us. Setting
+                  specific times to check your phone or turning off
+                  notifications for a while can really help. This way, we can
+                  enjoy the benefits of technology without letting it take over
+                  our lives.
+                  <span className="read-less-link" onClick={toggleExpanded}>
+                    {" "}
+                    Read less
+                  </span>
+                </p>
+              )}
+            </div>
             <NavLink onClick={scrollToTop} to="/MobileAddiction">
               <button style={{ width: "150px", marginLeft: "0%" }}>
                 Discover
@@ -220,10 +265,37 @@ const Categories = () => {
           >
             <img src={chat} alt="" />
             <h2>Social Media Addiction</h2>
-            <p>
-              Continuous scrolling, likes, and shares diminish real-world
-              connections profoundly.
-            </p>
+            <div>
+              <p>
+                Social media addiction is a real problem that affects many
+                people today. It happens when someone spends so much time on
+                platforms like Facebook, Instagram, or Twitter that it starts
+                harm other parts of their life.
+                {expandedB || (
+                  <span className="read-more-link" onClick={toggleExpandedB}>
+                    Read more
+                  </span>
+                )}
+              </p>
+            </div>
+            {expandedB && (
+              <p>
+                For example, they might start doing poorly in school or at work
+                because they're always checking their phone for updates. They
+                might also stop spending time with family and friends in person
+                because they're too caught up in their online world. This
+                addiction can make people feel anxious or sad if they're not
+                able to check their social media, and it can be tough to break
+                free from. It's important to find a balance and make sure that
+                we're using social media in a healthy way, so it doesn't take
+                over our lives.
+                <span className="read-less-link" onClick={toggleExpandedB}>
+                  {" "}
+                  Read less
+                </span>
+              </p>
+            )}
+
             <NavLink onClick={scrollToTop} to="/SocialMediaAddiction">
               <button style={{ width: "150px", marginLeft: "0%" }}>
                 Discover
@@ -239,9 +311,32 @@ const Categories = () => {
             <img src={weekly} alt="" />
             <h2>Gaming Addiction</h2>
             <p>
-              Excessive gaming disrupts routines, relationships, and overall
-              well-being detrimentally.
+              Gaming addiction is when someone spends so much time playing video
+              games that it starts to cause problems in their life.
+              {expandedC || (
+                <span className="read-more-link" onClick={toggleExpandedC}>
+                  Read more
+                </span>
+              )}
             </p>
+            {expandedC && (
+              <p>
+                It's like when you't stop eating candy even though you know it's
+                not good for you People with gaming addiction might skip meals,
+                lose sleep, or not do their homework because they can't stop
+                playing games. They might also stop hanging out with friends and
+                family. This can make them feel lonely and sad. It's important
+                to balance game time with other activities like playing outside,
+                reading, or spending time with loved ones. If gaming starts to
+                take over your life, talking to someone like a parent or
+                counselor can really help.
+                <span className="read-less-link" onClick={toggleExpandedC}>
+                  {" "}
+                  Read less
+                </span>
+              </p>
+            )}
+
             <NavLink onClick={scrollToTop} to="/GamingAddiction">
               <button style={{ width: "150px", marginLeft: "0%" }}>
                 Discover
@@ -257,8 +352,45 @@ const Categories = () => {
             <img src={emoji} alt="" />
             <h2>Entertainment & Performance Addiction</h2>
             <p>
-              Constant pursuit of thrill undermines personal growth,
-              relationships, and well-being.
+              Performance addiction among teens is a growing concern as more
+              young people feel the pressure to excel in every aspect of their
+              lives, from and sports to social media presence.
+              {expandedD || (
+                <span className="read-more-link" onClick={toggleExpandedD}>
+                  Read more
+                </span>
+              )}
+              {expandedD && (
+                <p>
+                  This drive to be the best lead to stress and anxiety, as teens
+                  push themselves to meet high, often unrealistic expectations.
+                  The constant comparison with peers, fueled by social media
+                  platforms, only intensifies this pressure, making teens feel
+                  like they're never good enough. It important for parents,
+                  teachers, and mentors to recognize the signs of performance
+                  addiction and provide support. Encouraging a balanced life
+                  that values effort over perfection can help teens develop a
+                  healthier approach to their achievements and self-worth.
+                  
+                  Entertainment addiction among teens is becoming increasingly
+                  common, as more young people spend hours glued to screens,
+                  whether it's watching TV shows, playing video games, scrolling
+                  through social media. This kind of addiction can lead to
+                  problems like poor sleep, less time for homework, and missing
+                  out on real-life social interactions. It's important for teens
+                  to balance their screen time with other activities that are
+                  good for their development, like playing sports, reading
+                  books, or spending time with family and friends. Encouraging
+                  teens to have a variety of interests can help prevent the
+                  negative effects of spending too much time on entertainment.
+                  {expandedD && (
+                    <span className="read-less-link" onClick={toggleExpandedD}>
+                      {" "}
+                      Read less
+                    </span>
+                  )}
+                </p>
+              )}
             </p>
             <NavLink
               onClick={scrollToTop}

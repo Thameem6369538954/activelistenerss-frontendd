@@ -1,0 +1,57 @@
+.upcoming-ideas{
+    background-color: #bae8ac;
+    width: 100%;
+    background-attachment: fixed;
+    min-height: 400px;
+}
+.up{
+    /* font-size: 1000px; */
+    margin-top: -550px;
+    margin-left: 400px;
+    z-index: 9999;
+    position: absolute;
+}
+.upcoming-ideas h1{
+    text-align: center;
+    font-family: Relo;
+    font-weight: 900;
+    font-size: 50px;
+    color: black;
+}
+.upcoming-ideas h1::first-letter {
+  font-size: 80px;
+  color: #256c55;
+}
+.upcoming-events-categories{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.kids p{
+    font-weight: 900;
+    font-size: 18px;
+      font-family: "Questrial", sans-serif;
+    /* color: white; */
+    padding: 10 1em;
+}
+.adults-family p{
+    font-weight: 900;
+    font-size: 18px;
+      font-family: "Questrial", sans-serif;
+    /* color: white; */
+        padding: 10px 1em;
+
+}
+.up-btn{
+    display: grid;
+    place-items: center;
+    margin: 20px;
+}
+.up-btn button{
+    background-color: #256c55;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+
+}

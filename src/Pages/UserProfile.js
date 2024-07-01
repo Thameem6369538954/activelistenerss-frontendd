@@ -1347,24 +1347,9 @@ const logoutUser = ()=>{
                         </div>
                       </div>
 
-                      {/* <div className="save-cancel">
-                        <button >Update</button>
-                        <div className="update">
-                          <p>
-                            Update your password through the button below. You
-                            will be redirected to a new page and must follow the
-                            instructions.
-                          </p>
-                        </div>
-                      </div>
-                      <div className="save-black">
-                        <button>Save</button>
-                      </div> */}
                     </div>
                   </div>
-                  {/* <div className="log-out">
-                    <button>Logout</button>
-                  </div> */}
+                 
                 </div>
               }
             />
@@ -1407,6 +1392,7 @@ const logoutUser = ()=>{
                 </div>
               }
             /> */}
+            
           </Routes>
         </div>
       </div>

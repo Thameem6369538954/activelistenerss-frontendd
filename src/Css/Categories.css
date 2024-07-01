@@ -1,7 +1,7 @@
 .categories-main-holecontainer {
   background-image: url("../Images/ALHeaderbg.png");
   width: 100%;
-  height: 135vh;
+  min-height: 100vh;
   background-repeat: no-repeat;
   position: relative;
   background-position: center;
@@ -13,15 +13,11 @@
   align-items: center;
   justify-content: start;
 }
-.Hoodi img {
-  width: 490px;
-  margin-left: -2%;
-}
+
 .categories-main {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 5%;
 }
 
 .cate-yellow-box {
@@ -34,7 +30,8 @@
 .cate-left-box {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
+  gap: 0rem;
+  width: 100%;
 }
 .cate-left-box button {
   width: 30%;

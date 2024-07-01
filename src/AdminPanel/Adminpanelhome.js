@@ -148,10 +148,12 @@ const Adminpanelhome = () => {
               </li>
             </Link>
             <hr></hr>
-            <li className="Links-for-admin">
-              <IoIosLogOut />
-              Logout
-            </li>
+            <Link to="/Adminpanel">
+              <li className="Links-for-admin">
+                <IoIosLogOut />
+                Logout
+              </li>
+            </Link>
           </ul>
         </nav>
       </div>
@@ -191,7 +193,6 @@ const Adminpanelhome = () => {
             <Route path="/Ourteam" element={<Ourteam />} />
           </Routes>
         </div>
-      
 
         {/* <DaseBoard /> */}
       </div>

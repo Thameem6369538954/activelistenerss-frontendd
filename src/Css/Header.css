@@ -332,7 +332,13 @@ box-shadow: 4px 4px 0px 0px rgba(0,0,0,0.75);
         /* background-color: #256c55; */
     }
 @media screen and (max-width: 600px) {
-  
+  .cate-left-box {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    width: 100%;
+    padding: 10px 1em;
+}
   .hdr-tx p {
     text-align: center;
     color: #5B5A5A;

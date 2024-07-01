@@ -158,13 +158,17 @@ border-radius: 10px;
 .Time-box-container span {
   font-size: 40px;
 }
-.color-box-main {
+.color-box-main-container {
   background-image: url("../Images/ALHeaderbg.png");
   width: 100%;
   height: auto;
   background-repeat: no-repeat;
   position: relative;
   background-position: center;
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  /* place-items: center; */
+  margin: auto;
 }
 .imsha-for-grief {
     /* margin-top: -2px; */
@@ -173,11 +177,31 @@ border-radius: 10px;
 .Psychologists-main {
   background-image: url("../Images/Smallpickbg.png");
   width: 100%;
-  height: 120vh;
+  min-height: 120vh;
   background-repeat: no-repeat;
   position: relative;
   background-position: center;
-  /* margin-top: -2/0%; */
+
+}
+.div-color-a{
+  background-color: #BAE8AC;
+  max-width: 300px;
+  min-height: 200px;
+}
+.div-color-b{
+  background-color: lightpink;
+  max-width: 300px;
+  min-height: 200px;
+}
+.div-color-c{
+  background-color: lightpink;
+  max-width: 300px;
+  min-height: 200px;
+}
+.div-color-d{
+  background-color: lightpink;
+  max-width: 300px;
+  min-height: 200px;
 }
 .Psychologists-container {
   /* position: absolute; */
@@ -797,3 +821,4 @@ article {
     height: auto;
   }
 }
+

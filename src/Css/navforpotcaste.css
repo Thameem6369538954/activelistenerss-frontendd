@@ -154,9 +154,9 @@
         border: 1px solid #ffdd7e;
         border-radius: 50px;
         position: relative;
-        margin-top: 61%;
-        margin-left: 2%;
-        margin-bottom: 4%;
+        margin-top: 150px;
+        margin-left: 0%;
+        margin-bottom: 0%;
     }
   .product-list {
     display: flex;

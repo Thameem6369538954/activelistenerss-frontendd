@@ -1,0 +1,23 @@
+.faq-page{
+    min-height: 100vh;
+    background-color: #f2f2f2;
+    background-image: url("../Images/ALWhitelogo.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 20%;
+    background-position: center;
+}
+.faq-page h1{
+    text-align: center;
+}
+.faq-header{
+    width: 50%;
+    background-color: antiquewhite ;
+    display: flex;
+    justify-content: space-between;
+    gap: 4rem;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    margin: 20px;
+}

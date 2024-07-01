@@ -10,7 +10,6 @@
 }
 .sub-telecall{
   margin-top: -400px;
-  /* background-color: #256c55; */
 }
 .calendly-embed-header{
   width: 200px;
@@ -29,8 +28,6 @@
 .epi-list{
   list-style: none;
   text-align: left;
-  margin-left: -20px;
-  margin-top: 5px;
 }
 .caro-for-hdr {
     border: 10px double black;
@@ -126,7 +123,6 @@
   padding: 5px;
 }
 .hdrsubs-butns {
-    /* position: relative; */
     display: flex;
     align-items: center;
     justify-content: center;
