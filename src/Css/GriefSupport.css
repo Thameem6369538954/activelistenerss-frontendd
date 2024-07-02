@@ -179,7 +179,7 @@
   background-color: white;
   border: 1px solid #ffdd7e;
   width: 300px;
-  height: 430px;
+ min-height: 650px;
   border-radius: 20px;
   gap: 1rem;
   padding: 20px;

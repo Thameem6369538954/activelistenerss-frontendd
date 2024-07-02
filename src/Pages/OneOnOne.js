@@ -72,8 +72,20 @@ const OneOnOne = () => {
               <div className="centered">
                 <div className="para">
                   <p>
-                    Transformative support for those seeking clarity and
-                    understanding through active listening.
+                    In today's world, where social media often blurs the line
+                    between online interactions and real-life connections,
+                    one-on-one psychology sessions can be incredibly beneficial.
+                    These sessions provide a safe space to discuss and
+                    understand how our online habits influence our real-world
+                    relationships and personal well-being. By talking to a
+                    psychologist, individuals can learn strategies to manage
+                    their time on social media effectively, ensuring it doesn't
+                    overshadow face-to-face interactions with friends and
+                    family. This balance is crucial for maintaining healthy
+                    relationships and overall digital health. Moreover, these
+                    sessions can help people set realistic expectations for both
+                    their online and offline lives, fostering a healthier, more
+                    fulfilling lifestyle.
                   </p>
                 </div>
               </div>
@@ -104,10 +116,19 @@ const OneOnOne = () => {
           <img src={emoji} alt="" />
           <h2>Music</h2>
           <p>
-            Immerse yourself in the healing power of music. Our therapy sessions
-            offer carefully curated playlists designed to soothe the soul and
-            promote relaxation. Let the melodies guide you on a journey of
-            self-discovery and emotional healing
+            Music therapy is a wonderful tool that helps kids, teens, and
+            parents feel better when they're feeling down and helps them focus
+            better on their tasks. It involves listening to music or playing
+            musical instruments under the guidance of a trained therapist. For
+            kids who often feel cranky or upset, music therapy can be like a
+            soothing friend, helping them calm down and find their happy mood
+            again. Teens, who sometimes feel overwhelmed by schoolwork or other
+            pressures, can use music therapy to clear their minds and regain
+            their concentration. Parents, too, find relief in music therapy, as
+            it helps them unwind from the daily stresses of work and home life.
+            By including music therapy in their routine, families can enjoy a
+            more harmonious and focused environment, making their time together
+            more enjoyable and productive.
           </p>
         </div>
         <div className="weeekly-meetup-box">
@@ -125,12 +146,20 @@ const OneOnOne = () => {
           <img src={emoji} alt="" />
           <h2>mandala art books</h2>
           <p>
-            Explore the world of mandala art with our collection of inspiring
-            books. Discover a treasure trove of intricate designs, step-by-step
-            tutorials, and creative insights to help you unleash your inner
-            artist and create stunning mandalas. Whether you're a beginner or an
-            experienced artist, our mandala art books are the perfect companion
-            on your creative journey
+            In today's fast-paced world, where screens often dominate our
+            attention, Mandala Art Workshops offer a refreshing escape that
+            benefits everyone in the family—kids, teens, and parents alike.
+            These workshops focus on creating intricate and colorful mandala
+            designs, which are not only beautiful but also incredibly calming.
+            Engaging in mandala art helps sharpen focus and soothes the mind,
+            making it easier to manage stress and push away negative moods. By
+            participating in these workshops, families have a chance to spend
+            quality time together, away from the constant buzz of gadgets. This
+            not only strengthens family bonds but also encourages a healthier,
+            more mindful approach to everyday life. So, if you're looking for a
+            fun and therapeutic way to disconnect from technology and reconnect
+            with your loved ones, Mandala Art Workshops might just be what you
+            need.
           </p>
         </div>
         {/* <div className="weeekly-meetup-box">
@@ -182,9 +211,9 @@ const OneOnOne = () => {
         <></>
       ) : (
         <div className="tele-buttons">
-        <button className="get-support" onClick={appointmentSubmit}>
-          Schedule Now
-        </button>
+          <button className="get-support" onClick={appointmentSubmit}>
+            Schedule Now
+          </button>
         </div>
       )}
 
