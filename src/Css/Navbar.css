@@ -1,9 +1,13 @@
+@font-face{
+  font-family: nav-link;
+  src: url(../Font//LTSaeada-Medium.ttf);
+}
 .Navbar-main {
   display: flex;
   align-items: center;
   justify-content: space-around;
   background-color: #bae8ac;
-  height: 150px;
+  min-height: 150px;
   /* border: 1px solid black; */
 }
 .Login-btns img{
@@ -17,7 +21,7 @@ nav {
   margin: 2% auto;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-evenly;
   /* border: 1px solid black; */
   width: 100%;
 }
@@ -33,13 +37,18 @@ nav {
   /* gap: 10px; */
   background-color: #ffdd7e;
   border-radius: 50px;
-  width: 20%;
+  width: 30%;
   height: 50px;
+  margin: 20px;
 }
 nav img {
-    /* width: 148%; */
-    margin-left: -24%;
-    margin-top: -10%;
+    width: 20%;
+    margin-left: 4%;
+
+  }
+  .logo-sets img:nth-child(2) {
+    /* background-color: red; */
+    width: 40%;
   }
 .Login-btns button {
   font-size: 16px;
@@ -61,6 +70,17 @@ nav img {
   font-size: 30px;
   /* border-radius: 50%; */
 }
+    .nav-links li {
+        border: 1px solid black;
+        list-style: none;
+        font-size: 40px;
+        color: black;
+        text-decoration: none;
+        text-align: center;
+        padding: 15px;
+        width: 100%;
+        font-family: nav-link;
+    }
 .navarrow:hover {
   background-color: white;
   padding: 2px;
@@ -75,6 +95,14 @@ nav img {
   padding: 5px;
   border-radius: 50%;
 }
+.nav-icon-close{
+  font-size: 40px;
+  color:black;
+
+  margin-left: 100px;
+  border: 2px solid black;
+  border-radius: 50%;
+}
 .nav-links {
   display: flex;
   align-items: center;
@@ -86,7 +114,12 @@ nav img {
 .nav-icon {
   display: none;
 }
-@media screen and (max-width: 600px) {
+.logo-sets{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media screen and (min-width: 10px) and ( max-width: 600px) {
   nav {
     margin: 2% auto;
     display: flex;
@@ -125,17 +158,20 @@ nav img {
     margin: 40px;
   }
   .nav-links {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    top: 110px;
-    height: 50%;
-    padding: 20px;
-    left: -100%;
-    width: 100%;
-    background-color: #ffdd7e;
+   display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 0px;
+        height: 50%;
+        padding: 20px;
+        left: -100%;
+        width: 100%;
+        background-color: #ffdd7e;
+        min-height: 100vh;
+        z-index: 1;
+        transition: 1s;
   }
   .nav-links.active {
     left: -0;
@@ -146,32 +182,62 @@ nav img {
         justify-content: space-around;
         background-color: #ffdd7e;
         border-radius: 50px;
-        width: 150px;
+        width: 500px;
         height: 50px;
         margin-right: 28px;
     }
        nav img {
-        width: 115px;
-        margin-left: -18%;
+        width: 144px;
+        margin-left: 11%;
         margin-top: 5%;
     }
+    .nav-links li {
+        border: 1px solid black;
+        list-style: none;
+        font-size: 14px;
+        color: black;
+        text-decoration: none;
+        text-align: center;
+        padding: 15px;
+        width: 100%;
+        font-family: nav-link;
+    }
+    .logo-sets img:nth-child(1){
+      display: none;
+    }
+    .logo-sets img:nth-child(3){
+      display: none;
+
+    }
+    .logo-sets img:nth-child(2) {
+    /* background-color: red; */
+    width: 80%;
+}
+.header-main img {
+    width: 84%;
+    margin-top: 0%;
+}
 }
 .nav-icons:nth-child(1) {
   transform: rotate(90deg);
 }
-@media screen and (min-width: 190px) {
+@media screen and (min-width: 600px) {
   .nav-icon {
     display: block;
     margin: 40px;
     font-size: 40px;
   }
     .nav-links li {
+        border: 1px solid black;
         list-style: none;
-        font-size: 20px;
+        font-size: 40px;
         color: black;
         text-decoration: none;
-        padding: 5px;
+        text-align: center;
+        padding: 15px;
         width: 100%;
+  font-family: nav-link;
+
     }
   .nav-links li:hover {
     text-align: center;
@@ -185,20 +251,31 @@ nav img {
     grid-template-columns: repeat(2, 2fr);
     align-items: center;
     position: absolute;
-    top: 110px;
-    height: 80vh;
+    top: 0px;
+    height: 100vh;
     padding: 10px;
     left: -100%;
     width: 100%;
     background-color: #ffdd7e;
     transition: 1.5s;
-    z-index: 9999;
+    z-index:1;
   }
   .nav-links.active {
     left: -0;
   }
 }
 @media (min-width: 600px) and (max-width: 1024px) {
+  .nav-links li {
+        border: 1px solid black;
+        list-style: none;
+        font-size: 20px;
+        color: black;
+        text-decoration: none;
+        text-align: center;
+        padding: 15px;
+        width: 95%;
+        font-family: nav-link;
+    }
       .Login-btns {
         display: flex;
         align-items: center;
@@ -206,7 +283,7 @@ nav img {
         /* gap: 10px; */
         background-color: #ffdd7e;
         border-radius: 50px;
-        width: 22%;
+        width: 50%;
         height: 50px;
     }
   nav {
@@ -218,8 +295,8 @@ nav img {
     width: 100%;
 }
     nav img {
-        width: 100%;
-        /* margin-left: 0%; */
+        width: 35%;
+        margin-left: 0%;
         margin-top: -3%;
     }
 }

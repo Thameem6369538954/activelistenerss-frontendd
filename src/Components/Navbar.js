@@ -17,7 +17,9 @@ import Button from "@mui/material/Button";
 // import Menu from "@mui/material/Menu";
 // import MenuItem from "@mui/material/MenuItem";
 import { Menu, MenuItem } from "@mui/material";
-
+import updatedLogo from "../Images/updatedLogo.png";
+import NavA from "../Images/NavA.png";
+import Navb from "../Images/Navb.png";
 
 const Navbar = () => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -69,9 +71,12 @@ const Navbar = () => {
         <nav>
           <div onClick={handleClick} className="nav-icons">
             {isOpen ? (
-              <IoCloseOutline className="nav-icon" onClick={CloseMenu} />
+              <IoCloseOutline className="nav-icon-close" onClick={CloseMenu} />
             ) : (
-              <RiMenu5Fill className="nav-icon" onClick={handleClick} />
+              <div>
+
+                <RiMenu5Fill className="nav-icon" onClick={handleClick} />
+              </div>
             )}
             {/* <RiMenu5Fill className="nav-icon" />
           <IoCloseOutline className="nav-icon" /> */}
@@ -90,9 +95,9 @@ const Navbar = () => {
               <NavLink to="/OneOnOne" className="Links">
                 <li>One-On-One Session</li>
               </NavLink>
-              <NavLink to="/GriefSupport" className="Links">
+              {/* <NavLink to="/GriefSupport" className="Links">
                 <li>Grief Support</li>
-              </NavLink>
+              </NavLink> */}
               <NavLink to="/AffiliateProgram" className="Links">
                 <li>AffiliateProgram</li>
               </NavLink>
@@ -121,7 +126,11 @@ const Navbar = () => {
 
           <div className="nav-icons"></div>
           <NavLink to="/">
-            <img src={ALlogo} alt="" />
+          <div className="logo-sets">
+            <img src={NavA} alt="" />
+            <img src={updatedLogo} alt="" />
+            <img src={Navb} alt="" />
+          </div>
           </NavLink>
           {user ? (
             <div className="Login-btns">
@@ -129,7 +138,7 @@ const Navbar = () => {
                 <NavLink className="Links">
                   <span>Logout</span>
                 </NavLink>
-                <div className="border full-rounded"></div>
+                {/* <div className="border full-rounded"></div> */}
               </button>
               {/* <img src={Navarrow} className="navarrow" alt="" /> */}
               {/* <NavLink to={"/UserProfile"} className="Links"> */}
@@ -182,14 +191,14 @@ const Navbar = () => {
             <div className="Login-btns">
               <button className="full-rounded">
                 <NavLink to="/Login" className="Links">
-                  <span>Login</span>
+                  <span>Already a member</span>
                 </NavLink>
                 <div className="border full-rounded"></div>
               </button>
 
               <button className="full-rounded">
                 <NavLink to="/Signup" className="Links">
-                  <span>Sign up</span>
+                  <span>Not a member</span>
                 </NavLink>
                 <div className="border full-rounded"></div>
               </button>

@@ -446,8 +446,7 @@ margin-top: 31%;
   width: 240px;
 }
 .active {
-  text-decoration: none;
-  color: black;
+  width: 100%;
 }
 .userprofile-sidebar {
   display: flex;

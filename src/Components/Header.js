@@ -11,8 +11,22 @@ import WHYAL from "../Videos/WHYAL.mp4";
 import axios from "../Utils/Baseurl.js";
 import { toast } from "react-toastify";
 import Navarrow from "../Images/Navarrow.png"
+import { MdKeyboardDoubleArrowDown } from "react-icons/md";
+import YImg from "../Images/YImg.png"
 
 const Header = () => {
+  const [isAnimating, setIsAnimating] = useState(true);
+  const [position, setPosition] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setPosition((prevPosition) =>
+        prevPosition === 20 ? 0 : prevPosition + 1
+      ); // Change 20 to adjust animation range
+    }, 100); // Adjust speed here (lower is faster)
+
+    return () => clearInterval(interval);
+  }, []);
   const [rows, setRows] = useState('');
   useEffect(() => {
     const fetchData = async () => {
@@ -115,9 +129,13 @@ const Header = () => {
         .then(() => setIsPlaying(true))
         .catch((error) => console.error("Failed to play the video:", error));
     }
+    
   };
   return (
     <div className="header-main">
+      <div className="header-img">
+      <img src={YImg} alt="" />
+      </div>
       <div className="yellow-box">
         <ul className="yellow-box-ul">
           {/* <marquee> */}
@@ -137,29 +155,33 @@ const Header = () => {
               <li>100% Safe for Kids </li>
             </div>
           </div>
-
-          {/* <li>Zero - Medication |</li>
-            <li>  </li>
-            <li></li> */}
-          {/* </marquee> */}
         </ul>
       </div>
       <div className="header">
         <div className="header-container">
-          <img src={Hdrleft} alt="" />
-          <div className="hdr-text-landing">
-            <h1>Helping you </h1>
-            <h2>Find</h2>
-            <h3>Balance & Focus</h3>
-          </div>
-          {/* <img
-            src={Hdrright}
-            data-aos="fade-right"
-            data-aos-duration="1000"
-            alt=""
-          /> */}
+          {/* <img src={Hdrleft} alt="" /> */}
 
-          {/* <img src={Maskgroup} alt="" /> */}
+          <div className="hdr-new-text">
+            <div className="hdr-text-landing">
+              <h1>Helping you </h1>
+              <h2>Find</h2>
+              <h3>Balance & Focus</h3>
+            </div>
+            <p>
+              Our diverse range of services includes workshops, listening
+              sessions, and creative therapies tailored specifically for
+              children and families dealing with anxiety, depression, and social
+              isolation. From music and art therapy to engaging games and
+              comics, we create safe, fun, and supportive environments to foster
+              communication, understanding, and healing.
+            </p>
+            <div className="hrd-btn-new">
+              <MdKeyboardDoubleArrowDown
+                className={`up-down-icon ${isAnimating ? "animate" : ""}`}
+                style={{ transform: `translateY(${position}px)` }}
+              />
+            </div>
+          </div>
 
           {rows && (
             <video
@@ -172,16 +194,7 @@ const Header = () => {
             </video>
           )}
         </div>
-        <div className="hdr-tx">
-          <p>
-            Our diverse range of services includes workshops, listening
-            sessions, and creative therapies tailored specifically for children
-            and families dealing with anxiety, depression, and social isolation.
-            From music and art therapy to engaging games and comics, we create
-            safe, fun, and supportive environments to foster communication,
-            understanding, and healing.
-          </p>
-        </div>
+
         <div className="categoreis-haeder">
           <div className="categoreis-grid-boxs">
             <NavLink to="/EarlyagegadgetExposure" className="Links">
@@ -234,7 +247,7 @@ const Header = () => {
           {!showPopup && (
             <div className="why-active-btn">
               <button onClick={togglePopup}>Why Active Listeners?</button>
-              <img onClick={togglePopup} src={Navarrow} alt="" />
+              {/* <img onClick={togglePopup} src={Navarrow} alt="" /> */}
             </div>
           )}
           {showPopup && (
