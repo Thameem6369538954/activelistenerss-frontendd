@@ -130,8 +130,13 @@ const Navbar = () => {
           </div>
 
           {user ? (
+            <div className="logout">
+              <div className="phone-icon">
+                <FaPhoneAlt />
+                <p>: +91 78928 58593</p>
+              </div>
             <div className="Logout-btns">
-              <button onClick={handleLogout} >
+              <button onClick={handleLogout}>
                 <NavLink className="Links">
                   <span>Logout</span>
                 </NavLink>
@@ -177,6 +182,7 @@ const Navbar = () => {
                   <MenuItem onClick={handleLogout}>Logout</MenuItem>
                 </Menu>
               </div>
+            </div>
             </div>
           ) : (
             <div className="Login-btns-new">

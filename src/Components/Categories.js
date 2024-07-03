@@ -227,7 +227,11 @@ const Categories = () => {
                 It when someone can't stop using their phone, even when it's not
                 necessary, and it starts to affect their daily life.
                 {expandedA || (
-                  <span className="read-more-link" onClick={toggleExpanded}>
+                  <span
+                    className="read-more-link"
+                    style={{ fontSize: "16px", fontWeight: 900 }}
+                    onClick={toggleExpanded}
+                  >
                     Read more
                   </span>
                 )}
@@ -244,7 +248,11 @@ const Categories = () => {
                   notifications for a while can really help. This way, we can
                   enjoy the benefits of technology without letting it take over
                   our lives.
-                  <span className="read-less-link" onClick={toggleExpanded}>
+                  <span
+                    className="read-less-link"
+                    style={{ fontSize: "16px", fontWeight: 900 }}
+                    onClick={toggleExpanded}
+                  >
                     {" "}
                     Read less
                   </span>
@@ -272,7 +280,11 @@ const Categories = () => {
                 platforms like Facebook, Instagram, or Twitter that it starts
                 harm other parts of their life.
                 {expandedB || (
-                  <span className="read-more-link" onClick={toggleExpandedB}>
+                  <span
+                    className="read-more-link"
+                    style={{ fontSize: "16px", fontWeight: 900 }}
+                    onClick={toggleExpandedB}
+                  >
                     Read more
                   </span>
                 )}
@@ -289,7 +301,11 @@ const Categories = () => {
                 free from. It's important to find a balance and make sure that
                 we're using social media in a healthy way, so it doesn't take
                 over our lives.
-                <span className="read-less-link" onClick={toggleExpandedB}>
+                <span
+                  className="read-less-link"
+                  style={{ fontSize: "16px", fontWeight: 900 }}
+                  onClick={toggleExpandedB}
+                >
                   {" "}
                   Read less
                 </span>
@@ -314,7 +330,11 @@ const Categories = () => {
               Gaming addiction is when someone spends so much time playing video
               games that it starts to cause problems in their life.
               {expandedC || (
-                <span className="read-more-link" onClick={toggleExpandedC}>
+                <span
+                  className="read-more-link"
+                  style={{ fontSize: "16px", fontWeight: 900 }}
+                  onClick={toggleExpandedC}
+                >
                   Read more
                 </span>
               )}
@@ -330,7 +350,11 @@ const Categories = () => {
                 reading, or spending time with loved ones. If gaming starts to
                 take over your life, talking to someone like a parent or
                 counselor can really help.
-                <span className="read-less-link" onClick={toggleExpandedC}>
+                <span
+                  className="read-less-link"
+                  style={{ fontSize: "16px", fontWeight: 900 }}
+                  onClick={toggleExpandedC}
+                >
                   {" "}
                   Read less
                 </span>
@@ -356,7 +380,11 @@ const Categories = () => {
               young people feel the pressure to excel in every aspect of their
               lives, from and sports to social media presence.
               {expandedD || (
-                <span className="read-more-link" onClick={toggleExpandedD}>
+                <span
+                  className="read-more-link"
+                  style={{ fontSize: "16px", fontWeight: 900 }}
+                  onClick={toggleExpandedD}
+                >
                   Read more
                 </span>
               )}
@@ -371,7 +399,6 @@ const Categories = () => {
                   addiction and provide support. Encouraging a balanced life
                   that values effort over perfection can help teens develop a
                   healthier approach to their achievements and self-worth.
-                  
                   Entertainment addiction among teens is becoming increasingly
                   common, as more young people spend hours glued to screens,
                   whether it's watching TV shows, playing video games, scrolling
@@ -384,7 +411,11 @@ const Categories = () => {
                   teens to have a variety of interests can help prevent the
                   negative effects of spending too much time on entertainment.
                   {expandedD && (
-                    <span className="read-less-link" onClick={toggleExpandedD}>
+                    <span
+                      className="read-less-link"
+                      style={{ fontSize: "16px", fontWeight: 900 }}
+                      onClick={toggleExpandedD}
+                    >
                       {" "}
                       Read less
                     </span>

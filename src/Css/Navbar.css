@@ -2,6 +2,9 @@
   font-family: nav-link;
   src: url(../Font//LTSaeada-Medium.ttf);
 }
+.logout{
+  width: 30%;
+}
 .signup-btn-dis{
   display: flex;
   align-items: center;
@@ -59,7 +62,7 @@ nav {
 } */
 nav img {
     width: 28%;
-    margin-left: 4%;
+    /* margin-left: 4%; */
 }
   .logo-sets img:nth-child(2) {
     
@@ -110,7 +113,6 @@ nav img {
   height: 40px;
   width: 40px;
   border-radius: 50%;
-
   font-size: 30px;
 }
 .nav-icon {
@@ -152,7 +154,7 @@ nav img {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    width: 20%;
+    width: 90%;
     border-radius: 50px;
   }
   .Logout-btns button{
@@ -240,12 +242,15 @@ nav img {
   .nav-links.active {
     left: -0;
   }
+  .logout{
+    width: 90%;
+  }
   .Logout-btns{
     background-color: #ffdd7e;
     display: flex;
     align-items: center;
     justify-content: space-around;
-    width: 50%;
+    width: 90%;
     border-radius: 50px;
   }
   .Logout-btns button{
@@ -357,12 +362,15 @@ nav img {
  
 }
 @media (min-width: 600px) and (max-width: 1024px) {
+  .logout{
+    width: 50%;
+  }
   .Logout-btns{
     background-color: #ffdd7e;
     display: flex;
     align-items: center;
     justify-content: space-around;
-    width: 50%;
+    width: 90%;
     border-radius: 50px;
   }
   .Logout-btns button{

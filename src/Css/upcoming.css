@@ -3,6 +3,7 @@
     width: 100%;
     background-attachment: fixed;
     min-height: 400px;
+        padding: 0 2em;
 }
 .up{
     /* font-size: 1000px; */

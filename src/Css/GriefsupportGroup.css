@@ -11,6 +11,7 @@
   align-items: start;
   justify-content: center;
   flex-direction: column;
+  padding: 0 2em;
 }
 .gs-header-text h2 {
   font-family: myFont;
@@ -165,10 +166,18 @@ border-radius: 10px;
   background-repeat: no-repeat;
   position: relative;
   background-position: center;
-  display: grid;
-  grid-template-columns: repeat(4,1fr);
-  /* place-items: center; */
-  margin: auto;
+  /* display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr) );
+  place-items: center; */
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin: 40px auto;
+  gap: 5rem;
+}
+.color-box-main-container h1{
+font-family: Blacky;
 }
 .imsha-for-grief {
     /* margin-top: -2px; */
@@ -185,23 +194,63 @@ border-radius: 10px;
 }
 .div-color-a{
   background-color: #BAE8AC;
-  max-width: 300px;
-  min-height: 200px;
+  width: 500px;
+  border-radius: 20px;
+  min-height: 400px;
+  display: flex;
+    flex-direction: column;
+    place-items: left;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 2rem;
+  padding: 0 1em;
 }
 .div-color-b{
-  background-color: lightpink;
-  max-width: 300px;
-  min-height: 200px;
+  background-color: #FFE291
+;
+  width: 500px;
+  min-height: 400px;
+  display: flex;
+    flex-direction: column;
+    place-items: left;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 2rem;
+    padding: 0 1em;
+      border-radius: 20px;
+
+
 }
 .div-color-c{
-  background-color: lightpink;
-  max-width: 300px;
-  min-height: 200px;
+  background-color: #FFD1E8
+;
+  width: 500px;
+  min-height: 400px;
+  display: flex;
+    flex-direction: column;
+    place-items: left;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 2rem;
+    padding: 0 1em;
+      border-radius: 20px;
+
+
 }
 .div-color-d{
-  background-color: lightpink;
-  max-width: 300px;
-  min-height: 200px;
+  background-color: #CBD9FF;
+  width: 500px;
+  min-height: 400px;
+  display: flex;
+    flex-direction: column;
+    place-items: left;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 2rem;
+    padding: 0 1em;
+      border-radius: 20px;
+
+
 }
 .Psychologists-container {
   /* position: absolute; */

@@ -365,12 +365,40 @@ const GriefsupportGroup = () => {
         </div>
       </div>
       {/* color-boxes */}
-      {/* <div className="color-box-main-container">
-        <div className="div-color-a"></div>
-        <div className="div-color-b"></div>
-        <div className="div-color-c"></div>
-        <div className="div-color-d"></div>
-      </div> */}
+      <div className="color-box-main-container">
+        <div className="div-color-a">
+          <img src={THands} alt="" />
+          <h1>How to bring the Self Confidence back</h1>
+          <p>
+            A safe space to share experiences, connect with others, and receive
+            support while navigating the challenges of grieving together.
+          </p>
+        </div>
+        <div className="div-color-b">
+          <img src={THands} alt="" />
+          <h1>Tips to Get your deaddicted to social media</h1>
+          <p>
+            A safe space to share experiences, connect with others, and receive
+            support while navigating the challenges of grieving together.
+          </p>
+        </div>
+        <div className="div-color-c">
+          <img src={THands} alt="" />
+          <h1>Maintain you work life Balance</h1>
+          <p>
+            A safe space to share experiences, connect with others, and receive
+            support while navigating the challenges of grieving together.
+          </p>
+        </div>
+        <div className="div-color-d">
+          <img src={THands} alt="" />
+          <h1>How to bring the Self Confidence back</h1>
+          <p>
+            A safe space to share experiences, connect with others, and receive
+            support while navigating the challenges of grieving together.
+          </p>
+        </div>
+      </div>
       {/* from-this-form */}
       <div className="benefit-boxes-main">
         <div className="therapy-heading">
