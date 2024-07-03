@@ -11,7 +11,7 @@ import "react-toastify/dist/ReactToastify.css";
 import axios from "../Utils/Baseurl.js";
 import { Link } from "react-router-dom";
 import WatsapIcon from "../Images/WatsapIcon.png";
-import PhoneIcon from "../Images/PhoneIcon.png";
+import PhoneIcon from "../Images/PhoneIcon.jpeg";
 const Footer = () => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
@@ -173,9 +173,9 @@ const Footer = () => {
           // target="_blank"
         ></a>
         <a
-          href="tel:+919113523278"
+          href="tel:+917892858593"
           style={{ textDecoration: "none", cursor: "pointer", color: "black" }}
-          target="_blank"
+          // target="_blank"
         >
           <div className="call-icon">
             <img src={PhoneIcon} alt="" className="callIcon-fix-img" />
