@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Navbar from "../Components/Navbar.js";
 import GamingA from "../Images/GamingA.png";
 import GamingB from "../Images/GamingB.png";
@@ -23,8 +23,34 @@ import HandYellow from "../SmallElements/HandYellow.png";
 import BrinBuzzle from "../SmallElements/BrinBuzzle.png";
 import Breadcrumps from "../Components/Breadcrumps";
 import WHYAL from "../Videos/WHYAL.mp4";
+import axios from "../Utils/Baseurl";
+
 const GamingAddiction = () => {
-  
+        const [video, setVideo] = useState("");
+                const [video2, setVideo2] = useState("");
+
+
+            useEffect(() => {
+              const apiFetch = async () => {
+                try {
+                  const res = await axios.get("admin/get_allVideos");
+                  console.log(
+                    res,
+                    "dmskd--------------->>nkdsjcnsjdnskjdnskjdk"
+                  );
+                  if (res) {
+                    setVideo(res.data.reslt[7].source);
+                    setVideo2(res.data.reslt[7].source);
+
+                  } else {
+                    console.log("error");
+                  }
+                } catch (error) {
+                  console.log("error");
+                }
+              };
+              apiFetch();
+            }, []);
     const [wantComplimentaryCall, setWantComplimentaryCall] = useState(false);
     const appointmentSubmit = (e) => {
       e.preventDefault();
@@ -61,23 +87,24 @@ const GamingAddiction = () => {
                   Addiction
                 </h3>
               </div>
-              {/* <img
+              <img
                 src={GamingB}
                 data-aos="fade-right"
                 data-aos-duration="1000"
                 alt=""
-              /> */}
-              <video
-                controls // Ensure controls are enabled for user interaction
-                className="gaming-video-top"
-                // onClick={togglePlay}
-                // onPlay={() => setIsPlaying(true)}
-                // onPause={() => setIsPlaying(false)}
-              >
-                <source src={WHYAL} type="video/mp4" />{" "}
-                {/* Make sure src and type are correctly set */}
-                Your browser does not support the video tag.
-              </video>
+              />
+              {/* {video && (
+                <video
+                  controls // Ensure controls are enabled for user interaction
+                  className="early-age-video"
+                  // onClick={togglePlay}
+                  // onPlay={() => setIsPlaying(true)}
+                  // onPause={() => setIsPlaying(false)}
+                >
+                  <source src={video} type="video/mp4" />{" "}
+                  Your browser does not support the video tag.
+                </video>
+              )} */}
             </div>
             <div className="btn-compo">
               {wantComplimentaryCall ? (
@@ -127,7 +154,7 @@ const GamingAddiction = () => {
               /> */}
 
               <div className="inside-mobile-addiction-txt">
-                <h1>Are you Addicted to the Mobile phone?</h1>
+                <h1>Are you Addicted to Gaming?</h1>
                 {/* <img
                   src={MoAddiction}
                   style={{
@@ -136,17 +163,19 @@ const GamingAddiction = () => {
                   alt=""
                 /> */}
 
-                <video
-                  controls // Ensure controls are enabled for user interaction
-                  className="early-age-video"
-                  // onClick={togglePlay}
-                  // onPlay={() => setIsPlaying(true)}
-                  // onPause={() => setIsPlaying(false)}
-                >
-                  <source src={WHYAL} type="video/mp4" />{" "}
-                  {/* Make sure src and type are correctly set */}
-                  Your browser does not support the video tag.
-                </video>
+                {video2 && (
+                  <video
+                    controls // Ensure controls are enabled for user interaction
+                    className="early-age-video"
+                    // onClick={togglePlay}
+                    // onPlay={() => setIsPlaying(true)}
+                    // onPause={() => setIsPlaying(false)}
+                  >
+                    <source src={video2} type="video/mp4" />{" "}
+                    {/* Make sure src and type are correctly set */}
+                    Your browser does not support the video tag.
+                  </video>
+                )}
               </div>
               {/* <img
                 src={Rounda}

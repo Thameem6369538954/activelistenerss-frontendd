@@ -46,7 +46,7 @@ const MobileAddiction = () => {
             const res = await axios.get("admin/get_allVideos");
             console.log(res,"dmskd--------------->>nkdsjcnsjdnskjdnskjdk");
             if(res){
-            setVideo(res.data.reslt[5].source);
+            setVideo(res.data.reslt[4].source);
             }else{
               console.log("error");
             }

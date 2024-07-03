@@ -92,16 +92,14 @@
   margin-left: 20px;
 }
 .video-popup {
-  /* background-color: #ffdd7e;
-  height: 700px;
-  width: 800px; */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  /* position: fixed; */
-  margin-left: 10%;
-  margin-top: -4%;
-  z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* position: fixed; */
+    margin-left: 10%;
+    margin-top: 27%;
+    height: 100vh;
+    z-index: 9999;
 }
 .video-submit-btns{
   display: flex;
@@ -150,12 +148,7 @@
   justify-content: space-evenly;
   background-color: #ffdd7e; */
 }
-.container {
-  margin: 2%;
-  border: 2px dashed #BDBDBD;
-  border-radius: 4%;
-  padding: 2%;
-}
+
 .header-admin {
   /* background-color: #aaa; */
   padding: 1%;

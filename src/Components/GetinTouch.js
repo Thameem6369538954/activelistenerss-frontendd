@@ -69,9 +69,10 @@ const GetinTouch = () => {
     <div>
       <div className="getintouch-container">
         <div className="get-form">
+          <span>Phone Number : +91 78928 58593</span>
           <form onSubmit={handleSubmit}>
-            <h1>Get in Touch</h1>
-            <p>With us</p>
+            <h1>Write to</h1>
+            <p>us</p>
             <div className="form-inputs">
               <div className="error-getin-touch">
                 <label> Full Name *</label>

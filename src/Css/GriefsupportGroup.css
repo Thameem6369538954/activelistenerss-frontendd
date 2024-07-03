@@ -464,6 +464,67 @@ article {
  width: 40%;
 }
 @media screen and (max-width: 600px) {
+  
+.div-color-a{
+  background-color: #BAE8AC;
+  width: 315px;
+  border-radius: 20px;
+  min-height: 400px;
+  display: flex;
+    flex-direction: column;
+    place-items: left;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 2rem;
+  padding: 0 1em;
+}
+.div-color-b{
+  background-color: #FFE291
+;
+  width: 315px;
+  min-height: 400px;
+  display: flex;
+    flex-direction: column;
+    place-items: left;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 2rem;
+    padding: 0 1em;
+      border-radius: 20px;
+
+
+}
+.div-color-c{
+  background-color: #FFD1E8
+;
+  width: 315px;
+  min-height: 400px;
+  display: flex;
+    flex-direction: column;
+    place-items: left;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 2rem;
+    padding: 0 1em;
+      border-radius: 20px;
+
+
+}
+.div-color-d{
+  background-color: #CBD9FF;
+  width: 315px;
+  min-height: 400px;
+  display: flex;
+    flex-direction: column;
+    place-items: left;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 2rem;
+    padding: 0 1em;
+      border-radius: 20px;
+
+
+}
      .gs-header-inner-text img {
         width: 13px;
     }
@@ -706,6 +767,72 @@ article {
 }
 }
 @media (min-width: 600px) and (max-width: 1024px) {
+  
+.div-color-a{
+  background-color: #BAE8AC;
+  width: 300px;
+  border-radius: 20px;
+  min-height: 400px;
+  display: flex;
+    flex-direction: column;
+    place-items: left;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 2rem;
+  padding: 0 1em;
+}
+.div-color-b{
+  background-color: #FFE291
+;
+  width: 300px;
+  min-height: 400px;
+  display: flex;
+    flex-direction: column;
+    place-items: left;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 2rem;
+    padding: 0 1em;
+      border-radius: 20px;
+
+
+}
+.div-color-c{
+  background-color: #FFD1E8
+;
+  width: 300px;
+  min-height: 400px;
+  display: flex;
+    flex-direction: column;
+    place-items: left;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 2rem;
+    padding: 0 1em;
+      border-radius: 20px;
+
+
+}
+.div-color-d{
+  background-color: #CBD9FF;
+  width: 300px;
+  min-height: 400px;
+  display: flex;
+    flex-direction: column;
+    place-items: left;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 2rem;
+    padding: 0 1em;
+      border-radius: 20px;
+
+
+}
+  .color-box-main-container{
+    display: grid;
+    place-items: center;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
   .benefit-inside-box img {
     width: 62px;
 }

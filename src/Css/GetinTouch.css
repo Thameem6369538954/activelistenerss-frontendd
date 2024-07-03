@@ -13,13 +13,20 @@
     justify-content: space-around;
     background-color: #bae8ac;
     width: 64%;
-    height: 500px;
+    min-height: 500px;
     margin-left: -2%;
     padding: 10px;
     border-radius: 20px;
     margin-bottom: -14%;
 }
+.get-form span{
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 20px;
+     font-family: "Questrial", sans-serif;
 
+}
 
 .form-inputs {
     display: grid;

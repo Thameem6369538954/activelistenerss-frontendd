@@ -18,8 +18,23 @@ import { InlineWidget } from "react-calendly";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import Breadcrumps from "../Components/Breadcrumps";
 import { toast } from "react-toastify";
+import { SlArrowLeft } from "react-icons/sl";
+import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
+import { MdOutlineKeyboardDoubleArrowLeft } from "react-icons/md";
+import About from "../Images/About.png"
 
 const Senses = () => {
+ const [isActive, setIsActive] = useState(false);
+
+ const toggleSidebar = () => {
+   setIsActive(!isActive);
+ };
+  
+  const [open,setOpen] = useState(false);
+
+  const handleOpen = () =>{
+    setOpen(!open)
+  }
   const [wantComplimentaryCall, setWantComplimentaryCall] = useState(false);
   const appointmentSubmit = (e) => {
     e.preventDefault();
@@ -88,7 +103,38 @@ const Senses = () => {
             </div>
           </div>
         </div>
-        <div className="therapy-heading">
+
+        <div className="sense-main-con">
+          <div className={`container ${isActive ? "active" : ""}`}>
+            {/* Content of your sidebar */}
+            <div className="inside-box-sens">
+              <div className="side-indicater-txt">
+                <ul className="sense-theropy">
+                  <h1>Body Essential Salts and Oils :</h1>
+                  <li>Brain boosting diets</li>
+                  <li>Flavour Exploration</li>
+                  <h1>Music and Art :</h1>
+                  <li>Mandala Art Books</li>
+
+                  <li>DIY activities</li>
+                </ul>
+              </div>
+              <div className="side-indicater-Video">
+                <img src={About} alt="" />
+              </div>
+            </div>
+            {/* <button >Toggle Sidebar</button> */}
+            <div className="open" onClick={toggleSidebar}>
+              {isActive ? (
+                <MdOutlineKeyboardDoubleArrowLeft />
+              ) : (
+                <MdOutlineKeyboardDoubleArrowRight />
+              )}
+            </div>
+          </div>
+        </div>
+
+        {/* <div className="therapy-heading">
           <p>Therapies in senses Resurrecction</p>
           <h1> Reviving your</h1>
           <h2>Senses</h2>
@@ -97,8 +143,8 @@ const Senses = () => {
             We believe that early age gadget exposure adaption to mobile among
             Children has now led to a time where there is decrease in learning
           </span>
-        </div>
-        <div className="senses-category-cards">
+        </div> */}
+        {/* <div className="senses-category-cards">
           <div className="senses-card">
             <h1>Body Essential Salts & Oils</h1>
             <img src={Nool} alt="" />
@@ -128,10 +174,10 @@ const Senses = () => {
             <h1>DIY activities</h1>
             <img src={spa} alt="" />
           </div>
-        </div>
+        </div> */}
       </div>
 
-      {wantComplimentaryCall ? (
+      {/* {wantComplimentaryCall ? (
         <>
           <span className="close-calendly" onClick={handleClose}>
             <AiOutlineCloseCircle className="senesbottom-icon" />
@@ -149,10 +195,23 @@ const Senses = () => {
       {wantComplimentaryCall ? (
         <></>
       ) : (
-        <div className="tele-buttons">
-          <button className="get-support" onClick={appointmentSubmit}>
-            Get Support
-          </button>
+      )} */}
+      <div className="tele-buttons">
+        <button className="get-support" onClick={handleOpen}>
+          Get Support
+        </button>
+      </div>
+      {open && (
+        <div className="supoort-box">
+          <AiOutlineCloseCircle onClick={handleOpen} className="support-icon" />
+          <div className="suport-inside">
+            <h1>Phone No: </h1>
+            <p>+91 7892858593</p>
+          </div>
+          <div className="suport-inside">
+            <h1>Email: </h1>
+            <p>activelisteners2024@gmail.com</p>
+          </div>
         </div>
       )}
 

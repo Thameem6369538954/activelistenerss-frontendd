@@ -65,9 +65,9 @@ const Podcast = () => {
             </div> */}
 
             <div className="therapy-heading">
-              <p>Our Goals</p>
+              <p>Our</p>
               <h1>Latest Episodes</h1>
-              <h2>podcast</h2>
+              <h2>podcast......</h2>
               <img src={Yellowline} className="Yellowline" alt="" />
             </div>
           </div>

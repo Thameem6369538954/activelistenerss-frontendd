@@ -4,3 +4,18 @@
     justify-content: center;
     margin-top: 20%;
 }
+.slick-prev.slick-disabled:before, .slick-next.slick-disabled:before {
+    opacity: .25;
+}
+.slick-next:before {
+    content: '→';
+}
+.slick-next:before, .slick-prev:before {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: black;
+    font-family: slick;
+    font-size: 20px;
+    line-height: 1;
+    opacity: .75;
+}

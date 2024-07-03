@@ -465,6 +465,16 @@
     width: 67%;
     text-align: center;
 }
+.container {
+    position: absolute;
+    top: 0;
+    left: -93%;
+    width: 100%;
+    height: 500px;
+    background-color: #f0f0f0;
+    transition: left 0.3s ease-out;
+    z-index: 1;
+} 
 }
 @media (min-width: 600px) and (max-width: 1024px) {
     .hdrsubs-butns img {
@@ -514,7 +524,7 @@
     width: 79%;
   }
   .green-bourd-grief {
-    margin: 20px 28%;
+    margin:10px 10%;
     align-items: center;
     justify-content: center;
   }

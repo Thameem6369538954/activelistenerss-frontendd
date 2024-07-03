@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Navbar from "../Components/Navbar.js";
 import SMleft from "../Images/SMleft.png";
 import SMright from "../Images/SMright.png";
@@ -23,9 +23,11 @@ import { InlineWidget } from "react-calendly";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import Breadcrumps from "../Components/Breadcrumps";
 import WHYAL from "../Videos/WHYAL.mp4";
+import axios from "../Utils/Baseurl";
 
 const SocialMediaAddiction = () => {
-  
+      const [video, setVideo] = useState("");
+
     const [wantComplimentaryCall, setWantComplimentaryCall] = useState(false);
     const appointmentSubmit = (e) => {
       e.preventDefault();
@@ -36,6 +38,22 @@ const SocialMediaAddiction = () => {
       setWantComplimentaryCall(false);
       // setCloseClick(true);
     };
+          useEffect(() => {
+            const apiFetch = async () => {
+              try {
+                const res = await axios.get("admin/get_allVideos");
+                console.log(res, "dmskd--------------->>nkdsjcnsjdnskjdnskjdk");
+                if (res) {
+                  setVideo(res.data.reslt[5].source);
+                } else {
+                  console.log("error");
+                }
+              } catch (error) {
+                console.log("error");
+              }
+            };
+            apiFetch();
+          }, []);
   return (
     <div>
       <div>
@@ -118,17 +136,19 @@ const SocialMediaAddiction = () => {
 
               <div className="inside-mobile-addiction-txt">
                 <h1>Are you Addicted to the Social Media Platforms ?</h1>
-                <video
-                  controls // Ensure controls are enabled for user interaction
-                  className="early-age-video"
-                  // onClick={togglePlay}
-                  // onPlay={() => setIsPlaying(true)}
-                  // onPause={() => setIsPlaying(false)}
-                >
-                  <source src={WHYAL} type="video/mp4" />{" "}
-                  {/* Make sure src and type are correctly set */}
-                  Your browser does not support the video tag.
-                </video>
+                {video && (
+                  <video
+                    controls // Ensure controls are enabled for user interaction
+                    className="early-age-video"
+                    // onClick={togglePlay}
+                    // onPlay={() => setIsPlaying(true)}
+                    // onPause={() => setIsPlaying(false)}
+                  >
+                    <source src={video} type="video/mp4" />{" "}
+                    {/* Make sure src and type are correctly set */}
+                    Your browser does not support the video tag.
+                  </video>
+                )}
               </div>
               {/* <img
                 src={Rounda}

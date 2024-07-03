@@ -333,7 +333,7 @@ const GriefsupportGroup = () => {
       </div>
       <div className="grif-btn"></div>
       {/* Green-box */}
-      <div className="gsg-green-bar">
+      {/* <div className="gsg-green-bar">
         <div className="gsg-box">
           <h1>April 16th, 2024</h1>
           <div className="black-round">
@@ -341,9 +341,9 @@ const GriefsupportGroup = () => {
           </div>
           <h1>At 15:00 pm</h1>
         </div>
-      </div>
+      </div> */}
       {/* Timer-box */}
-      <div className="Time-box-container">
+      {/* <div className="Time-box-container">
         <div className="time-box">
           <h1>{day}</h1>
           <p>Days</p>
@@ -363,7 +363,7 @@ const GriefsupportGroup = () => {
           <h1>{sec}</h1>
           <p>Sec</p>
         </div>
-      </div>
+      </div> */}
       {/* color-boxes */}
       <div className="color-box-main-container">
         <div className="div-color-a">
@@ -673,9 +673,9 @@ const GriefsupportGroup = () => {
                       checked={formData.enrollAs === "Parent"}
                       onChange={handleChange}
                     />
-                    {errors.enrollAs && (
+                    {/* {errors.enrollAs && (
                       <p className="error">{errors.enrollAs}</p>
-                    )}
+                    )} */}
                     <label htmlFor="radio2" className="radio-button__label">
                       <span className="radio-button__custom"></span>
                       Parent

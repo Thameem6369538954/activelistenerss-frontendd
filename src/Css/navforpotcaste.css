@@ -3,6 +3,15 @@
   aspect-ratio: 3/2;
   object-fit: contain;
 }
+.slick-next:before, .slick-prev:before {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: red;
+    font-family: slick;
+    font-size: 20px;
+    line-height: 1;
+    opacity: .75;
+}
 .boxtop-tems {
   margin: 10px;
 }
@@ -140,7 +149,7 @@
 }
 @media (min-width: 600px) and (max-width: 1024px) {
   .posdcast-video {
-    width: 57%;
+    width: 45%;
     border-radius: 20px;
     margin: 20px;
 }
@@ -239,7 +248,7 @@ background-color: white;
         border: 1px solid #ffdd7e;
         border-radius: 50px;
         position: relative;
-        margin-top: 111%;
+        margin-top: 11%;
         margin-left: 5%;
         margin-bottom: 4%;
     }

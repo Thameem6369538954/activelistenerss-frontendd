@@ -169,6 +169,7 @@ const PodcastProductlist = () => {
       </div>
       <div className="product-list-nav">
         <div className="slider-container">
+          
           <Slider {...settings}>
             <div>
               <h3>All</h3>

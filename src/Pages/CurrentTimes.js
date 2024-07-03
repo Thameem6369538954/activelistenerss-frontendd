@@ -34,7 +34,7 @@ const CurrentTimes = () => {
            if (response) {
              // const videoData = response.data.reslt[3].source; // Retrieve the video data
              // Now you can use videoData to set the state or display the video
-             setRows(response.data.reslt[4].source);
+             setRows(response.data.reslt[10].source);
            } else {
              toast.error("something went wrong!!");
            }
@@ -106,17 +106,19 @@ const CurrentTimes = () => {
                 <h1>Covid on </h1>
                 <p>Today’s Life</p>
               </div>
-              <video
-                controls // Ensure controls are enabled for user interaction
-                className="early-age-video"
-                // onClick={togglePlay}
-                // onPlay={() => setIsPlaying(true)}
-                // onPause={() => setIsPlaying(false)}
-              >
-                <source src={WHYAL} type="video/mp4" />{" "}
-                {/* Make sure src and type are correctly set */}
-                Your browser does not support the video tag.
-              </video>
+              {rows && (
+                <video
+                  controls // Ensure controls are enabled for user interaction
+                  className="Header-video-top"
+                  // onClick={togglePlay}
+                  // onPlay={() => setIsPlaying(true)}
+                  // onPause={() => setIsPlaying(false)}
+                >
+                  <source src={rows} type="video/mp4" />
+                  {/* Make sure src and type are correctly set */}
+                  Your browser does not support the video tag.
+                </video>
+              )}
             </div>
           </div>
         </div>
