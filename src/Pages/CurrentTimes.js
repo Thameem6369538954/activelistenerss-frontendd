@@ -34,7 +34,7 @@ const CurrentTimes = () => {
            if (response) {
              // const videoData = response.data.reslt[3].source; // Retrieve the video data
              // Now you can use videoData to set the state or display the video
-             setRows(response.data.reslt[2].source);
+             setRows(response.data.reslt[4].source);
            } else {
              toast.error("something went wrong!!");
            }

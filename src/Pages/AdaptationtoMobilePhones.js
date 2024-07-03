@@ -1,4 +1,4 @@
-import React,{useState,useEffect,useRef} from "react";
+import React,{useState,useEffect,useRef } from "react";
 
 import Navbar from "../Components/Navbar";
 import GetinTouch from "../Components/GetinTouch";
@@ -17,15 +17,36 @@ import PodcastRed from "../Images/PodcastRed.png";
 import WHYAL from "../Videos/WHYAL.mp4";
 import { Link } from "react-router-dom";
 import Breadcrumps from "../Components/Breadcrumps";
+import { ToastContainer, toast } from "react-toastify";
+import axios from "../Utils/Baseurl.js";
 
 
 const AdaptationtoMobilePhones = () => {
-
+const [rows, setRows] = useState("");
+const [rows2, setRows2] = useState("");
 
  const videoRef = useRef(null);
  const [lastScrollTop, setLastScrollTop] = useState(0);
  const [isPlaying, setIsPlaying] = useState(false);
-
+useEffect(() => {
+  const fetchData = async () => {
+    try {
+      const response = await axios.get("admin/get_allVideos");
+      console.log(response.data.reslt[2], "array----------------------->>obj"); // Log the second object in the response
+      if (response) {
+        // const videoData = response.data.reslt[1]; // Retrieve the video data
+        // Now you can use videoData to set the state or display the video
+        setRows(response.data.reslt[2].source);
+        setRows2(response.data.reslt[3].source);
+      } else {
+        toast.error("something went wrong!!");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  fetchData();
+}, []);
  useEffect(() => {
    const videoElement = videoRef.current;
 
@@ -104,7 +125,7 @@ const AdaptationtoMobilePhones = () => {
     <div>
       <div className="home-main">
         <Navbar />
-        <Breadcrumps /> 
+        <Breadcrumps />
         <div className="header">
           <div className="header-container">
             <img
@@ -131,18 +152,19 @@ const AdaptationtoMobilePhones = () => {
               data-aos-duration="1000"
               alt=""
             /> */}
-            <video
-              controls // Ensure controls are enabled for user interaction
-              className="adaptation-video"
-              // onClick={togglePlay}
-              // onPlay={() => setIsPlaying(true)}
-              // onPause={() => setIsPlaying(false)}
-              ref={videoRef}
-            >
-              <source src={WHYAL} type="video/mp4" />{" "}
-              {/* Make sure src and type are correctly set */}
-              Your browser does not support the video tag.
-            </video>
+            {rows && (
+              <video
+                controls // Ensure controls are enabled for user interaction
+                className="Header-video-top"
+                // onClick={togglePlay}
+                // onPlay={() => setIsPlaying(true)}
+                // onPause={() => setIsPlaying(false)}
+              >
+                <source src={rows} type="video/mp4" />
+                {/* Make sure src and type are correctly set */}
+                Your browser does not support the video tag.
+              </video>
+            )}
           </div>
           <div className="hdr-btm-text">
             {/* <p data-aos="zoom-in" data-aos-duration="1000">
@@ -176,17 +198,19 @@ const AdaptationtoMobilePhones = () => {
                 <p>Mobile Phones</p>
               </div>
               {/* <img src={earlyAgeBoxImg} alt="" /> */}
-              <video
-                controls // Ensure controls are enabled for user interaction
-                className="early-age-video"
-                // onClick={togglePlay}
-                // onPlay={() => setIsPlaying(true)}
-                // onPause={() => setIsPlaying(false)}
-              >
-                <source src={WHYAL} type="video/mp4" />{" "}
-                {/* Make sure src and type are correctly set */}
-                Your browser does not support the video tag.
-              </video>
+              {rows2 && (
+                <video
+                  controls // Ensure controls are enabled for user interaction
+                  className="Header-video-top"
+                  // onClick={togglePlay}
+                  // onPlay={() => setIsPlaying(true)}
+                  // onPause={() => setIsPlaying(false)}
+                >
+                  <source src={rows2} type="video/mp4" />
+                  {/* Make sure src and type are correctly set */}
+                  Your browser does not support the video tag.
+                </video>
+              )}
             </div>
           </div>
         </div>

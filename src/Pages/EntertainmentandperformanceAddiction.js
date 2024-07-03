@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Navbar from "../Components/Navbar.js";
 import Enterleft from "../Images/Enterleft.png";
 import Enterright from "../Images/Enterright.png";
@@ -23,9 +23,34 @@ import HandYellow from "../SmallElements/HandYellow.png";
 import BrinBuzzle from "../SmallElements/BrinBuzzle.png";
 import Breadcrumps from "../Components/Breadcrumps";
 import WHYAL from "../Videos/WHYAL.mp4";
+import axios from "../Utils/Baseurl.js";
+import { ToastContainer, toast } from "react-toastify";
 
 const EntertainmentandperformanceAddiction = () => {
-  
+  const [rows, setRows] = useState("");
+  const [rows2, setRows2] = useState("");
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("admin/get_allVideos");
+        console.log(
+          response.data.reslt,
+          "array----------------------->>obj"
+        ); // Log the second object in the response
+        if (response) {
+          // const videoData = response.data.reslt[1]; // Retrieve the video data
+          // Now you can use videoData to set the state or display the video
+          setRows(response.data.reslt[8].source);
+          setRows2(response.data.reslt[9].source);
+        } else {
+          toast.error("something went wrong!!");
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, []);
     const [wantComplimentaryCall, setWantComplimentaryCall] = useState(false);
     const appointmentSubmit = (e) => {
       e.preventDefault();
@@ -68,14 +93,19 @@ const EntertainmentandperformanceAddiction = () => {
                 data-aos-duration="1000"
                 alt=""
               /> */}
-              <iframe
-                className="adaptationToMobile-yt-video"
-                src="https://www.youtube.com/embed/LMx12REELLw?si=ovsHeivFhskYl2AC"
-                title="YouTube video player"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
+              {rows && (
+                <video
+                  controls // Ensure controls are enabled for user interaction
+                  className="Header-video-top"
+                  // onClick={togglePlay}
+                  // onPlay={() => setIsPlaying(true)}
+                  // onPause={() => setIsPlaying(false)}
+                >
+                  <source src={rows} type="video/mp4" />
+                  {/* Make sure src and type are correctly set */}
+                  Your browser does not support the video tag.
+                </video>
+              )}
             </div>
             <div className="btn-compo">
               {wantComplimentaryCall ? (
@@ -138,17 +168,19 @@ const EntertainmentandperformanceAddiction = () => {
                   }}
                   alt=""
                 /> */}
-                <video
-                  controls // Ensure controls are enabled for user interaction
-                  className="early-age-video"
-                  // onClick={togglePlay}
-                  // onPlay={() => setIsPlaying(true)}
-                  // onPause={() => setIsPlaying(false)}
-                >
-                  <source src={WHYAL} type="video/mp4" />{" "}
-                  {/* Make sure src and type are correctly set */}
-                  Your browser does not support the video tag.
-                </video>
+                {rows2 && (
+                  <video
+                    controls // Ensure controls are enabled for user interaction
+                    className="Header-video-top"
+                    // onClick={togglePlay}
+                    // onPlay={() => setIsPlaying(true)}
+                    // onPause={() => setIsPlaying(false)}
+                  >
+                    <source src={rows2} type="video/mp4" />
+                    {/* Make sure src and type are correctly set */}
+                    Your browser does not support the video tag.
+                  </video>
+                )}
               </div>
               {/* <img
                 src={Rounda}

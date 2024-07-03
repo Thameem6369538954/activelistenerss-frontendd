@@ -2,6 +2,19 @@
   font-family: nav-link;
   src: url(../Font//LTSaeada-Medium.ttf);
 }
+.signup-btn-dis{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 10px;
+  border:2px solid black;
+  background-color: #ffdd7e;
+  border-radius: 50px;
+  width: 80%;
+  height: 50px;
+  margin: 20px;
+  /* margin-left: -10%; */
+}
 .Navbar-main {
   display: flex;
   align-items: center;
@@ -30,25 +43,26 @@ nav {
   width: 100%;
   /* background-color: red;/ */
 }
-.Login-btns {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  /* gap: 10px; */
+.Login-btns-new p{
+  width: 100%;
+}
+.Login-btns-new{
+  width: 40%;
+}
+/* .Login-btns {
   background-color: #ffdd7e;
   border-radius: 50px;
-  width: 30%;
+  width: 100%;
   height: 50px;
   margin: 20px;
-}
+  margin-left: -10%;
+} */
 nav img {
-    width: 20%;
+    width: 28%;
     margin-left: 4%;
-
-  }
+}
   .logo-sets img:nth-child(2) {
-    /* background-color: red; */
-    width: 40%;
+    
   }
 .Login-btns button {
   font-size: 16px;
@@ -60,6 +74,15 @@ nav img {
   font: 16px;
   font-weight: 600;
   border-radius: 50px;
+  margin-left: -31%;
+}
+.phone-icon{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 30px;
+  font-size: 20px;
+  margin:auto;
 }
 .Login-btns button:hover {
   transition: 0.1s;
@@ -117,9 +140,50 @@ nav img {
 .logo-sets{
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
 }
+.Navbao{
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.Logout-btns{
+    background-color: #ffdd7e;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 20%;
+    border-radius: 50px;
+  }
+  .Logout-btns button{
+    padding: 10px 10px;
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+      font-family: "Questrial", sans-serif;
+  }
+  .Logout-btns button:hover{
+    background-color: white;
+    border-radius: 50px;
+  }
+   .Logout-btns img{
+    width: 50px;
+    border-radius: 50%;
+   }
 @media screen and (min-width: 10px) and ( max-width: 600px) {
+  .signup-btn-dis {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 10px;
+    border: 2px solid black;
+    background-color: #ffdd7e;
+    border-radius: 50px;
+    width: 220%;
+    height: 50px;
+    margin: 2px;
+    margin-left: 102%;
+}
   nav {
     margin: 2% auto;
     display: flex;
@@ -176,16 +240,37 @@ nav img {
   .nav-links.active {
     left: -0;
   }
+  .Logout-btns{
+    background-color: #ffdd7e;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 50%;
+    border-radius: 50px;
+  }
+  .Logout-btns button{
+    padding: 10px 10px;
+    background-color: transparent;
+    border: none;
+  }
+  .Logout-btns button:hover{
+    background-color: white;
+    border-radius: 50px;
+  }
+   .Logout-btns img{
+    width: 50px;
+    border-radius: 50%;
+   }
       .Login-btns {
         display: flex;
+        flex-direction: column;
         align-items: center;
-        justify-content: space-around;
-        background-color: #ffdd7e;
+        justify-content: center;
         border-radius: 50px;
-        width: 500px;
-        height: 50px;
-        margin-right: 28px;
-    }
+        width: 45%;
+        background-color: #ffdd7e;
+        height: 50px;    
+      }
        nav img {
         width: 144px;
         margin-left: 11%;
@@ -212,10 +297,16 @@ nav img {
     .logo-sets img:nth-child(2) {
     /* background-color: red; */
     width: 80%;
+    margin-left: -30px;
+    margin-top: 0px;
 }
 .header-main img {
     width: 84%;
     margin-top: 0%;
+}
+ .Login-btns-new {
+    width: 100%;
+    margin-top: -7%;
 }
 }
 .nav-icons:nth-child(1) {
@@ -263,8 +354,30 @@ nav img {
   .nav-links.active {
     left: -0;
   }
+ 
 }
 @media (min-width: 600px) and (max-width: 1024px) {
+  .Logout-btns{
+    background-color: #ffdd7e;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 50%;
+    border-radius: 50px;
+  }
+  .Logout-btns button{
+    padding: 10px 10px;
+    background-color: transparent;
+    border: none;
+  }
+  .Logout-btns button:hover{
+    background-color: white;
+    border-radius: 50px;
+  }
+   .Logout-btns img{
+    width: 50px;
+    border-radius: 50%;
+   }
   .nav-links li {
         border: 1px solid black;
         list-style: none;
@@ -276,16 +389,40 @@ nav img {
         width: 95%;
         font-family: nav-link;
     }
-      .Login-btns {
+     .Login-btns {
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: space-around;
-        /* gap: 10px; */
-        background-color: #ffdd7e;
+
         border-radius: 50px;
-        width: 50%;
+        width: 100%;
         height: 50px;
+        margin-left: -9%;
     }
+    .signup-btn-dis {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 10px;
+    border: 2px solid black;
+    background-color: #ffdd7e;
+    border-radius: 50px;
+    width: 100%;
+    margin-top: 1%;
+    height: 50px;
+    margin: 5px;
+    /* margin-left: -10%; */
+}
+.Login-btns-new {
+    width: 100%;
+}
+.logo-sets {
+    width: 80%;
+}
+.phone-icon{
+  margin-top: -15%;
+}
   nav {
     margin: 2% auto;
     display: flex;

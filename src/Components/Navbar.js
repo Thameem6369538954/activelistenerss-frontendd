@@ -20,6 +20,7 @@ import { Menu, MenuItem } from "@mui/material";
 import updatedLogo from "../Images/updatedLogo.png";
 import NavA from "../Images/NavA.png";
 import Navb from "../Images/Navb.png";
+import { FaPhoneAlt } from "react-icons/fa";
 
 const Navbar = () => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -74,12 +75,9 @@ const Navbar = () => {
               <IoCloseOutline className="nav-icon-close" onClick={CloseMenu} />
             ) : (
               <div>
-
                 <RiMenu5Fill className="nav-icon" onClick={handleClick} />
               </div>
             )}
-            {/* <RiMenu5Fill className="nav-icon" />
-          <IoCloseOutline className="nav-icon" /> */}
           </div>
           <ul className={isOpen ? "nav-links active" : "nav-links"}>
             <div>
@@ -118,34 +116,27 @@ const Navbar = () => {
               <NavLink to="/Hiring" className="Links">
                 <li>Careers</li>
               </NavLink>
-              {/* <NavLink to="/GoalVision" className="Links">
-                <li>About us</li>
-              </NavLink> */}
             </div>
           </ul>
 
-          <div className="nav-icons"></div>
-          <NavLink to="/">
-          <div className="logo-sets">
-            <img src={NavA} alt="" />
-            <img src={updatedLogo} alt="" />
-            <img src={Navb} alt="" />
+          <div className="Navbao">
+            <NavLink to="/">
+              <div className="logo-sets">
+                <img src={NavA} alt="" />
+                <img src={updatedLogo} alt="" />
+                <img src={Navb} alt="" />
+              </div>
+            </NavLink>
           </div>
-          </NavLink>
+
           {user ? (
-            <div className="Login-btns">
-              <button onClick={handleLogout} className="full-rounded">
+            <div className="Logout-btns">
+              <button onClick={handleLogout} >
                 <NavLink className="Links">
                   <span>Logout</span>
                 </NavLink>
-                {/* <div className="border full-rounded"></div> */}
               </button>
-              {/* <img src={Navarrow} className="navarrow" alt="" /> */}
-              {/* <NavLink to={"/UserProfile"} className="Links"> */}
-              {/* <p>profile</p> */}
 
-              {/* <img src={user.profilePic} alt="" /> */}
-              {/* </NavLink> */}
               <div>
                 <div
                   id="profile-menu"
@@ -188,20 +179,32 @@ const Navbar = () => {
               </div>
             </div>
           ) : (
-            <div className="Login-btns">
-              <button className="full-rounded">
-                <NavLink to="/Login" className="Links">
-                  <span>Already a member</span>
-                </NavLink>
-                <div className="border full-rounded"></div>
-              </button>
+            <div className="Login-btns-new">
+              <div className="phone-icon">
+                <FaPhoneAlt />
+                <p>: +91 78928 58593</p>
+              </div>
+              <div className="Login-btns">
+                <div className="signup-btn-dis">
+                  <p>Already a member ?</p>
+                  <button className="full-rounded">
+                    <NavLink to="/Login" className="Links">
+                      <span>Login</span>
+                    </NavLink>
+                    <div className="border full-rounded"></div>
+                  </button>
+                </div>
 
-              <button className="full-rounded">
-                <NavLink to="/Signup" className="Links">
-                  <span>Not a member</span>
-                </NavLink>
-                <div className="border full-rounded"></div>
-              </button>
+                <div className="signup-btn-dis">
+                  <p>Not a member ?</p>
+                  <button className="full-rounded">
+                    <NavLink to="/Signup" className="Links">
+                      <span>Signup</span>
+                    </NavLink>
+                    <div className="border full-rounded"></div>
+                  </button>
+                </div>
+              </div>
             </div>
           )}
         </nav>

@@ -72,7 +72,7 @@ const Therapycategories = () => {
           </div>
 
           <div className="theropy-box-main">
-            <NavLink onClick={scrollToTop} to="/Teletherapy" className="Links">
+            <NavLink onClick={scrollToTop} to="/Speak_easy" className="Links">
               <div
                 className="therapy-box"
                 data-aos="flip-left"

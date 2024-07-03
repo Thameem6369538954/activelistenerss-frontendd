@@ -284,9 +284,19 @@ const GriefsupportGroup = () => {
                 <h1>Grief Support</h1>
                 <h2>Group</h2>
                 <h5>
-                  A safe space to share experiences, connect with others,{" "}
-                  <br></br>and receive support while navigating the challenges
-                  of grieving together.
+                  In the heart of Bengalooru city, there's a unique gathering
+                  called "Let's Revive" that brings people together to celebrate
+                  and bring back ancient values, especially the respect for
+                  elders. Our group meets regularly in the local community
+                  center, where members of all ages share stories, learn from
+                  each other, and engage activities that highlight the wisdom
+                  and traditions of the past. Through discussions, workshops,
+                  and cultural events, "Let's Revive" fosters a sense of
+                  community and connection, reminding everyone of the importance
+                  of honoring those who have paved the way for us. It's a
+                  wonderful opportunity for people to connect with their roots,
+                  learn valuable lessons from the elderly, and ensure that these
+                  age-old values continue to enrich our lives today..
                 </h5>
               </div>
 
@@ -355,14 +365,12 @@ const GriefsupportGroup = () => {
         </div>
       </div>
       {/* color-boxes */}
-      <div className="color-box-main-container">
-      <div className="div-color-a">
-        
-      </div>
-      <div className="div-color-b"></div>
-      <div className="div-color-c"></div>
-      <div className="div-color-d"></div>
-      </div>
+      {/* <div className="color-box-main-container">
+        <div className="div-color-a"></div>
+        <div className="div-color-b"></div>
+        <div className="div-color-c"></div>
+        <div className="div-color-d"></div>
+      </div> */}
       {/* from-this-form */}
       <div className="benefit-boxes-main">
         <div className="therapy-heading">
@@ -598,16 +606,6 @@ const GriefsupportGroup = () => {
             <div className="box"></div>
             <div className="box"></div>
             <div className="box"></div>
-            
-          </article>
-          <article className="orange">
-            
-            <div className="box"></div>
-            <div className="box"></div>
-            <div className="box"></div>
-            <div className="box"></div>
-            <div className="box"></div>
-            <div className="box"></div>
           </article>
           <article className="orange">
             <div className="box"></div>
@@ -616,7 +614,14 @@ const GriefsupportGroup = () => {
             <div className="box"></div>
             <div className="box"></div>
             <div className="box"></div>
-           
+          </article>
+          <article className="orange">
+            <div className="box"></div>
+            <div className="box"></div>
+            <div className="box"></div>
+            <div className="box"></div>
+            <div className="box"></div>
+            <div className="box"></div>
           </article>
         </main>
       </div>
@@ -838,7 +843,7 @@ const GriefsupportGroup = () => {
                     <li>
                       {" "}
                       <input
-                      type="text"
+                        type="text"
                         id="message"
                         name="message"
                         value={formData.message}

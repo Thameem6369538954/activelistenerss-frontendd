@@ -142,7 +142,7 @@ const Header = () => {
           <div className="main-y-div">
             <div>
               <li>
-                Developed by <span>Psychologists</span>
+                Developed by Psychologists
               </li>
             </div>
             <div>
@@ -239,7 +239,7 @@ const Header = () => {
 
           <div></div>
         </div>
-        <div className="hdr-btm-text">
+        {/* <div className="hdr-btm-text">
           <div className="inside-hdr-btm-txt">
             <img src={FrameA} alt="" />
           </div>
@@ -247,7 +247,6 @@ const Header = () => {
           {!showPopup && (
             <div className="why-active-btn">
               <button onClick={togglePopup}>Why Active Listeners?</button>
-              {/* <img onClick={togglePopup} src={Navarrow} alt="" /> */}
             </div>
           )}
           {showPopup && (
@@ -268,7 +267,6 @@ const Header = () => {
                         onPlay={() => setIsPlaying(true)}
                         onPause={() => setIsPlaying(false)}
 
-                        // ref={videoRef}
                       >
                         <source src={WHYAL} type="video/mp4" />
                         Your browser does not support the video tag.
@@ -282,13 +280,11 @@ const Header = () => {
                               left: "50%",
                               transform: "translate(-50%, -50%)",
                               cursor: "pointer",
-                              // width:"20px"
                             }}
                             className="play-center-btn"
                             onClick={handlePlayClick}
                           >
                             <div>
-                              {/* <MdPlayCircleFilled onClick={togglePlay} /> */}
                             </div>
                           </div>
                         )}
@@ -302,7 +298,7 @@ const Header = () => {
           <div className="inside-hdr-btm-txt">
             <img src={FrameB} alt="" />
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

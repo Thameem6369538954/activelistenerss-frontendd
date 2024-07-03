@@ -7,7 +7,7 @@ const Errorpage = () => {
     <div>
       <div className='error'>
         <Lottie animationData={Error} loop={true}  className='lottie-error'/>
-        <h1> Sorry This Page Not Found</h1>
+        <h1> Sorry This Page was Not Found</h1>
       </div>
     </div>
   );
