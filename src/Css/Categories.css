@@ -122,6 +122,12 @@
     font-weight: 900;
     font-size: 16px;
   }
+  .cate-left-box {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 0rem;
+    width: 100%;
+}
   .cate-video {
     width: 100%;
     border-radius: 20px;
@@ -130,6 +136,12 @@
 }
 }
 @media (min-width: 600px) and (max-width: 1024px) {
+  .cate-left-box {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 0rem;
+    width: 100%;
+}
   .cate-video {
     width: 100%;
     border-radius: 20px;
