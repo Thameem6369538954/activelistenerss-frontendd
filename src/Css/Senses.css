@@ -146,6 +146,16 @@
     padding: 0 1em;
 } */
 @media (min-width: 600px) and (max-width: 1024px) {
+  .sense-theropy h1 {
+    font-size: 28px;
+    font-family: Blacky;
+    margin-left: 20px;
+}
+.sense-theropy li {
+    list-style: none;
+    font-size: 30px;
+    font-family: "Questrial", sans-serif;
+}
   .senses-category-cards {
     display: flex;
     flex-wrap: wrap;

@@ -571,23 +571,26 @@ form .buttons button,
     font-size: 20px;
     margin: 20px;
   }
-  .card-grif img {
-    width: 21%;
-    margin-left: 17%;
-  }
+  
+ .card-grif img {
+        width: 21%;
+        margin-left: -2%;
+        margin-top: -32px;
+        margin-bottom: 40px;
+    }
   .circle img:nth-child(1) {
     top: -38px;
     left: -16px;
     display: none;
   }
-  .card-grif {
-    width: 575px;
-    height: 126px;
-    transition: all 0.2s;
-    position: relative;
-    cursor: pointer;
-    margin: 0px auto;
-  }
+      .card-grif {
+        width: 575px;
+        min-height: 283px;
+        transition: all 0.2s;
+        position: relative;
+        cursor: pointer;
+        margin: 0px auto;
+    }
   .card-inner h1 {
     font-family: Relo;
     font-weight: 900;

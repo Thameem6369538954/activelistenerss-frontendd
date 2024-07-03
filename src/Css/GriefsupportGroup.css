@@ -828,11 +828,11 @@ article {
 
 
 }
-  .color-box-main-container{
+  /* .color-box-main-container{
     display: grid;
     place-items: center;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  }
+  } */
   .benefit-inside-box img {
     width: 62px;
 }
