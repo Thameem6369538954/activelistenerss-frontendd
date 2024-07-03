@@ -1,3 +1,6 @@
+.logo img {
+  width: 20%;
+}
 .logo img{
   width: 50%;
 }
@@ -28,6 +31,7 @@ width: 30%;
 .two-flower {
   display: flex;
   align-items: center;
+  justify-content: center;
   justify-content: space-between;
 }
 .footer-list {
@@ -56,6 +60,14 @@ width: 30%;
   color: black;
 }
 .news-letter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #bae8ac;
+  width: 214%;
+  margin-left: -81%;
+  /* margin: auto; */
+  border-radius: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -72,6 +84,12 @@ width: 30%;
   font-family: "Courier New", Courier, monospace;
 }
 .news-letter input {
+  width: 78%;
+  height: 20px;
+  margin-left: 3%;
+  padding: 27px;
+  border-radius: 20px;
+
     width: 104%;
     height: 20px;
     margin-left: 3%;
@@ -91,6 +109,7 @@ width: 30%;
   margin-left: 13%;
 }
 @media screen and (max-width: 600px) {
+
   .logo img{
   width: 100%;
 }
@@ -174,10 +193,14 @@ width: 100%;
     display: flex;
     align-items: center;
     /* justify-content: space-between; */
+    background-color: red;
+    /* width: 10%; */
+    display: none;
+  }
     /* background-color: red; */
     /* width: 10%; */
     /* display: none; */
-  }
+  
    .two-flower{
     position: relative;
    }
@@ -194,6 +217,7 @@ width: 100%;
     width: 40%;
   }
   .news-letter input {
+    width: 67%;
     width: 68%;
     height: 20px;
     margin-left: 3%;
@@ -205,6 +229,7 @@ width: 100%;
     align-items: center;
     justify-content: center;
     background-color: #bae8ac;
+    width: 161%;
     width: 140%;
     margin-left: -26%;
     /* margin: auto; */
@@ -216,34 +241,11 @@ width: 100%;
   }
 
   .news-letter-main button {
-        margin: 30px 131px;
-    }
-   .news-letter {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: #bae8ac;
-        /* margin-left: -26%; */
-        /* margin: auto; */
-        border-radius: 20px;
-        /* margin: auto; */
-    }
-     .logo img{
-  width: 100%;
+    margin: 20px;
+  }
 }
-.logo{
-  width:100%;
-    font-family: "Questrial", sans-serif;
 
-}
-.footer-list-ul{
-width: 100%;
-}
-.contact {
-    width: 100%;
-    font-family: "Questrial", sans-serif;
-}
-}
+
 /* @media screen and (max-width: 1224px) {
   .two-flower {
     display: flex;
@@ -260,8 +262,19 @@ width: 100%;
     padding: 27px;
     border-radius: 20px;
   }
- 
+  .news-letter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #bae8ac;
+    width: 104%;
+    /* margin-left: -26%; */
+    /* margin: auto; */
+    /* border-radius: 20px; */
+  /* }
 } */
+ 
+/* }  */
 .whatsapp-fix-img{
   width: 70%;
   position: absolute;
@@ -269,6 +282,14 @@ width: 100%;
 font-size: 50px !important;
 animation: pulse 2s infinite;
   
+}
+
+.callIcon-fix-img{
+  width: 70%;
+  position: absolute;
+  border-radius: 50%;
+font-size: 50px !important;
+animation: pulse 2s infinite;
 }
 
 .w-app{
@@ -280,6 +301,15 @@ animation: pulse 2s infinite;
   height: 38px;
   position: fixed;
   bottom: 10%;
+  right:-10px;
+}
+.call-icon{
+  display: flex;
+  align-items: center;
+  width: 135px;
+  height: 38px;
+  position: fixed;
+  bottom: 25%;
   right:-10px;
 }
 @keyframes pulse {
