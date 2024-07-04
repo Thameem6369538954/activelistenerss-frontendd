@@ -52,7 +52,7 @@ const Senses = () => {
       <div className="secnses-main-con">
         <Breadcrumps />
         <div className="therapy-heading">
-          <p>Therapy for you!</p>
+          {/* <p>Therapy for you!</p> */}
           <h1>Senses</h1>
           <h2>Resurrection</h2>
           <img src={Yellowline} className="Yellowline" alt="" />
@@ -84,7 +84,7 @@ const Senses = () => {
             </div>
           )}
         </div>
-        <div className="green-bourd-grief">
+        {/* <div className="green-bourd-grief">
           <div className="card-grif">
             <div className="circle">
               <img src={Roundb} alt="" />
@@ -102,7 +102,7 @@ const Senses = () => {
               <img src={Kadhoolu} alt="" />
             </div>
           </div>
-        </div>
+        </div> */}
 
         <div className="sense-main-con">
           <div className={`container ${isActive ? "active" : ""}`}>
@@ -196,7 +196,7 @@ const Senses = () => {
         <></>
       ) : (
       )} */}
-      <div className="tele-buttons">
+      {/* <div className="tele-buttons">
         <button className="get-support" onClick={handleOpen}>
           Get Support
         </button>
@@ -213,7 +213,7 @@ const Senses = () => {
             <p>activelisteners2024@gmail.com</p>
           </div>
         </div>
-      )}
+      )} */}
 
       <GetinTouch />
       <Footer />

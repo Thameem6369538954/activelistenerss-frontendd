@@ -70,18 +70,17 @@
   padding: 24px 46px 24px 26px;
 }
 .searchBox {
-  display: flex;
-  max-width: 730px;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  /* background: #2f3640; */
-  border: 1px solid #ffdd7e;
-  border-radius: 50px;
-  position: relative;
-  margin-top: 20%;
-  margin-left: 25%;
-  margin-bottom: 4%;
+    display: flex;
+    max-width: 730px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    border: 1px solid #ffdd7e;
+    border-radius: 50px;
+    position: relative;
+    margin-top: 2%;
+    margin-left: 25%;
+    margin-bottom: 4%;
 }
 .potcast-category button {
   background-color: white;
@@ -163,7 +162,7 @@
         border: 1px solid #ffdd7e;
         border-radius: 50px;
         position: relative;
-        margin-top: 150px;
+        margin-top: -250px;
         margin-left: 0%;
         margin-bottom: 0%;
     }

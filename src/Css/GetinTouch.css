@@ -19,14 +19,14 @@
     border-radius: 20px;
     margin-bottom: -14%;
 }
-.get-form span{
+/* .get-form span{
   position: absolute;
   right: 10px;
   top: 10px;
   font-size: 20px;
      font-family: "Questrial", sans-serif;
 
-}
+} */
 
 .form-inputs {
     display: grid;
@@ -149,7 +149,7 @@
         position: absolute;
         width: 52%;
         margin-left: 56%;
-        margin-top: -903px;
+        margin-top: -618px;
         border-radius: 0px 0px 41px 73px;
     }
   .get-form {

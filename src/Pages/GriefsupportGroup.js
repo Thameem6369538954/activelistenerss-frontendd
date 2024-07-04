@@ -533,7 +533,7 @@ const GriefsupportGroup = () => {
               <div className="therapy-heading">
                 <p>Meetup groups developed and Delivered By Psychologists</p>
                 <h1>What you will gain</h1>
-                <h2>From this meeetup</h2>
+                <h2>From this meetup</h2>
                 <img src={Yellowline} className="Yellowline" alt="" />
               </div>
               <div className="goal-box-container-hole">

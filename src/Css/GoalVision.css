@@ -87,7 +87,7 @@
 }
 .goal-box-container-hole {
   margin: auto;
-  width: 94%;
+  width: 95%;
 }
 .gaol-vision-last-box {
   display: flex;
@@ -115,7 +115,7 @@
     justify-content: center;
     background-color: #ffdd7e;
     height: 300px;
-    width: 299px;
+    width: 75%;
     border-radius: 20px;
     border: 1px solid black;
     margin: auto;

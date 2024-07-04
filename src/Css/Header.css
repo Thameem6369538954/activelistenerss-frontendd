@@ -25,7 +25,7 @@
   align-items: center;
   justify-content: center;
   margin: 10px;
-  min-height: 1 0vh;
+  min-height: 10vh;
   width: 100%;
 }
 .nav-icons {
@@ -420,10 +420,11 @@
 }
 
 @media screen and (max-width: 600px) {
-  .header-main img {
-    width: 70%;
-    margin-top: 0%;
-}
+      .header-main img {
+        width: 81%;
+        margin-top: -3%;
+        position: absolute;
+    }
   .cate-left-box {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -453,7 +454,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: auto 50%;
+    margin: auto;
   }
   .hdr-btm-text button {
     background-color: #ffdd7e;
@@ -481,7 +482,6 @@
   }
   .inside-hdr-btm-txt img {
     width: 84px;
-    /* background-color: #256c55; */
   }
   .header-top-video {
     height: 100px;
@@ -592,9 +592,6 @@
         font-weight: 400;
         font-style: normal;
         font-size: 31px;
-        width: 130%;
-        margin-top: -10%;
-        margin-left: 65%;
   }
   .hdr-text h2 {
     font-family: Relo;
@@ -716,7 +713,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: auto 46%;
+    margin: auto;
     width: 100%;
 }
   .puzzle-boy img {

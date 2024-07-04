@@ -895,7 +895,7 @@ article {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    margin-top: 26%;
+    /* margin-top: 26%; */
 }
   .time-box {
     display: flex;

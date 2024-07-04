@@ -242,7 +242,7 @@ const AffiliateProgram = () => {
                       fontSize: "14px",
                     }}
                   >
-                    Know more
+                    Apply Here
                   </button>
                 </Link>
               </div>
